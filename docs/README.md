@@ -45,11 +45,11 @@ If you want to write an article:
 
 3. Follow [these steps](https://toolchain.gitbook.com/setup.html) to install GitBook toolchain locally.
 
-4. Create your own branch (`git checkout -b <branch>) where you start making desired changes.
+4. Create your own branch (using `git checkout -b <branch>`) where you start making desired changes.
 
 5. Test your changes to see if they appear as you intended.
 
-6. Push your branch to your forked GitHub repository.
+6. Push your branch to your forked GitHub repository (using `git push origin <branch>`).
 
 7. Create pull request back to [our repository](https://github.com/bigclownlabs/doc.bigclown.com).
 
