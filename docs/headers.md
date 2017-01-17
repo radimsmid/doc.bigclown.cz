@@ -1,6 +1,9 @@
 # Headers & Signals
 
 
+<!-- toc -->
+
+
 In BigClown we emphasize hardware modularity and re-usability.
 To achieve such goal we had to come up with proper interconnect system between our components.
 We decided to stick with well-known and widely accepted standard - **headers** with 2.54 mm (0.1 inch) pitch.
@@ -28,13 +31,13 @@ Format **Module** defines:
 * Radius of rounded corners 3.8 mm.
 
 
-### Drawing
+### Module Drawing
 
 
 ![](images/headers/module.png)
 
 
-### Signals
+### Module Signals
 
 
 This is a summary of basic peripherals available on **module** header:
@@ -117,13 +120,13 @@ Format **tag** defines:
 * Radius of rounded corners is 3.8 mm.
 
 
-### Drawing
+### Tag Drawing
 
 
 ![](images/headers/tag.png)
 
 
-### Signals
+### Tag Signals
 
 
 The following table defines signal assignment on **tag** header:
