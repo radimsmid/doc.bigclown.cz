@@ -25,7 +25,7 @@ We provide several layers in our documentation ecosystem:
 * **Academy** to teach you some general stuff about the technologies we use.
 
 
-## Contribution
+## Contributing
 
 
 Your feedback and contribution is always appreciated.
@@ -33,10 +33,13 @@ This documentation site is automatically generated and hosted by [GitBook](https
 The whole content is written in Markdown (with GitHub Flavored Markdown support).
 
 
-For minor updates and fixes, please do not hesitate to click on **EDIT THIS PAGE** button available on every page of this site, and send us a pull request directly from GitHub online editor.
+### Minor Updates and Fixes...
 
 
-If you want to write an article:
+Please do not hesitate to click on **EDIT THIS PAGE** button available on every page of this site, and send us a pull request directly from GitHub online editor.
+
+
+### Writing Article
 
 
 1. Fork [this repository](https://github.com/bigclownlabs/doc.bigclown.com) to your GitHub account.
@@ -54,4 +57,4 @@ If you want to write an article:
 7. Create pull request back to [our repository](https://github.com/bigclownlabs/doc.bigclown.com).
 
 
-Thanks you! _- Your enthusiastic team of clowns... **BIG CLOWNS**!_
+**Thank you!** _- Your enthusiastic team of clowns... **BIG CLOWNS**!_

@@ -4,12 +4,26 @@
 * [Introduction](README.md)
 
 
-## Tutorials
+## Core Module
+
+
+* [Getting Started](core-module.md)
+
+* [Development Setup](core-module-setup.md)
+
+  * [Ubuntu Desktop](core-module-setup-ubuntu.md)
+
+* [API Reference](core-module-api.md)
+
+
+## Hardware
 
 
 * [Headers & Signals](headers.md)
 
-* [Core Module](core-module.md)
+
+## Tutorials
+
 
 * [Raspberry Pi - Installation](raspberry-pi-installation.md)
 
