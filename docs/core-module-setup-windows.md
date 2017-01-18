@@ -38,6 +38,10 @@ In that case you would just need the DFU firmware flashing utility and drivers w
 Otherwise download latest [GNU ARM Embedded Toolchain](https://launchpad.net/gcc-arm-embedded/+download) for Windows.
 We would suggest the installer because it is easiest solution. Install the GCC compiler and in the last wizard screen after the instalation **select that you would like to add the tools to the PATH environment variable.**
 
+If you use more toolchains, change TOOLCHAIN variable to your absolute path in the Makefile. You have to use `/` symbol instead of `\`.
+
+`TOOLCHAIN = "C:/Program Files (x86)/GNU Tools ARM Embedded/5.4 2016q3/bin/arm-none-eabi-"`
+
 
 ## How to install buildsystem
 
