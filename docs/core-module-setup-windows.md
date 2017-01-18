@@ -91,9 +91,7 @@ You generate the docs by `make doc`.
 ## How to install virtual COM port driver
 
 
-Download and install the [STM32 Virtual COM Port driver](http://www.st.com/en/development-tools/stsw-stm32102.html).
-
-*TODO: Needs registration on ST site, can we mirror the installer?*
+Download and install the [STM32 Virtual COM Port driver](https://drive.google.com/open?id=0B5pXL_JAACMvczQ0MVM1eUZILXc). You can also download latest driver [directly from ST](http://www.st.com/en/development-tools/stsw-stm32102.html) but you will need to register.
 
 
 ## How to install Mosquitto MQTT broker
