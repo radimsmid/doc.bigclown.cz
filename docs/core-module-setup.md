@@ -15,8 +15,8 @@ In general development setup has two phases:
 Click on one of the supported host operating system platforms for detailed information about the firmware development setup:
 
 
-* [**Ubuntu** desktop](core-module-setup-ubuntu.md)
+* [**Ubuntu** Desktop](core-module-setup-ubuntu.md)
 
-* TODO **macOS** desktop
+* TODO **macOS** Desktop
 
-* TODO **Windows 10** desktop
+* [**Windows 10** Desktop](core-module-setup-windows.md)

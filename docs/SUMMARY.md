@@ -13,6 +13,8 @@
 
   * [Ubuntu Desktop](core-module-setup-ubuntu.md)
 
+  * [Windows Desktop](core-module-setup-windows.md)
+
 * [API Reference](core-module-api.md)
 
 
