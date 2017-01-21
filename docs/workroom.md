@@ -161,7 +161,13 @@ How-to communicate with MQTT broker:
 
 2. Default username is "pi" and password "raspberry"
 
-3. Show measurements from remote (reported every 30 seconds):
+3. Update your existing installation:
+
+   ```
+   sudo apt-get update && sudo apt-get upgrade
+   ```
+
+4. Show measurements from remote (reported every 30 seconds):
 
    ```
    mosquitto_sub -v -t "nodes/remote/#"
@@ -169,13 +175,13 @@ How-to communicate with MQTT broker:
 
    > Use Ctrl-C to stop measurements monitoring.
 
-4. Use LED strip as light and set luminosity:
+5. Use LED strip as light and set luminosity:
 
    ```
    mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'
    ```
 
-5. Update and retain LED strip brightness:
+6. Update and retain LED strip brightness:
 
    ```
    mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}' -r
@@ -183,7 +189,7 @@ How-to communicate with MQTT broker:
 
    > Notice *-r* to store topic in MQTT broker as persistent configuration
 
-6. Use LED strip as humidity and temperature indicator:
+7. Use LED strip as humidity and temperature indicator:
 
    ```
    mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'
@@ -328,10 +334,56 @@ Everybody likes different environment so the preset thresholds for temperature a
 
 ### Plugin blynk
 
-JavaScript integration plugin with [Blynk](http://www.blynk.cc/)
+1. Install Blynk on your smartphone / tablet.
 
-* Configure Blynk token for virtual HW
+   > **Note** Just use Google Play or App Store.
+
+2. Run Blynk and select **Create new project**. and give it a name (e.g. “Workroom Project”) and select **Generic Board** as a hardware.
+
+   ![](images/workroom/blynk-create-project-1.png)
+   ![](images/workroom/blynk-create-project-2.png)
+
+3. Write down your Auth Token (or let the application to send it to you by e-mail).
+
+* Configure Blynk Auth token via MQTT.
 
   ```
-  mosquitto_pub -t "plugin/blynk/config" -m '{"token":"ec9fdfdf0c7d49bcae3e83be3dceb4c1"}' -r
+  mosquitto_pub -t "plugin/blynk/config" -m '{"token":"your_token"}' -r
   ```
+4. Create widgets for temperature and humidity sensors
+
+   ![](images/workroom/blynk-value-temperature.png)
+   ![](images/workroom/blynk-value-humidity.png)
+
+5. Create widgets for History Graph and slider for brightness
+
+   ![](images/workroom/blynk-history-graph.png)
+   ![](images/workroom/blynk-slider-brightness.png)
+
+6. Create button widgets for light and relay
+
+   ![](images/workroom/blynk-button-light.png)
+   ![](images/workroom/blynk-button-relay.png)
+
+7. Create widget zeRGBa
+
+   ![](images/workroom/blynk-zergba.png)
+
+8. Now you have a working Blynk dashboard.
+
+   ![](images/workroom/blynk-dashboard.png)
+
+   > **Note** When you click on the white dot switches back to the rules
+
+## Virtual Pin Assignment for Blynk
+
+| Virtual PIN  | Topic                                | Payload key       | Unit  |
+| ------------ | ------------------------------------ | ----------------- | ----- |
+| 0            | nodes/remote/thermometer/+           | temperature       | °C    |
+| 1            | nodes/remote/humidity-sensor/+       | relative-humidity | %     |
+| 2            | plugin/led-strip/data/set/ok         | brightness        |       |
+| 2            | plugin/led-strip/data                | brightness        |       |
+| 3            | nodes/base/light/-                   | state             |       |
+| 4            | nodes/base/relay/-                   | state             |       |
+| 5            | plugin/led-strip/data/set/ok         | color             |       |
+| 5            | plugin/led-strip/data                | color             |       |
