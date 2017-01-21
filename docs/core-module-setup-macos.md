@@ -53,7 +53,7 @@ This section will guide you through the BigClown Core Module firmware build proc
 1. Get necessary packages (`git` + `make`):
 
    ```
-   brew install git make
+   brew install git
    ```
 
 2. Clone BigClown Core Module top-level repository:
