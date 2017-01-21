@@ -17,6 +17,6 @@ Click on one of the supported host operating system platforms for detailed infor
 
 * [**Ubuntu** Desktop](core-module-setup-ubuntu.md)
 
-* TODO **macOS** Desktop
+* [**macOS** Desktop](core-module-setup-macos.md)
 
 * [**Windows 10** Desktop](core-module-setup-windows.md)

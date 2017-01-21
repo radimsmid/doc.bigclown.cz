@@ -11,6 +11,8 @@
 
 * [Development Setup](core-module-setup.md)
 
+  * [macOS Desktop](core-module-setup-macos.md)
+
   * [Ubuntu Desktop](core-module-setup-ubuntu.md)
 
   * [Windows Desktop](core-module-setup-windows.md)
