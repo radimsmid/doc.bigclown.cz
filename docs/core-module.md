@@ -51,6 +51,12 @@ The following electrical limitations apply for GPIO pins:
 * Maximum total output current sunk / sourced by all GPIOs is 90 / -90 mA.
 
 
+## Hardware Schematic Drawing
+
+
+Core Module schematic drawing can be downloaded by clicking on [this link](https://github.com/bigclownlabs/bc-hardware/raw/master/out/bc-module-core/bc-module-core-rev-1-3-sch.pdf).
+
+
 ## Firmware Programming
 
 
