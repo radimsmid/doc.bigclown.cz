@@ -1,18 +1,30 @@
 # Core Module Development Setup
 
 
-We know software engineers like to have things under their control.
-This is why we took minimalistic build system approach based on Makefile.
+In general firmware development has the following phases:
 
 
-In general development setup has two phases:
+1. **Toolchain Installation**
 
-1. Installing the necessary toolchain on your host.
+2. **Development**
 
-2. Running the build system.
+   * **Coding** (writing of the source code)
+
+   * **Building** (compilation of the source code)
+
+   * **Programming** (downloading compiled image to the target)
+
+   * **Debugging** (stepping through the program, breakpoints, watching data, etc.)
+
+2. **Testing**
+
+2. **Deployment**
 
 
-Click on one of the supported host operating system platforms for detailed information about the firmware development setup:
+## Toolchain Installation
+
+
+Click on one of the supported host operating system platforms for detailed information about the toolchain setup:
 
 
 * [**Ubuntu** Desktop](core-module-setup-ubuntu.md)

@@ -1,15 +1,16 @@
 # Core Module
 
+
 <!-- toc -->
+
 
 This tutorial will guide you through some fundamental insights about Core Module.
 
 
 ## Block Diagram
 
-TODO: Insert block diagram and describe it.
 
-
+![](images/core-module/core-module.png)
 
 
 ## GPIO Mapping
@@ -51,6 +52,7 @@ The following electrical limitations apply for GPIO pins:
 
 
 ## Firmware Programming
+
 
 Firmware of Core Module is a program stored in an internal flash memory of the microcontroller.
 In this chapter we will call *programming* a process of writing firmware into this internal flash memory.
@@ -216,22 +218,7 @@ So far you can download two binary files for [Workroom project](workroom.md):
 * Sends message when pin P8 is grounded or released
 
 
-## Firmware Building
-
-TODO: Describe firmware build process with arm-none-eabi-gcc + Makefile.
+## Development Setup
 
 
-## Debugging
-
-
-### J-link Ozone Debugger
-
-J-link Ozone is a free graphical debugger for Windows, Linux and macOS.
-It provides usual debugger features like breakpoints and single step, advanced features like live watch, graphing of variables and MCU register view (from SVD file).
-Download the debugger from [J-link Ozone download page](https://www.segger.com/downloads/jlink#Ozone).
-
-To start the Ozone debugging simply run `make ozone`.
-You can run also Ozone manually and in `File > Open...` load configruration file `bc-core-module/tools/ozone/ozone.jdebug`.
-Press F5 to start the debugging.
-
-TODO: Describe setup and operation with J-Link debugger and gdb / Ozone debugger.
+Please, click [here](core-module-setup.md) for more details about development setup.
