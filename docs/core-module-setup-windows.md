@@ -18,13 +18,13 @@ All our code is located on public GitHub account. You have to use GIT to clone t
 
 Download [command line GIT utility](https://git-scm.com/download/win) or you can use [GitHub Desktop](https://desktop.github.com/) with easy graphical interface.
 
+In the GIT installer you have to set PATH variable to the internal Unix tools like rm and pwd. Select the last radio button with "Use Git and optional Unix tools from the Windows Command Prompt".
+
 Clone repository `https://github.com/bigclownlabs/bc-core-module` to your machine.
 You have to call clone with `--recursive` to clone also the submodules.
 
 `git clone --recursive https://github.com/bigclownlabs/bc-core-module.git`
 
-
-*GIT tools are not extra necessary but it helps you update to the latest versions of our SDK. You can also download SDK in ZIP file from the GitHub. In that case you have to download submodules separately and unzip them in their respective folders (bcl, doc, stm, sys).*
 
 
 ## How to install compiler
