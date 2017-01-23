@@ -16,7 +16,8 @@ This tutorial was tested on Windows 7 Professional x64.
 
 All our code is located on public GitHub account. You have to use GIT to clone the repository.
 
-Download [command line GIT utility](https://git-scm.com/download/win) or you can use [graphical GitHub Desktop](https://desktop.github.com/) with easy graphical interface. Git also installs unix utilities like `rm` and `ls` so our Makefile will perfectly work as long as you call `make` from the Git Bash.
+Download [command line GIT utility](https://git-scm.com/download/win) or you can use [graphical GitHub Desktop](https://desktop.github.com/) with easy graphical interface.
+Git also installs unix utilities like `rm` and `ls` so our Makefile will perfectly work as long as you call `make` from the Git Bash.
 
 If you would like to compile SDK outside the Git Bash, in the Windows shell, then select the last radio button in the installer with "Use Git and optional Unix tools from the Windows Command Prompt".
 
