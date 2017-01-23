@@ -16,9 +16,9 @@ This tutorial was tested on Windows 7 Professional x64.
 
 All our code is located on public GitHub account. You have to use GIT to clone the repository.
 
-Download [command line GIT utility](https://git-scm.com/download/win) or you can use [GitHub Desktop](https://desktop.github.com/) with easy graphical interface.
+Download [command line GIT utility](https://git-scm.com/download/win) or you can use [graphical GitHub Desktop](https://desktop.github.com/) with easy graphical interface. Git also installs unix utilities like `rm` and `ls` so our Makefile will perfectly work as long as you call `make` from the Git Bash.
 
-In the GIT installer you have to set PATH variable to the internal Unix tools like rm and pwd. Select the last radio button with "Use Git and optional Unix tools from the Windows Command Prompt".
+If you would like to compile SDK outside the Git Bash, in the Windows shell, then select the last radio button in the installer with "Use Git and optional Unix tools from the Windows Command Prompt".
 
 Clone repository `https://github.com/bigclownlabs/bc-core-module` to your machine.
 You have to call clone with `--recursive` to clone also the submodules.
