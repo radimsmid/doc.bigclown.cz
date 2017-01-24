@@ -249,7 +249,7 @@ How-to communicate with MQTT broker:
 
   ```
   mosquitto_pub -t 'nodes/base/led-strip/-/config/set' -m '{"mode": "rgb", "count": 150}'
-  nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}
+  mosquitto_pub -t 'nodes/base/led-strip/-/config/set' -m '{"mode": "rgbw", "count": 144}'
   ```
 
 
