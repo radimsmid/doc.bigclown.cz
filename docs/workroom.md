@@ -211,7 +211,7 @@ How-to communicate with MQTT broker:
 * Relay has state true (switched on) or false (switched off)
 
   ```
-  nodes/base/relay/- {"state": true}
+  mosquitto_pub -t 'nodes/base/relay/-' -m '{"state": true}'
   ```
 
 
