@@ -35,6 +35,8 @@
 
 * [BigClown SDK CZ tutoriál](sdk_tutorial/index.md)
 
+	* [Úvod k Bigclown SDK a rozblikání LED](sdk_tutorial/1-uvod-a-led.md)
+
 
 ## Projects
 
