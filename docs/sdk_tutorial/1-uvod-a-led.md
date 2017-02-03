@@ -1,27 +1,27 @@
 
 # BigClown SDK #
 
-BigClown SDK je modulární API pro Core Module, které nabízí pokroèilé funkce pro práci s  periferiemi a hardwarovımi moduly.
+BigClown SDK je modulÃ¡rnÃ­ API pro Core Module, kterÃ© nabÃ­zÃ­ pokroÄilÃ© funkce pro prÃ¡ci s  periferiemi a hardwarovÃ½mi moduly.
 
-Bylo napsáno od nuly pøesnì na míru BigClown ekosystému.
-Pro dosaení co nejmenší spotøeby energie a co nejniších hardwarovıch nárokù byla zvolena cesta objektového programovacího modelu v jazyce C.
-Ze stejnıch dùvodù bylo také upuštìno od RTOS a byl vytvoøen vlastní plánovaè.
+Bylo napsÃ¡no od nuly pÅ™esnÄ› na mÃ­ru BigClown ekosystÃ©mu.
+Pro dosaÅ¾enÃ­ co nejmenÅ¡Ã­ spotÅ™eby energie a co nejniÅ¾Å¡Ã­ch hardwarovÃ½ch nÃ¡rokÅ¯ byla zvolena cesta objektovÃ©ho programovacÃ­ho modelu v jazyce C.
+Ze stejnÃ½ch dÅ¯vodÅ¯ bylo takÃ© upuÅ¡tÄ›no od RTOS a byl vytvoÅ™en vlastnÃ­ plÃ¡novaÄ.
 
-Pokud jste nìkdy programovali Arduino (nadstavba C nazvaná Wiring), pak urèitì naleznete spoleèné znaky s BigClown SDK.
-Z dùvodù úspory energie ale hlavní smyèka neprobíhá neustále dokola, ale vyuívá se callbackù, co jsou funkce, které se zavolají, kdy Vám SDK chce nìco øíct.
-Nìkdy je to pøijatá rádiová zpráva, nebo vısledek mìøení teploty.
-V okamiku, kdy není tøeba nic vykonávat se procesor na urèitı èas uspí a probudí se v okamiku, kdy pøijde pøerušení ze senzoru, nebo z èasovaèe.
+Pokud jste nÄ›kdy programovali Arduino (nadstavba C nazvanÃ¡ Wiring), pak urÄitÄ› naleznete spoleÄnÃ© znaky s BigClown SDK.
+Z dÅ¯vodÅ¯ Ãºspory energie ale hlavnÃ­ smyÄka neprobÃ­hÃ¡ neustÃ¡le dokola, ale vyuÅ¾Ã­vÃ¡ se callbackÅ¯, coÅ¾ jsou funkce, kterÃ© se zavolajÃ­, kdyÅ¾ VÃ¡m SDK chce nÄ›co Å™Ã­ct.
+NÄ›kdy je to pÅ™ijatÃ¡ rÃ¡diovÃ¡ zprÃ¡va, nebo vÃ½sledek mÄ›Å™enÃ­ teploty.
+V okamÅ¾iku, kdy nenÃ­ tÅ™eba nic vykonÃ¡vat se procesor na urÄitÃ½ Äas uspÃ­ a probudÃ­ se v okamÅ¾iku, kdy pÅ™ijde pÅ™eruÅ¡enÃ­ ze senzoru, nebo z ÄasovaÄe.
 
-Všechny moduly SDK si v tomto seriálu popíšeme a vysvìtlíme.
+VÅ¡echny moduly SDK si v tomto seriÃ¡lu popÃ­Å¡eme a vysvÄ›tlÃ­me.
 
-Kde program zaèíná?
-V programovacích jazycích máte nìjakı vstupní bod.
-Mùe to bıt funkce `main()`, `loop()`.
-V BC SDK v jazyce C se kód zaèíná vykonávat ve funkci `main()`.
-Zde se ale provádí spousta systémovıch nastavení a úkolù.
-Abychom práci co nejvíce zpøehlednili a zpøíjemnili, vytvoøili jsme vstupní bod uivatelské aplikace v `application_init()` v souboru `app/application.c`.
+Kde program zaÄÃ­nÃ¡?
+V programovacÃ­ch jazycÃ­ch mÃ¡te nÄ›jakÃ½ vstupnÃ­ bod.
+MÅ¯Å¾e to bÃ½t funkce `main()`, `loop()`.
+V BC SDK v jazyce C se kÃ³d zaÄÃ­nÃ¡ vykonÃ¡vat ve funkci `main()`.
+Zde se ale provÃ¡dÃ­ spousta systÃ©movÃ½ch nastavenÃ­ a ÃºkolÅ¯.
+Abychom prÃ¡ci co nejvÃ­ce zpÅ™ehlednili a zpÅ™Ã­jemnili, vytvoÅ™ili jsme vstupnÃ­ bod uÅ¾ivatelskÃ© aplikace v `application_init()` v souboru `app/application.c`.
 
-Obsah souboru `src/application.c` bez ádného dalšího kódu vypadá tedy takto:
+Obsah souboru `src/application.c` bez Å¾Ã¡dnÃ©ho dalÅ¡Ã­ho kÃ³du vypadÃ¡ tedy takto:
 
 ``` C
 void application_init(void)
@@ -31,8 +31,8 @@ void application_init(void)
 
 ## LEDka ##
 
-Pojïme na klasickou ukázku rozblikání LED diody, která je na Core Module umístìna.
-Nejprve budu demonstrovat ménì efektivní zpùsob, kterı ale vysvìtlí základy práce s GPIO piny.
+PojÄme na klasickou ukÃ¡zku rozblikÃ¡nÃ­ LED diody, kterÃ¡ je na Core Module umÃ­stÄ›na.
+Nejprve budu demonstrovat mÃ©nÄ› efektivnÃ­ zpÅ¯sob, kterÃ½ ale vysvÄ›tlÃ­ zÃ¡klady prÃ¡ce s GPIO piny.
 
 ``` C
 void application_init(void)
@@ -45,15 +45,15 @@ void application_task()
 {
     bc_gpio_toggle_output(BC_GPIO_LED);
 	
-	// Následující funkce provádí nìco, jako delay()
+	// NÃ¡sledujÃ­cÃ­ funkce provÃ¡dÃ­ nÄ›co, jako delay()
     bc_scheduler_plan_current_relative(500); // TODO: bude existovat delay()?
 }
 ```
 
-Pøedchozí ukázka sice funguje, ale v bateriovıch aplikacích nám aktivní èekání ve funkci delay() nedovolí uspat procesor.
-Navíc blokující delay() ani nedovolí aby se bìhem èekání provádìly jiné úkoly (tasky).
+PÅ™edchozÃ­ ukÃ¡zka sice funguje, ale v bateriovÃ½ch aplikacÃ­ch nÃ¡m aktivnÃ­ ÄekÃ¡nÃ­ ve funkci delay() nedovolÃ­ uspat procesor.
+NavÃ­c blokujÃ­cÃ­ delay() ani nedovolÃ­ aby se bÄ›hem ÄekÃ¡nÃ­ provÃ¡dÄ›ly jinÃ© Ãºkoly (tasky).
 
-Pojïme pøedchozí pøíklad upravit tak, aby vyuíval maximálnì monosti SDK.
+PojÄme pÅ™edchozÃ­ pÅ™Ã­klad upravit tak, aby vyuÅ¾Ã­val maximÃ¡lnÄ› moÅ¾nosti SDK.
 
 ``` C
 bc_led_t led;
@@ -65,13 +65,13 @@ void application_init(void)
 }
 ```
 
-Vıslednı kód se smrskl do dvou øádkù a vytvoøení instance `bc_led_t led`.
-Knihovna LED za nás øeší veškerou inicializaci a èasování na pozadí.
-Na pozadí si vytvoøí také vlastní task, kterı bìí jen v okamiku zmìny stavu LED.
-Po zbylou dobu je task deaktivní a plánovaè procesor uspí.
+VÃ½slednÃ½ kÃ³d se smrskl do dvou Å™Ã¡dkÅ¯ a vytvoÅ™enÃ­ instance `bc_led_t led`.
+Knihovna LED za nÃ¡s Å™eÅ¡Ã­ veÅ¡kerou inicializaci a ÄasovÃ¡nÃ­ na pozadÃ­.
+Na pozadÃ­ si vytvoÅ™Ã­ takÃ© vlastnÃ­ task, kterÃ½ bÄ›Å¾Ã­ jen v okamÅ¾iku zmÄ›ny stavu LED.
+Po zbylou dobu je task deaktivnÃ­ a plÃ¡novaÄ procesor uspÃ­.
 
-Blikání mùete zrychlit, zpomalit, nebo LED úplnì vypnout.
-Povolené parametry pro funkci bc_led_set_mode naleznete v tabulce níe.
+BlikÃ¡nÃ­ mÅ¯Å¾ete zrychlit, zpomalit, nebo LED ÃºplnÄ› vypnout.
+PovolenÃ© parametry pro funkci bc_led_set_mode naleznete v tabulce nÃ­Å¾e.
 
 | Enumerator | Popis |
 | -----------|-------|
@@ -82,15 +82,15 @@ Povolené parametry pro funkci bc_led_set_mode naleznete v tabulce níe.
 | BC_LED_MODE_BLINK_FAST | LED blinks quickly.|
 | BC_LED_MODE_FLASH | LED flashes repeatedly. |
 
-Další zajímavé funkce jsou:
+DalÅ¡Ã­ zajÃ­mavÃ© funkce jsou:
 
 | Funkce | Popis |
 |  ---   |  ---  |
-| bc_led_pulse | Jednou blikne LED na dobu urèenou parametrem |
-| bc_led_set_pattern | Èíselnı parametr se pouije jako vzor pro rozblikání LEDky. Procházejí se jednotlivé bity parametru a pokud je bit v log. 1, pak se LED na rozsvítí. Napø. 0xF0F0FFF0 |
-| bc_led_set_slot_interval | Urèuje jak rychle se mají jednotlivé bity z pøedchozí funkce rychle posouvat. |
+| bc_led_pulse | Jednou blikne LED na dobu urÄenou parametrem |
+| bc_led_set_pattern | ÄŒÃ­selnÃ½ parametr se pouÅ¾ije jako vzor pro rozblikÃ¡nÃ­ LEDky. ProchÃ¡zejÃ­ se jednotlivÃ© bity parametru a pokud je bit v log. 1, pak se LED na rozsvÃ­tÃ­. NapÅ™. 0xF0F0FFF0 |
+| bc_led_set_slot_interval | UrÄuje jak rychle se majÃ­ jednotlivÃ© bity z pÅ™edchozÃ­ funkce rychle posouvat. |
 
-Na závìr tu mám ještì jednu hádanku. Zkuste pøijít na to, co za zprávu v morseovce vyblikává následující pøíklad. Èíslo jsem zámìrnì zapsal v desítkové soustavì, protoe v hexadecimální soustavì lze vzor blikání snadno odhalit.
+Na zÃ¡vÄ›r tu mÃ¡m jeÅ¡tÄ› jednu hÃ¡danku. Zkuste pÅ™ijÃ­t na to, co za zprÃ¡vu v morseovce vyblikÃ¡vÃ¡ nÃ¡sledujÃ­cÃ­ pÅ™Ã­klad. ÄŒÃ­slo jsem zÃ¡mÄ›rnÄ› zapsal v desÃ­tkovÃ© soustavÄ›, protoÅ¾e v hexadecimÃ¡lnÃ­ soustavÄ› lze vzor blikÃ¡nÃ­ snadno odhalit.
 
 ``` C
 bc_led_t led;
