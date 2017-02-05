@@ -1,21 +1,21 @@
 
 # BigClown SDK #
 
-BigClown SDK je modulární API pro Core Module, které nabízí pokročilé funkce pro práci s  periferiemi a hardwarovými moduly.
+BigClown SDK je modulární API pro Core Module, které nabízí pokročilé funkce pro práci s periferiemi a hardwarovými moduly.
 
 Bylo napsáno od nuly přesně na míru BigClown ekosystému.
 Pro dosažení co nejmenší spotřeby energie a co nejnižších hardwarových nároků byla zvolena cesta objektového programovacího modelu v jazyce C.
 Ze stejných důvodů bylo také upuštěno od RTOS a byl vytvořen vlastní plánovač.
 
 Pokud jste někdy programovali Arduino (nadstavba C nazvaná Wiring), pak určitě naleznete společné znaky s BigClown SDK.
-Z důvodů úspory energie ale hlavní smyčka neprobíhá neustále dokola, ale využívá se callbacků, což jsou funkce, které se zavolají, když Vám SDK chce něco říct.
-Někdy je to přijatá rádiová zpráva, nebo výsledek měření teploty.
-V okamžiku, kdy není třeba nic vykonávat se procesor na určitý čas uspí a probudí se v okamžiku, kdy přijde přerušení ze senzoru, nebo z časovače.
+Z důvodů úspory energie však hlavní smyčka neprobíhá neustále dokola, ale využívá se callbacků, což jsou funkce, které se zavolají, když vám SDK chce něco říct.
+Může to být např. přijatá rádiová zpráva nebo výsledek měření teploty.
+Ve chvíli, kdy není třeba nic vykonávat, se procesor na určitý čas uspí a probudí se až v okamžiku, kdy přijde přerušení ze senzoru nebo z časovače.
 
 Všechny moduly SDK si v tomto seriálu popíšeme a vysvětlíme.
 
 Kde program začíná?
-V programovacích jazycích máte nějaký vstupní bod.
+V programovacích jazycích existuje vstupní bod.
 Může to být funkce `main()`, `loop()`.
 V BC SDK v jazyce C se kód začíná vykonávat ve funkci `main()`.
 Zde se ale provádí spousta systémových nastavení a úkolů.
@@ -31,7 +31,7 @@ void application_init(void)
 
 ## LEDka ##
 
-Pojďme na klasickou ukázku rozblikání LED diody, která je na Core Module umístěna.
+Podívejme se na klasickou ukázku rozblikání LED diody, která je na Core Module umístěna.
 Nejprve budu demonstrovat méně efektivní způsob, který ale vysvětlí základy práce s GPIO piny.
 
 ``` C
@@ -50,8 +50,8 @@ void application_task()
 }
 ```
 
-Předchozí ukázka sice funguje, ale v bateriových aplikacích nám aktivní čekání ve funkci delay() nedovolí uspat procesor.
-Navíc blokující delay() ani nedovolí aby se během čekání prováděly jiné úkoly (tasky).
+Předchozí ukázka sice funguje, v bateriových aplikacích nám však aktivní čekání ve funkci delay() nedovolí uspat procesor.
+Navíc blokující delay() ani neumožní, aby se během čekání prováděly jiné úkoly (tasky).
 
 Pojďme předchozí příklad upravit tak, aby využíval maximálně možnosti SDK.
 
@@ -60,17 +60,17 @@ bc_led_t led;
 
 void application_init(void)
 {
-    bc_led_init(&led, BC_GPIO_LED, false, true);
+    bc_led_init(&led, BC_GPIO_LED, false, false);
     bc_led_set_mode(&led, BC_LED_MODE_BLINK);
 }
 ```
 
-Výsledný kód se smrskl do dvou řádků a vytvoření instance `bc_led_t led`.
+Výsledný kód se zkrátil do dvou řádků a vytvoření instance `bc_led_t led`.
 Knihovna LED za nás řeší veškerou inicializaci a časování na pozadí.
 Na pozadí si vytvoří také vlastní task, který běží jen v okamžiku změny stavu LED.
 Po zbylou dobu je task deaktivní a plánovač procesor uspí.
 
-Blikání můžete zrychlit, zpomalit, nebo LED úplně vypnout.
+Blikání můžete zrychlit, zpomalit nebo LED úplně vypnout.
 Povolené parametry pro funkci bc_led_set_mode naleznete v tabulce níže.
 
 | Enumerator | Popis |
@@ -87,10 +87,10 @@ Další zajímavé funkce jsou:
 | Funkce | Popis |
 |  ---   |  ---  |
 | bc_led_pulse | Jednou blikne LED na dobu určenou parametrem |
-| bc_led_set_pattern | Číselný parametr se použije jako vzor pro rozblikání LEDky. Procházejí se jednotlivé bity parametru a pokud je bit v log. 1, pak se LED na rozsvítí. Např. 0xF0F0FFF0 |
-| bc_led_set_slot_interval | Určuje jak rychle se mají jednotlivé bity z předchozí funkce rychle posouvat. |
+| bc_led_set_pattern | Číselný parametr se použije jako vzor pro rozblikání LEDky. Procházejí se jednotlivé bity parametru a pokud je bit v log. 1, pak se LED rozsvítí. Např. 0xF0F0FFF0 |
+| bc_led_set_slot_interval | Určuje, jak rychle se mají jednotlivé bity z předchozí funkce posouvat. |
 
-Na závěr tu mám ještě jednu hádanku. Zkuste přijít na to, co za zprávu v morseovce vyblikává následující příklad. Číslo jsem záměrně zapsal v desítkové soustavě, protože v hexadecimální soustavě lze vzor blikání snadno odhalit.
+Na závěr tady mám ještě jednu hádanku. Zkuste přijít na to, co za zprávu v morseovce vyblikává následující příklad. Číslo jsem záměrně zapsal v desítkové soustavě, protože v hexadecimální soustavě lze vzor blikání snadno odhalit.
 
 ``` C
 bc_led_t led;
