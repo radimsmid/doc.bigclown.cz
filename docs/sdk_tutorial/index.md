@@ -1,3 +1,4 @@
-# Bigclown SDK tutoriál
+# Bigclown firmware tutoriál
 
-1. [Úvod k Bigclown SDK a rozblikání LED](1-uvod-a-led.md)
+1. [Úvod k vývoji Bigclown firmware a rozblikání LED](uvod-a-led.md)
+2. [Tlačítko a vysvětlení instancí](tlacitko-a-instance.md)

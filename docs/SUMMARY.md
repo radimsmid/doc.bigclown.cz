@@ -33,10 +33,11 @@
 
 * [Mosquitto - MQTT Broker](mosquitto.md)
 
-* [BigClown SDK CZ tutoriál](sdk_tutorial/index.md)
+* [BigClown firmware CZ tutoriál](sdk_tutorial/index.md)
 
-	* [Úvod k Bigclown SDK a rozblikání LED](sdk_tutorial/1-uvod-a-led.md)
+  * [Úvod a rozblikání LED](sdk_tutorial/uvod-a-led.md)
 
+  * [Tlačítko a instance](sdk_tutorial/tlacitko-a-instance.md)
 
 ## Projects
 
