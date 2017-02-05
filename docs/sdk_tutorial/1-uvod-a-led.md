@@ -21,7 +21,7 @@ V BC SDK v jazyce C se kód začíná vykonávat ve funkci `main()`.
 Zde se ale provádí spousta systémových nastavení a úkolů.
 Abychom práci co nejvíce zpřehlednili a zpříjemnili, vytvořili jsme vstupní bod uživatelské aplikace v `application_init()` v souboru `app/application.c`.
 
-Obsah souboru `src/application.c` bez žádného dalšího kódu vypadá tedy takto:
+Obsah souboru `app/application.c` bez žádného dalšího kódu vypadá tedy takto:
 
 ``` C
 void application_init(void)
