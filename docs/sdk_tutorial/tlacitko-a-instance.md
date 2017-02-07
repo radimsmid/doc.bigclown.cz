@@ -14,31 +14,7 @@ Parametry funkce je potřeba dodržet i když je nyní nebudeme používat všec
 Také je třeba vytvořit instanci bc_button_t, inicializovat tlačítko a nastavit naši callback funkci v application_init().
 
 ``` C
-// Instance pro LED a tlačítko
-bc_led_t led;
-bc_button_t button;
-
-// Callback funkce
-void button_event_handler(bc_button_t *self, bc_button_event_t event, void *event_param)
-{
-    // Zápis, aby kompilátor nevypisoval varování o nepoužití parametrů
-    (void) self;
-    (void) event_param;
-
-    // Událost krátkého stisku tlačítka
-    if (event == BC_BUTTON_EVENT_CLICK)
-    {
-         bc_gpio_toggle_output(BC_GPIO_LED);
-    }
-}
-
-void application_init(void)
-{
-bc_led_init(&led, BC_GPIO_LED, false, false);
-
-bc_button_init(&button, BC_GPIO_BUTTON, BC_GPIO_PULL_DOWN, false);        
-bc_button_set_event_handler(&button, button_event_handler, NULL);
-}
+{% include "git+https://github.com/bigclownlabs/bc-core-module/blob/master/examples/led-on-off/application.c" %}
 ```
 
 ## Instance a objektové programování ##
@@ -69,7 +45,7 @@ void application_init(void)
 
     // Blikající LED na externím pinu P8 - led[1]
     // nastaveno rychlé blikání BC_LED_MODE_BLINK_FAST
-    
+
     bc_led_init(&led[1], BC_GPIO_P8, false, false);
     bc_led_set_mode(&led[1], BC_LED_MODE_BLINK_FAST);
 }
