@@ -1,5 +1,7 @@
 
-## Tlačítko ##
+# Tlačítko a instance #
+
+## Tlačítko
 
 Pojďme nyní ovládat LED tlačítkem na Core Module.
 Opět by šlo využít přímé čtení GPIO pinu.
@@ -19,25 +21,29 @@ Také je třeba vytvořit instanci bc_button_t, inicializovat tlačítko a nasta
 // LED instance
 bc_led_t led;
 
-// Button instance
+// Instance tlačítka
 bc_button_t button;
 
 void application_init(void)
 {
-    // Initialize LED
+    // Inicializuj LED
     bc_led_init(&led, BC_GPIO_LED, false, false);
     bc_led_set_mode(&led, BC_LED_MODE_ON);
 
-    // Initialize button
+    // Inicializuj tlačítko
     bc_button_init(&button, BC_GPIO_BUTTON, BC_GPIO_PULL_DOWN, false);
     bc_button_set_event_handler(&button, button_event_handler, NULL);
 }
 
+// Náš callback event handler
 void button_event_handler(bc_button_t *self, bc_button_event_t event, void *event_param)
 {
+    // Nepoužité parametry vypíšeme s (void)
+    // aby kompilátor skryl varování
     (void) self;
     (void) event_param;
 
+    // Pokud nastal krátký stisk tlačítka
     if (event == BC_BUTTON_EVENT_PRESS)
     {
         bc_led_set_mode(&led, BC_LED_MODE_TOGGLE);
@@ -61,20 +67,19 @@ Vytvářejí nám zapouzdření určitého bloku funkcí.
 Pokud například budeme chtít mit na volných pinech Core Module další blikající LED, můžeme si snadno vytvořit více blikajících LED následujícím způsobem.
 
 ``` C
+#include <application.h>
+
 // Vytvoříme pole dvou instancí LED
 bc_led_t led[2];
 
 void application_init(void)
 {
-    // Blikající LED na Core module - led[0]
-
+    // Inicializujeme obě instance
     bc_led_init(&led[0], BC_GPIO_LED, false, false);
+    bc_led_init(&led[1], BC_GPIO_P8, false, false);    
+
+    // Rozblikáme obě LEDky. Každou jinou rychlostí
     bc_led_set_mode(&led[0], BC_LED_MODE_BLINK);
-
-    // Blikající LED na externím pinu P8 - led[1]
-    // nastaveno rychlé blikání BC_LED_MODE_BLINK_FAST
-
-    bc_led_init(&led[1], BC_GPIO_P8, false, false);
     bc_led_set_mode(&led[1], BC_LED_MODE_BLINK_FAST);
 }
 ```
