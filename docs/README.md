@@ -1,60 +1,59 @@
-# BigClown Documentation
+# BigClown Dokumentace
 
 
-**Welcome to BigClown Documentation!**
+**Vítej v BigClown dokumentaci!**
 
 
-The goal of this site ([doc.bigclown.com](https://doc.bigclown.com)) is to give you a close overview of our **home automation** platform.
-We are constantly working on making it better and content gradually grows as we get younger every day. :-)
+Cílem této stránky [doc.bigclown.cz](https://doc.bigclown.cz) je detailně popsat náš systém pro **domácí automatizaci**.
+Neustále se snažíme vylepšovat obsah této stránky a každým dnem se posouváme dále, jak se stáváme mladšími :-)
 
 
-## Site Structure
+## Struktura stránky
 
 
-We provide several layers in our documentation ecosystem:
+Dokumentaci máme rozdělenou do několika částí:
 
 
-* **Tutorials** to give you an idea about the system basics.
+* **Tutoriály** pro základní seznámení s BigClown ekosystémem.
 
-* **Projects** to inspire you what can be achieved with BigClown components.
+* **Projekty** ke tvé inspiraci k tomu, co vše lze s BigClown vytvořit.
 
-* **Integrations** to show you how our open platform can play along with other technologies.
+* **Integrace** ukáže výhody otevřené platformy a možnosti napojení na jiné technologie.
 
-* **Reference** to give you a comprehensive guide throughout your development journey.
+* **Reference** s rozsáhlým průvodcem tvojí cestou vývojem.
 
-* **Academy** to teach you some general stuff about the technologies we use.
-
-
-## Contributing
+* **Akademie** která tě naučí které technologie a proč je používáme.
 
 
-Your feedback and contribution is always appreciated.
-This documentation site is automatically generated and hosted by [GitBook](https://www.gitbook.com) from [this repository](https://github.com/bigclownlabs/doc.bigclown.com).
-The whole content is written in Markdown (with GitHub Flavored Markdown support).
+## Přispívání
+
+Tvých názorů a spolupráce si velmi ceníme.
+Tato dokumentace je automaticky generována a hostována na technologii [GitBook](https://www.gitbook.com) z veřejného [doc.bigclown.cz repozitáře](https://github.com/bigclownlabs/doc.bigclown.cz).
+Celý obsah je napsán v Markdown.
 
 
-### Minor Updates and Fixes...
+### Drobné aktualizace a opravy
 
 
-Please do not hesitate to click on **EDIT THIS PAGE** button available on every page of this site, and send us a pull request directly from GitHub online editor.
+Pokud chceš vylepšit tuto nápovědu, tak neváhej. Klikni na **EDIT THIS PAGE** a pošli nám opravený obsah přímo přes GitHub online editor.
 
 
-### Writing Article
+### Jak napsat článek?
 
 
-1. Fork [this repository](https://github.com/bigclownlabs/doc.bigclown.com) to your GitHub account.
+1. Udělej fork [doc.bigclown.cz repozitáře](https://github.com/bigclownlabs/doc.bigclown.cz) do svého GitHub účtu.
 
-2. Clone your forked repository to your desktop.
+2. Naklonuj forknutý repozitář na svůj počítač.
 
-3. Follow [these steps](https://toolchain.gitbook.com/setup.html) to install GitBook toolchain locally.
+3. Postupuj podle [těchto kroků](https://toolchain.gitbook.com/setup.html) a nainstaluj si GitBook toolchain na svůj počítač.
 
-4. Create your own branch (using `git checkout -b <branch>`) where you start making desired changes.
+4. Vytvoř novou větev (s pomocí `git checkout -b <branch>`) kde můžeš zapracovat nové články a úpravy.
 
-5. Test your changes to see if they appear as you intended.
+5. Vyzkoušej své úpravy zda vypadají tak, jak jsi zamýšlel.
 
-6. Push your branch to your forked GitHub repository (using `git push origin <branch>`).
+6. Pushni svoji větev zpět do svého GitHub repozitáře (s pomocí `git push origin <branch>`).
 
-7. Create pull request back to [our repository](https://github.com/bigclownlabs/doc.bigclown.com).
+7. Udělej pull request zpět na [náš repozitář doc.bigclown.cz](https://github.com/bigclownlabs/doc.bigclown.cz).
 
 
-**Thank you!** _- Your enthusiastic team of clowns... **BIG CLOWNS**!_
+**Děkujeme ti** _- Tvůj vývojový tým klaunů... **BIG KLAUNŮ**!_
