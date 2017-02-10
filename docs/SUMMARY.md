@@ -1,15 +1,17 @@
 # Summary
 
 
-* [Introduction](README.md)
+* [Úvod](README.md)
 
 
 ## Core Module
 
 
-* [Getting Started](core-module.md)
+* [Představení](core-module.md)
 
-* [Development Setup](core-module-setup.md)
+    * [Nahrání firmware](core-module-flashing.md)
+
+* [Vývojové prostředí](core-module-setup.md)
 
   * [macOS Desktop](core-module-setup-macos.md)
 
@@ -20,13 +22,8 @@
 * [API Reference](core-module-api.md)
 
 
-## Hardware
 
-
-* [Headers & Signals](headers.md)
-
-
-## Tutorials
+## Návody
 
 
 * [Raspberry Pi - Installation](raspberry-pi-installation.md)
@@ -39,7 +36,14 @@
 
   * [Tlačítko a instance](sdk_tutorial/tlacitko-a-instance.md)
 
-## Projects
+
+  ## Hardware
+
+
+  * [Headers & Signals](headers.md)
+
+
+## Projekty
 
 
 * [Workroom Project](workroom.md)
@@ -49,7 +53,7 @@
 * [Tweeting Doorbell Project](doorbell.md)
 
 
-## Integrations
+## Integrace
 
 
 * [Blynk - Mobile App Builder](blynk.md)
@@ -65,7 +69,7 @@
 * [I²C Address Space](i2c-space.md)
 
 
-## Academy
+## Akademie
 
 * [I²C - Communication Interface](i2c.md)
 
