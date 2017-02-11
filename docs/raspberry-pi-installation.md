@@ -1,80 +1,80 @@
-# Raspberry Pi - Installation
+# Raspberry Pi - Instalace
 
 <!-- toc -->
 
 {% set raspbian_zip = "bc-raspbian-v1.0.1-armhf-rpi.zip" %}
 {% set raspbian_img = "bc-raspbian-v1.0.1-armhf-rpi.img" %}
-{% set note_sudo = "**Note** “sudo” means the process will start with administrator privileges and may require your account password (if you are eligible for administrator rights)." %}
+{% set note_sudo = "**Note** “sudo” znamená že proces začne s oprávněním správce a může vyžadovat zadání tvého hesla (pokud máš práva správce)." %}
 
-> **Important** If you already have your Raspberry Pi with Raspbian running on it, you can skip to [Install BigClown Packages on Existing System](#install-bigclown-packages-on-existing-system) to see how to install BigClown packages to your existing system.
+> **Important** Pokud už máš své Raspberry Pi a na něm běží Raspbian, pak přeskoč na [Instalace BigClown balíčků na existující systém](#instalace-bigclown-balíčků-na-existující-systém) kde se dozvíš, jak nainstalovat BigClown balíčky na existující systém.
 
-This tutorial will guide you through a step-by-step installation procedure of Raspberry Pi.
-It has been tested on Raspberry Pi 3 (Model B) but it will probably work on Raspberry Pi 2 as well.
+Tento návod tě krok za krokem provede instalací Raspberry Pi.
+Návod byl otestován na Raspberry Pi 3 (Model B), ale měl by fungovat i pro Raspberry Pi 2.
 
-We will install BigClown's version of Raspbian - the official and the most popular Linux distribution for Raspberry Pi.
+Budeme instalovat BigClown verzi Raspbianu - oficiální a nejpopulárnější distribuci Linuxu pro Raspberry Pi.
 
 
-## Requirements
+## Požadavky
 
 * Raspberry Pi 3 (Model B)
-* Minimum 4 GB MicroSD card
-* MicroSD card reader
-* Ethernet cable
-* Desktop or laptop PC
-* Router (or LAN switch) with configured DHCP server
-* Operating system with one of these:
-  * Windows 7, 8.x, 10 (32-bit or 64-bit version)
-  * macOS (tested with 10.12.1)
-  * Linux (tested with Ubuntu 16.04 LTS)
+* Minimálně 4 GB MicroSD card
+* MicroSD čtečka karet
+* Ethernetový kabel
+* Desktopový PC nebo notebook
+* Router (nebo LAN switch) s nastaveným DHCP serverem
+* Jeden z těchto operačních systémů:
+  * Windows 7, 8.x, 10 (32-bit nebo 64-bit verze)
+  * macOS (otestována verze 10.12.1)
+  * Linux (otestováno na Ubuntu 16.04 LTS)
 
 
-## Prepare the MicroSD Card
+## Příprava MicroSD karty
 
-1. Insert the MicroSD card to the MicroSD card reader.
+1. Vlož MicroSD kartu do MicroSD čtečky karet.
 
-2. Download the latest release of BigClown's Raspbian image from [this link](https://github.com/bigclownlabs/bc-raspbian/releases/download/v1.0.1/{{ raspbian_zip }}).
-
-
-### From Windows Desktop
-
-3. Unzip the downloaded image.
-
-   You can use [7-Zip](http://www.7-zip.org) to do it.
-
-4. Write `{{ raspbian_img }}` to the MicroSD card.
-
-   You can use [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/files/latest/download) to do it.
-
-   > **Note** Win32 Disk Imager must be run under administrator privileges.
+2. Stáhni si aktuální verzi BigClown Raspbian image z [tohoto linku](https://github.com/bigclownlabs/bc-raspbian/releases/download/v1.0.1/{{ raspbian_zip }}).
 
 
-### From macOS Desktop
+### Návod pro Windows 
 
-3. Open Terminal and navigate to your folder with downloads, for example:
+3. Rozbal si stažený image.
+
+   Můžeš pro to použít [7-Zip](http://www.7-zip.org).
+
+4. Zapiš `{{ raspbian_img }}` na MicroSD kartu.
+
+   Můžeš pro to použít [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/files/latest/download).
+
+   > **Poznámka** Win32 Disk Imager musí běžet s právy správce.
+
+
+### Návod pro macOS
+
+3. Otevři si Terminal a přejdi do složky stahování, např.:
 
    ```
    cd ~/Downloads
    ```
 
-4. Unzip the downloaded image:
+4. Rozbal stažený image:
 
    ```
    unzip {{ raspbian_zip }}
    ```
 
-5. Insert the MicroSD card to your Mac and find out what is the disk identifier (it will be /dev/diskX):
+5. Vlož MicroSD kartu do svéhu Macu a najdi identifikátor disku (může to být /dev/diskX):
 
    ```
    diskutil list
    ```
 
-6. You have to unmount the disk (replace X with the appropriate identifier):
+6. Musíš odpojit disk (nahraď X správným identifikátorem):
 
    ```
    diskutil unmountDisk /dev/diskX
    ```
 
-7. Write the image to the MicroSD card (replace X with the appropriate identifier):
+7. Zapiš image na MicroSD kartu (nahraď X správným identifikátorem):
 
    ```
    sudo dd if={{ raspbian_img }} of=/dev/rdiskX bs=1m
@@ -82,37 +82,37 @@ We will install BigClown's version of Raspbian - the official and the most popul
 
    > {{ note_sudo }}
 
-  This will take some time.
-  If you get a “permission denied” message, please make sure your MicroSD card is not write-protected (e.g. by SD card adapter).
+  > **Info** Bude to chvíli trvat.
+  > **Tip** Pokud se objeví hláška “permission denied”, ujisti se, že tvá MicroSD karta není chráněna proti zápisu (např. adaptérem SD karty).
 
-8. Eject the card (replace X with the appropriate identifier):
+8. Vysuň kartu (nahraď X správným identifikátorem):
 
    ```
    diskutil eject /dev/diskX
    ```
 
 
-### From Linux Desktop
+### Návod pro Linux
 
-3. Open Terminal and navigate to your folder with downloads, for example:
+3. Otevři si Terminal a přejdi do složky stahování, např.:
 
    ```
    cd ~/Downloads
    ```
 
-4. Unzip the downloaded image:
+4. Rozbal stažený image:
 
    ```
    unzip {{ raspbian_zip }}
    ```
 
-5. Insert the MicroSD card to your Linux desktop and find out what is the disk identifier (it will be /dev/sdX):
+5. Vlož MicroSD kartu do svéhu Macu a najdi identifikátor disku (bude to /dev/diskX):
 
    ```
    lsblk
    ```
 
-6. You have to unmount all disk partitions (replace X with the appropriate identifier):
+6. Musíš odpojit všechny diskové oddíly (nahraď X správným identifikátorem):
 
    ```
    sudo umount /dev/sdX?
@@ -120,110 +120,110 @@ We will install BigClown's version of Raspbian - the official and the most popul
 
    > {{ note_sudo }}
 
-7. Write the image to the card (replace X with the appropriate identifier):
+7. Zapiš image na MicroSD kartu (nahraď X správným identifikátorem):
 
    ```
    sudo dd if={{ raspbian_img }} of=/dev/sdX bs=1M status=progress
    ```
 
-   > **Info** This will take some time.
+   > **Info** Bude to chvíli trvat.
 
-   > **Tip** If you get a “permission denied” message, please make sure your MicroSD card is not write-protected (e.g. by an SD card adapter).
+   > **Tip** Pokud se objeví hláška “permission denied”, ujisti se, že tvá MicroSD karta není chráněna proti zápisu (např. adaptérem SD karty).
 
-8. Eject the MicroSD card (replace X with the appropriate identifier):
+8. Vysuň kartu (nahraď X správným identifikátorem):
 
    ```
    eject /dev/sdX
    ```
 
 
-## Start Raspberry Pi
+## Nastartuj Raspberry Pi
 
-1. Insert the MicroSD card to Raspberry Pi.
+1. Vlož MicroSD kartu do Raspberry Pi.
 
-2. Connect the Ethernet cable to Raspberry Pi.
+2. Připoj Ethernet kabel k Raspberry Pi.
 
-3. Connect the USB power adapter to Raspberry Pi.
-
-
-## Log-in to Raspberry Pi
-
-Next step is to login to Raspberry Pi via SSH terminal.
-
-You can access the device in two ways:
-
- 1. Using IP address (you have to determine what is the assigned address from the DHCP server).
-
- 2. Using zeroconf mechanism by accessing `hub.local` host (this mechanism should work on any recent desktop).
+3. Připoj USB napájecí adaptér k Raspberry Pi.
 
 
-### On Windows desktop
+## Připojení k Raspberry Pi
 
-1. Download [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+V dalším kroku se připojíme k Raspberry Pi přes SSH terminál.
 
-2. Open PuTTY and open SSH session:
+Můžeš se k němu připojit dvěmi způsoby:
 
-   * Use hostname: `hub.local` or *IP address of Raspberry Pi*
+ 1. Použitím IP adresy (musíš si zjistit jakou adresu přidělil DHCP server tvému Raspberry Pi).
 
-   * Use login: `pi`
-
-   * Use password: `raspberry`
+ 2. Použitím zeroconf mechanismu skrze přístup k `hub.local` hostu (tento způsob by měl být funkční pro všechny typy PC).
 
 
-### On OS X and Linux Desktop
+### Návod pro Windows
 
-1. Open Terminal and connect to Raspberry Pi:
+1. Stáhni si [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
-   1. using IP address:
+2. Otevři PuTTY a SSH relaci:
+
+   * Použij hostname: `hub.local` nebo *IP adresu Raspberry Pi*
+
+   * Zadej login: `pi`
+
+   * Zadej heslo: `raspberry`
+
+
+### Postup pro macOS a Linux
+
+1. Otevři si Terminal and připoj se k Raspberry Pi:
+
+   1. Použij IP adresu:
 
       ```
       ssh pi@(IP address of Raspberry Pi)
       ```
 
-   2. or using zeroconf name:
+   2. nebo použij zeroconf název:
 
       ```
       ssh pi@hub.local
       ```
 
-   3. Enter password: `raspberry`
+   3. Zadej heslo: `raspberry`
 
 
-## Update your installation
+## Proveď update tvé instalace
 
-At the first time you log in do NOT forget to change the default password.
-You can do it with the following command:
+V případě prvního připojení NEZAPOMEŇ ZMĚNIT DEFAULTNÍ HESLO.
+Můžeš to provést následujícím příkazem:
 
 ```
 passwd
 ```
 
-For security and stability reasons it is wise to keep your system updated.
+Z bezpečnostních důvodů a pro zajištění stability je důležité mít systém aktuální.
 
-Run this command to update the system:
+Pro update systému použij tento příkaz:
 
 ```
 sudo apt-get update && sudo apt-get upgrade
 ```
 
 
-## Differences from the Official Raspbian
+## Rozdíly oproti oficiálnímu Raspbianu
 
-Why have we created our own deployment of Raspbian distribution?
-We wanted to simplify the installation process for users and automate some of our own stuff (we use Travis CI for automation).
+Poč jsme vůbec vytvořili vlastní implementaci Raspbian distribuce?
+Chtěli jsme ti usnadnit proces instalace a zautomatizovat některé naše věci (pro automatizaci používáme Travis CI).
 
-This is a brief description of changes:
+Toto je stručný výpis změn:
 
-* Hostname is `hub` instead of `raspberrypi`.
+* Hostname je `hub` místo `raspberrypi`.
 
-* Timezone is set to Europe/Prague.
+* Timezone je nastavena na Europe/Prague.
 
-* The following repositories have been added to APT sources:
+* Následující repozitáře byly doplněny do APT zdrojů:
 
   * https://repo.bigclown.com
   * https://apt.dockerproject.org/repo
 
-* Installed packages:
+* Nainstalované balíčky:
 
   * mosquitto
   * mosquitto-clients
@@ -240,51 +240,51 @@ This is a brief description of changes:
   * bc-workroom-blynk
 
 
-## Install BigClown Packages on Existing System
+## Instalace BigClown balíčků na existující systém
 
-> **Important** Follow this procedure only if you have already running Raspberry Pi with Raspbian distribution on it and you have skipped all the previous steps.
+> **Important** Tento postuj použij pouze pokud máš vlastní Raspberry Pi a na něm běžící Raspbian distribuci a pokud jsi vynechal všechny předcházející kroky.
 
-1. Log in to SSH terminal.
+1. Připoj se k SSH terminálu.
 
-2. Install dependencies:
+2. Nainstaluj závislosti:
 
    ```
    sudo apt-get install apt-transport-https wget
    ```
 
-3. Add BigClown APT repository to sources list:
+3. Přidej BigClown APT repositáře do seznamu zdrojů:
 
    ```
    sudo sh -c 'echo "deb https://repo.bigclown.com/debian jessie main" >/etc/apt/sources.list.d/bigclown.list'
    ```
 
-4. Add APT PGP key:
+4. Přidej APT PGP klíč:
 
    ```
    wget https://repo.bigclown.com/debian/pubkey.gpg -O - | sudo apt-key add -
    ```
 
-5. Update your existing installation:
+5. Proveď update tvé instalace:
 
    ```
    sudo apt-get update && sudo apt-get upgrade
    ```
 
-6. Now you can install the individual packages:
+6. Nyní si můžeš jednotlivě nainstalovat balíčky:
 
-   * Basic package for Workroom project (hardware interface):
+   * Základní balíček pro Workroom projekt (hardware interface):
 
      ```
      sudo apt-get install bc-workroom-gateway
      ```
 
-   * LED strip plugin for Workroom project:
+   * LED strip plugin pro Workroom projekt:
 
      ```
      sudo apt-get install bc-workroom-led-strip
      ```
 
-   * Blynk plugin for Workroom project:
+   * Blynk plugin pro Workroom projekt:
 
      ```
      sudo apt-get install bc-workroom-blynk
