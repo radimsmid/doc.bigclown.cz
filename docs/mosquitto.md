@@ -3,81 +3,81 @@
 <!-- toc -->
 
 
-## MQTT Basics
+## Základy MQTT
 
-* MQTT is open, simple, light-weight and message-oriented protocol.
+* MQTT je otevřený, jednoduchý a nenáročný protokol pro předávání zpráv mezi klienty prostřednictvím centrálního bodu - brokeru.
 
-* Each **message** consists of **topic** and **payload**.
+* Každá **zpráva** sestává z **tématu (topic)** a **obsahu (payload)**.
 
-* Topics describe the message category.
+* Témata popisují kategorii zprávy.
 
-* Topics use tree-like structure - individual levels are separated with `/` symbol.
+* Témata používají stromovou strukturu - jednotlivé úrovně jsou odděleny symbolem `/`.
 
-* Example topics are `bedroom/temperature` or `kitchen/light/set`.
+* Vzorové příklady témat: `ložnice/teplota` nebo `kuchyně/světlo/zapnuto`.
 
-* MQTT server is called **broker** and clients can **publish** messages and **subscribe** to various topics.
+* MQTT server se nazývá **broker** a klienti můžou **publikovat (publish)** zprávy a **přihlásit (subscribe)** se k různým tématům.
 
-* MQTT server's role is to deliver messages from publishers to subscribers.
+* Funkcí MQTT serveru je doručovat zprávy od publisherů k subscriberům.
 
-* In subscribe topics the wildcard `+` can be used for single level subscription and symbol `#` for multi level subscription.
+* U subscribe témat se může použít symbol `+` pro přihlášení k odběru zpráv jedné úrovně a symbol `#` pro přihlášení k následujícím úrovním.
 
-  > **Note** Symbol `#` can only be used at the end of subscribed topic.
+  > **Note** Symbol `#` se může použít pouze na konci přihlášeného tématu.
 
-  [Click here to see more on topics](http://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices)
+  [Klikni tady pro více informací o tématech](http://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices)
 
 
-## MQTT Broker Installation
+## Instalace MQTT Brokera
 
-BigClown uses open-source broker [Mosquitto](https://mosquitto.org).
+BigClown používá open-source brokera [Mosquitto](https://mosquitto.org).
 
-For example in Ubuntu/Debian/Raspbian you can install Mosquitto server with this command:
+Pro Ubuntu/Debian/Raspbian si nainstaluješ Mosquitto server tímto příkazem:
 
 ```
 sudo apt-get install mosquitto
 ```
 
-You can also install `mosquitto-clients` package if you want to be able to work with messages from terminal:
+Také si můžeš nainstalovat `mosquitto-clients` balíček, pokud budeš chtít pracovat se zprávami v terminálu:
 
 ```
 sudo apt-get install mosquitto-clients
 ```
 
 
-## Using Mosquitto Client Tools
+## Používání Mosquitto klienta
 
 
-To subscribe to all messages use `mosquitto_sub` command:
+Pro přihlášení ke všem zprávám použij příkaz `mosquitto_sub`:
 
 ```
 mosquitto_sub -v -t '#'
 ```
 
-To publish a message use `mosquitto_pub` command:
+Pro publikování zprávy použij příkaz `mosquitto_pub`:
 
 ```
 mosquitto_pub -t 'kitchen/light/set' -m '{"state": true}'
 ```
 
-You can also publish message with empty (null) payload with this command:
+Tímto příkazem můžeš publikovat zprávu bez obsahu (null):
 
 ```
 mosquitto_pub -t 'kitchen/light/set' -n
 ```
 
 
-## Mosquitto Configuration
+## Nastavení Mosquitto
 
-You can edit Mosquitto settings in the configuration file which is located in `/etc/mosquitto/mosquitto.conf` inside the Docker.
-
-
-### Bridging Mosquitto Brokers
-
-Bridging two MQTT brokers together is useful for example when you have your local MQTT server behind NAT and you would like to publish messages from the outside/Internet.
-You can create public MQTT server (for example on AWS server) which you bridge with your home MQTT server.
-In this use case your local server will connect to your public server in AWS.
+Nastavení Mosquitto můžeš měnit v konfiguračním souboru `/etc/mosquitto/mosquitto.conf`.
 
 
-So you have to configure your local server with commands below.
+### Přemostění Mosquitto brokerů
+
+Přemostění dvou MQTT brokerů je užitečné pokud máš svůj lokální MQTT server za NATem a chceš publikovat zprávy z internetu.
+Můžeš si vytvořit veřejný MQTT server (například na AWS serveru), který můžeš přemostit se svým domácím MQTT serverem.
+V tomto případě se tvůj lokální server bude připojovat k tvému veřejnému na AWS.
+
+
+Pro přemostění si nastav svůj lokální server příkazy níže.
 
 ```
 # Bridge to AWS
@@ -92,24 +92,24 @@ remote_password root
 topic # in 0 home/# remote/#
 ```
 
-Topic command will subscribe to all topics (`#`) on remote server under `remote/#` and will publish them on local server under `home/#`.
+Příkaz tématu se přihlásí ke všem tématům (`#`) na vzdáleném serveru pod `remote/#` a bude je všechny publikovat na lokálním serveru pod `home/#`.
 
-* Parameter `in` describes direction and zero `0` means no QoS.
+* Parametr `in` popisuje směr a nula `0` znamená žádná QoS.
 
 
-## GUI Tool for MQTT Messages
+## GUI nástroj pro MQTT zprávy
 
-For debugging and diagnostic purposes, you can use a tool with graphical user interface - [Eclipse Paho mqtt-spy](https://github.com/eclipse/paho.mqtt-spy).
+Pro debugování a diagnostiku můžeš použít nástroj s grafickým uživatelským rozhraním - [Eclipse Paho mqtt-spy](https://github.com/eclipse/paho.mqtt-spy).
 
-> **Important** This tool needs JRE 8 to be installed on the host machine.
+> **Important** Tento nástroj vyžaduje instalaci JRE 8 na hostovaném stroji.
 
-* For more information about this tool, see: https://github.com/eclipse/paho.mqtt-spy/wiki
+* Pro více informací o tomto nástroji se podívej zde: https://github.com/eclipse/paho.mqtt-spy/wiki
 
-* Follow this link to download the tool: https://github.com/eclipse/paho.mqtt-spy/wiki/Downloads
+* Zde si můžeš nástroj stáhnout: https://github.com/eclipse/paho.mqtt-spy/wiki/Downloads
 
-After installation connect to your MQTT's broker IP address and subscribe to topics or start publishing messages.
+Po instalaci zadej IP adresu tvého MQTT brokeru a přihlaš se k tématům nebo začni publikovat zprávy.
 
-> **Tip** This tool supports subscription scripts written in JavaScript.
->         You can automate your tasks with this feature.
+> **Tip** Tento nástroj podporuje přihlašovací skripty psané v JavaScriptu.
+>         Tímto si můžeš zautomatizovt tvé úlohy.
 
 ![](images/mosquitto/mqtt-spy.png)
