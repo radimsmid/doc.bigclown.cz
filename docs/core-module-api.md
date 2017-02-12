@@ -5,7 +5,7 @@ If you want to dive into firmware development on Core Module we recommend you to
 The complete API can be found on the following URL:
 
 
-**http://api.bigclown.com**
+**http://sdk.bigclown.com**
 
 
 **These are the goals we follow for the API development:**

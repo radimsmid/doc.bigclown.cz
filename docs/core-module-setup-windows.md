@@ -87,7 +87,7 @@ You start debugging by typing `make ozone`.
 
 Our SDK is using Doxygen to automaticaly generate API documentation from C header files.
 This tool is not necessary to install.
-The generated API documentation is also on http://api.bigclown.com.
+The generated API documentation is also on http://sdk.bigclown.com.
 Download the [latest Doxygen here](http://www.stack.nl/~dimitri/doxygen/download.html).
 
 You generate the docs by `make doc`.

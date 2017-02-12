@@ -7,9 +7,11 @@
 ## Core Module
 
 
-* [Představení](core-module.md)
+* [Úvod](core-module.md)
 
-    * [Nahrání firmware](core-module-flashing.md)
+* [Hardware](core-module-hardware.md)
+
+* [Popis SDK knihovny (API)](core-module-api.md)
 
 * [Vývojové prostředí](core-module-setup.md)
 
@@ -19,7 +21,9 @@
 
   * [Windows Desktop](core-module-setup-windows.md)
 
-* [API Reference](core-module-api.md)
+* [Nahrání firmware](core-module-flashing.md)
+
+
 
 
 

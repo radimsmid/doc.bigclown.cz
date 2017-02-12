@@ -32,7 +32,7 @@ You need to add the code below to your `app/application.c` file.
 Because all the logic is handled in the button callback, there's no need to use or create `application_taks()` function.
 
 You can change the button pin to any GPIO if you connect external button to your Core Module.
-See the [GPIO API page](http://api.bigclown.com/group__bc__gpio.html).
+See the [GPIO API page](http://sdk.bigclown.com/group__bc__gpio.html).
 
 ```c
 // LED instance

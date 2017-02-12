@@ -152,7 +152,7 @@ TODO: Vložit obrázek.
 
 # Firmware Files
 
-Firmware si můžeš naprogramovat s pomocí [BigClown API](http://api.bigclown.com) a zkompilovat sám.
+Firmware si můžeš naprogramovat s pomocí [BigClown API](http://sdk.bigclown.com) a zkompilovat sám.
 SDK nalezneš na našem [GitHub](https://github.com/bigclownlabs) účtu.
 
 Můžeš si stáhnout předkompilované binární soubory pro [Workroom project](workroom.md):

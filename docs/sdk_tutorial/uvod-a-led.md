@@ -94,7 +94,7 @@ void application_init(void)
 
 Výsledný kód se zkrátil do dvou řádků a vytvoření instance `bc_led_t led`.
 
-Poslední dva parametry `false` ve funkci `bc_led_init` nastavují zda je výstup open-drain a jaká logická výstupní úroveň odpovídá zhasnuté LED. Tohle znát zatím nemusíš, stačí zatím napsat `false`. Pokud chceš vědět více, pročti si [všechny API funkce k bc_led modulu](http://api.bigclown.com/group__bc__led.html).
+Poslední dva parametry `false` ve funkci `bc_led_init` nastavují zda je výstup open-drain a jaká logická výstupní úroveň odpovídá zhasnuté LED. Tohle znát zatím nemusíš, stačí zatím napsat `false`. Pokud chceš vědět více, pročti si [všechny API funkce k bc_led modulu](http://sdk.bigclown.com/group__bc__led.html).
 
 Také si všimni, že nevytváříme funkci `application_task()`.
 Knihovna LED za nás řeší veškerou inicializaci a časování na pozadí.
