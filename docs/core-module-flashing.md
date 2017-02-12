@@ -15,163 +15,163 @@ Je několik možností jak do Core Module nahrát firmware:
 Oba tyto postupy jsou vysvětlené v kapitolách níže.
 
 
-### Nahrávání přes USB bootloader
+## Nahrávání přes USB bootloader
 
 Bootloader je malý program, který i do prázdného mikrokontroléru dovede nahrát požadovaný program.
+Bootloader je uložen v paměti pouze pro čtení (ROM) a nezabírá tak cenné místo ve flash paměti a ani jej nelze omylem vymazat.
+Díky bootloaderu můžeme náš vlastní zkompilovaný program nahrát přes USB přímo do flash paměti.
 
-Bootloader is a small program delivered by STMicroelectronics during microcontroller production.
-This program is stored in read-only memory (ROM) and always co-exists next to the application firmware.
-The most important feature of the bootloader is the internal flash memory programming.
-
-The bootloader is started after the microcontroller's reset when the BOOT signal is in log. 1.
-The reason why Core Module has both RESET signal and BOOT signal connected to push buttons, is to allow the user to enter this bootloader program manually.
+Bootloader je spuštěn po resetu nebo po připojení napájení k procesoru pokud je signál na pinu BOOT v logické 1.
+To je také důvodem, proč Core Module má dvě tlačítka `RESET` a `BOOT` - aby jsi mohl tento bootloader snadno spustit.
 It can be also done programatically because both of these signals are connected to pin header as well.
+Skok do bootloaderu je možný také programově přes `bc_dfu` module nebo pomocí pinů `RESET` a `BOOT`, které jsou vlevo dole na 14 pinovém konektoru.
 
-There are several communication interfaces that can be used to talk to the bootloader:
-
-* USART1 & USART2 (serial port)
-
-* USB using a DFU class (Device Firmware Upgrade)
-
-We will describe the later one in the chapter below.
+Bootloader umí nahrát program přes USB, kdy se zařízení chová jako DFU class (device firmware upgrade). Toto USB rozhraní budeme při nahrávání programu používat.
+Další možnost je naprogramovat jej přes sériovou linku USART1 nebo USART2. Tuto možnost využívat nebudeme, primární je pro nás USB update.
 
 
-### Programming using USB DFU Bootloader
-
-Invoking USB DFU bootloader can be done in just a few simple steps:
-
-1. Make sure the **USB cable** is connected to your desktop (host).
-
-2. Press the **BOOT button** on Core Module and keep it pressed.
-
-   BOOT button is on the right side and is marked with letter "B".
-
-3. Press the **RESET button** on Core Module while BOOT button is still held.
-
-   BOOT button is on the left side and is marked with letter "R".
-
-4. Release the **RESET button**.
-
-5. Release the **BOOT button**.
-
-At this moment Core Module should enumerate to host as USB DFU-capable device.
-
-This procedure can be done very quickly after some practicing.
-
-In the chapters below we will show you how to program the firmware on individual host platforms.
+## Nahrávání programu přes USB DFU Bootloader
 
 
-#### On Windows 10 64-bit Desktop
+Spuštění USB DFU bootloaderu provedeme následovně:
 
-1. Open Command Prompt (command `cmd`).
+1. Zkontroluj, že **USB kabel** je zapojený do tvého počítače.
 
-2. Change directory (command `cd`) to folder with `firmware.bin` file.
+* Stiskni a **stále drž** tlačítko **BOOT** na Core Module.
 
-3. Download and execute [Zadig 2.2](http://zadig.akeo.ie/downloads/zadig_2.2.exe).
+   BOOT tlačítko je napravo a je označeno písmenem **B**.
 
-   1. Select "Options" -> "List All Devices".
+* Krátce stiskni tlačítko **RESET** na Core Module. V tomto okamžiku musíš stále držet druhé tlačítko **BOOT**.
 
-   2. Select "STM32 BOOTLOADER" device.
+   Tlačítko RESET je na levé straně a je označeno písmenem **R**.
 
-   3. Select "WinUSB" driver for installation.
+* Uvolni tlačítko **RESET**
 
-   4. Click "Reinstall Driver" button.
+* Uvolni tlačítko **BOOT**
 
-4. Download [dfu-util-0.9-win64.zip](http://dfu-util.sourceforge.net/releases/dfu-util-0.9-win64.zip).
+V tomto okamžiku se Core Module připojí k počítači jako USB DFU zařízení.
 
-5. Extract (unzip) `dfu-util-static.exe` into directory with firmware.
-
-6. Program the firmware to Core Module by the following command:
-
-    dfu-util-static -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin
-
-. Press the RESET button to start the program.
-
-> Core Module must be in bootloader DFU mode prior executing last command.
-> For more information, please refer to [Programming using USB DFU bootloader](#programming-using-usb-dfu-bootloader).
+Následující kapitoly níže popisují postup nahrávání firmware na různých operačních systémech.
 
 
-#### On macOS Desktop
+### Windows 10 64-bit Desktop
 
-1. Open Terminal application.
+Pokud budeš používat náš instalační balíček s Visual Studio Code, pak stačí nainstalovat ovladač přes Zadig. Program dfu-utils není třeba stahovat.
 
-2. Change directory (command `cd`) to folder with `firmware.bin` file.
+1. Otevři příkazovou řádku (příkaz `cmd`).
 
-3. Make sure [Homebrew](http://brew.sh) is installed in the system.
+* Změn aktuální adresář (s pomocí `cd`) do složky se souborem `firmware.bin`.
 
-4. Install `dfu-util` package by the following command:
+* Stáhni a spusť [Zadig 2.2](http://zadig.akeo.ie/downloads/zadig_2.2.exe).
+
+   1. Vyber "Options" -> "List All Devices".
+
+   * Vyber ze seznamu zařízení "STM32 BOOTLOADER".
+
+   * Vyber "WinUSB" Ovladač k instalaci.
+
+   * Klikni na tlačítko "Reinstall Driver".
+    Tímto jsme nainstalovali správný ovladač pro následující program dfu-util.
+
+* Stáhni [dfu-util-0.9-win64.zip](http://dfu-util.sourceforge.net/releases/dfu-util-0.9-win64.zip).
+
+* Rozbal `dfu-util-static.exe` do složky s firmwarem.
+
+* **Ujisti se, že Core Module je v DFU módu** viz. předchozí kapitola.
+
+* Nahraj firmware do Core Module zadáním příkazu:
+
+    dfu-util-static -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware.bin
+
+. Po úspěšném nahrání se Core Module automaticky spustí náš program (příkaz `:leave`)
+
+> Core Module musí být přepnut do DFU módu před provedením příkazu `dfu-util`.
+> Postup je v kapitole [Nahrávání programu přes USB DFU Bootloader](#nahravani-programu-pres-usb-dfu-bootloader).
+
+
+### macOS Desktop
+
+1. Otevři terminál.
+
+2. Změň aktuální adresář (příkazem `cd`) do složky s programem `firmware.bin`.
+
+3. Ujisti se, že máš nainstalovaný [Homebrew](http://brew.sh) .
+
+4. Nainstaluj `dfu-util` balíček příkazem:
 
    `brew install dfu-util`
 
-5. Program the firmware to Core Module by the following command:
+* **Ujisti se, že Core Module je v DFU módu** viz. předchozí kapitola.
 
-   `dfu-util -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin`
+5. Nahrej program do Core Module příkazem:
 
-6. Press the RESET button to start the program.
+   `dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware.bin`
 
-> Core Module must be in bootloader DFU mode prior executing last command.
-> For more information, please refer to [Programming using USB DFU bootloader](#programming-using-usb-dfu-bootloader).
+. Po úspěšném nahrání se Core Module automaticky spustí náš program (příkaz `:leave`)
+
+> Core Module musí být přepnut do DFU módu před provedením příkazu `dfu-util`.
+> Postup je v kapitole [Nahrávání programu přes USB DFU Bootloader](#nahravani-programu-pres-usb-dfu-bootloader).
 
 
-#### On Ubuntu Desktop
+### Ubuntu Desktop
 
-1. Open Terminal application.
+1. Otevři terminál.
 
-2. Change directory (command `cd`) to folder with `firmware.bin` file.
+2. Změň aktuální adresář (příkazem `cd`) do složky s programem `firmware.bin`.
 
-3. Install `dfu-util` package by the following command:
+3. Nainstaluj `dfu-util` balíček příkazem:
 
    `sudo apt-get install dfu-util`
 
-4. Program the firmware to Core Module by the following command:
+* **Ujisti se, že Core Module je v DFU módu** viz. předchozí kapitola.
 
-   `dfu-util -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin`
+5. Nahrej program do Core Module příkazem:
 
-5. Press the RESET button to start the program.
+   `dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware.bin`
 
-> Core Module must be in bootloader DFU mode prior executing last command.
-> For more information, please refer to this [Programming using USB DFU bootloader](#programming-using-usb-dfu-bootloader)
+   . Po úspěšném nahrání se Core Module automaticky spustí náš program (příkaz `:leave`)
 
-
-
-### Using Serial-Wire-Debug Interface
-
-This interface allows not only programming but also program debugging.
-
-A special hardware tool is needed if you want to go this way - a debugger.
-BigClown recommends J-Link from Segger but other tools will work as well.
-
-The debugger is connected via a 10-pin connector on Core Module.
-
-> Please, pay attention to a proper debug cable orientation.
-
-TODO: Insert the picture of Core Module with debug cable connected.
+> Core Module musí být přepnut do DFU módu před provedením příkazu `dfu-util`.
+> Postup je v kapitole [Nahrávání programu přes USB DFU Bootloader](#nahravani-programu-pres-usb-dfu-bootloader).
 
 
 
-## Firmware Files
+## Programování přes SWD (Serial-Wire-Debug)
 
-It is possible to build your own firmware.
-But not until we release the source codes on our [GitHub account](https://github.com/bigclownlabs).
-We still want to polish a few things to provide you with a proper start.
 
-So far you can download two binary files for [Workroom project](workroom.md):
+Programováním přes SWD konektor můžeš program nejen nahrát, ale i krokovat a sledovat proměnné přímo za běhu programu.
+Je potřeba speciální hardwarový nástroj nazývaný **debugger**.
+BigClown používá a doporučuje J-Link od firmy Segger, ale je možné použít i jiný SWD debugger.
+
+Debugger se na Core Module připojuje na 10 pinový programovací konektor.
+
+> Buď opatrný, jakým směrem konektor zapojuješ.
+
+TODO: Vložit obrázek.
+
+
+# Firmware Files
+
+Firmware si můžeš naprogramovat s pomocí [BigClown API](http://api.bigclown.com) a zkompilovat sám.
+SDK nalezneš na našem [GitHub](https://github.com/bigclownlabs) účtu.
+
+Můžeš si stáhnout předkompilované binární soubory pro [Workroom project](workroom.md):
 
 * [Base unit](https://drive.google.com/open?id=0B5pXL_JAACMvM284WW9sSFNCWkE)
 
 * [Remote unit](https://drive.google.com/open?id=0B5pXL_JAACMvVkNRT2dPd1VJRlE)
 
 
-### Workroom Remote Firmware Features
+## Popis funkčnosti Remote unit pro Workroom project
 
-* Automatic sending of temperature and humidity every 30 seconds
+* Automatické posílání naměřené teploty a vlhkosti každých 30 sekund.
 
-* Sends message when button pressed
+* Odeslání zprávy při stisku tlačítka.
 
-* Sends message when pin P8 is grounded or released
-
-
-## Development Setup
+* Odeslání zprávy při změně logické hodnoty na pinu P8. Pin má nastaven pull-up, takže reauge pokud jej propojíš se zemi (GND)
 
 
-Please, click [here](core-module-setup.md) for more details about development setup.
+# Nastavení vývojového prostředí
+
+
+Pro nastavení vývojového prostředí a SDK [postupuj podle tohoto návodu](core-module-setup.md).
