@@ -59,7 +59,7 @@ This section will guide you through the BigClown Core Module firmware build proc
 2. Clone BigClown Core Module top-level repository:
 
    ```
-   git clone --recursive https://github.com/bigclownlabs/bc-core-module.git
+   git clone https://github.com/bigclownlabs/bc-core-module.git
    ```
 
 3. Switch to the cloned repository:

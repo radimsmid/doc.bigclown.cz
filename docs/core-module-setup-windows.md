@@ -22,9 +22,8 @@ Git also installs unix utilities like `rm` and `ls` so our Makefile will perfect
 If you would like to compile SDK outside the Git Bash, in the Windows shell, then select the last radio button in the installer with "Use Git and optional Unix tools from the Windows Command Prompt".
 
 Clone repository `https://github.com/bigclownlabs/bc-core-module` to your machine.
-You have to call clone with `--recursive` to clone also the submodules.
 
-`git clone --recursive https://github.com/bigclownlabs/bc-core-module.git`
+`git clone https://github.com/bigclownlabs/bc-core-module.git`
 
 
 

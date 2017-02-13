@@ -1,4 +1,3 @@
-
 # Nahrávání firmware
 
 

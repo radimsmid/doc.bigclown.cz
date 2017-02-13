@@ -1,6 +1,4 @@
-
-
-# Core Module Hardware
+# Core Module - Hardware
 
 
 Tady ti naši grafici připravili přehled pojmenování pinů a znázornění základních bloků.
@@ -11,7 +9,7 @@ Pokud budeš používat tagy a moduly, tak ty mají v SDK své vlastní piny a n
 ![](images/core-module/core-module.png)
 
 Piny ožnačené jako **Px** jsou zapojeny pouze k mikrokontroléru.
-Nejsou připojené k žádným periferiím a jsou tedy k dispozici pro tvoji aplikaci.
+Nejsou připojené k žádným jiným obvodům na Core Module a jsou tedy k dispozici pro tvoji aplikaci.
 
 
 ## Mapování GPIO pinů
@@ -20,12 +18,12 @@ Nejsou připojené k žádným periferiím a jsou tedy k dispozici pro tvoji apl
 V následující tabulce je popis pinů a periferií mikrokontroléru  [STM32L083CZ](http://www.st.com/en/microcontrollers/stm32l083cz.html):
 
 
-| Pin | Signál     | MCU Pin      | 5 V Tolerant  |
+| Pin | Signál     | MCU Pin      | Toleruje 5 V |
 | --- | :--------- | :----------- | :----------- |
 |   1 | P0/A0/TXD0 | PA0  (10)    | -            |
 |   2 | P1/A1/RXD0 | PA1  (11)    | Ano          |
-|   3 | P2/A2/TXD1 | PA2  (12)    | Ano          |
 |   4 | P3/A3/RXD1 | PA3  (13)    | Ano          |
+|   3 | P2/A2/TXD1 | PA2  (12)    | Ano          |
 |   5 | P4/A4/DAC0 | PA4  (14)    | -            |
 |   6 | P5/A5/DAC1 | PA5  (15)    | -            |
 |   7 | P6/RTS1    | PB1  (19)    | Ano          |
@@ -51,4 +49,4 @@ Pro jednotlivé GPIO piny platí následující omezení:
 ## Schéma hardwaru
 
 
-Kompletní schéma Core Module je [ke stažení v PDF](https://github.com/bigclownlabs/bc-hardware/raw/master/out/bc-module-core/bc-module-core-rev-1-3-sch.pdf) nebo v Eagle návrhovém systému na našem [GitHubu](https://github.com/bigclownlabs/).
+Kompletní schéma Core Module je [ke stažení v PDF](https://github.com/bigclownlabs/bc-hardware/raw/master/out/bc-module-core/bc-module-core-rev-1-3-sch.pdf).

@@ -11,7 +11,7 @@
 
 * [Hardware](core-module-hardware.md)
 
-* [Popis SDK knihovny (API)](core-module-api.md)
+* [Popis SDK knihovny (API)](core-module-sdk.md)
 
 * [Vývojové prostředí](core-module-setup.md)
 
@@ -23,8 +23,11 @@
 
 * [Nahrání firmware](core-module-flashing.md)
 
+* [Píšeme firmware](sdk_tutorial/index.md)
 
+  * [Úvod a rozblikání LED](sdk_tutorial/uvod-a-led.md)
 
+  * [Tlačítko a instance](sdk_tutorial/tlacitko-a-instance.md)
 
 
 ## Návody
@@ -34,14 +37,8 @@
 
 * [Mosquitto - MQTT Broker](mosquitto.md)
 
-* [BigClown firmware CZ tutoriál](sdk_tutorial/index.md)
 
-  * [Úvod a rozblikání LED](sdk_tutorial/uvod-a-led.md)
-
-  * [Tlačítko a instance](sdk_tutorial/tlacitko-a-instance.md)
-
-
-  ## Hardware
+## Hardware
 
 
   * [Headers & Signals](headers.md)
@@ -70,10 +67,13 @@
 ## Reference
 
 
+* [Core Module SDK](http://sdk.bigclown.com)
+
 * [I²C Address Space](i2c-space.md)
 
 
 ## Akademie
+
 
 * [I²C - Communication Interface](i2c.md)
 
