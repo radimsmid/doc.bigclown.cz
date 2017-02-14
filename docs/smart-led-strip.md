@@ -172,7 +172,7 @@ Jak můžeš komunikovat s MQTT brokerem:
    mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}' -r
    ```
 
-   > Poznámka *-r* uloží tvrale téma v MQTT brokeru
+   > Poznámka *-r* uloží trvale téma v MQTT brokeru
 
 7. Použij LED pásek jako indikátor vlhkosti a teploty:
 
