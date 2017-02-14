@@ -33,7 +33,7 @@ Přijatá dat jsou z Base jednotky přenášena do Raspberry Pi, kde dochází k
 
 Remote jednotka je bezdrátové a bateriově napájené zařízení, které měří teplotu a vlhkost a přenáší naměřená data do Base jednotky v 30sekundových intervalech.
 
-Tento diagram blokově popisuje koncept proejktu:
+Tento diagram blokově popisuje koncept projektu:
 
 ![](images/workroom/block-diagram.png)
 
