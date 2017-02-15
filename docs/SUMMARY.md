@@ -3,6 +3,8 @@
 
 * [Úvod](README.md)
 
+* [Koncept](concept.md)
+
 
 ## Core Module
 
