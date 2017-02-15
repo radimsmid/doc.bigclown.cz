@@ -47,7 +47,7 @@
 ## Projekty
 
 
-* [Workroom Project](workroom.md)
+* [Smart LED Strip](smart-led-strip.md)
 
 * [Bridge Project](bridge.md)
 
