@@ -22,7 +22,6 @@ Díky bootloaderu můžeme náš vlastní zkompilovaný program nahrát přes US
 
 Bootloader je spuštěn po resetu nebo po připojení napájení k procesoru pokud je signál na pinu BOOT v logické 1.
 To je také důvodem, proč Core Module má dvě tlačítka `RESET` a `BOOT` - aby jsi mohl tento bootloader snadno spustit.
-It can be also done programatically because both of these signals are connected to pin header as well.
 Skok do bootloaderu je možný také programově přes `bc_dfu` module nebo pomocí pinů `RESET` a `BOOT`, které jsou vlevo dole na 14 pinovém konektoru.
 
 Bootloader umí nahrát program přes USB, kdy se zařízení chová jako DFU class (device firmware upgrade). Toto USB rozhraní budeme při nahrávání programu používat.
