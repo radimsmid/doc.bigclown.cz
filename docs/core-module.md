@@ -3,7 +3,7 @@
 
 Tato sekce ti vysvětlí základní vlastnosti a použití Core Module.
 
-Na Core Codule je moderní nízkopříkonový mikrokontrolér ARM Cortex M0+ [STM32L083CZ](http://www.st.com/en/microcontrollers/stm32l083cz.html).
+Na Core Module je moderní nízkopříkonový mikrokontrolér ARM Cortex M0+ [STM32L083CZ](http://www.st.com/en/microcontrollers/stm32l083cz.html).
 Ten má úctyhodných 192 kB flash a 20 kB RAM paměti pro všechny tvoje nápady.
 K tomu jsme přidali rádiový komunikační modul, který na frekvenci 868 MHz s přehledem pokryje běžný rodinný dům.
 Také zde nalezneš akcelerometr a digitální teplotní senzor.
