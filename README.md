@@ -1,9 +1,9 @@
-# BigClown Repository doc.bigclown.com
+# BigClown Repository doc.bigclown.cz
 
-This repository is a source for BigClown Documentation site.
+This repository is a source for Czech BigClown Documentation site.
 Please follow this link if you want to see the generated documentation:
 
-**https://doc.bigclown.com**
+**https://doc.bigclown.cz**
 
 ---
 
