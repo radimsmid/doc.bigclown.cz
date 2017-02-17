@@ -32,38 +32,10 @@
   * [Tlačítko a instance](sdk_tutorial/tlacitko-a-instance.md)
 
 
-## Návody
-
-
-* [Raspberry Pi - Installation](raspberry-pi-installation.md)
-
-* [Mosquitto - MQTT Broker](mosquitto.md)
-
-
 ## Hardware
 
 
-  * [Headers & Signals](headers.md)
-
-
-## Projekty
-
-
-* [Smart LED Strip](smart-led-strip.md)
-
-* [Bridge Project](bridge.md)
-
-* [Tweeting Doorbell Project](doorbell.md)
-
-
-## Integrace
-
-
-* [Blynk - Mobile App Builder](blynk.md)
-
-* [Node RED - Visual Tool for IoT](node-red.md)
-
-* [IFTTT - If This Then That](ifttt.md)
+* [Konektory & Signály](headers.md)
 
 
 ## Reference
@@ -71,14 +43,27 @@
 
 * [Core Module SDK](http://sdk.bigclown.com)
 
-* [I²C Address Space](i2c-space.md)
+* [I²C Adresní prostor](i2c-prostor.md)
 
 
-## Akademie
+## Vzorové projekty
+
+* [Smart LED Strip](smart-led-strip.md)
+
+* [Jednoduché programování domácí automatizace](jednoduche-programovani-domaci-automatizace.md)
+
+* [Tvítovací zvonek](tvitovaci-zvonek.md)
 
 
-* [I²C - Communication Interface](i2c.md)
+## Návody
 
-* [MQTT - Messaging via Broker](mqtt.md)
 
-* [WebSocket - Real-time Protocol](websocket.md)
+* [Raspberry Pi - Instalace](raspberry-pi-installation.md)
+
+* [Mosquitto - MQTT Broker](mosquitto.md)
+
+* [Blynk - Ovládání BigClowna z mobilu](blynk.md)
+
+* [Node RED - Grafický programovací nástroj](node-red.md)
+
+* [IFTTT - Služba propojení tvých oblíbených služeb](ifttt.md)
