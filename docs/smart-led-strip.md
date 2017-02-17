@@ -15,7 +15,7 @@ Barvy LED pásku se mění takto:
 * Pásek je červený pokud je vysoká teplota (> 26°C).
 * Pásek je modrý pokud je nízká teplota (< 22°C).
 
-Tyto výchozí limity si můžeš změnit v nastavení (ukážee si později).
+Tyto výchozí limity si můžeš změnit v nastavení (ukážeme si později).
 
 Protože je pásek RGBW, můžeš ho použít také jako příjemné osvětlení.
 
