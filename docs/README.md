@@ -1,28 +1,36 @@
 # BigClown Dokumentace
 
 
-**Vítej v BigClown dokumentaci!**
+**Vítej na stránkách dokumentační podpory systému BigClown!**
 
 
-Cílem této stránky [doc.bigclown.cz](https://doc.bigclown.cz) je detailně popsat náš systém pro **domácí automatizaci**.
-Neustále se snažíme vylepšovat obsah této stránky a každým dnem se posouváme dále, jak se stáváme mladšími :-)
+Vše na čem pracujeme je určeno lidem, kteří si chtějí dělat věci sami a po svém.
+Snažíme se proto detailně popisovat veškeré hardwarové i softwarové komponenty tak, aby sis s většinou věcí poradil sám. 
+Pokud si však nebudeš s něčím jistý, tak nám [napiš](mailto:support@bigclown.com), nebo se podívej do našeho [fóra](http://forum.bigclown.com/).
+
+Bude fajn, když si nejdříve přečteš [pár slov](concept.md) o naší motivaci k založení firmy a přístupu k vývoji.
+
+Dokumentaci neustále doplňujeme a opravujeme, ale i ty můžeš aktivně do dokumentace zasáhnout, viz odstavec **Přispívání**
+
+**Přejeme ti hodně radosti při práci na tvých projektech - budování tvé originální domácí automatizace.**
 
 
-## Struktura stránky
+## Struktura dokumentace
 
 
 Dokumentaci máme rozdělenou do několika částí:
 
+* **Koncept** pro základní seznámení se s BigClown ekosystémem.
 
-* **Tutoriály** pro základní seznámení s BigClown ekosystémem.
+* **Core Module** popisující základní stavební prvek našeho řešení.
 
-* **Projekty** ke tvé inspiraci k tomu, co vše lze s BigClown vytvořit.
+* **Hardware** obsahující informace o našich modulech.
 
-* **Integrace** ukáže výhody otevřené platformy a možnosti napojení na jiné technologie.
+* **Reference** odkazující na použité standardy.
 
-* **Reference** s rozsáhlým průvodcem tvojí cestou vývojem.
+* **Vzorové projekty** které ti pomůžou při startu tvého tvoření.
 
-* **Akademie** která tě naučí které technologie a proč je používáme.
+* **Návody** k oblíbeným nástrojům a integrovaným platformám.
 
 
 ## Přispívání
@@ -55,5 +63,3 @@ Pokud chceš vylepšit tuto nápovědu, tak neváhej. Klikni na **EDIT THIS PAGE
 
 7. Udělej pull request zpět na [náš repozitář doc.bigclown.cz](https://github.com/bigclownlabs/doc.bigclown.cz).
 
-
-**Děkujeme ti** _- Tvůj vývojový tým klaunů... **BIG KLAUNŮ**!_
