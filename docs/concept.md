@@ -61,8 +61,6 @@ Až na pár výjimek je nezbytnou součástí každé jednotky tzv. Core Module,
 Bezdrátové jednotky komunikují v síti typu hvězda do centrální jednotky, kterou nazýváme [Gateway](###Gateway).
 Počet bezdrátových jednotek komunikujících na jednu Gateway je omezen na 64.
 
-#### Moduly a Tagy
-
 Každou jednotku si můžeš poskládat z modulů a tagů.
 
 #### Moduly
@@ -88,6 +86,100 @@ U tagů není ošetřeno nesprávné zasunutí, dej si tedy pozor a tagy zasunuj
 Senzor je zařízení, které detekuje a reaguje na nějaký typ vstupu z fyzického prostředí.
 Jde například o pohyb, teplo, světlo, vlhkost ad.
 V našem systému jsou senzory většinou ve formátu tagu, výjimkou je například CO2 senzor, jehož komponenty se na tag fyzicky nevejdou.
+**Naší snahou je nadále rozšiřovat rodinu senzorů o nové typy tak, aby pokryly většinu vstupů z tvého okolí.**
+
+### Aktory
+
+Aktory jsou zařízení měnící energii v řízený pohyb.
+Hlavním představitelem této skupiny jsou relé.
+V našem systému máme Relay Module, který ti umožní spínat malé spotřebiče (lampičku, větráček, ...) a Power Module s vysokoproudovým relé, kterým můžeš ovládat i něco většího (230 V AC/16A).
+
+## Gateway
+
+Centrálním prvkem naší bezdrátové sítě je Gateway, na kterou komunikují všechny bezdrátové jednotky.
+Gateway je dále spojena přes USB s tzv. Hubem.
+V současnosti plní roli Gateway Core Module, v budoucnu najdeš v našem portfoliu samostatnou položku, která kromě komunikace bude plnit roli bezpečného učení bezdrátových jednotek do systému.
+
+## Hub
+
+V našem pojetí jde o softwarový balíček, který si můžeš nainstalovat na jakékoliv zařízení s Linuxem.
+Hojně se jako hostitel využívá Raspberry PI, ale prakticky si můžeš náš Hub nainstalovat kdekoliv se ti zlíbí.
+
+Softwarový balíček obsahuje:
+* Gateway - MQTT klient, software který obsluhuje sériový port  a zabezpečuje komunikaci mezi gateway a MQTT
+* MQTT broker Mosquito, který řídí zprávy v našem systému
+
+## Komunikace
+
+### Komunikace uvnitř tvého objektu
+
+#### I2C
+
+I2C protokol používáme pro komunikaci mezi prvky jednotky (moduly a tagy). Více se dočteš [tady](doplnit link).
+
+#### MQTT
+
+MQTT je jednoduchý a nenáročný protokol pro předávání zpráv mezi klienty prostřednictvím centrálního bodu - brokeru.
+Díky této nenáročnosti a jednoduchosti je snadno implementovatelný i do zařízení s “malými” procesory a poměrně rychle se rozšířil.
+Dnes je OASIS standardem a pro všechna tato pozitiva jsme si ho vybrali do našeho systému.
+Více o tomto protokolu a jeho implementaci v systému BigClown si přečti například [na Wikipedii](https://en.wikipedia.org/wiki/MQTT).
+
+#### 868 MHz
+
+Tak tady to byl největší otazník - jakou technologii použít pro přenos dat mezi jednotkami v rámci domu?
+Rozebrali jsme všechny standardy - ZigBee, Z-Wave, WiFi, Bluetooth, 6LowPAN, Thread.
+S většinou týmů jsme se i setkali.
+A nakonec jsme zvolili řešení, které se opírá o fyzikální zákony a naše zkušenosti z Jablotronu.
+**Navrhli jsme vlastní otevřený protokol postavený na MQTT, ale upravený pro efektivnější přenosy s cílem šetřit energii.
+A komunikujeme v pásmu 868 MHz, což ti zajistí pokrytí standardního domu s jednou gateway.**
+
+### Komunikace do světa a zpět
+
+No a jak dostaneš informace z tvé automatizace do světa a jak ji můžeš vzdáleně ovládat? 
+Tady musíme zdůraznit, že náš systém domácí automatizace nemusí být vůbec spojen s okolním světem a může fungovat nezávisle na internetu.
+Ale možností propojení BigClowna s okolním světem je několik a vždy máš nad systémem absolutní kontrolu.
+
+#### LAN
+
+Nejjednodušším způsobem je připojit hostitele (např. Raspberry Pi) k vaší lokální síti (LAN) a skrze ní propojit automatizaci s internetem.
+
+#### Narrow Band sítě
+
+Pracujeme na modulech pro narrow band sítě, např. SigFox, LoRaWAN a Narrow Band IoT.
+Tyto moduly jsou součástí jednotek, a tak můžeš obejít Hub a posílat data a ovládat jednotky napřímo.
+
+## Bezpečnost
+
+Jsme moc rádi, že členem našeho týmu je Michal, který je odborníkem na IT bezpečnost a je autorem návrhu zabezpečení systému BigClown.
+**Důležitou informací pro tebe je, že jsme již v návrhu systému na bezpečnost mysleli.**
+Náš Core Module proto obsahuje speciální kryptočip a komunikační protokol počítá s šifrováním a autentizací.
+Ve finálním stavu bude vše připraveno tak, aby jsi bezpečnost vlastně neřešil a věděl, že bezpečněji to snad už ani nejde.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
