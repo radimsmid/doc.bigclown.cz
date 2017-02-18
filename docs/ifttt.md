@@ -2,6 +2,7 @@
 
 <!-- toc -->
 
+
 ## Co je IFTTT?
 
 **IFTTT** neboli “If This Then That” je bezplatná webová služba která propojuje mnoho jiných webových služeb do jednoho místa a umožňuje vykonávat akce podle zadaných kritérií.
@@ -15,6 +16,7 @@ A právě službu **Maker** jsme použili pro integraci s naším systémem.
 
 
 ## Jak vytvoříš nový Applet?
+
 
 1. Nejdříve si vytvoř účet [**IFTTT**](https://ifttt.com).
 
@@ -36,6 +38,7 @@ A právě službu **Maker** jsme použili pro integraci s naším systémem.
 
 
 ## Jak přes službu Maker pošleš data do IFTTT?
+
 
 Při založení účtu u služby **Maker** sse vygeneruje unikátní klíč který ti umožní komunikovat s IFTTT, tento klíč najdeš u nastavení služby Maker.
 
@@ -68,6 +71,7 @@ Můžeš poslat až **3 hodnoty** v jedné žádosti.
 
 
 ## Příklad
+
 
 Jednoduchý **Python 3** příklad pro BigClown, sloužící k otestování služby IFTTT, můžeš najít v tomto GitHub repositáři: [**BigClown IFTTT Service Integration Example**](https://github.com/bigclownlabs/bc-ifttt).
 
