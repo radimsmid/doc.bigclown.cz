@@ -39,7 +39,7 @@ Formát **Module** je definován:
 ### Signály Module
 
 
-Zde máš soupis základních periferií dostupných na konektoru modulu:
+Zde je soupis základních periferií dostupných na konektoru modulu:
 
 
 * 18x **GPIO** channels (General Purpose Input/Output)
@@ -128,7 +128,7 @@ Formát **Tag** je definován:
 ### Signály Tagu
 
 
-Následující tabulka definuje signál ypřiřazené na konketoru Tagu:
+Následující tabulka definuje signály přiřazené na konketoru Tagu:
 
 
 |     | Signal | Popis                |
