@@ -2,88 +2,85 @@
 
 <!-- toc -->
 
-## Introduction
+## Co je IFTTT?
 
-**IFTTT** or “If This Then That” is a free web-based service that aggregates many other web apps into one place and can then perform actions given a certain set of criteria.
+**IFTTT** neboli “If This Then That” je bezplatná webová služba která propojuje mnoho jiných webových služeb do jednoho místa a umožňuje vykonávat akce podle zadaných kritérií.
 
-IFTTT is made to create **recipes** - If something happens in one service **This** (**Trigger**), Then something should Happen in another service **That** (**Action**).
-This whole chain is called **Applet**.
+IFTTT umožňuje vytvářet tzv. **recepty** - jestliže se něco stane v jedné službě **This** (**spouštěč**), **Then (pak)** se něco stane v jiné službě **That** (**akce**).
+Celý řetězec se nazývá **Applet**.
 
-As a trigger service can be used **Maker** service that allows you to communicate with IFTTT through a **Web request** (**POST**).
+Jako spouštěcí služba může být použita služba **Maker** která umožňuje komunikovat s IFTTT skrze **Web request** (**POST**).
 
-The Maker service is useful for BigClown Hub integration.
-
-
-## How to create a new Applet?
-
-1. The first step is to create your account on [**IFTTT**](https://ifttt.com).
-
-2. After login, click on your username in the top-right corner and open menu, then Select **"New Applet"**.
-
-3. This opens a page with "if **this** Then That". First select the trigger service **"this"**.
-
-4. From the list of all services, select trigger **Maker** service.
-
-5. Connect to the Maker channel and select option **"Receive a web request"**.
-
-6. Fill the **event name** and select **"Create Trigger"**.
-
-7. The last step brings you back to the page "Then if this **That**".
-
-   But this time set **action „that“**.
-
-8. Choose action service that you want to affected by trigger service and follow the service instructions.
-
-9. Finally click on **"Create action"** and you are done!
+A právě službu **Maker** jsme použili pro integraci s naším systémem.
 
 
-## How to send data to IFTTT using Maker service?
+## Jak vytvoříš nový Applet?
 
-When you create an account on the **Maker** service, maker generates a unique key that allows you to communicate with IFTTT.
+1. Nejdříve si vytvoř účet [**IFTTT**](https://ifttt.com).
 
-This key can be found in the Maker settings.
+2. Po přihlášení klikni na své uživatelské jméno v pravém horním rohu, otevři Menu a zvol **"New Applet"**.
 
-For information about Maker service follow these instructions:
+3. Otevře se stránka s "If **This** Then That" a nejdříve vyber spouštěcí službu **"This"**.
 
-1. Search for **Maker** service. (On the top bar of IFTTT page, click on **"Search"**.)
+4. Ze seznamu dostupných služeb vyber jako spouštěcí službu **Maker**.
 
-2. On the "About" page click on **"Settings"** (in the top-right corner).
+5. Připoj se k Maker kanálu a vyber možnost **"Receive a web request"**.
 
-3. Last step brings you to settings page for Maker service.
+6. Vyplň **Event name** a vyber **"Create Trigger"**.
 
-   Here you will need **URL** that contains the unique Maker key.
+7. Poslední krok tě zavede zpátky na stránku "Then If This **That**", ale nyní nastavíš **action „That“**.
 
-4. Click on **URL**, that will bring you to how-to page.
+8. Vyber akci která má být vykonána spouštěcí službou a postupuj podle instrukcí u nastavení služby.
 
-According to these instructions, you can build a final address where you can send data.
+9. Na závěr klikni na **"Create action"** a je to hotovo!
 
-The **final address** will look like this:
+
+## Jak přes službu Maker pošleš data do IFTTT?
+
+Při založení účtu u služby **Maker** sse vygeneruje unikátní klíč který ti umožní komunikovat s IFTTT.
+
+Tento klíč najdeš u nastavení služby Maker.
+
+Pro informace o službě Maker psotupuj podle tohoto návodu:
+
+1. Vyhledej službu **Maker** (v horní liště stránky IFTTT klikni na **"Search"**.)
+
+2. Na stránce "About" klikni na **"Settings"** (v pravém horním rohu).
+
+3. Poslední krok tě zavede na stránku nastavení služby Maker.
+
+   Tady budeš potřebovat **URL** které obsahuje unikátní Maker klíč.
+
+4. Klikni na **URL**, toto tě zavede na how-to stránku.
+
+Podle tohoto návodu si vytvoříš finální adresu kde se budou posílat data.
+
+**Finální adresa** bude vypadat následovně:
 
 `https://maker.ifttt.com/trigger/{event}/with/key/{key}`
 
-* `{event}` - Step 6 in the instructions "How to create an new applet?".
-* `{key}` – your Maker unique key
+* `{event}` - Krok 6 návodu "How to create an new applet?".
+* `{key}` – tvůj unikátní Maker klíč
 
-Data is sent using the **POST** method in the **JSON** format:
+Data jsou posílána použitím metody **POST** method v **JSON** formátu:
 
 ```json
 {"value1": "your_first_value", "value2": "your_second_value", "value3": "your_third_value"}
 ```
 
-You can send up to **3 values** in one request.
+Můžeš poslat až **3 hodnoty** v jedné žádosti.
 
 
-## Example
+## Příklad
 
-A simple **Python 3** example for BigClown Hub has been provided to test IFTTT service.
-You can find it in the following GitHub repository: [**BigClown IFTTT Service Integration Example**](https://github.com/bigclownlabs/bc-ifttt).
+Jednoduchý **Python 3** příklad pro BigClown, sloužící k otestování služby IFTTT, můžeš najít v tomto GitHub repositáři: [**BigClown IFTTT Service Integration Example**](https://github.com/bigclownlabs/bc-ifttt).
 
 
-### Usage
+### Použití
 
-1. Set your `event` name and Maker `key` in **_url** variable in **IFTTTWorker** class.
+1. Nastav tvůj název `event` a Maker `key` v **_url** proměnné ve třídě **IFTTTWorker** class.
 
-2. If you want, you can modify constants for temperature thresholds and hysteresis:
+2. Pokud chceš, tak si můžeš upravit konstanty pro limity a hysterezi teploty:
 
 ```python3
 TEMPERATURE_TRESHOLD_HIGH = {top threshold temperature}
@@ -91,6 +88,6 @@ TEMPERATURE_TRESHOLD_LOW = {bottom threshold temperature}
 TEMPERATURE_ALARM_HYSTERESIS = {temperature hysteresis}
 ```
 
-3. Run it:
+3. Spusť program:
 
 `python3 ifttt-bigclown.py`
