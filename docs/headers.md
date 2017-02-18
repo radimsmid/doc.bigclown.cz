@@ -1,46 +1,45 @@
-# Headers & Signals
+# Konektory & Signály
 
 
 <!-- toc -->
 
 
-In BigClown we emphasize hardware modularity and re-usability.
-To achieve such goal we had to come up with proper interconnect system between our components.
-We decided to stick with well-known and widely accepted standard - **headers** with 2.54 mm (0.1 inch) pitch.
+V našem systému klademe důraz na hardwarovou modularitu a znovupoužitelnost.
+Proto jsme zvolili pro systém propojování našich komponent dobře známý a hojně používaný standard konektorů s 2.54 mm (0.1 palce) roztečí.
 
 
-Our header system consists of two types of components - **pins** and **sockets**.
+Náš systém konektorů pak sestává ze dvou typů komponent - **pinů** and **dutinek**.
 
 
-In order to maintain compatibility between various hardware components we came up with our own two standards for electro-mechanical format - **module** and **tag**.
+A abychom zajistili kompatabilitu mezi různými hardwarovými komponenty, tak jsme přišli se dvěma našimi standardy - elektromechanickými formáty - **Module** a **Tag**.
 
 
-## Module Format
+## Formát Module
 
 
-Format **Module** defines:
+Formát **Module** je definován:
 
 
-* Spacing and signals between two rows of 14-pin **headers**.
-* Four mounting hole positions and their diameter.
-* Position of mechanical key (filled hole in header) preventing reverse insertion.
-* Position of **sockets** from top view.
-* Position of **pins** from the bottom view.
-* Recommended PCB height is 55 mm.
-* Recommended PCB thickness 1.5 mm.
-* Radius of rounded corners 3.8 mm.
+* Mezerami a signály mezi dvěmi řadami 14pinových konektorů
+* Čtyřmi montážními otvory a jejich průměrem
+* Pozicí zaslepené dutinky a vynechaného pinu na konektorech bránící opačnému spojení modulů
+* Pozicí dutinek na horní čáasti modulů
+* Pozicí pinů na spodní části modulů
+* Doporučenou výškou DPS 55 mm
+* Doporučenou tloušťkou DPS 1.5 mm
+* Poloměrem zaoblených rohů 3.8 mm
 
 
-### Module Drawing
+### Schéma Module
 
 
 ![](images/headers/module.png)
 
 
-### Module Signals
+### Signály Module
 
 
-This is a summary of basic peripherals available on **module** header:
+Zde máš soupis základních periferií dostupných na konektoru modulu:
 
 
 * 18x **GPIO** channels (General Purpose Input/Output)
@@ -51,10 +50,10 @@ This is a summary of basic peripherals available on **module** header:
 * 1x **SPI** bus (Serial Peripheral Interface)
 
 
-The following table defines signal assignment on **module** header:
+Následující tabulka definuje přiřazení signálů na konektoru modulu:
 
 
-|     | Signal   | Description                       |
+|     | Signal   | Popis                       |
 | --- | :------- | :-------------------------------- |
 | 1   | P0       | GPIO channel 0                    |
 |     | A0       | ADC channel 0                     |
@@ -103,36 +102,36 @@ The following table defines signal assignment on **module** header:
 | 28  | P17/SDA1 | I²C bus 1 - SDA signal            |
 
 
-## Tag Format
+## Formát Tag
 
 
-The primary purpose of **tag** format is to provide signal break-out for I²C peripheral in a compact form-factor.
-It can be anything I²C-related - e.g. sensors, memories, RTCs, etc.
+Primárním cílem formátu **Tag** je poskytnout výstup signálu pro I²C periferie v kompaktním formát.
+Může to být cokoliv I²C-related - např. sensory, paměti, RTC ad.
 
 
-Format **tag** defines:
+Formát **Tag** je definován:
 
 
-* Signals on a 5-pin **header**.
-* Letter "D"-shaped PCB outline.
-* Mechanical dimensions 16 x 16 mm.
-* Recommended PCB thickness 1.5 mm.
-* Radius of rounded corners is 3.8 mm.
+* Signály na 5pinovém konektoru
+* Tvarem DPS v podobě písmena "D"
+* Mechanickými rozměry 16 x 16 mm.
+* Doporučenou tloušťkou DPS 1.5 mm.
+* Poloměrem zaoblených rohů 3.8 mm.
 
 
-### Tag Drawing
+### Schéma Tagu
 
 
 ![](images/headers/tag.png)
 
 
-### Tag Signals
+### Signály Tagu
 
 
-The following table defines signal assignment on **tag** header:
+Následující tabulka definuje signál ypřiřazené na konketoru Tagu:
 
 
-|     | Signal | Description                |
+|     | Signal | Popis                |
 | --- | :----- | :------------------------- |
 | 1   | GND    | System GND (ground)        |
 | 2   | VDD    | System VDD (positive rail) |
