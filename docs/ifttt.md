@@ -28,7 +28,7 @@ A právě službu **Maker** jsme použili pro integraci s naším systémem.
 
 6. Vyplň **Event name** a vyber **"Create Trigger"**.
 
-7. Poslední krok tě zavede zpátky na stránku "Then If This **That**", ale nyní nastavíš **action „That“**.
+7. Poslední krok tě zavede zpátky na stránku "Then If This **That**", ale nyní nastavíš akci **That**.
 
 8. Vyber akci která má být vykonána spouštěcí službou a postupuj podle instrukcí u nastavení služby.
 
@@ -37,29 +37,25 @@ A právě službu **Maker** jsme použili pro integraci s naším systémem.
 
 ## Jak přes službu Maker pošleš data do IFTTT?
 
-Při založení účtu u služby **Maker** sse vygeneruje unikátní klíč který ti umožní komunikovat s IFTTT.
+Při založení účtu u služby **Maker** sse vygeneruje unikátní klíč který ti umožní komunikovat s IFTTT, tento klíč najdeš u nastavení služby Maker.
 
-Tento klíč najdeš u nastavení služby Maker.
-
-Pro informace o službě Maker psotupuj podle tohoto návodu:
+Pro nastavení služby Maker postupuj podle tohoto návodu:
 
 1. Vyhledej službu **Maker** (v horní liště stránky IFTTT klikni na **"Search"**.)
 
 2. Na stránce "About" klikni na **"Settings"** (v pravém horním rohu).
 
-3. Poslední krok tě zavede na stránku nastavení služby Maker.
+3. Poslední krok tě zavede na stránku nastavení služby Maker. Tady budeš potřebovat **URL** které obsahuje unikátní Maker klíč.
 
-   Tady budeš potřebovat **URL** které obsahuje unikátní Maker klíč.
+4. Klikni na **URL**, tímto se dostaneš na how-to stránku.
 
-4. Klikni na **URL**, toto tě zavede na how-to stránku.
-
-Podle tohoto návodu si vytvoříš finální adresu kde se budou posílat data.
+Podle zobrazeného návodu si vytvoříš finální adresu kde se budou posílat data.
 
 **Finální adresa** bude vypadat následovně:
 
 `https://maker.ifttt.com/trigger/{event}/with/key/{key}`
 
-* `{event}` - Krok 6 návodu "How to create an new applet?".
+* `{event}` - krok 6 návodu "How to create an new applet?".
 * `{key}` – tvůj unikátní Maker klíč
 
 Data jsou posílána použitím metody **POST** method v **JSON** formátu:
@@ -74,9 +70,6 @@ Můžeš poslat až **3 hodnoty** v jedné žádosti.
 ## Příklad
 
 Jednoduchý **Python 3** příklad pro BigClown, sloužící k otestování služby IFTTT, můžeš najít v tomto GitHub repositáři: [**BigClown IFTTT Service Integration Example**](https://github.com/bigclownlabs/bc-ifttt).
-
-
-### Použití
 
 1. Nastav tvůj název `event` a Maker `key` v **_url** proměnné ve třídě **IFTTTWorker** class.
 
