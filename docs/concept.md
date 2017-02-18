@@ -155,7 +155,32 @@ Jsme moc rádi, že členem našeho týmu je Michal, který je odborníkem na IT
 Náš Core Module proto obsahuje speciální kryptočip a komunikační protokol počítá s šifrováním a autentizací.
 Ve finálním stavu bude vše připraveno tak, aby jsi bezpečnost vlastně neřešil a věděl, že bezpečněji to snad už ani nejde.
 
+## Programování chování tvé automatizace
 
+Domácí automatizace není jen o železe, ale také o programech řešících závislosti a návaznosti.
+Určitě budeš chtít řešit situace, kdy na základě jedné informace a ve spojení s jinou by mělo dojít ke změně stavu něčeho.
+Třeba že pokles teploty v místnosti když je zároveň venku světlo, zapne systém topení.
+Tyto úkoly budeš řešit pomocí skriptů psaných v Pythonu nebo Node.js.
+Pro zjednodušení jsme připravili vzorové skripty, které si budeš moci libovolně upravit.
+Nebo využiješ některý z již hotových skriptů napsaných jinými uživateli.
+
+Pokud nebudeš chtít psát program, pak se nabízí bezvadná aplikace [Node-RED](https://nodered.org/).
+Je to grafický nástroj pro datové propojení prvků domácí automatizace a jiných zařízení.
+S Node-RED hravě propojíš informaci o počasí ve tvém regionu s tvým LED páskem nebo účtem na Twitteru.
+
+## Cloud a aplikace
+
+Říkáš si "fajn, funguje to automaticky, ale mě by se líbila nějaká appka...".
+**My se nepouštíme do vývoje vlastního cloudu a aplikace, ale snažíme se doporučovat nejlepší platformy na trhu.**
+Zatím se nám nejvíce líbí [Blynk](http://www.blynk.cc), a proto u nás najdeš připravený skript a návod zprovoznění.
+Dokážeme taky propojit BigClown s Microsoft Azure/Power BI nebo s AWS.
+**Ale pokud najdeš něco, co se ti bude líbit více, tak nám [napiš](mailto: projects@bigclown.com) a my se na to koukneme.**
+
+## Krabičky
+
+Naše krásné modulky můžou existovat i bez krabiček, ale chápeme, že můžeš mít jiný vkus :-)
+Proto jsou pro tebe v našem obchodě připraveny [modely STL pro 3D tisk ke stažení](https://obchod.bigclown.cz/collections/krabicky).
+A pracujeme na konfigurátoru, který ti v budoucnu pomůže lépe a rychleji upravovat velikost i vzhled krabiček.
 
 
 
