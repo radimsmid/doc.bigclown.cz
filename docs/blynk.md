@@ -3,6 +3,7 @@
 <!-- toc -->
 
 This tutorial will show you how to connect to BigClown.Hub remotely from your smartphone.
+První úprava.
 
 
 ## Installation Procedure
