@@ -84,15 +84,15 @@ Možná je to trochu mimo, ale ukazuje to na nekonečné možnosti dnešní dom�
 
 1. Doinstaluj si **openweathermap** `sudo npm install -g node-red-node-openweathermap`
 
-2. Zaregistruj se na (https://openweathermap.org/appid) a získej **api key**, který vlož do komponenty openweathermap, nastav město na **London** a zemi na **GB**
+2. Zaregistruj se na **https://openweathermap.org/appid** a získej **api key**, který vlož do komponenty openweathermap, nastav město na **London** a zemi na **GB**
 
 3. Naprogramuj funkci, která otestuje zda v Londýně prší a rozbliká LED na Base jednotce
 
 
-### Pomocí Node-RED si zobraz naměřená data
+### Pomocí Node-RED si graficky zobraz naměřená data
 
 1. Doinstaluj si `sudo npm install -g node-red-vis`
 
-2. V prohlížeči si otevři novou záložku a zadej URL (http://ip-tveho-raspberry:1880/vis/edit.html)
+2. V prohlížeči si otevři novou záložku a zadej URL **http://ip-tveho-raspberry:1880/vis/edit.html**
 
-3. Podívej se na grafické zobrazení naměřených hodnot (http://ip-tveho-raspberry:1880/vis/)
+3. Podívej se na grafické zobrazení naměřených hodnot **http://ip-tveho-raspberry:1880/vis/**
