@@ -43,7 +43,7 @@
 
 * [Core Module SDK](http://sdk.bigclown.com)
 
-* [I²C Adresní prostor](i2c-prostor.md)
+* [I²C Adresní prostor](i2c-space.md)
 
 
 ## Vzorové projekty
