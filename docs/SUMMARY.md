@@ -52,7 +52,7 @@
 
 * [Jednoduché programování domácí automatizace](jednoduche-programovani-domaci-automatizace.md)
 
-* [Tvítovací zvonek](tvitovaci-zvonek.md)
+* [Tweetovací zvonek](tweetovaci-zvonek.md)
 
 
 ## Návody
