@@ -50,7 +50,7 @@
 
 * [Smart LED Strip](smart-led-strip.md)
 
-* [Jednoduché programování domácí automatizace](jednoduche-programovani-domaci-automatizace.md)
+* [Jednoduché programování domácí automatizace](easy-programming.md)
 
 * [Tweetovací zvonek](tweetovaci-zvonek.md)
 
