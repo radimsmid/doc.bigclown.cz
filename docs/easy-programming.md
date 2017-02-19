@@ -18,3 +18,19 @@ Ukáži ti, jak:
 * Pes Node RED tweetovat teplotu a vlhkost z bezdrátového čidla
 * Rozblikáme LEDku v případě, když někde ve prší
 * Pomocí pluginu do Node RED si zobrazíme měřená data
+
+## Jak na to...
+
+### Kup si zvýhodněný [Basic Wireless Set](https://obchod.bigclown.cz/products/basic-wireless-set)
+
+### Poskládej si jednotky Base a Remote
+
+### Zprovozni si Raspberry Pi
+
+Můžeš použít předpřipravené BigClown Raspberry Pi, nebo použij své, pokud na něm máš Raspbian Jessie.
+
+#### Předpřipravené Raspberry Pi
+
+Mělo by ti stačit ho aktualizovat a nainstalovat Node-RED těmito příkazy:
+sudo apt-get update && sudo apt-get upgrade
+sudo npm install -g node-red
