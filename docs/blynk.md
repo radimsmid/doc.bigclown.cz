@@ -2,11 +2,66 @@
 
 <!-- toc -->
 
-This tutorial will show you how to connect to BigClown.Hub remotely from your smartphone.
-První úprava.
+V tomto návodu si ukážeme, jak napojit BigClowní prvky na mobilní aplikaci Blynk.
+Blynk ti umožní ovládat všechny funkce pohodlně ze smartphonu nebo tabletu pomocí grafických widgetů. Tlačítkem tak bůdeš schopen přepnout relé nebo rozsvítit LED pásek, sliderem měnit intenzitu a odstín světla, pomocí grafu zobrazit hodntoty teploty i dalších veličin.
+
+   ![](images/blynk/blynk_on_mobile.png)
+   
+## Jak funguje Blynk
+
+Blynk není jen mobilní aplikace, ale také cloudová služba, která ti umožní ovládat nebo číst data ze senzorů v mobilu odkudkoliv s připojením na internet.
+Stačí se přihlásit pod uživatelským účtem.
+Stanice Bigclown si vyměňuje data se serverem i když není mobilní aplikace připojena.
+V aplikaci tak lze např. zobrazit historii naměřené teploty z čidel za poslední týden nebo nastavit časový spínač na stanovenou hodinu.
+Blynk nabízí ale i "offline" možnost, nainstalovat si server lokálně.
+Sami jsme ale byli překvapení, jak rychlá je odezva při sepnutí relé i při připojení přes cloud.
+Zpoždění je při bežném internetovém připojení takřka nepostřehnutelné.
+(To DO obrázek)
+## Instalace a založení účtu v programu Blynk
+
+1. Nainstaluj Blynk na svoje zařízení (aplikace je dostupná na Google Play a App Store).
+2. Spusť Blynk.
+3. Vytvoř si uživatelský účet (Create New Account).
+
+## Vytvoření Blynk projektu
+
+4. Vytvoř nový projekt:
+
+   ![](images/blynk/blynk-create-project-1.png)
+
+5. Zvol název projektu (Project Name) a jako HW Generic Board, způsob komunikace a stiskni *Create*.
+
+   ![](images/blynk/blynk-create-project-2.png)
+
+## Přidávání widgetů v Blynku
+
+Každý vložený prvek (widget) v Blynku “stojí” nějakou energii, po zaregistrování a přihlášení do aplikace je k dispozici zdarma 2000 bodů, což postačí na přidání většiny potřebných funkcí pro základní projekty.
+Pokud budeš chtít vytvořit větší projekty s mnoha prvky a využít užitečné funkce jako graf historie pro sledování hodnot ze senzorů, doporučujeme dobít si další energii.
+Výhodou je, že volná i zakoupená energie se po odstraněním prvku nebo celého projektu vrací a zároveň ji lze využít nezávisle na platformě (Android, IOS) souběžně na více zařízeních.
+Stačí se jen přihlásit pod svým uživatelským účtem.
+Pozor, za widgety, které přidáte na pracovní plochu telefonu se energie po jejich odstranění nevrací!
+
+## Potřebné SW/HW vybavení
+Za minimální konfiguraci lze považovat jednu stanici BigClown tvořenou Core Modulem popř dalšímy prvky, připojená k Raspberry Pi nebo jinému Lunuxovému počítači s nainstalovaným BigClonw SW.
+Další stanice (Nody) již mohou být připojeny bezdrátově.
+Podrobný postup zapojení prvků BigClown je popsán ve vzorovém projektu [Smart LED Strip](https://doc.bigclown.cz/smart-led-strip.html). Kompletní sadu lze také zakoupit ve [zvýhodněném setu](https://obchod.bigclown.cz/products/smart-led-strip-set).
 
 
-## Installation Procedure
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 1. Install Blynk on your smartphone / tablet.
 
