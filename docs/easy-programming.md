@@ -55,3 +55,9 @@ Mělo by ti stačit ho aktualizovat a nainstalovat Node-RED těmito příkazy:
 
 #### Zachycení zpráv z Remote jednotky
 `mosquitto_sub -v -t 'nodes/remote/#'`
+
+> **Poznámka** Chce to chvilku trpělivosti data chodí jednou za 30s až dorazí uvidíš něco jako
+> `nodes/remote/thermometer/i2c0-49 {"temperature": [24.18, "\u2103"]}`
+> `nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [32.0, "%"]}`
+
+**Pokud ses dostal až sem tak vše funguje jak má a můžeme se posunout k zajímavějším věcem.**
