@@ -44,3 +44,14 @@ Mělo by ti stačit ho aktualizovat a nainstalovat Node-RED těmito příkazy:
 * Nainstaluj si Node-RED `sudo npm install -g node-red`
 * Nainstaluj si MQTT broker `sudo apt-get install mosquitto mosquitto-clients`
 * Nainstaluj si gateway sloužící pro komunikaci mezi MQTT a jednotkou `sudo apt-get install bc-workroom-gateway`
+
+### Pošli si a přijmi pár testovacích zpráv
+
+#### Rozsvícení diody
+`mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'`
+
+#### Zhasnutí diody
+`mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}'`
+
+#### Zachycení zpráv z Remote jednotky
+`mosquitto_sub -v -t 'nodes/remote/#'`
