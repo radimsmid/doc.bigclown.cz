@@ -41,11 +41,11 @@ to do popis
 
 ### rules (plugin led-strip)
 
-### color (plugin/led-strip)
+### color (plugin led-strip)
 
-### compound (plugin/led-strip)
+### compound (plugin led-strip)
 
-### framebuffer (plugin/led-strip)
+### framebuffer (plugin led-strip)
 
 ### Base Module 
 
