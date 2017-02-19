@@ -14,6 +14,7 @@ Proto jsem připravil tento projekt, který ti pomůže pochopit způsob vytvá�
 A pokud se nechceš trápit psaním, tak ti ukážu bezva nástroj NodeRED, který si kód píše sám.
 
 Ukáži ti, jak:
+
 * Pythonem při překročení nastavené meze rozsvítíme LEDku na Core Module
 * Pes Node RED tweetovat teplotu a vlhkost z bezdrátového čidla
 * Rozblikáme LEDku v případě, když někde ve prší
@@ -32,5 +33,14 @@ Můžeš použít předpřipravené BigClown Raspberry Pi, nebo použij své, po
 #### Předpřipravené Raspberry Pi
 
 Mělo by ti stačit ho aktualizovat a nainstalovat Node-RED těmito příkazy:
-sudo apt-get update && sudo apt-get upgrade
-sudo npm install -g node-red
+
+`sudo apt-get update && sudo apt-get upgrade`
+`sudo npm install -g node-red`
+
+#### Vlastní Raspberry Pi
+
+* Přidej si repozitář BigClown
+* Nainstaluj si aktuální verzi node.js pomocí těchto příkazů `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -` a `sudo apt install -y nodejs`
+* Nainstaluj si Node-RED `sudo npm install -g node-red`
+* Nainstaluj si MQTT broker `sudo apt-get install mosquitto mosquitto-clients`
+* Nainstaluj si gateway sloužící pro komunikaci mezi MQTT a jednotkou `sudo apt-get install bc-workroom-gateway`
