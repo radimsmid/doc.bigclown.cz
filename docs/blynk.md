@@ -3,7 +3,7 @@
 <!-- toc -->
 
 V tomto návodu si ukážeme, jak napojit BigClowní prvky na mobilní aplikaci Blynk.
-Blynk ti umožní ovládat všechny funkce pohodlně ze smartphonu nebo tabletu pomocí grafických widgetů. Tlačítkem tak bůdeš schopen přepnout relé nebo rozsvítit LED pásek, sliderem měnit intenzitu a odstín světla, pomocí grafu zobrazit průběh teploty i dalších veličin.
+Blynk ti umožní ovládat všechny funkce pohodlně ze smartphonu nebo tabletu pomocí grafických widgetů. Tlačítkem tak budeš schopen přepnout relé nebo rozsvítit LED pásek, sliderem měnit intenzitu a odstín světla, pomocí grafu zobrazit průběh teploty i dalších veličin.
 
    ![](images/blynk/blynk-on-mobile.png)
    
@@ -13,7 +13,7 @@ Blynk není jen mobilní aplikace, ale také IoT cloud server, který ti umožn�
 Stačí se přihlásit pod uživatelským účtem.
 Stanice Bigclown si vyměňuje data se serverem i když není mobilní aplikace připojena.
 V aplikaci tak lze např. zobrazit historii naměřené teploty za poslední týden nebo nastavit časový spínač na stanovenou hodinu.
-Blynk nabízí ale i "off-line" možnost, nainstalovat si server lokálně.
+Blynk nabízí ale i "off-line" možnost nainstalovat si server lokálně.
 Sami jsme ale byli překvapení, jak rychlá je odezva při sepnutí relé i při připojení přes vzdálený server.
 Zpoždění je při bežném internetovém připojení takřka nepostřehnutelné!
 Více o Blynku lze nalézt v [oficiální dokumentaci](http://docs.blynk.cc/).
@@ -23,12 +23,12 @@ Více o Blynku lze nalézt v [oficiální dokumentaci](http://docs.blynk.cc/).
 
 ## Potřebné SW/HW vybavení
 * telefon / tablet s OS Android 4.0.3 a vyšší nebo iOS 8.0 a vyšší
-* minimálně jednu pevnou stanici BigClown tvořenou Core Modulem popř dalšími prvky, připojenou k Raspberry Pi nebo jinému Lunuxovému počítači s nainstalovaným SW balíčkem BigClown Hub a připojením k internetu
+* minimálně jednu pevnou stanici BigClown tvořenou Core Modulem popř. dalšími prvky, připojenou k Raspberry Pi nebo jinému Linuxovému počítači s nainstalovaným SW balíčkem BigClown Hub a připojením k internetu
 * samozřejmě lze napojit i další bezdrátové stanice (Nody)
 
 Podrobný postup zapojení prvků BigClown je popsán ve vzorovém projektu [Smart LED Strip](https://doc.bigclown.cz/smart-led-strip.html).
 Kompletní sadu lze také zakoupit ve [zvýhodněném setu](https://obchod.bigclown.cz/products/smart-led-strip-set).
-Tento návod doplňuje vzorový projekt Smart LED strip, slouží také ale jako obecný návod pro všechny ostatní BigClowní projekty s Blynkem.
+Tento návod doplňuje vzorový projekt Smart LED strip, ale slouží také jako obecný návod pro všechny ostatní BigClowní projekty s Blynkem.
 
 ## Instalace a založení účtu v programu Blynk
 
@@ -67,8 +67,8 @@ Stačí se jen přihlásit pod svým uživatelským účtem.
 Widget Button se hodí pro ovládání relé spínání LED pásku nebo aktivaci různých funkcí.
 Tlačítko přidej dotykem na prázdnou plochu v Blynk projektu (popř. ikonou *+Add*). 
 Do nastavení tlačítka vstoupíš dotykem na něj. 
-Lze nastavit, popis, mapování výstupu (viz níže), stavové hodnoty (typicky 0 / 1), dále logiku (PUSH generuje pouze pulz, SWITCH trvale drží stav).
-Lze si také navolit barvu tlačítka a popisky pro stavy *ON* / *OFF*
+Lze nastavit popis, mapování výstupu (viz níže), stavové hodnoty (typicky 0 / 1), dále logiku (PUSH generuje pouze pulz, SWITCH trvale drží stav).
+Lze si také navolit barvu tlačítka a popisky pro stavy *ON* / *OFF*.
 
    ![](images/blynk/blynk-button.png)
    ![](images/blynk/blynk-button-relay-setup.png)   
@@ -78,7 +78,7 @@ Lze si také navolit barvu tlačítka a popisky pro stavy *ON* / *OFF*
    ![](images/blynk/blynk-select-pin-cut.png)
 
 Na tlačítku si ukážeme propojení widgetu se systémem BigClown.
-Spojení mezi Blynkem jednotlivými prvky obstárává blynk-plugin který je součástí linuxových komponent nazvaných BigClown Hub.
+Spojení mezi Blynkem jednotlivými prvky obstarává blynk-plugin který je součástí linuxových komponent nazvaných BigClown Hub.
 Výstup (OUTPUT) lze namapovat na tzv. *Virtual pin* *V0* až *V99*. 
 ve výchozím stavu jsou nastaveny Virtuální Piny následovně:
 
@@ -89,13 +89,14 @@ ve výchozím stavu jsou nastaveny Virtuální Piny následovně:
 |:-----------:| -------------------------------------------- |:--------------:|:--------:|
 | 0           | senzor teploty                               | -40 až 125     | °C       |
 | 1           | senzor relativní vlhkosti                    | 0 až 100       | %        |
-| 2           | intenzita světla LED pásku                   | 0 až 1023*     |          |
+| 2           | intenzita světla LED pásku                   | 0 až 1023      |          |
 | 3           | zapnutí / vypnutí LED pásku                  | 1 / 0          |          |
 | 4           | zapnutí / vypnutí relé                       | 1 / 0          |          |
-| 5           | zeRGBa, volba barvy                          | 0 až 1023*     |          |
+| 5           | zeRGBa, volba barvy                          | 0 až 1023      |          |
 | 6           | Widget Menu: nastavení režimu LED pásku (1)  | 1, 2, 3, 4     |          |
 | 7           | ovládání bílé složky LED pásku               | color          |          |
-| 8-20        | uživatelské předvolby pro tlačítka (2)       | color          |          |
+| 8-20        | uživatelské předvolby pro tlačítka (2)       | color          |          | |
+
 
 (1) 1 = rules, 2 = color, 3 = compound, 4 = framebuffer)
 
@@ -111,16 +112,16 @@ Pro navázání komunikace mezi Blynk projektem a Raspberry Pi, kde běží BigC
    ![](images/blynk/blynk-project-setting-cut.png)
 
 2. Nech si poslat autorizační token na email.
-   *Tip*: Budou-li se zasláním emailu potíže, zkopírujte token do schránky (ikona “Copy all”) a následně si jej pošli např. emailem ručně:
+   *Tip*: Budou-li se zasláním emailu potíže, zkopíruj token do schránky (ikona “Copy all”) a následně si jej pošli např. emailem ručně:
 
    ![](images/blynk/blynk-send-auth-token.png)
 
 3. Připoj se k Raspberry Pi a nastav autorizační token pomocí MQTT příkazu:
-   ...   
+   ```
    mosquitto_pub -t "plugin/blynk/config/set" -m '{"token":"your_token"}' -r
-   ...
+   ```
    
-   **Pozor** závorky uvozující autorizační token jsou součástí příkazu:
+   **Pozor.** Závorky uvozující autorizační token jsou součástí příkazu:
 
   ![](images/blynk/blynk-auth-token.png)
 
@@ -135,7 +136,7 @@ Pro navázání komunikace mezi Blynk projektem a Raspberry Pi, kde běží BigC
   ![](images/blynk/blynk-project-stop-cut.png)
 
 ### První pomoc
-Pokud se po spuštění projektu Blynk vypíše hlášku “Device is offline” zkontroluj:
+Pokud se po spuštění projektu Blynk vypíše hláška “Device is offline” zkontroluj:
 * připojení k internetu svého telefonu nebo tabletu
 * připojení Raspberry Pi k internetu
 * zda jsi zadal správný autorizační token
@@ -156,10 +157,10 @@ Pro regulaci hodnoty ve vetším rozsahu (např. změna intenzity světla), lze 
   ![](images/blynk/Blynk-add-zergba.png)
 
 Widget zeRGBa je ideální pro ovládání RGB složek vícebarevných LED pásků.
-Pro napojení na adressovatelný RGB pásek zvol v nastavení volbu MERGE a namapuj jej na Virtual PIN 5.
-Doporučjeme vypnout volbu *SEND ON RELEASE* (poté je změna barev obnovována průběžně při pohybu po ploše zebry). 
+Pro napojení na adresovatelný RGB pásek zvol v nastavení volbu MERGE a namapuj jej na Virtual PIN 5.
+Doporučujeme vypnout volbu *SEND ON RELEASE* (poté je změna barev obnovována průběžně při pohybu po ploše zebry). 
 
-Poznámka: Rozsahy hodnot pro ovládání LED pásku jsou zvoleny na výchozích 0 až 1023 (blynk-pluginu tyto hodnoty přepočítá na 00 až ff hexa).
+Poznámka: Rozsahy hodnot pro ovládání LED pásku jsou zvoleny na výchozích 0 až 1023 (blynk-plugin tyto hodnoty přepočítá na 00 až ff hexa).
  
   ![](images/blynk/blynk-zergba-setting.png)
 
@@ -174,9 +175,9 @@ Ve vzorovém projektu [Smart LED Strip](https://doc.bigclown.cz/smart-led-strip.
 
   ![](images/blynk/blynk-add-value-display-labeled-value.png)
 
-Oba prvky ti umožňí sledovat aktuální hodnoty ze senzorů. U widgetu Labeled Value (stojí více energie) si lze navíc přidat i jednotku, která se zobrazuje za hodnotou.
+Oba prvky ti umožní sledovat aktuální hodnoty ze senzorů. U widgetu Labeled Value (stojí více energie) si lze navíc přidat i jednotku, která se zobrazuje za hodnotou.
 Nastavit lze název, barvu widgetu, rozsah hodnot a frekvenci čtení. 
-Pokud ji nastavíš na *PUSH*, hodnoty se budou obnovovat automaticky při obdržené dat z jednotek.
+Pokud ji nastavíš na *PUSH*, hodnoty se budou obnovovat automaticky při obdržení dat z jednotek.
 
   ![](images/blynk/blynk-value-dysplay-temperature.png)
 
@@ -185,7 +186,7 @@ Widget History Graph ti umožní sledovat průběhy měřených veličin. V jedn
 
    ![](images/blynk/blynk-history-graph-setting.png)
 
-**Tip** Pro zvětšení plochy grafu stopni projekt, stiskni a drž plochu widgetu a poté ho pohybem roztáhni. Zvětšování plochy widgetů je zatím funkční pouze ve verzi pro Android.
+**Tip.** Pro zvětšení plochy grafu stopni projekt, stiskni a drž plochu widgetu a poté ho pohybem roztáhni. Zvětšování plochy widgetů je zatím funkční pouze ve verzi pro Android.
 
 ## Tab - rozdělení projektu na více záložek
 Pokud se ti všechny prvky nevejdou na jednu plochu, lze ji rozšířit pomocí widgetu *Tab*.
@@ -210,10 +211,10 @@ Pro naklonování existujícího projektu postupuj následovně:
 
    ![](images/blynk/blynk-clone-project-3.png)
 
-    Zkus si naklonovat projekt z vzorového projektu [Smart LED Strip](https://doc.bigclown.cz/smart-led-strip.html)
+    Zkus si naklonovat projekt ze vzorového projektu [Smart LED Strip](https://doc.bigclown.cz/smart-led-strip.html):
    
    ![](images/blynk/blynk-project-smart-led-1-QR.png)
 
-3. Po naklonování nového projektu je nutné aktualizovat autorizační token  v Raspberry Pi (každý projekt je v rámci jednoho účtu identifikován unikátním tokenem).
+3. Po naklonování nového projektu je nutné aktualizovat autorizační token v Raspberry Pi (každý projekt je v rámci jednoho účtu identifikován unikátním tokenem).
 
 
