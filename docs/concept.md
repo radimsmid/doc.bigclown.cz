@@ -12,7 +12,7 @@ A aby ti to dávalo nějaký smysl a zároveň tě to bavilo, tak výsledkem na�
 A kdo z ostatních to má? :- 
 )
 
-## Naše vyjímečnost
+## Naše výjimečnost
 
 V každé přiručce supermanažera jsme se dočetli, že abychom byli úspěšní, tak musíme být unikátní a nejlépe, aby na celém světě nebyl nikdo stejný...
 My jsme se soustředili hlavně na vývoj a výrobu, ale tady je náš mix vlastností, který nás dělá světově unikátním :-)
@@ -46,6 +46,8 @@ My jsme chtěli něco víc kompaktního, něco, co má na sobě ARM procesor, r�
 **Core Module je špičkově vybaven a je schopen zvládnout téměř všechny potřeby kladené na domácí automatizaci.**
 Je osazen výkonným ARM mikrokontrolérem Cortex M0+, rádiovým čipem SIPIRIT 1 komunikujícícm v pásmu 868 MHz, najdeš na něm také teplotní senzor, akcelerometr, kryptočip, USBčko, standardní debuggovací konektor, LEDku a tlačítko.
 Prostě obrázek mluví za vše... ;-)
+
+![](images/core-module/core-module.png)
 
 #### Firmware Core modulu
 
