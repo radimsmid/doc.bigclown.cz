@@ -44,14 +44,14 @@
 
 * [Core Module SDK](http://sdk.bigclown.com)
 
-* [I²C Adresní prostor](i2c-prostor.md)
+* [I²C Adresní prostor](i2c-space.md)
 
 
 ## Vzorové projekty
 
 * [Smart LED Strip](smart-led-strip.md)
 
-* [Jednoduché programování domácí automatizace](jednoduche-programovani-domaci-automatizace.md)
+* [Jednoduché programování domácí automatizace](easy-programming.md)
 
 * [Tweetovací zvonek](tweetovaci-zvonek.md)
 
