@@ -57,6 +57,8 @@ Stačí se jen přihlásit pod svým uživatelským účtem.
 **Pozor**, za widgety, které přidáte na pracovní plochu telefonu se energie po jejich odstranění již nevrací!
 
    ![](images/blynk/blynk-add-widget-1.png)
+   ![](images/blynk/blynk-add-widget-2.png)
+   ![](images/blynk/blynk-add-widget-3.png)
 
 ## Tlačítko
 
