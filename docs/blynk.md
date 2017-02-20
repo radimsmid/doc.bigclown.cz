@@ -72,10 +72,14 @@ Lze si také navolit barvu tlačítka a popisky pro stavy *ON* / *OFF*
    ![](images/blynk/blynk-button-relay-setup.png)   
 
 ## Napojení widgetu na prvky BigClown
+
+   ![](images/blynk/blynk-select-pin-cut.png)
+
 Na tlačítku si ukážeme propojení widgetu se systémem BigClown.
 Spojení mezi Blynkem jednotlivými prvky obstárává blynk-plugin který je součástí linuxových komponent nazvaných BigClown Hub.
 Výstup (OUTPUT) lze namapovat na tzv. *Virtual pin* *V0* až *V99*. 
 ve výchozím stavu jsou nastaveny Virtuální Piny následovně:
+
 
 ### Výchozí mapování Virtul Pinů v blynk-pluginu:
 
@@ -145,7 +149,7 @@ Pro regulaci hodnoty ve vetším rozsahu (např. změna intenzity světla), lze 
   ![](images/blynk/blynk-slider-brightness-setting.png)    
 
  
-## ZeRGBa 
+## zeRGBa - ovládání RGB složek
 
   ![](images/blynk/Blynk-add-zergba.png)
 
@@ -164,7 +168,7 @@ Ve vzorovém projektu [Smart LED Strip](https://doc.bigclown.cz/smart-led-strip.
 
   ![](images/blynk/blynk-menu-setting.png)
 
-## Value Display a Labeled Value
+## Value Display a Labeled Value - četní hodnot
 
   ![](images/blynk/blynk-add-value-display-labeled-value.png)
 
@@ -173,3 +177,19 @@ Nastavit lze název, barvu widgetu, rozsah hodnot a frekvenci čtení.
 Pokud ji nastavíš na *PUSH*, hodnoty se budou obnovovat automaticky při obdržené dat z jednotek.
 
   ![](images/blynk/blynk-value-dysplay-temperature.png)
+
+## History Graph - průběhy veličin
+Widget History Graph ti umožní sledovat průběhy měřených veličin. V jednom grafu můžeš zobrazit až čtyři různé veličiny. Nastavit lze automatický nebo uživatelský rozsah v ose y, zobrazení legendy a časovou osu. 
+
+   ![](images/blynk/blynk-history-graph-setting.png)
+
+**Tip** Pro zvětšení plochy grafu stopni projekt, stiskni a drž plochu widgetu a poté ho pohybem roztáhni. Zvětšování plochy widgetů je zatím funkční pouze ve verzi pro Android.
+
+## Tab - rozdělení projektu na více záložek
+Pokud se ti všechny prvky nevejdou na jednu plochu, lze ji rozšířit pomocí widgetu *Tab*.
+
+   ![](images/blynk/blynk-tab-setting.png)
+
+## Rychlé naklonování projektu
+
+to do
