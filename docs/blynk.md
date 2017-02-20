@@ -5,7 +5,7 @@
 V tomto návodu si ukážeme, jak napojit BigClowní prvky na mobilní aplikaci Blynk.
 Blynk ti umožní ovládat všechny funkce pohodlně ze smartphonu nebo tabletu pomocí grafických widgetů. Tlačítkem tak bůdeš schopen přepnout relé nebo rozsvítit LED pásek, sliderem měnit intenzitu a odstín světla, pomocí grafu zobrazit průběh teploty i dalších veličin.
 
-   ![](images/blynk/blynk_on_mobile.png)
+   ![](images/blynk/blynk-on-mobile.png)
    
 ## Jak funguje Blynk
 
@@ -122,7 +122,7 @@ Pro navázání komunikace mezi Blynk projektem a Raspberry Pi, kde běží BigC
    
    **Pozor** závorky uvozující autorizační token jsou součástí příkazu:
 
-  ![](images/blynk/blynk_auth_token.png)
+  ![](images/blynk/blynk-auth-token.png)
 
   Poznámka: parametr -r (remain) v MQTT zaručí, že se nastavení uchová i po restartu Raspberry P
 
@@ -194,4 +194,26 @@ Pokud se ti všechny prvky nevejdou na jednu plochu, lze ji rozšířit pomocí 
 
 ## Rychlé naklonování projektu
 
-to do
+Blynk umožňuje sdílet vytvořené projekty  pomocí QR kódu.
+
+Pro vytvoření QR kódu s klonem projektu stiskni *Clone* v menu nastavení:
+
+   ![](images/blynk/blynk-clone-project-1.png)
+
+Pro naklonování existujícího projektu postupuj následovně:
+
+1. Stopni projekt a ujisti se, že máš dostatek volné energie:
+   
+   ![](images/blynk/blynk-clone-project-2.png)
+
+2. Stiskni horní pravé tlačítko a naskenujte QR kód vybraného projektu:
+
+   ![](images/blynk/blynk-clone-project-3.png)
+
+    Zkus si naklonovat projekt z vzorového projektu [Smart LED Strip](https://doc.bigclown.cz/smart-led-strip.html)
+   
+   ![](images/blynk/blynk-project-smart-led-1-QR.png)
+
+3. Po naklonování nového projektu je nutné aktualizovat autorizační token  v Raspberry Pi (každý projekt je v rámci jednoho účtu identifikován unikátním tokenem).
+
+
