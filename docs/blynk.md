@@ -78,11 +78,8 @@ Lze si také navolit barvu tlačítka a popisky pro stavy *ON* / *OFF*.
 
 Na tlačítku si ukážeme propojení widgetu se systémem BigClown.
 Spojení mezi Blynkem a jednotlivými prvky obstarává blynk-plugin který je součástí SW balíčku BigClown Hub.
-Výstup (OUTPUT) lze namapovat na tzv. *Virtual Pin* *V0* až *V99*. Pro konkrétní hodnoty najdeš vždy u vzorových projektů
+Výstup (OUTPUT) lze namapovat na tzv. *Virtual Pin* *V0* až *V99*. Konkrétní hodnoty najdeš vždy u vzorových projektů
 Např. v projektu Smart LED strip jsou Virtuální Piny přiřazeny následovně:
-
-
-### Mapování Virtul Pinů v blynk-pluginu pro projekt Smart LED Strip:
 
 | Virtual PIN | Popis                                        | Rozsah         | Jednotka |
 |:-----------:| -------------------------------------------- |:--------------:|:--------:|
