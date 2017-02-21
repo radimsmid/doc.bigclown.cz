@@ -31,6 +31,7 @@
 
   * [Tlačítko a instance](sdk_tutorial/tlacitko-a-instance.md)
 
+  * [Digitální LED pásek](sdk_tutorial/akcelerometr-a-led-pasek.md)
 
 ## Hardware
 
