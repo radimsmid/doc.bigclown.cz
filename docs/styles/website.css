@@ -3020,11 +3020,16 @@ input[type="email"] {
       height: 7.029000000000001em;
   }
 
-
-
-
   .icon.logo-red:before {
       background-position: 0em -203.2em;
       width: 6.349em;
       height: 1.302em;
+  }
+  .summary li:first-child{
+    display: none;
+  }
+  .table-container{
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
   }
