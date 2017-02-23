@@ -197,3 +197,5 @@ Možná je to trochu mimo, ale ukazuje to na nekonečné možnosti dnešní dom�
 ![](images/easy-programming/dashboard.png)
 
 ![](images/easy-programming/pocasi.png)
+
+![](images/easy-programming/ui.png)
