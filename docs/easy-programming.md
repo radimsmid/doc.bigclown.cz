@@ -17,7 +17,7 @@ Ukáži ti, jak:
 
 * Pythonem při překročení nastavené meze rozsvítíme LEDku na Core Module
 * Pes Node RED tweetovat teplotu a vlhkost z bezdrátového čidla
-* Rozblikáme LEDku v případě, když někde ve prší
+* Rozblikáme LEDku v případě, když někde ve světě prší
 * Pomocí pluginu do Node RED si zobrazíme měřená data
 
 ## Jak na to...
@@ -34,16 +34,58 @@ Můžeš použít předpřipravené BigClown Raspberry Pi, nebo použij své, po
 
 Mělo by ti stačit ho aktualizovat a nainstalovat Node-RED těmito příkazy:
 
-`sudo apt-get update && sudo apt-get upgrade`
-`sudo npm install -g node-red`
+  `sudo apt-get update && sudo apt-get upgrade`
+  `sudo npm install -g node-red`
 
 #### Vlastní Raspberry Pi
 
 * Přidej si repozitář BigClown
-* Nainstaluj si aktuální verzi node.js pomocí těchto příkazů `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -` a `sudo apt install -y nodejs`
+* Nainstaluj si aktuální verzi node.js pomocí těchto příkazů 
+
+  `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`
+
+  `sudo apt install -y nodejs`
+
 * Nainstaluj si Node-RED `sudo npm install -g node-red`
 * Nainstaluj si MQTT broker `sudo apt-get install mosquitto mosquitto-clients`
-* Nainstaluj si gateway sloužící pro komunikaci mezi MQTT a jednotkou `sudo apt-get install bc-workroom-gateway`
+* Nainstaluj si gateway sloužící pro komunikaci mezi MQTT a jednotkou 
+
+  `sudo apt-get install bc-workroom-gateway`
+
+
+Připoj se na raspberry.
+
+### Firmware
+
+Je dobré mít vždy vše aktuální, takže si zaktualizujeme firmware, můžeš k tomu použít vlastní počítač pak postupuj dle návodu [zde](https://doc.bigclown.cz/core-module-flashing.html), nebo k tomu využít Raspberry jako já.
+
+#### Aktualizace přes raspberry
+
+* Nainstaluj si nástroj pro aktualizaci 
+
+  `sudo apt-get install dfu-util`
+
+* Stáhni si aktuální firmware
+
+  `wget "https://docs.google.com/uc?export=download&id=0B5pXL_JAACMvVkNRT2dPd1VJRlE" -O bc-workroom-remote.binary`
+
+  `wget "https://docs.google.com/uc?export=download&id=0B5pXL_JAACMvM284WW9sSFNCWkE" -O bc-workroom-base.binary`
+
+* Přečti si co je dfu mod [zde](https://doc.bigclown.cz/core-module-flashing.html#nahrávání-programu-přes-usb-dfu-bootloader)
+
+* Připoj jednotku Remote a přepni jí do dfu módu a nahraj nový firmware
+
+  `sudo dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D bc-workroom-remote.binary`
+
+* A teď to samé s Base
+
+  `sudo dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D bc-workroom-base.binary`
+  
+### Párování Base s Remote
+
+* Podrž pravé tlačítko na Base dokud nezačne dioda blikat
+* Podrž pravé tlačítko na Remote dokud nezačne dioda blikat
+* Skus klikat na Remote na Base by měla podle toho svítit či nesvítit dioda
 
 ### Pošli si a přijmi pár testovacích zpráv
 
@@ -66,6 +108,50 @@ Mělo by ti stačit ho aktualizovat a nainstalovat Node-RED těmito příkazy:
 ### Napiš si v Pythonu jednoduchý skript
 
 Napiš si v Pythonu skript, který přijme přes MQTT data z bezdrátového čidla teploty a vlhkosti a rozsvítí LEDku, když jedna z hodnot přeleze nastavenou mez.
+  
+```python
+#!/usr/bin/env python3
+import json
+import paho.mqtt.client as mqtt
+
+def on_connect(client, userdata, flags, rc):
+    print('Connected to MQTT broker (code %s)', rc)
+
+    for topic in ('nodes/remote/thermometer/i2c0-49', 'nodes/remote/humidity-sensor/i2c0-40'):
+        print('subscribe %s', topic)
+        client.subscribe(topic)
+
+def on_message(client, userdata, msg):
+    payload = json.loads(msg.payload.decode('utf-8'))
+
+    print(msg.topic, payload)
+
+    if msg.topic == 'nodes/remote/thermometer/i2c0-49':
+        userdata['temperature'] = payload['temperature'][0]
+
+    if msg.topic == 'nodes/remote/humidity-sensor/i2c0-40':
+        userdata['relative-humidity'] = payload['relative-humidity'][0]
+
+    state = False
+    if userdata['temperature'] > 20 or userdata['relative-humidity'] > 30:
+        state = True
+
+    client.publish('nodes/base/light/-/set', json.dumps({'state': state}))
+
+def main():
+    userdata = {'temperature': 0, 'relative-humidity': 0}
+    client = mqtt.Client(userdata = userdata)
+    client.on_connect = on_connect
+    client.on_message = on_message
+
+    client.connect('localhost', keepalive=10)
+
+    client.loop_forever()
+
+
+if __name__ == '__main__':
+    main()
+```
 
 ### Pomocí Node-RED zatvítuj teplotu a vlhkost
 
@@ -75,24 +161,34 @@ Napiš si v Pythonu skript, který přijme přes MQTT data z bezdrátového čid
 2. V prohlížeči si otevři novou záložku a zadej URL **http://ip-tveho-raspberry:1880**
 
 3. Vpravo nahoře klikni na menu > import > clipboard a vlož následující text:
-[{"id":"92298281.d0ca5","type":"tab","label":"Twitter(Teplota a vlhkost)"},{"id":"2d1d3d32.b2d7d2","type":"mqtt in","z":"92298281.d0ca5","name":"thermometer","topic":"nodes/remote/thermometer/+","qos":"2","broker":"fc8241ff.e69d68","x":133.5,"y":103,"wires":[["65e5412e.ef424"]]},{"id":"2d5a3b21.61043c","type":"function","z":"92298281.d0ca5","name":"text","func":"var text = \"teplota: \" + \nmsg.payload[\"temperature\"][0] + \nmsg.payload[\"temperature\"][1] + \n\" vlhkost: \" +\nmsg.payload[\"relative-humidity\"][0] +\nmsg.payload[\"relative-humidity\"][1];\n\nmsg.payload = text;\nreturn msg;","outputs":1,"noerr":0,"x":747.5,"y":176,"wires":[["8ec0d340.85b338","557fae8c.a8c028"]]},{"id":"8ec0d340.85b338","type":"debug","z":"92298281.d0ca5","name":"","active":true,"console":"false","complete":"payload","x":994,"y":88,"wires":[]},{"id":"557fae8c.a8c028","type":"twitter out","z":"92298281.d0ca5","twitter":"","name":"Tweet","x":990.5,"y":267,"wires":[]},{"id":"742fb418.b09dfc","type":"join","z":"92298281.d0ca5","name":"","mode":"custom","build":"merged","property":"payload","propertyType":"msg","key":"topic","joiner":"\\n","timeout":"5","count":"2","x":417.5,"y":179,"wires":[["17ff364d.4d7c82"]]},{"id":"2448519.8315d2e","type":"mqtt in","z":"92298281.d0ca5","name":"humidity-sensor","topic":"nodes/remote/humidity-sensor/+","qos":"2","broker":"fc8241ff.e69d68","x":120.5,"y":262,"wires":[["221f12cf.db5476"]]},{"id":"65e5412e.ef424","type":"json","z":"92298281.d0ca5","name":"","x":272.5,"y":151,"wires":[["742fb418.b09dfc"]]},{"id":"221f12cf.db5476","type":"json","z":"92298281.d0ca5","name":"","x":266.5,"y":206,"wires":[["742fb418.b09dfc"]]},{"id":"17ff364d.4d7c82","type":"delay","z":"92298281.d0ca5","name":"","pauseType":"rate","timeout":"5","timeoutUnits":"seconds","rate":"1","nbRateUnits":"5","rateUnits":"minute","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":true,"x":576.5,"y":226,"wires":[["2d5a3b21.61043c"]]},{"id":"fc8241ff.e69d68","type":"mqtt-broker","z":"","broker":"localhost","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"30","cleansession":true,"willTopic":"","willQos":"0","willPayload":"","birthTopic":"","birthQos":"0","birthPayload":""}]
+
+  ```javascript
+  [{"id":"92298281.d0ca5","type":"tab","label":"Twitter(Teplota a vlhkost)"},{"id":"2d1d3d32.b2d7d2","type":"mqtt in","z":"92298281.d0ca5","name":"thermometer","topic":"nodes/remote/thermometer/+","qos":"2","broker":"fc8241ff.e69d68","x":110,"y":100,"wires":[["65e5412e.ef424"]]},{"id":"2d5a3b21.61043c","type":"function","z":"92298281.d0ca5","name":"text","func":"var text = \"Kancelář\";\n\nif (msg.payload[\"temperature\"]) {\n    text += \" teplota: \" + \n    msg.payload[\"temperature\"][0] + \n    msg.payload[\"temperature\"][1] ;\n}\n\nif (msg.payload[\"relative-humidity\"]) {\n    text += \" vlhkost: \" +\n    msg.payload[\"relative-humidity\"][0] +\n    msg.payload[\"relative-humidity\"][1];\n}\n\nmsg.payload = text;\nreturn msg;","outputs":1,"noerr":0,"x":790,"y":160,"wires":[["8ec0d340.85b338","557fae8c.a8c028"]]},{"id":"8ec0d340.85b338","type":"debug","z":"92298281.d0ca5","name":"","active":true,"console":"false","complete":"true","x":970,"y":220,"wires":[]},{"id":"557fae8c.a8c028","type":"twitter out","z":"92298281.d0ca5","twitter":"","name":"Tweet","x":970,"y":160,"wires":[]},{"id":"742fb418.b09dfc","type":"join","z":"92298281.d0ca5","name":"","mode":"custom","build":"merged","property":"payload","propertyType":"msg","key":"topic","joiner":"\\n","timeout":"5","count":"2","x":450,"y":160,"wires":[["17ff364d.4d7c82"]]},{"id":"2448519.8315d2e","type":"mqtt in","z":"92298281.d0ca5","name":"humidity-sensor","topic":"nodes/remote/humidity-sensor/+","qos":"2","broker":"fc8241ff.e69d68","x":100,"y":240,"wires":[["221f12cf.db5476"]]},{"id":"65e5412e.ef424","type":"json","z":"92298281.d0ca5","name":"","x":250,"y":100,"wires":[["742fb418.b09dfc"]]},{"id":"221f12cf.db5476","type":"json","z":"92298281.d0ca5","name":"","x":250,"y":240,"wires":[["742fb418.b09dfc"]]},{"id":"17ff364d.4d7c82","type":"delay","z":"92298281.d0ca5","name":"","pauseType":"rate","timeout":"5","timeoutUnits":"seconds","rate":"1","nbRateUnits":"15","rateUnits":"minute","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":true,"x":620,"y":160,"wires":[["2d5a3b21.61043c"]]},{"id":"fc8241ff.e69d68","type":"mqtt-broker","z":"","broker":"localhost","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"30","cleansession":true,"willTopic":"","willQos":"0","willPayload":"","birthTopic":"","birthQos":"0","birthPayload":""}]
+```
 
 Tímto jsi naimportoval flow, který každých 5 minut tvítne zprávu o teplotě a vlhkosti.
 
-### Pomocí Node-RED budeme blikat LEDkou, pokud bude v Londýně pršet
-Možná je to trochu mimo, ale ukazuje to na nekonečné možnosti dnešní domácí automatizace :-)
-
-1. Doinstaluj si **openweathermap** `sudo npm install -g node-red-node-openweathermap`
-
-2. Zaregistruj se na **https://openweathermap.org/appid** a získej **api key**, který vlož do komponenty openweathermap, nastav město na **London** a zemi na **GB**
-
-3. Naprogramuj funkci, která otestuje zda v Londýně prší a rozbliká LED na Base jednotce
-
-
 ### Pomocí Node-RED si graficky zobraz naměřená data
 
-1. Doinstaluj si `sudo npm install -g node-red-vis`
+* Doinstaluj si `sudo npm install -g node-red-dashboard`
 
-2. V prohlížeči si otevři novou záložku a zadej URL **http://ip-tveho-raspberry:1880/vis/edit.html**
+* Vpravo nahoře klikni na menu > import > clipboard, překliknout na new flow a vlož následující text:
 
-3. Podívej se na grafické zobrazení naměřených hodnot **http://ip-tveho-raspberry:1880/vis/**
+  ```javascript
+  [{"id":"374dd21f.fd4c7e","type":"tab","label":"Dashboard"},{"id":"9afb76b1.23b218","type":"function","z":"374dd21f.fd4c7e","name":"relative-humidity","func":"msg.payload = JSON.parse(msg.payload);\nif (!msg.payload[\"relative-humidity\"]) return;\nmsg.payload = msg.payload[\"relative-humidity\"][0]\nreturn msg;","outputs":1,"noerr":0,"x":360,"y":180,"wires":[["ddbbf7fd.bddbf8","d22890b7.39829"]]},{"id":"f9d7b6c7.66c898","type":"function","z":"374dd21f.fd4c7e","name":"temperature","func":"msg.payload = JSON.parse(msg.payload);\nif (!msg.payload[\"temperature\"]) return;\nmsg.payload = msg.payload[\"temperature\"][0]\nreturn msg;","outputs":1,"noerr":0,"x":350,"y":100,"wires":[["726bcafb.0f5814","a36a4bff.393538"]]},{"id":"ddbbf7fd.bddbf8","type":"ui_gauge","z":"374dd21f.fd4c7e","name":"","group":"d5b24428.bc1088","order":0,"width":0,"height":0,"gtype":"gage","title":"","label":"%","format":"{{value}}","min":0,"max":"100","colors":["#00b500","#e6e600","#ca3838"],"x":650,"y":160,"wires":[]},{"id":"d22890b7.39829","type":"ui_chart","z":"374dd21f.fd4c7e","name":"","group":"d5b24428.bc1088","order":0,"width":0,"height":0,"label":"","chartType":"line","legend":"false","xformat":"HH:mm:ss","interpolate":"linear","nodata":"","ymin":"1","ymax":"100","removeOlder":1,"removeOlderPoints":"","removeOlderUnit":"604800","cutout":0,"colors":["#1f77b4","#aec7e8","#ff7f0e","#2ca02c","#98df8a","#d62728","#ff9896","#9467bd","#c5b0d5"],"x":650,"y":200,"wires":[[],[]]},{"id":"726bcafb.0f5814","type":"ui_gauge","z":"374dd21f.fd4c7e","name":"","group":"4f2bc493.ffa5fc","order":0,"width":0,"height":0,"gtype":"donut","title":"","label":"units","format":"{{value}}","min":"-20","max":"100","colors":["#00b500","#e6e600","#ca3838"],"x":650,"y":80,"wires":[]},{"id":"a36a4bff.393538","type":"ui_chart","z":"374dd21f.fd4c7e","name":"","group":"4f2bc493.ffa5fc","order":0,"width":0,"height":0,"label":"","chartType":"line","legend":"false","xformat":"HH:mm:ss","interpolate":"linear","nodata":"","ymin":"","ymax":"","removeOlder":1,"removeOlderPoints":"","removeOlderUnit":"604800","cutout":0,"colors":["#1f77b4","#aec7e8","#ff7f0e","#2ca02c","#98df8a","#d62728","#ff9896","#9467bd","#c5b0d5"],"x":650,"y":120,"wires":[[],[]]},{"id":"bb3d38f1.b52118","type":"mqtt in","z":"374dd21f.fd4c7e","name":"thermometer","topic":"nodes/remote/thermometer/+","qos":"2","broker":"fc8241ff.e69d68","x":110,"y":100,"wires":[["f9d7b6c7.66c898"]]},{"id":"22fc1811.50e798","type":"mqtt in","z":"374dd21f.fd4c7e","name":"humidity-sensor","topic":"nodes/remote/humidity-sensor/+","qos":"2","broker":"fc8241ff.e69d68","x":120,"y":180,"wires":[["9afb76b1.23b218"]]},{"id":"9743d089.910a2","type":"mqtt in","z":"374dd21f.fd4c7e","name":"led","topic":"nodes/base/light/-","qos":"2","broker":"fc8241ff.e69d68","x":90,"y":260,"wires":[["72ac25fe.5e788c"]]},{"id":"72ac25fe.5e788c","type":"function","z":"374dd21f.fd4c7e","name":"state","func":"msg.payload = JSON.parse(msg.payload)[\"state\"];\nmsg.topic = \"nodes/base/light\";\nreturn msg;","outputs":1,"noerr":0,"x":330,"y":260,"wires":[["6e0a84f3.eb41fc"]]},{"id":"6e0a84f3.eb41fc","type":"ui_switch","z":"374dd21f.fd4c7e","name":"","label":"Led","group":"497f7863.2a9dd8","order":0,"width":0,"height":0,"passthru":true,"topic":"","style":"","onvalue":"true","onvalueType":"bool","onicon":"","oncolor":"","offvalue":"false","offvalueType":"bool","officon":"","offcolor":"","x":650,"y":240,"wires":[["ec03a7b3.144968"]]},{"id":"ec03a7b3.144968","type":"function","z":"374dd21f.fd4c7e","name":"{state: msg.payload}","func":"msg.payload = {state: msg.payload}\nreturn msg;","outputs":1,"noerr":0,"x":900,"y":260,"wires":[["db2322ee.709bc"]]},{"id":"db2322ee.709bc","type":"mqtt out","z":"374dd21f.fd4c7e","name":"led set","topic":"nodes/base/light/-/set","qos":"","retain":"","broker":"fc8241ff.e69d68","x":1130,"y":260,"wires":[]},{"id":"d5b24428.bc1088","type":"ui_group","z":"","name":"Vlhkost","tab":"663e87fd.e4e8d8","order":1,"disp":true,"width":"6"},{"id":"4f2bc493.ffa5fc","type":"ui_group","z":"","name":"Teplota","tab":"663e87fd.e4e8d8","order":2,"disp":true,"width":"6"},{"id":"fc8241ff.e69d68","type":"mqtt-broker","z":"","broker":"localhost","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"30","cleansession":true,"willTopic":"","willQos":"0","willPayload":"","birthTopic":"","birthQos":"0","birthPayload":""},{"id":"497f7863.2a9dd8","type":"ui_group","z":"","name":"Base","tab":"663e87fd.e4e8d8","order":3,"disp":true,"width":"6"},{"id":"663e87fd.e4e8d8","type":"ui_tab","z":"","name":"Kancl","icon":"dashboard"}]
+```
+
+* Podívej se na grafické zobrazení naměřených hodnot **http://ip-tveho-raspberry:1880/ui**
+
+### Pomocí Node-RED zablikáme LEDkou, pokud začne v Londýně pršet a zároveň si informaci o počasí zobrazíme do ui
+Možná je to trochu mimo, ale ukazuje to na nekonečné možnosti dnešní domácí automatizace :-)
+
+* Doinstaluj si **openweathermap** `sudo npm install -g node-red-node-openweathermap`
+
+* Zaregistruj se na **https://openweathermap.org/appid** a získej **api key**, který vlož do komponenty openweathermap, nastav město na **London** a zemi na **GB**
+
+* Vpravo nahoře klikni na menu > import > clipboard, překliknout na new flow a vlož následující text:
+  ```javascript 
+{"id":"e72e5e5c.0d2bc","type":"tab","label":"Počasí"},{"id":"2bc6a772.07e128","type":"openweathermap in","z":"e72e5e5c.0d2bc","name":"","lon":"","lat":"","city":"London","country":"UK","language":"en","x":180,"y":120,"wires":[["40be2a63.8a72f4","d5f0d2ef.066ea","5ab2a431.0d3c6c"]]},{"id":"40be2a63.8a72f4","type":"function","z":"e72e5e5c.0d2bc","name":"prsi?","func":"return {topic:\"prsi\", \npayload: msg.payload.weather == \"Rain\"};","outputs":1,"noerr":0,"x":510,"y":220,"wires":[["d5f0d2ef.066ea","4a53c279.bb0ffc","fc86f110.87b1f"]]},{"id":"d5f0d2ef.066ea","type":"debug","z":"e72e5e5c.0d2bc","name":"","active":true,"console":"false","complete":"true","x":750,"y":200,"wires":[]},{"id":"5ab2a431.0d3c6c","type":"ui_template","z":"e72e5e5c.0d2bc","group":"5c9f8529.e22d0c","name":"widget na ui","order":0,"width":"6","height":"3","format":"<div>\n    <img ng-src=\"http://openweathermap.org/img/w/{{msg.data.weather[0].icon}}.png\" />\n    {{msg.payload.description}}\n</div>\n","storeOutMessages":true,"fwdInMessages":true,"x":770,"y":40,"wires":[[]]},{"id":"4a53c279.bb0ffc","type":"ui_switch","z":"e72e5e5c.0d2bc","name":"","label":"prší ?","group":"5c9f8529.e22d0c","order":0,"width":0,"height":0,"passthru":true,"topic":"","style":"","onvalue":"true","onvalueType":"bool","onicon":"","oncolor":"","offvalue":"false","offvalueType":"bool","officon":"","offcolor":"","x":750,"y":100,"wires":[[]]},{"id":"53170763.536f68","type":"inject","z":"e72e5e5c.0d2bc","name":"Testovací tlačítko","topic":"","payload":"true","payloadType":"bool","repeat":"","crontab":"","once":false,"x":360,"y":360,"wires":[["fc86f110.87b1f"]]},{"id":"211f12d5.f9ca8e","type":"mqtt out","z":"e72e5e5c.0d2bc","name":"led set","topic":"nodes/base/light/-/set","qos":"","retain":"","broker":"fc8241ff.e69d68","x":1010,"y":360,"wires":[]},{"id":"fc86f110.87b1f","type":"function","z":"e72e5e5c.0d2bc","name":"generátor pulzů","func":"if (msg.payload === false) return;\n\nif (msg.cnt == undefined) {\n    msg.cnt = 20;\n}\nif (msg.cnt < 0) return;\nmsg.cnt--;\nmsg.payload = {state: msg.cnt % 2 == 0}\nreturn msg;","outputs":1,"noerr":0,"x":780,"y":360,"wires":[["5056d513.2a21cc","211f12d5.f9ca8e"]]},{"id":"5056d513.2a21cc","type":"delay","z":"e72e5e5c.0d2bc","name":"","pauseType":"delay","timeout":"500","timeoutUnits":"milliseconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"x":770,"y":500,"wires":[["fc86f110.87b1f"]]},{"id":"5c9f8529.e22d0c","type":"ui_group","z":"","name":"London","tab":"663e87fd.e4e8d8","order":4,"disp":true,"width":"6"},{"id":"fc8241ff.e69d68","type":"mqtt-broker","z":"","broker":"localhost","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"30","cleansession":true,"willTopic":"","willQos":"0","willPayload":"","birthTopic":"","birthQos":"0","birthPayload":""},{"id":"663e87fd.e4e8d8","type":"ui_tab","z":"","name":"Kancl","icon":"dashboard"}]
+```
+
