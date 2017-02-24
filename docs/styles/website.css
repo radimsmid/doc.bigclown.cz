@@ -3025,9 +3025,12 @@ input[type="email"] {
       width: 6.349em;
       height: 1.302em;
   }
-  .summary li:first-child{
+
+  .custom-link {
     display: none;
   }
+
+
   .table-container{
     width: 100%;
     overflow: hidden;
