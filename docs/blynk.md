@@ -78,7 +78,7 @@ Lze si také navolit barvu tlačítka a popisky pro stavy *ON* / *OFF*.
 
 Na tlačítku si ukážeme propojení widgetu se systémem BigClown.
 Spojení mezi Blynkem a jednotlivými prvky obstarává blynk-plugin který je součástí SW balíčku BigClown Hub.
-Výstup (OUTPUT) lze namapovat na tzv. *Virtual Pin* *V0* až *V99*. Konkrétní hodnoty najdeš vždy u vzorových projektů
+Výstup (*OUTPUT*) lze namapovat na tzv. *Virtual Pin* *V0* až *V99*. Konkrétní hodnoty najdeš vždy u vzorových projektů
 Např. v projektu Smart LED strip jsou Virtuální Piny přiřazeny následovně:
 
 | Virtual PIN | Popis                                        | Rozsah         | Jednotka |
@@ -89,14 +89,15 @@ Např. v projektu Smart LED strip jsou Virtuální Piny přiřazeny následovně
 | 3           | zapnutí / vypnutí LED pásku                  | 1 / 0          |          |
 | 4           | zapnutí / vypnutí relé                       | 1 / 0          |          |
 | 5           | zeRGBa, volba barvy                          | 0 až 1023      |          |
-| 6           | Widget Menu: nastavení režimu LED pásku (1)  | 1, 2, 3, 4     |          |
-| 7           | ovládání bílé složky LED pásku               | color          |          |
-| 8-20        | uživatelské předvolby pro tlačítka (2)       | color          |          |
+| 6           | Widget Menu: nastavení režimu LED pásku      | 1, 2, 3, 4     |          |
+| 7           | ovládání bílé složky LED pásku               | 0 až 1023      |          |
+| 8-20        | uživatelské předvolby pro tlačítka           | color          |          |
+
 
 ## Spárování Blynk projektu s BigClownem
 
 Pro jednoznačnou identifikaci Blynk projektu slouží autorizační token.
-Token si vygeneruje v Blynku a zadej ho v připojeném Raspberry Pi, kde běží BigClown Hub.
+Token si vygeneruj v Blynku a zadej pomocí ssh v Raspberry Pi, kde běží BigClown Hub.
 Postupu dle kroků:
 
 1. Vstup do nastavení projektu:
@@ -110,7 +111,7 @@ Postupu dle kroků:
 
 3. Připoj se k Raspberry Pi a nastav autorizační token pomocí MQTT příkazu:
    ```
-   mosquitto_pub -t "plugin/blynk/config/set" -m '{"token":"your_token"}' -r
+   mosquitto_pub -t "plugin/blynk/config/set" -m '{"token":"your_token"}' *-r*
    ```
    
    **Pozor.** Závorky uvozující autorizační token jsou součástí příkazu:
