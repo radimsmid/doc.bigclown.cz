@@ -52,14 +52,14 @@ Mělo by ti stačit ho aktualizovat a nainstalovat Node-RED těmito příkazy:
 
   `sudo apt-get install bc-workroom-gateway`
 
+Připoj se na Raspberry Pi.
 
-Připoj se na raspberry.
 
 ### Firmware
 
 Je dobré mít vždy vše aktuální, takže si zaktualizujeme firmware, můžeš k tomu použít vlastní počítač pak postupuj dle návodu [zde](https://doc.bigclown.cz/core-module-flashing.html), nebo k tomu využít Raspberry jako já.
 
-#### Aktualizace přes raspberry
+#### Aktualizace přes Raspberry Pi
 
 * Nainstaluj si nástroj pro aktualizaci
 
@@ -71,13 +71,13 @@ Je dobré mít vždy vše aktuální, takže si zaktualizujeme firmware, může�
 
   `wget "https://docs.google.com/uc?export=download&id=0B5pXL_JAACMvM284WW9sSFNCWkE" -O bc-workroom-base.binary`
 
-* Přečti si co je dfu mod [zde](https://doc.bigclown.cz/core-module-flashing.html#nahrávání-programu-přes-usb-dfu-bootloader)
+* Přečti si co je dfu mód [zde](https://doc.bigclown.cz/core-module-flashing.html#nahrávání-programu-přes-usb-dfu-bootloader)
 
-* Připoj jednotku Remote a přepni jí do dfu módu a nahraj nový firmware
+* Připoj jednotku Remote, přepni jí do dfu módu a nahraj nový firmware
 
   `sudo dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D bc-workroom-remote.binary`
 
-* A teď to samé s Base
+* Proveď to stejné s Base jednotkou
 
   `sudo dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D bc-workroom-base.binary`
 
@@ -85,7 +85,7 @@ Je dobré mít vždy vše aktuální, takže si zaktualizujeme firmware, může�
 
 * Podrž pravé tlačítko na Base dokud nezačne dioda blikat
 * Podrž pravé tlačítko na Remote dokud nezačne dioda blikat
-* Skus klikat na Remote na Base by měla podle toho svítit či nesvítit dioda
+* Zkoušej klikat na tlačítko Remote jednotky a na Base jednotce by měla podle toho svítit či nesvítit dioda
 
 ### Pošli si a přijmi pár testovacích zpráv
 
