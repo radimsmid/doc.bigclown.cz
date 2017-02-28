@@ -29,7 +29,8 @@ This tutorial was tested on Windows 7 Professional x64.
 Run the BigClown IDE. There will be opened simple code skeleton.
 Now you can compile the code by pressing `Ctrl + Shift + B`.
 
-The downloaded GitHub firmware has empty user function. Please see the tutorials and add you application logic in `app/application.c`.
+The downloaded GitHub firmware has a simple code which toggles the LED when you press the `B` button on Core Module. You can also see the [default example code on GitHub](https://github.com/bigclownlabs/bc-core-module/blob/master/app/application.c).
+Please see the tutorials and add you application logic in `app/application.c`.
 
 Congratulation for your first compiled firmware.
 
