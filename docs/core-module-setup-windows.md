@@ -15,7 +15,14 @@ This tutorial was tested on Windows 7 Professional x64.
 ## How to download IDE
 
 
-[Download BigClown IDE](https://github.com/bigclownlabs/bc-windows-ide/releases). This installer will take care of installing the following:
+<a href="https://github.com/bigclownlabs/bc-windows-ide/releases">
+<img src="images/core-module-setup-windows/download.png" width="50"/>
+Download BigClown IDE
+</a>
+
+** IMPORTANT: After installation and automatic start of Visual Studio Code you have to close it and start again. Otherwise the make utility would not work. We are working on fix.**
+
+This installer will take care of installing the following:
 
 * Visual Studio Code IDE
 * GIT command line utility to automatically get the latest SDK
@@ -23,10 +30,14 @@ This tutorial was tested on Windows 7 Professional x64.
 * dfu-util for flashing firmware over USB
 
 
+<a href="images/core-module-setup-windows/vscode.png">
+<img src="images/core-module-setup-windows/vscode.png" width="400" alt="Visual studio code" />
+</a>
+
 ## How to compile SDK
 
 
-Run the BigClown IDE. There will be opened simple code skeleton.
+Run the BigClown IDE. There will be opened simple code skeleton with.
 Now you can compile the code by pressing `Ctrl + Shift + B`.
 
 The downloaded GitHub firmware has a simple code which toggles the LED when you press the `B` button on Core Module. You can also see the [default example code on GitHub](https://github.com/bigclownlabs/bc-core-module/blob/master/app/application.c).
@@ -39,6 +50,10 @@ Congratulation for your first compiled firmware.
 
 
 After compiling the firmware. Press `Ctrl + Shift + P` in the Visual Studio code. The cursor will jump to the top command line. Press the backspace to delete the `>` symbol. Now write `task` and it will display you all the make targets the Makefile contains. We are interested in the `dfu` task. So execute command `task dfu`.
+
+
+<img src="images/core-module-setup-windows/task-dfu.png" alt="Visual studio code" />
+
 
 This Device Firmware Update utility (`dfu-util`) will allow you to upload compiled binary firmware just with USB.
 Please follow this help [how to setup USB driver and use DFU Util on Windows](https://doc.bigclown.com/core-module.html#on-windows-10-64-bit-desktop).
