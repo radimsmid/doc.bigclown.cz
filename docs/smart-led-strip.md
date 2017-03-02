@@ -211,6 +211,8 @@ Doporučujeme zkusit alespoň několik prvních příkazů pro otestování fun�
 
 5.  Nastav bílé světlo:
 
+    ![](images/smart-led-strip/rgbw.png)
+
     ```
     mosquitto_pub -t "plugin/led-strip/color/set" -m '"#000000(ff)"'
     ```
@@ -252,18 +254,12 @@ Je možné míchat všechny barevné komponenty (RGB) včetně bílé složky (W
 Pokud je hodnota bílé složky nulová, hodnotu v závorce lze vynechat.
 Např. pro rozsvícení pouze červené barvy lze použít:
 
-
-    mosquitto_pub -t "plugin/led-strip/color/set" -m '"#ff0000(00)"'
-
+*mosquitto_pub -t "plugin/led-strip/color/set" -m '"#ff0000(00)"'*
 
 nebo jednodušeji:
 
-
-    mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
+*mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"*
    
-
-![](images/smart-led-strip/rgbw.png)
-
 
 > **Warning** Varování:
 Při nastavení maximální svítivosti (brightness = 100 %) nedoporučujeme rozsvěcet na plný výkon více než dvě barevné složky (nebo bílou složku + barvu).
