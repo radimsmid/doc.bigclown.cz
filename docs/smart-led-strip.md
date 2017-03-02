@@ -130,7 +130,7 @@ Dále budeš potřebovat:
 
     Pro rozsvícení LED pásku krátce stiskni tlačítko BOOT na jednotce Base nebo Remote.
     Zhasnutí světla lze provézt opětovným stiskem tlačítka BOOT.
-    Nyní se systém nachází v tzv. režimu “rules”, kdy reaguje na překročení přednastavených hodnot teploty a vlhkosti změnou barvy **(podrobněji zde) [vložit přímý link].**
+    Nyní se systém nachází v tzv. režimu “rules”, kdy reaguje na překročení přednastavených hodnot teploty a vlhkosti změnou barvy [**podrobněji zde**](https://doc.bigclown.cz/smart-led-strip.html#použití-led-pásku-pro-indikaci-hodnot-teploty-a-vlhkosti)
 
     ![](images/smart-led-strip/turn-on-light.png)
 
@@ -149,7 +149,7 @@ Více podrobností o technologii MQTT nalezneš zde:
 
 Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspberry Pi pomocí protokolu SSH:
 
-1. Zjisti IP adresu svého Raspberry Pi (prozkoumej menu routeru nebo použi program typu [Advanced IP scanner (Windows)]((http://www.advanced-ip-scanner.com/)) nebo [IP Scaner (Mac)](https://itunes.apple.com/us/app/ip-scanner/id404167149?mt=12).
+1. Zjisti IP adresu svého Raspberry Pi (prozkoumej menu routeru nebo použi program typu [Advanced IP scanner (Windows)](http://www.advanced-ip-scanner.com/) nebo [IP Scaner (Mac)](https://itunes.apple.com/us/app/ip-scanner/id404167149?mt=12).
 
 2. Připoj se k Raspberry Pi pomocí protokolu SSH (port 22):
 
