@@ -273,17 +273,17 @@ Pro 100% výkon doporučujeme použít silnější napájecí adaptér min. 5V/5
 Zapni relé (sepnutí kontaktu “NO” s “C”):
 
 
-    ```
+```
     mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
-    ```
+```
 
 
 Vypni relé (sepnutí kontaktu “NC” s “C”):
 
 
-    ```
+```
     mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
-    ```
+```
 
 
 **První pomoc:**
@@ -292,9 +292,9 @@ Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde
 **Čtení hodnot ze senzorů na Remote unit**
 Čtení hodnot teploty a vlhkosti ze senzorů připojených na Remote unit (odesílaných každých 30 s):
 
-    ```
+```
     mosquitto_sub -v -t "nodes/remote/#"
-    ```
+```
 
 do 30 s bys měl obdržet zprávu s výpisem teploty a vlhkosti:
 *nodes/remote/thermometer/i2c0-49 {"temperature": [20.31, "\u2103"]}
@@ -305,13 +305,13 @@ Pro ukončení monitorováni stiskněte *Ctrl-C*
 **Použití LED pásku pro indikaci hodnot teploty a vlhkosti:**
 Pro indikaci nastavených hodnot je nutné opětovně zapnout LED pásek a přepnout ho do režimu “rules”:
     
-    ```
+```
     mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'
-    ```
+```
 
-    ```
+```
     mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
-    ```
+```
 
 V režimu rules je ve výchozím stavu nastavena následující logika:
 Pokud se pohybují hodnoty teploty a vlhkosti v nastavených mezích svítí LED pásek bíle, překročení stanovených mezí je indikováno změnou barvy, přičemž prioritu má indikace vlhkosti:
@@ -324,9 +324,9 @@ Pokud se pohybují hodnoty teploty a vlhkosti v nastavených mezích svítí LED
 
 Meze hodnot i vlastní funkci lze libovolně upravovat editací příkazu: 
     
-    ```
+```
     mosquitto_pub -t "plugin/led-strip/rules/set" -m '[{"nodes/remote/humidity-sensor/+": {"value": "$.'"'"'relative-humidity'"'"'.[0]", "from": 60}, "color": "#00ff00"}, {"nodes/remote/humidity-sensor/+": {"va0lue": "$.'"'"'relative-humidity'"'"'.[0]", "to": 30}, "color": "#ffff00"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "from": 26}, "color": "#ff0000"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "to": 22}, "color": "#0000ff"}, {"color": "#ffffff"}]'
-    ```
+```
 
 Dalčí pokročilé funkce budou popsány v pozdějších návodech.
 
@@ -342,9 +342,9 @@ LED pásek nebo přesněji *LED-strip-plugin* může pracovat ve čtyřech zákl
 
 Režimy lze přepínat příkazem mode/set:
     
-    ```
+```
     mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\" 
-    ```
+```
 
 **Poznámka:**
 Pokud se rozsvítí LED pásek pomocí příkazu plugin/led-strip/color/set, dojde automaticky také k přepnutím režimu na “color”, obdobně fungují i ostatní režimy. 
@@ -376,16 +376,17 @@ Pro rychlé vyzkoušení vzorových projektů si je jednoduše naklonovat dle =[
 **Projekt Smart LED Strip 1:**
 Ovládání LED pásku a intenzity, volba barvy a intenzity bílé složky, spínání relé a indikace aktuální hodnot teploty a vlhkosti (vyžaduje 2000 bodů energie):
     
-    ![](blynk-project-smart-led-1.png)
+![](blynk-project-smart-led-1.png)
 
-    ![](blynk-project-smart-led-1-QR.png)
+![](blynk-project-smart-led-1-QR.png)
 
 **Projekt Smart LED Strip 2:**
 Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hodnot teploty a vlhkosti a zobrazení grafu historie hodnot (vyžaduje 2000 bodů energie):
 
-    ![](blynk-project-smart-led-2.png)
+![](blynk-project-smart-led-2.png)
 
-    ![](blynk-project-smart-led-2-QR.png)
+
+![](blynk-project-smart-led-2-QR.png)
 
 
 **Projekt Smart LED Strip 3:** 
@@ -393,10 +394,10 @@ Všechny funkce i grafy v jednom projektu (vyžaduje 5000 bodů energie).
 V projektu jsou použita také uživatelská tlačítka pro vyvolání rychlých předvoleb.
 Pro jejich zprovoznění je nutné upravit konfigurační soubor *etc/bigclown/plugin/led-strip.user* **dle bodu 21.**
 
-    ![](blynk-project-smart-led-3-a.png)
-    ![](blynk-project-smart-led-3-b.png)
+![](blynk-project-smart-led-3-a.png)
+![](blynk-project-smart-led-3-b.png)
 
-    ![](blynk-project-smart-led-3-QR.png)
+![](blynk-project-smart-led-3-QR.png)
 
 
 ###Přidání uživatelských tlačítek pro vyvolání scénických režimů
