@@ -246,7 +246,7 @@ Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk doporu
     mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}'
     ```
 
-> **Note**
+> **Note** Poznámka:
 Hodnoty barev se zadávají v hex formátu v rozsahu “00” až “ff”.
 Bílá složka je při zadávání nepovinná a zadává se v závorkách za RGB složky.
 Je možné míchat všechny barevné komponenty (RGB) včetně bílé složky (W).
@@ -263,7 +263,7 @@ nebo jednodušeji:
     mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
     ```
 
-> **Warning** Warning
+> **Warning** Varování:
 Při nastavení maximální svítivosti (brightness = 100 %) nedoporučujeme rozsvěcet na plný výkon více než dvě barevné složky (nebo bílou složku + barvu).
 Pokud nastavíte všechny čtyři složky (RGBW) na maximální hodnotu (ff) přetížíte napájecí adaptér.
 Pro 100% výkon doporučujeme použít silnější napájecí adaptér min. 5V/5A a dále instalaci LED pásku do hliníkové lišty nebo její přilepení na kovový povrch pro lepší odvod tepla!
@@ -286,7 +286,7 @@ Vypni relé (sepnutí kontaktu “NC” s “C”):
 ```
 
 
-> **Hint** Hint
+> **Hint** První pomoc:
 Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
 
 **Čtení hodnot ze senzorů na Remote unit**
@@ -328,9 +328,9 @@ Meze hodnot i vlastní funkci lze libovolně upravovat editací příkazu:
     mosquitto_pub -t "plugin/led-strip/rules/set" -m '[{"nodes/remote/humidity-sensor/+": {"value": "$.'"'"'relative-humidity'"'"'.[0]", "from": 60}, "color": "#00ff00"}, {"nodes/remote/humidity-sensor/+": {"va0lue": "$.'"'"'relative-humidity'"'"'.[0]", "to": 30}, "color": "#ffff00"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "from": 26}, "color": "#ff0000"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "to": 22}, "color": "#0000ff"}, {"color": "#ffffff"}]'
 ```
 
-Dalčí pokročilé funkce budou popsány v pozdějších návodech.
+Další pokročilé funkce budou popsány v pozdějších návodech.
 
-Složitější a obsáhlejší konfiguraci pravidel je možné provést editaci souboru config.yaml (viz 4.22). **[doplnit odkaz]**
+Pro přehlednější editaci vlastních pravidel je možné provést také editací konfiguračního souboru config.yaml (viz 4.22). **[doplnit odkaz]**
 
 
 **Změna režimu LED pásku**
@@ -346,7 +346,7 @@ Režimy lze přepínat příkazem mode/set:
     mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
 ```
 
-> **Note**
+> **Note** Poznámka:
 Pokud se rozsvítí LED pásek pomocí příkazu plugin/led-strip/color/set, dojde automaticky také k přepnutím režimu na “color”, obdobně fungují i ostatní režimy.
 Každý režim si rovněž uchovává stav všech LED.
 Podrobněji budou funkce a příklady použití led-strip pluginu popsány později. výchozí režim a stav (předvolbu) každého režimu je možné nastavit pomocí konfiguračního souboru config.yaml popsaného v 4.22 **[doplnit odkaz].**
