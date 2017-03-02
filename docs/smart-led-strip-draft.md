@@ -154,6 +154,7 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
 2.  Připoj se k Raspberry Pi pomocí protokolu SSH (port 22):
     
     **Ve Windows:**
+
     Použij program [PuTTY](http://www.putty.org), jako “Host name” zvol pi@192.168.0.120 (upravte na IP adresu vašeho Raspberry Pi).
     V poli “Saved Sessions” si můžeš konfiguraci uložit pro opakované použití stiskem “Save”.
     Připojení zahájíš stiskem tlačítka “Open”.
@@ -169,7 +170,7 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
 3.  Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
     Výchozí heslo je "raspberry". Po úspěšném zadání hesla bys měl vidět odpověď podobnou příkladu:
 
-   ![](rpi-connected.png)    
+   ![](images/workroom/rpi-connected.png)    
 
 4.  Než se pustíš do testování a následujících kroků je nutné aktualizovat SW       balíčky v Raspberry Pi:
 
@@ -183,6 +184,8 @@ Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk doporu
 
 
 **Ovládání LED pásku:**
+
+
 1.  Zapni světlo (LED pásek):
 
     ```
@@ -251,16 +254,11 @@ Pokud je hodnota bílé složky nulová, hodnotu v závorce lze vynechat.
 Např. pro rozsvícení pouze červené barvy lze použít:
 
     ```
-    POKUS
-    ```    
-
-
-    ```
     mosquitto_pub -t "plugin/led-strip/color/set" -m '"#ff0000(00)"'
     ```
 
 
-    nebo jednodušeji:
+nebo jednodušeji:
 
 
     ```
@@ -277,15 +275,19 @@ Pro 100% výkon doporučujeme použít silnější napájecí adaptér min. 5V/5
 **Ovládání Relé**
 Zapni relé (sepnutí kontaktu “NO” s “C”):
 
+
     ```
     mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
     ```
 
+
 Vypni relé (sepnutí kontaktu “NC” s “C”):
+
 
     ```
     mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
     ```
+
 
 **První pomoc:**
 Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
