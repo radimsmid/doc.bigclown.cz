@@ -155,21 +155,20 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
 
    **Ve Windows:**
 
-   Použij program [PuTTY](http://www.putty.org), jako “Host name” zvol pi@192.168.0.120 (IP adresu uprav na svoje Raspberry Pi).
+   Použij program [PuTTY](http://www.putty.org), jako “*Host name*” zvol *pi@192.168.0.120* (IP adresu uprav na svoje Raspberry Pi).
    V poli “*Saved Sessions*” si můžeš konfiguraci uložit pro opakované použití stiskem “*Save*”.
-   Připojení zahájíš stiskem tlačítka “Open”.
+   Připojení zahájíš stiskem tlačítka “*Open*”.
 
    ![](images/smart-led-strip/putty.png)
 
-
    **V Linuxu a MacOS:**
 
-    Použij Terminál a příkaz *ssh pi@192.168.0.120* (IP adresu uprav na tvé Raspberry Pi).
-    Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “*yes*”a pokračuj.
+   Použij Terminál a příkaz *ssh pi@192.168.0.120* (IP adresu uprav na tvé Raspberry Pi).
+   Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “*yes*”a pokračuj.
 
-3.  Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
-    Výchozí heslo je "raspberry".
-    Po úspěšném zadání hesla bys měl vidět odpověď podobnou příkladu:
+3. Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
+   Výchozí heslo je "raspberry".
+   Po úspěšném zadání hesla bys měl vidět odpověď podobnou příkladu:
 
    ![](images/smart-led-strip/rpi-connected.png)
 
@@ -180,7 +179,7 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
     ```
 
 ### Otestování funkcí a hrátky s MQTT
-Zde si popíšeme, jak rychle otestovat hlavní funkce systému pomocí příkazů MQTT,podrobněji budou všechny funkce popsány později v dalších návodech.
+Zde si popíšeme, jak rychle otestovat hlavní funkce systému pomocí příkazů MQTT, podrobněji budou všechny funkce popsány později v dalších návodech.
 Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk podívej se [sem](https://doc.bigclown.cz/smart-led-strip.html#ovládej-systém-komfortně-s-aplikací-blynk).
 Doporučujeme zkusit alespoň několik prvních příkazů pro otestování funčnosti.
 
@@ -216,7 +215,7 @@ Doporučujeme zkusit alespoň několik prvních příkazů pro otestování fun�
     mosquitto_pub -t "plugin/led-strip/color/set" -m '"#000000(ff)"'
     ```
 
-6.  Vytvoř *studenou bílou* namícháním bílé s modorou:
+6.  Vytvoř "studenou bílou" namícháním bílé s modorou:
 
     ```
     mosquitto_pub -t "plugin/led-strip/color/set" -m '"#000099(ff)"'
@@ -228,7 +227,7 @@ Doporučujeme zkusit alespoň několik prvních příkazů pro otestování fun�
     mosquitto_pub -t "plugin/led-strip/compound/set" -m '[72, "#000000", 72, "#000000(ff)"]'
     ```
 
-8.  Rozdělení na třetiny: červená, zelená, modrá
+8.  Rozdělení pásku na třetiny: červená, zelená, modrá
 
     ```
     mosquitto_pub -t "plugin/led-strip/compound/set" -m '[48, "#ff0000", 48, "#00ff00", 48, "#0000ff"]'
@@ -249,9 +248,6 @@ Doporučujeme zkusit alespoň několik prvních příkazů pro otestování fun�
 > **Note** Poznámka:
 Hodnoty barev se zadávají v hex formátu v rozsahu “00” až “ff”.
 Bílá složka je při zadávání nepovinná a zadává se v závorkách za RGB složky.
-
-![](images/smart-led-strip/rgbw.png)
-
 Je možné míchat všechny barevné komponenty (RGB) včetně bílé složky (W).
 Pokud je hodnota bílé složky nulová, hodnotu v závorce lze vynechat.
 Např. pro rozsvícení pouze červené barvy lze použít:
@@ -266,7 +262,7 @@ nebo jednodušeji:
     mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
    
 
-
+![](images/smart-led-strip/rgbw.png)
 
 
 > **Warning** Varování:
@@ -276,7 +272,7 @@ Pro 100% výkon doporučujeme použít silnější napájecí adaptér min. 5V/5
 
 
 #### Ovládání Relé
-Zapni relé (sepnutí kontaktu “NO” s “C”):
+Zapni relé (sepne kontakty *NO* a *C*):
 
 
 ```
@@ -284,7 +280,7 @@ Zapni relé (sepnutí kontaktu “NO” s “C”):
 ```
 
 
-Vypni relé (sepnutí kontaktu “NC” s “C”):
+Vypni relé (sepne kontakty *NC* a *C*):
 
 
 ```
@@ -304,8 +300,11 @@ Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde
 ```
 
 do 30 s bys měl obdržet zprávu s výpisem teploty a vlhkosti:
-*nodes/remote/thermometer/i2c0-49 {"temperature": [20.31, "\u2103"]}
-nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [40.6, "%"]}*
+
+```
+    nodes/remote/thermometer/i2c0-49 {"temperature": [20.31, "\u2103"]}
+    nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [40.6, "%"]}
+```
 
 Pro ukončení monitorováni stiskněte *Ctrl-C*
 
