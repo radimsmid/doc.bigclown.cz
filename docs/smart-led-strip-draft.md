@@ -254,13 +254,13 @@ Pokud je hodnota bílé složky nulová, hodnotu v závorce lze vynechat.
 Např. pro rozsvícení pouze červené barvy lze použít:
 
     
-    mosquitto_pub -t "plugin/led-strip/color/set" -m '"#ff0000(00)"'
+*mosquitto_pub -t "plugin/led-strip/color/set" -m '"#ff0000(00)"'*
     
 
 nebo jednodušeji:
 
 
-    mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
+*mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"*
 
 
 **Varování:**
