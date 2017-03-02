@@ -10,13 +10,17 @@ Připoj Power Module, LED pásek a napájecí adaptér. Pásek z důvodu velkéh
 
 Nejprve se podíváme na jednoduchý příklad jak pásek oživit. V dalších kapitolách mu budeme již nastavovat vlastní barvy.
 
-Následující kód po startu spustí funkcí `bc_module_power_led_strip_test()`, která zobrazí testovací animaci na pásku.
+Následující kód po startu spustí funkcí `bc_led_strip_effect_test(bc_led_strip_t *self)`, která zobrazí testovací animaci na pásku.
 Další stisk tlačítka `B` na Core Module provede tento test znova.
 
 ``` C
 	#include <application.h>
+    #include <bcl.h>
 
+    //Instance tlačítka
     bc_button_t button;
+    //Instance pásku
+    bc_led_strip_t led_strip;
 
 	void button_event_handler(bc_button_t *self, bc_button_event_t event, void *param)
 	{
@@ -24,7 +28,7 @@ Další stisk tlačítka `B` na Core Module provede tento test znova.
 		(void) param;
 		if (event == BC_BUTTON_EVENT_PRESS)
 		{
-            bc_module_power_led_strip_test();
+            bc_led_strip_effect_test(&led_strip);
 		}
 	}
 
@@ -35,11 +39,11 @@ Další stisk tlačítka `B` na Core Module provede tento test znova.
 
         // Inicializuj Power Module
         bc_module_power_init();
-        // Inicializuj buffer, délku a typ pásku
-        bc_module_power_led_strip_init(&bc_led_strip_rgbw_144);
+        // Inicializuj driver, buffer, délku a typ pásku
+        bc_led_strip_init(&led_strip, bc_module_power_get_led_strip_driver(), &bc_module_power_led_strip_buffer_rgbw_144);
 
         // Spusť testovací animaci
-        bc_module_power_led_strip_test();
+        bc_led_strip_effect_test(&led_strip);
 	}
 
 ```
@@ -59,7 +63,9 @@ Podmínkou `if(position >= 0 && position < 144)` si musíme ohlídat rozsahy, pr
 
 ```C
 	#include <application.h>
+    #include <bcl.h>
 
+    bc_led_strip_t led_strip;
     // Instance akcelerometru
     bc_lis2dh12_t lis2dh12;
 
@@ -80,7 +86,7 @@ Podmínkou `if(position >= 0 && position < 144)` si musíme ohlídat rozsahy, pr
                 // Vymaž led pásek
                 for( i = 0; i < 144; i++)
                 {
-                    bc_module_power_led_strip_set_pixel_from_rgb(i, 0 ,0 ,0, 0);
+                    bc_led_strip_set_pixel_rgbw(&led_strip, i, 0 ,0 ,0, 0);
                 }
 
                 // Přepočti osu X akcelerometru na pozici  pixelu na LED pásku
@@ -89,11 +95,11 @@ Podmínkou `if(position >= 0 && position < 144)` si musíme ohlídat rozsahy, pr
                 if(position >= 0 && position < 144)
                 {
                     // Nastav bílou barvu na jeden pixel
-                    bc_module_power_led_strip_set_pixel_from_rgb(position, 0, 0, 0, 100);
+                    bc_led_strip_set_pixel_rgbw(&led_strip, position, 0, 0, 0, 100);
                 }
 
                 // Překresli LED pásek
-                bc_module_power_led_strip_write();
+                bc_led_strip_write(&led_strip);
             }
         }
     }
@@ -101,8 +107,7 @@ Podmínkou `if(position >= 0 && position < 144)` si musíme ohlídat rozsahy, pr
 
 	void application_init(void)
 	{
-        bc_module_power_init();
-        bc_module_power_led_strip_init(&bc_led_strip_rgbw_144);
+        bc_led_strip_init(&led_strip, bc_module_power_get_led_strip_driver(), &bc_module_power_led_strip_buffer_rgbw_144);
 
         // Inicializace akcelerometru s nastavením sběrnice I2C0 a adresy 0x19
         bc_lis2dh12_init(&lis2dh12, BC_I2C_I2C0, 0x19);
