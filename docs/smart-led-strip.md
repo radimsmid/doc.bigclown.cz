@@ -371,8 +371,7 @@ Pro platformu Blynk jsme připravili [*samostatný návod*](https://doc.bigclown
 V dalších bodech jsou popsány další Blynk widgety, které se mohou hodit.
 
 Pro rychlé vyzkoušení vzorových projektů si je můžeš jednoduše naklonovat dle [následujícího postupu:](https://doc.bigclown.cz/blynk.html#rychlé-naklonování-projektu)
-
-> **Caution** Caution
+** Pozor:**
 Ujisti se, že máš v Blynku dostatek volné energie, [viz bod 5](https://doc.bigclown.cz/blynk.html#přidávání-widgetů-v-blynku)
 
 #### Projekt Smart LED Strip 1:
