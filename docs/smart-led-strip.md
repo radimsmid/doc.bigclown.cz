@@ -247,6 +247,9 @@ Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk doporu
 > **Note** Poznámka:
 Hodnoty barev se zadávají v hex formátu v rozsahu “00” až “ff”.
 Bílá složka je při zadávání nepovinná a zadává se v závorkách za RGB složky.
+
+![](images/smart-led-strip/rgbw.png)
+
 Je možné míchat všechny barevné komponenty (RGB) včetně bílé složky (W).
 Pokud je hodnota bílé složky nulová, hodnotu v závorce lze vynechat.
 Např. pro rozsvícení pouze červené barvy lze použít:
@@ -259,6 +262,9 @@ nebo jednodušeji:
 
 
     mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
+   
+
+
 
 
 > **Warning** Varování:
