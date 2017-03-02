@@ -149,30 +149,30 @@ Více podrobností o technologii MQTT nalezneš zde:
 
 Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspberry Pi pomocí protokolu SSH:
 
-1.  Zjisti IP adresu svého Raspberry Pi (prozkoumej menu routeru nebo použi program typu [Advanced IP scanner (Windows)]((http://www.advanced-ip-scanner.com/)) nebo [IP Scaner (Mac)](https://itunes.apple.com/us/app/ip-scanner/id404167149?mt=12).
+1. Zjisti IP adresu svého Raspberry Pi (prozkoumej menu routeru nebo použi program typu [Advanced IP scanner (Windows)]((http://www.advanced-ip-scanner.com/)) nebo [IP Scaner (Mac)](https://itunes.apple.com/us/app/ip-scanner/id404167149?mt=12).
 
-2.  Připoj se k Raspberry Pi pomocí protokolu SSH (port 22):
+2. Připoj se k Raspberry Pi pomocí protokolu SSH (port 22):
 
-    **Ve Windows:**
+   **Ve Windows:**
 
-    Použij program [PuTTY](http://www.putty.org), jako “Host name” zvol pi@192.168.0.120 (upravte na IP adresu vašeho Raspberry Pi).
-    V poli “Saved Sessions” si můžeš konfiguraci uložit pro opakované použití stiskem “Save”.
-    Připojení zahájíš stiskem tlačítka “Open”.
+   Použij program [PuTTY](http://www.putty.org), jako “Host name” zvol pi@192.168.0.120 (IP adresu uprav na svoje Raspberry Pi).
+   V poli “*Saved Sessions*” si můžeš konfiguraci uložit pro opakované použití stiskem “Save”.
+   Připojení zahájíš stiskem tlačítka “Open”.
 
-    ![](images/smart-led-strip/putty.png)
+   ![](images/smart-led-strip/putty.png)
 
 
-   **V Linuxu a MacOS:**
+  **V Linuxu a MacOS:**
 
-    Použij Terminál a příkaz ssh pi@192.168.0.120 (IP adresu uprav na tvé Raspberry Pi).
-    Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “yes” a pokračujt.
+   Použij Terminál a příkaz ssh pi@192.168.0.120 (IP adresu uprav na tvé Raspberry Pi).
+   Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “yes”a pokračujt.
 
-3.  Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
-    Výchozí heslo je "raspberry". Po úspěšném zadání hesla bys měl vidět odpověď podobnou příkladu:
+3. Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
+   Výchozí heslo je "raspberry". Po úspěšném zadání hesla bys měl vidět odpověď podobnou příkladu:
 
    ![](images/smart-led-strip/rpi-connected.png)
 
-4.  Než se pustíš do testování a následujících kroků je nutné aktualizovat SW       balíčky v Raspberry Pi:
+4. Než se pustíš do testování a následujících kroků je nutné aktualizovat SW       balíčky v           Raspberry Pi:
 
     ```
     sudo apt-get update && sudo apt-get upgrade
@@ -183,9 +183,7 @@ Zde si popíšeme, jak rychle otestovat hlavní funkce systému pomocí příkaz
 Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk doporučujeme otestovat alespoň několik prvních příkazů a poté přeskoč na kapitolu 4 **[vložit link].**
 
 
-**Ovládání LED pásku:**
-
-
+#### Ovládání LED pásku:
 1.  Zapni světlo (LED pásek):
 
     ```
@@ -269,8 +267,7 @@ Pokud nastavíte všechny čtyři složky (RGBW) na maximální hodnotu (ff) př
 Pro 100% výkon doporučujeme použít silnější napájecí adaptér min. 5V/5A a dále instalaci LED pásku do hliníkové lišty nebo její přilepení na kovový povrch pro lepší odvod tepla!
 
 
-**Ovládání Relé**
-
+#### Ovládání Relé
 Zapni relé (sepnutí kontaktu “NO” s “C”):
 
 
@@ -290,7 +287,7 @@ Vypni relé (sepnutí kontaktu “NC” s “C”):
 > **Hint** První pomoc:
 Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
 
-**Čtení hodnot ze senzorů na Remote unit**
+#### Čtení hodnot ze senzorů na Remote unit
 
 Čtení hodnot teploty a vlhkosti ze senzorů připojených na Remote unit (odesílaných každých 30 s):
 
@@ -304,7 +301,7 @@ nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [40.6, "%"]}*
 
 Pro ukončení monitorováni stiskněte *Ctrl-C*
 
-**Použití LED pásku pro indikaci hodnot teploty a vlhkosti:**
+#### Použití LED pásku pro indikaci hodnot teploty a vlhkosti:
 
 Pro indikaci nastavených hodnot je nutné opětovně zapnout LED pásek a přepnout ho do režimu “rules”:
 
@@ -336,7 +333,7 @@ Další pokročilé funkce budou popsány v pozdějších návodech.
 Pro přehlednější editaci vlastních pravidel je možné provést také editací konfiguračního souboru config.yaml (viz 4.22). **[doplnit odkaz]**
 
 
-**Změna režimu LED pásku**
+#### Změna režimu LED pásku
 LED pásek nebo přesněji *LED-strip-plugin* může pracovat ve čtyřech základních režimech:
 *   rules - pásek se řídí dle nastavených pravidel (indikace teploty apod.)
 *   color - režim svícení celého pásku dle nastavené barvy popř. kombinace          složek RGBW
@@ -363,7 +360,7 @@ Aplikace Blynk.cc je perfektní nástroj pro ovládání tvé domácí automatiz
 Zde  si ukážeme jak nastavit aplikaci Blynk pro ovládání a monitorování všech funkcí sestavy [Smart LED Strip Set](https://obchod.bigclown.cz/products/smart-led-strip-set)
 Předpokládá se, že již máš sestavený a oživený HW a jsi připojen přes SSH k Raspberry Pi (pokud ne, vrať se na kapitolu 2 nebo 3) **[doplnit odkazy]**
 
-Pro platformu Blynk jsme připravili [samostatný návod](https://doc.bigclown.cz/blynk.html):
+Pro platformu Blynk jsme připravili [*samostatný návod*](https://doc.bigclown.cz/blynk.html):
 
 1.  [Můžeš si přečís, jak funguje Blynk](https://doc.bigclown.cz/blynk.html#jak-funguje-blynk)
 
@@ -378,15 +375,14 @@ Pro rychlé vyzkoušení vzorových projektů si je můžeš jednoduše naklonov
 > **Caution** Caution
 Ujisti se, že máš v Blynku dostatek volné energie, [viz bod 5](https://doc.bigclown.cz/blynk.html#přidávání-widgetů-v-blynku)
 
-**Projekt Smart LED Strip 1:**
-
+#### Projekt Smart LED Strip 1:
 Ovládání LED pásku a intenzity, volba barvy a intenzity bílé složky, spínání relé a indikace aktuální hodnot teploty a vlhkosti (vyžaduje 2000 bodů energie):
 
 ![](images/smart-led-strip/blynk-project-smart-led-1.png)
 
 ![](images/smart-led-strip/blynk-project-smart-led-1-QR.png)
 
-**Projekt Smart LED Strip 2:**
+#### Projekt Smart LED Strip 2:
 
 Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hodnot teploty a vlhkosti a zobrazení grafu historie hodnot (vyžaduje 2000 bodů energie):
 
@@ -396,7 +392,7 @@ Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hod
 ![](images/smart-led-strip/blynk-project-smart-led-2-QR.png)
 
 
-**Projekt Smart LED Strip 3:**
+#### Projekt Smart LED Strip 3:
 
 Všechny funkce i grafy v jednom projektu (vyžaduje 5000 bodů energie).
 V projektu jsou použita také uživatelská tlačítka pro vyvolání rychlých předvoleb.
@@ -407,7 +403,7 @@ Pro jejich zprovoznění je nutné upravit konfigurační soubor *etc/bigclown/p
 
 ![](images/smart-led-strip/blynk-project-smart-led-3-QR.png)
 
-###Přidání uživatelských tlačítek pro vyvolání scénických režimů
+### Přidání uživatelských tlačítek pro vyvolání scénických režimů
 Rychlé předvolby pro RGBW LED pásek lze definovat pomocí konfiguračního souboru uloženého v Raspberry Pi: *"etc/bigclown/plugin/led-strip.user"*.
 Nejprve se zadává požadovaný Virtual PIN (dostupné jsou 8-99) a následně příkaz color nebo compound:
 
@@ -438,7 +434,7 @@ Pro vyvolání předvolby v Blynku použij tlačítka nastavené na režim PUSH 
 ### Konfigurace vlastních pravidel režimu rules
 Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “etc/bigclown/plugin/led-strip.yaml”
 
-**Příklad 1:** Výchozí nastavení a pravidla popsaná v bodu 3.15:
+#### Příklad 1: Výchozí nastavení a pravidla popsaná v bodu 3.15:
 
     ```
     plugin:
@@ -472,8 +468,7 @@ Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “e
           color: "#eaeaea"
     ```
 
-**Příklad 2:**
-Vytvoření jednoduché indikace teploty dle počtu rozsvícených LED a barvy:
+#### Příklad 2: Vytvoření jednoduché indikace teploty dle počtu rozsvícených LED a barvy:
 
     ```
     plugin:
