@@ -376,17 +376,17 @@ Pro rychlé vyzkoušení vzorových projektů si je jednoduše naklonovat dle =[
 **Projekt Smart LED Strip 1:**
 Ovládání LED pásku a intenzity, volba barvy a intenzity bílé složky, spínání relé a indikace aktuální hodnot teploty a vlhkosti (vyžaduje 2000 bodů energie):
     
-![](blynk-project-smart-led-1.png)
+![](images/workroom/blynk-project-smart-led-1.png)
 
-![](blynk-project-smart-led-1-QR.png)
+![](images/workroom/blynk-project-smart-led-1-QR.png)
 
 **Projekt Smart LED Strip 2:**
 Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hodnot teploty a vlhkosti a zobrazení grafu historie hodnot (vyžaduje 2000 bodů energie):
 
-![](blynk-project-smart-led-2.png)
+![](images/workroom/blynk-project-smart-led-2.png)
 
 
-![](blynk-project-smart-led-2-QR.png)
+![](images/workroom/blynk-project-smart-led-2-QR.png)
 
 
 **Projekt Smart LED Strip 3:** 
@@ -394,10 +394,10 @@ Všechny funkce i grafy v jednom projektu (vyžaduje 5000 bodů energie).
 V projektu jsou použita také uživatelská tlačítka pro vyvolání rychlých předvoleb.
 Pro jejich zprovoznění je nutné upravit konfigurační soubor *etc/bigclown/plugin/led-strip.user* **dle bodu 21.**
 
-![](blynk-project-smart-led-3-a.png)
-![](blynk-project-smart-led-3-b.png)
+![](images/workroom/blynk-project-smart-led-3-a.png)
+![](images/workroom/blynk-project-smart-led-3-b.png)
 
-![](blynk-project-smart-led-3-QR.png)
+![](images/workroom/blynk-project-smart-led-3-QR.png)
 
 
 ###Přidání uživatelských tlačítek pro vyvolání scénických režimů
