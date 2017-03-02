@@ -77,39 +77,39 @@ Dále budeš potřebovat:
 
 ## Postup instalace sestavy
 
-1. *Sestav si Remote jednotku*
-
-   ![](images/workroom/build-remote.png)
-
-2. *Sestav si Base jednotku*
+1. *Sestav si Base jednotku:*
 
    ![](images/workroom/build-base.png)
 
-3. *Připoj LED pásek k Base jednotce*
+2. *Sestav si Remote jednotku:*
+
+   ![](images/workroom/build-remote.png)
+
+3. *Připoj LED pásek k Base jednotce:*
 
    ![](images/workroom/connect-led-strip.png)
 
-4. *Připoj MicroUSB kabelem Base jednotku k Raspberry Pi*
+4. *Připoj MicroUSB kabelem Base jednotku k Raspberry Pi:*
 
    ![](images/workroom/connect-base-to-rpi.png)
 
-5. *Připoj Ethernet kabel k Raspberry Pi*
+5. *Připoj Ethernet kabel k Raspberry Pi:*
 
    ![](images/workroom/connect-ethernet-to-rpi.png)
 
-6. *Připoj napájecí adaptér k Base jednotce*
+6. *Připoj napájecí adaptér k Base jednotce:*
 
    ![](images/workroom/connect-power-to-base.png)
 
-7. *Připoj napájecí adaptér k Raspberry Pi*
+7. *Připoj napájecí adaptér k Raspberry Pi:*
 
    ![](images/workroom/connect-power-to-rpi.png)
 
-8. *Vlož baterie do Remote jednotky*
+8. *Vlož baterie do Remote jednotky:*
 
    ![](images/workroom/insert-batteries.png)
 
-9. *Aktivuj párovací mód na Base jednotce*
+9. *Aktivuj párovací mód na Base jednotce:*
 
    ![](images/workroom/pairing-base.png)
 
@@ -246,7 +246,7 @@ Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk doporu
     mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}'
     ```
 
-**Poznámka:**
+> **Note**
 Hodnoty barev se zadávají v hex formátu v rozsahu “00” až “ff”.
 Bílá složka je při zadávání nepovinná a zadává se v závorkách za RGB složky.
 Je možné míchat všechny barevné komponenty (RGB) včetně bílé složky (W).
@@ -263,7 +263,7 @@ nebo jednodušeji:
     mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
     ```
 
-**Varování:**
+> **Warning** Warning
 Při nastavení maximální svítivosti (brightness = 100 %) nedoporučujeme rozsvěcet na plný výkon více než dvě barevné složky (nebo bílou složku + barvu).
 Pokud nastavíte všechny čtyři složky (RGBW) na maximální hodnotu (ff) přetížíte napájecí adaptér.
 Pro 100% výkon doporučujeme použít silnější napájecí adaptér min. 5V/5A a dále instalaci LED pásku do hliníkové lišty nebo její přilepení na kovový povrch pro lepší odvod tepla!
@@ -286,7 +286,7 @@ Vypni relé (sepnutí kontaktu “NC” s “C”):
 ```
 
 
-**První pomoc:**
+> **Hint** Hint
 Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
 
 **Čtení hodnot ze senzorů na Remote unit**
@@ -346,7 +346,7 @@ Režimy lze přepínat příkazem mode/set:
     mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
 ```
 
-**Poznámka:**
+> **Note**
 Pokud se rozsvítí LED pásek pomocí příkazu plugin/led-strip/color/set, dojde automaticky také k přepnutím režimu na “color”, obdobně fungují i ostatní režimy.
 Každý režim si rovněž uchovává stav všech LED.
 Podrobněji budou funkce a příklady použití led-strip pluginu popsány později. výchozí režim a stav (předvolbu) každého režimu je možné nastavit pomocí konfiguračního souboru config.yaml popsaného v 4.22 **[doplnit odkaz].**
@@ -362,16 +362,18 @@ Předpokládá se, že již máš sestavený a oživený HW a jsi připojen pře
 
 Pro platformu Blynk jsme připravili [samostatný návod](https://doc.bigclown.cz/blynk.html):
 
-*   Můžeš si přečís [Jak funguje Blynk](https://doc.bigclown.cz/blynk.html#jak-funguje-blynk)
+1.   Můžeš si přečís [Jak funguje Blynk](https://doc.bigclown.cz/blynk.html#jak-funguje-blynk)
 
-*  [Potřebné SW/HW vybavení](https://doc.bigclown.cz/blynk.html#potřebné-swhw-vybavení)
+2.  [Potřebné SW/HW vybavení](https://doc.bigclown.cz/blynk.html#potřebné-swhw-vybavení)
 
-* Pro seznámení s Blynkem a vyrvoření rvního funkčního tlačítka pro ovládání relé [postupuj dle bodů 3 až 8:](https://doc.bigclown.cz/blynk.html).
+3.  Pro seznámení s Blynkem a vyrvoření rvního funkčního tlačítka pro ovládání relé [postupuj dle bodů 3 až 8:](https://doc.bigclown.cz/blynk.html).
 
 V dalších bodech jsou popsány další Blynk widgety, zda si návod projdeš necháme na tobě.
 
 Pro rychlé vyzkoušení vzorových projektů si je jednoduše naklonovat dle =[následujícího postupu:](https://doc.bigclown.cz/blynk.html#rychlé-naklonování-projektu)
-**Pozor:** Ujisti se, že máš v Blynku dostatek volné energie, [viz bod 5](https://doc.bigclown.cz/blynk.html#přidávání-widgetů-v-blynku)
+
+> **Caution** Caution
+Ujisti se, že máš v Blynku dostatek volné energie, [viz bod 5](https://doc.bigclown.cz/blynk.html#přidávání-widgetů-v-blynku)
 
 **Projekt Smart LED Strip 1:**
 Ovládání LED pásku a intenzity, volba barvy a intenzity bílé složky, spínání relé a indikace aktuální hodnot teploty a vlhkosti (vyžaduje 2000 bodů energie):
