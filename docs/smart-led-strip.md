@@ -77,39 +77,39 @@ Dále budeš potřebovat:
 
 ## Postup instalace sestavy
 
-1. *Sestav si Base jednotku*
+1. Sestav si Base jednotku:
 
    ![](images/smart-led-strip/build-base.png)
 
-2. *Sestav si Remote jednotku*
+2. Sestav si Remote jednotku:
 
    ![](images/smart-led-strip/build-remote.png)
 
-3. *Připoj LED pásek k Base jednotce*
+3. Připoj LED pásek k Base jednotce:
 
    ![](images/smart-led-strip/connect-led-strip.png)
 
-4. *Připoj MicroUSB kabelem Base jednotku k Raspberry Pi*
+4. Připoj MicroUSB kabelem Base jednotku k Raspberry Pi:
 
    ![](images/smart-led-strip/connect-base-to-rpi.png)
 
-5. *Připoj Ethernet kabel k Raspberry Pi*
+5. Připoj Ethernet kabel k Raspberry Pi:
 
    ![](images/smart-led-strip/connect-ethernet-to-rpi.png)
 
-6. *Připoj napájecí adaptér k Base jednotce*
+6. Připoj napájecí adaptér k Base jednotce:
 
    ![](images/smart-led-strip/connect-power-to-base.png)
 
-7. *Připoj napájecí adaptér k Raspberry Pi*
+7. Připoj napájecí adaptér k Raspberry Pi:
 
    ![](images/smart-led-strip/connect-power-to-rpi.png)
 
-8. *Vlož baterie do Remote jednotky*
+8. Vlož baterie do Remote jednotky:
 
    ![](images/smart-led-strip/insert-batteries.png)
 
-9. *Aktivuj párovací mód na Base jednotce*
+9. Aktivuj párovací mód na Base jednotce:
 
    ![](images/smart-led-strip/pairing-base.png)
 
@@ -126,11 +126,11 @@ Dále budeš potřebovat:
 
     ![](images/smart-led-strip/pairing-remote.png)
 
-11. *Zapni světlo na LED pásku*
+11. Zapni světlo na LED pásku:
 
     Pro rozsvícení LED pásku krátce stiskni tlačítko BOOT na jednotce Base nebo Remote.
     Zhasnutí světla lze provézt opětovným stiskem tlačítka BOOT.
-    Nyní se systém nachází v tzv. režimu “rules”, kdy reaguje na překročení přednastavených hodnot teploty a vlhkosti změnou barvy [**podrobněji zde**](https://doc.bigclown.cz/smart-led-strip.html#použití-led-pásku-pro-indikaci-hodnot-teploty-a-vlhkosti)
+    Nyní se systém nachází v tzv. režimu “rules”, kdy reaguje na překročení přednastavených hodnot teploty a vlhkosti změnou barvy [**(podrobněji viz dále)**](https://doc.bigclown.cz/smart-led-strip.html#použití-led-pásku-pro-indikaci-hodnot-teploty-a-vlhkosti)
 
     ![](images/smart-led-strip/turn-on-light.png)
 
@@ -165,7 +165,7 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
   **V Linuxu a MacOS:**
 
    Použij Terminál a příkaz *ssh pi@192.168.0.120* (IP adresu uprav na tvé Raspberry Pi).
-   Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “yes”a pokračuj.
+   Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “*yes*”a pokračuj.
 
 3. Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
    Výchozí heslo je "raspberry". Po úspěšném zadání hesla bys měl vidět odpověď podobnou příkladu:
