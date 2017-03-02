@@ -162,17 +162,18 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
    ![](images/smart-led-strip/putty.png)
 
 
-  **V Linuxu a MacOS:**
+   **V Linuxu a MacOS:**
 
-   Použij Terminál a příkaz *ssh pi@192.168.0.120* (IP adresu uprav na tvé Raspberry Pi).
-   Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “*yes*”a pokračuj.
+    Použij Terminál a příkaz *ssh pi@192.168.0.120* (IP adresu uprav na tvé Raspberry Pi).
+    Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “*yes*”a pokračuj.
 
-3. Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
-   Výchozí heslo je "raspberry". Po úspěšném zadání hesla bys měl vidět odpověď podobnou příkladu:
+3.  Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
+    Výchozí heslo je "raspberry".
+    Po úspěšném zadání hesla bys měl vidět odpověď podobnou příkladu:
 
    ![](images/smart-led-strip/rpi-connected.png)
 
-4. Než se pustíš do testování a následujících kroků je nutné aktualizovat SW balíčky v           Raspberry Pi (aktualizuje rovněž SW balíčky BigClown):
+4.  Než se pustíš do testování a následujících kroků je nutné aktualizovat SW balíčky v Raspberry Pi (aktualizuje BigClown komponenty):
 
     ```
     sudo apt-get update && sudo apt-get upgrade
@@ -180,7 +181,8 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
 
 ### Otestování funkcí a hrátky s MQTT
 Zde si popíšeme, jak rychle otestovat hlavní funkce systému pomocí příkazů MQTT,podrobněji budou všechny funkce popsány později v dalších návodech.
-Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk doporučujeme otestovat alespoň několik prvních příkazů a poté přeskoč na kapitolu 4 **[vložit link].**
+Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk podívej se [sem](https://doc.bigclown.cz/smart-led-strip.html#ovládej-systém-komfortně-s-aplikací-blynk).
+Doporučujeme zkusit alespoň několik prvních příkazů pro otestování funčnosti.
 
 
 #### Ovládání LED pásku:
