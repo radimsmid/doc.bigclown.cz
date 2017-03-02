@@ -6,12 +6,12 @@
 ## O čem projekt je a co ti přinese
 
 Jde o jednoduchý projekt, jehož cílem je ukázat snadnost budování domácí automatizace s našim řešením.
-Výsledkem projektu je "chytrý LED pásek " umístěný na viditelném místě v obývacím pokoji, který si můžeš vzdáleně ovládat z telefonu nebo tabletu.
+Výsledkem projektu je "chytrý" LED pásek umístěný na viditelném místě v obývacím pokoji, který si můžeš vzdáleně ovládat z telefonu nebo tabletu.
 
 
 LED pásek je složený ze 144 adresovatených RGBW čipů, a díky výkonu 15W jej lze použít i pro komfortní osvětlení.
 Ve výchozím nastavením je pomocí pásku indikováno překročení nastavených limitů teploty a vlhkosti změnou barvy.
-V návodu si ukážeme, jak lze limity změnit nebo nastavit vlastní pravidla a idikovat změnou barvy např. pouze část pásku.
+V návodu si ukážeme, jak lze limity změnit nebo nastavit vlastní pravidla a idikovat teplotu dle počtu rozsvícených LED.
 Sestava dále umožňuje dálkově spínat externí spotřebič pomocí relé.
 Ovládání a čtení hodnot si ukážeme pomocí MQTT příkazů, ale hlavně pomocí  mobilní aplikace Blynk.
 
@@ -22,8 +22,8 @@ Základem projektu jsou dvě jednotky:
 ### Base jednotka
 
 Tato jednotka je zodpovědná za řízení LED pásku a bezdrátový příjem dat z Remote jednotky.
-Přijatá dat jsou z Base jednotky přenášena do Raspberry Pi, kde se vyhodnotí a dle definovaných pravidel se nastaví požadované barvy LED pásku.
-Jednotku Base lze použít samostatně nezávisle na Remote, např. pouze pro ovládání světla a silového relé.
+Přijatá data jsou z Base jednotky přenášena do Raspberry Pi, kde se vyhodnotí a dle definovaných pravidel se nastaví požadované barvy LED pásku.
+Jednotku Base lze použít samostatně nezávisle na Remote, např. pouze pro ovládání světla a silového relé z mobilu.
 
 ![](images/smart-led-strip/unit-base.png)
 
@@ -41,16 +41,16 @@ Celý koncept popisuje následující diagram:
 ## Co všechno k projektu potřebuješ
 
 Všechny potřebné výrobky jsme zabalili do [cenově zvýhodněné sady](https://obchod.bigclown.cz/products/smart-led-strip-set), kterou si můžeš koupit v našem obchodě.
-Pokud si již vlastníš Core modul nebo si ho koupíš samostatně, pak si je musíš flashnout správným firmware, a [to podle tohoto návodu](core-module.md).
+Pokud již vlastníš Core modul nebo si ho koupíš samostatně, pak si je musíš flashnout správným firmware, a [to podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html).
 
 Sada obsahuje:
 
-Base unit
+Base unit:
 * 1x Base Module
 * 1x Power Module
 * 1x Core Module s Base unit firmwarem
 
-Remote unit
+Remote unit:
 * 1x Battery Module
 * 1x Core Module s Remote unit firmwarem
 * 1x Tag Module
@@ -156,7 +156,7 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
    **Ve Windows:**
 
    Použij program [PuTTY](http://www.putty.org), jako “Host name” zvol pi@192.168.0.120 (IP adresu uprav na svoje Raspberry Pi).
-   V poli “*Saved Sessions*” si můžeš konfiguraci uložit pro opakované použití stiskem “Save”.
+   V poli “*Saved Sessions*” si můžeš konfiguraci uložit pro opakované použití stiskem “*Save*”.
    Připojení zahájíš stiskem tlačítka “Open”.
 
    ![](images/smart-led-strip/putty.png)
@@ -164,15 +164,15 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
 
   **V Linuxu a MacOS:**
 
-   Použij Terminál a příkaz ssh pi@192.168.0.120 (IP adresu uprav na tvé Raspberry Pi).
-   Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “yes”a pokračujt.
+   Použij Terminál a příkaz *ssh pi@192.168.0.120* (IP adresu uprav na tvé Raspberry Pi).
+   Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “yes”a pokračuj.
 
 3. Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
    Výchozí heslo je "raspberry". Po úspěšném zadání hesla bys měl vidět odpověď podobnou příkladu:
 
    ![](images/smart-led-strip/rpi-connected.png)
 
-4. Než se pustíš do testování a následujících kroků je nutné aktualizovat SW       balíčky v           Raspberry Pi:
+4. Než se pustíš do testování a následujících kroků je nutné aktualizovat SW balíčky v           Raspberry Pi (aktualizuje rovněž SW balíčky BigClown):
 
     ```
     sudo apt-get update && sudo apt-get upgrade
@@ -374,14 +374,14 @@ Pro rychlé vyzkoušení vzorových projektů si je můžeš jednoduše naklonov
 ** Pozor:**
 Ujisti se, že máš v Blynku dostatek volné energie, [viz bod 5](https://doc.bigclown.cz/blynk.html#přidávání-widgetů-v-blynku)
 
-#### Projekt Smart LED Strip 1:
+### Projekt Smart LED Strip 1:
 Ovládání LED pásku a intenzity, volba barvy a intenzity bílé složky, spínání relé a indikace aktuální hodnot teploty a vlhkosti (vyžaduje 2000 bodů energie):
 
 ![](images/smart-led-strip/blynk-project-smart-led-1.png)
 
 ![](images/smart-led-strip/blynk-project-smart-led-1-QR.png)
 
-#### Projekt Smart LED Strip 2:
+### Projekt Smart LED Strip 2:
 
 Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hodnot teploty a vlhkosti a zobrazení grafu historie hodnot (vyžaduje 2000 bodů energie):
 
@@ -391,7 +391,7 @@ Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hod
 ![](images/smart-led-strip/blynk-project-smart-led-2-QR.png)
 
 
-#### Projekt Smart LED Strip 3:
+### Projekt Smart LED Strip 3:
 
 Všechny funkce i grafy v jednom projektu (vyžaduje 5000 bodů energie).
 V projektu jsou použita také uživatelská tlačítka pro vyvolání rychlých předvoleb.
@@ -433,7 +433,8 @@ Pro vyvolání předvolby v Blynku použij tlačítka nastavené na režim PUSH 
 ### Konfigurace vlastních pravidel režimu rules
 Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “etc/bigclown/plugin/led-strip.yaml”
 
-#### Příklad 1: Výchozí nastavení a pravidla popsaná v bodu 3.15:
+**Příklad 1: Výchozí nastavení a pravidla popsaná v bodu 3.15:**
+
 
     ```
     plugin:
@@ -467,7 +468,7 @@ Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “e
           color: "#eaeaea"
     ```
 
-#### Příklad 2: Vytvoření jednoduché indikace teploty dle počtu rozsvícených LED a barvy:
+**Příklad 2: Vytvoření jednoduché indikace teploty dle počtu rozsvícených LED a barvy:**
 
     ```
     plugin:
