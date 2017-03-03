@@ -442,7 +442,7 @@ Pro vyvolání předvolby v Blynku použij tlačítka nastavené na režim PUSH 
 ### Konfigurace vlastních pravidel režimu rules
 Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “etc/bigclown/plugin/led-strip.yaml”
 
-**Příklad 1: Výchozí nastavení a pravidla popsaná [v bodu 4.3]()**
+**Příklad 1: Výchozí nastavení a pravidla popsaná [v bodu 4.3](https://doc.bigclown.cz/smart-led-strip.html#použití-led-pásku-pro-indikaci-hodnot-teploty-a-vlhkosti)**
 
 
 ```
