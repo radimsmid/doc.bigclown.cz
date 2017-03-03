@@ -184,7 +184,8 @@ Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk podív
 Doporučujeme zkusit alespoň několik prvních příkazů pro otestování funčnosti.
 
 
-#### Ovládání LED pásku:
+**Ovládání LED pásku:**
+
 1.  Zapni světlo (LED pásek):
 
     ```
@@ -247,19 +248,20 @@ Doporučujeme zkusit alespoň několik prvních příkazů pro otestování fun�
     mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}'
     ```
 
-> **Note** Poznámka:
+**Poznámka: **
 Hodnoty barev se zadávají v hex formátu v rozsahu “00” až “ff”.
 Bílá složka je při zadávání nepovinná a zadává se v závorkách za RGB složky.
 Je možné míchat všechny barevné komponenty (RGB) včetně bílé složky (W).
 Pokud je hodnota bílé složky nulová, hodnotu v závorce lze vynechat.
 Např. pro rozsvícení pouze červené barvy lze použít:
 
-*mosquitto_pub -t "plugin/led-strip/color/set" -m '"#ff0000(00)"'*
-
+    ```
+    mosquitto_pub -t "plugin/led-strip/color/set" -m '"#ff0000(00)"'
+    ```
 nebo jednodušeji:
-
-*mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"*
-   
+    ```
+    mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
+    ```   
 
 > **Warning** Varování:
 Při nastavení maximální svítivosti (brightness = 100 %) nedoporučujeme rozsvěcet na plný výkon více než dvě barevné složky (nebo bílou složku + barvu).
@@ -267,7 +269,8 @@ Pokud nastavíte všechny čtyři složky (RGBW) na maximální hodnotu (ff) př
 Pro 100% výkon doporučujeme použít silnější napájecí adaptér min. 5V/5A a dále instalaci LED pásku do hliníkové lišty nebo její přilepení na kovový povrch pro lepší odvod tepla!
 
 
-#### Ovládání Relé
+**Ovládání Relé:**
+
 Zapni relé (sepne kontakty *NO* a *C*):
 
 
@@ -287,7 +290,7 @@ Vypni relé (sepne kontakty *NC* a *C*):
 > **Hint** První pomoc:
 Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
 
-#### Čtení hodnot ze senzorů na Remote unit
+**Čtení hodnot ze senzorů na Remote unit:**
 
 Čtení hodnot teploty a vlhkosti ze senzorů připojených na Remote unit (odesílaných každých 30 s):
 
@@ -304,7 +307,7 @@ do 30 s bys měl obdržet zprávu s výpisem teploty a vlhkosti:
 
 Pro ukončení monitorováni stiskněte *Ctrl-C*
 
-#### Použití LED pásku pro indikaci hodnot teploty a vlhkosti:
+**Použití LED pásku pro indikaci hodnot teploty a vlhkosti:**
 
 Pro indikaci nastavených hodnot je nutné opětovně zapnout LED pásek a přepnout ho do režimu “rules”:
 
@@ -325,25 +328,24 @@ Pokud se pohybují hodnoty teploty a vlhkosti v nastavených mezích svítí LED
 *   Modrá: teplota je příliš nízká (< 22°C)
 *   Bílá: hodnoty teploty i vlhkosti v nastavených mezích
 
-Meze hodnot i vlastní funkci lze libovolně upravovat editací příkazu:
+Meze hodnot i vlastní funkci lze libovolně měnit úpravou tohoto příkazu:
 
 ```
     mosquitto_pub -t "plugin/led-strip/rules/set" -m '[{"nodes/remote/humidity-sensor/+": {"value": "$.'"'"'relative-humidity'"'"'.[0]", "from": 60}, "color": "#00ff00"}, {"nodes/remote/humidity-sensor/+": {"va0lue": "$.'"'"'relative-humidity'"'"'.[0]", "to": 30}, "color": "#ffff00"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "from": 26}, "color": "#ff0000"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "to": 22}, "color": "#0000ff"}, {"color": "#ffffff"}]'
 ```
 
 Další pokročilé funkce budou popsány v pozdějších návodech.
+Pro přehlednější editaci vlastních pravidel je možné provést také editací konfiguračního souboru config.yaml [podrobněji níže](https://doc.bigclown.cz/smart-led-strip.html#konfigurace-vlastních-pravidel-režimu-rules).
 
-Pro přehlednější editaci vlastních pravidel je možné provést také editací konfiguračního souboru config.yaml (viz 4.22). **[doplnit odkaz]**
+**Změna režimu LED pásku:**
 
-
-#### Změna režimu LED pásku
 LED pásek nebo přesněji *LED-strip-plugin* může pracovat ve čtyřech základních režimech:
 *   rules - pásek se řídí dle nastavených pravidel (indikace teploty apod.)
-*   color - režim svícení celého pásku dle nastavené barvy popř. kombinace          složek RGBW
-*   compound - režim umožnuje ovládat nezávisle na sobě různé LED, rozsvítit        pouze části pásku nebo každou část rozsvítit jinou barvou
-*   framebuffer  - pásek je naplněn syrovými daty ve formátu base64 (v tomto        režimu nelze ovlivnit úroveň intenzity pomocí brightness)
+*   color - režim svícení celého pásku dle nastavené barvy popř. kombinace složek RGBW
+*   compound - režim umožnuje ovládat nezávisle na sobě různé LED, rozsvítit pouze části pásku nebo každou část rozsvítit jinou barvou
+*   framebuffer  - pásek je naplněn daty ve formátu base64 (v tomto režimu nelze ovlivnit úroveň intenzity pomocí brightness)
 
-Režimy lze přepínat příkazem mode/set:
+Režimy lze přepínat příkazem *mode/set*:
 
 ```
     mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
@@ -355,13 +357,13 @@ Každý režim si rovněž uchovává stav všech LED.
 Podrobněji budou funkce a příklady použití led-strip pluginu popsány později. výchozí režim a stav (předvolbu) každého režimu je možné nastavit pomocí konfiguračního souboru config.yaml popsaného v 4.22 **[doplnit odkaz].**
 
 
-
-
 ## Ovládej systém komfortně s aplikací Blynk!
 
-Aplikace Blynk.cc je perfektní nástroj pro ovládání tvé domácí automatizace z mobilu nebo tabletu.
-Zde  si ukážeme jak nastavit aplikaci Blynk pro ovládání a monitorování všech funkcí sestavy [Smart LED Strip Set](https://obchod.bigclown.cz/products/smart-led-strip-set)
-Předpokládá se, že již máš sestavený a oživený HW a jsi připojen přes SSH k Raspberry Pi (pokud ne, vrať se na kapitolu 2 nebo 3) **[doplnit odkazy]**
+Aplikace [Blynk](http://www.blynk.cc/) je perfektní nástroj pro ovládání tvé domácí automatizace z mobilu nebo tabletu.
+Zde si ukážeme jak nastavit aplikaci Blynk pro ovládání a monitorování všech funkcí sestavy [Smart LED Strip Set](https://obchod.bigclown.cz/products/smart-led-strip-set).
+
+Předpokládá se, že již máš sestavený a oživený HW a jsi připojen přes SSH k Raspberry Pi.
+Ppokud ne, vrať se na [bod 3](https://doc.bigclown.cz/smart-led-strip.html#postup-instalace-sestavy) nebo [bod 4](https://doc.bigclown.cz/smart-led-strip.html#rychlý-test-a-oživení-pomocí-mqtt-zpráv).
 
 Pro platformu Blynk jsme připravili [*samostatný návod*](https://doc.bigclown.cz/blynk.html):
 
@@ -371,30 +373,29 @@ Pro platformu Blynk jsme připravili [*samostatný návod*](https://doc.bigclown
 
 3.  [Pro seznámení s Blynkem a vyrvoření rvního funkčního tlačítka pro ovládání relé postupuj dle bodů 3 až 8:](https://doc.bigclown.cz/blynk.html).
 
-V dalších bodech jsou popsány další Blynk widgety, které se mohou hodit.
+V dalších bodech jsou popsány další Blynk widgety, které se ti mohou hodit.
 
 Pro rychlé vyzkoušení vzorových projektů si je můžeš jednoduše naklonovat dle [následujícího postupu:](https://doc.bigclown.cz/blynk.html#rychlé-naklonování-projektu)
 ** Pozor:**
 Ujisti se, že máš v Blynku dostatek volné energie, [viz bod 5](https://doc.bigclown.cz/blynk.html#přidávání-widgetů-v-blynku)
 
-### Projekt Smart LED Strip 1:
+**Projekt Smart LED Strip 1: **
+
 Ovládání LED pásku a intenzity, volba barvy a intenzity bílé složky, spínání relé a indikace aktuální hodnot teploty a vlhkosti (vyžaduje 2000 bodů energie):
 
 ![](images/smart-led-strip/blynk-project-smart-led-1.png)
 
 ![](images/smart-led-strip/blynk-project-smart-led-1-QR.png)
 
-### Projekt Smart LED Strip 2:
+**Projekt Smart LED Strip 2: **
 
 Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hodnot teploty a vlhkosti a zobrazení grafu historie hodnot (vyžaduje 2000 bodů energie):
 
 ![](images/smart-led-strip/blynk-project-smart-led-2.png)
 
-
 ![](images/smart-led-strip/blynk-project-smart-led-2-QR.png)
 
-
-### Projekt Smart LED Strip 3:
+**Projekt Smart LED Strip 3: **
 
 Všechny funkce i grafy v jednom projektu (vyžaduje 5000 bodů energie).
 V projektu jsou použita také uživatelská tlačítka pro vyvolání rychlých předvoleb.
