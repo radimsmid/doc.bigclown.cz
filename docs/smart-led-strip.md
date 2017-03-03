@@ -290,10 +290,9 @@ Vypni relé (sepne kontakty *NC* a *C*):
 > **Hint** První pomoc:
 Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
 
+
 **Čtení hodnot ze senzorů na Remote unit:**
-
-Čtení hodnot teploty a vlhkosti ze senzorů připojených na Remote unit (odesílaných každých 30 s):
-
+ 
 ```
     mosquitto_sub -v -t "nodes/remote/#"
 ```
@@ -305,11 +304,12 @@ do 30 s bys měl obdržet zprávu s výpisem teploty a vlhkosti:
     nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [40.6, "%"]}
 ```
 
-Pro ukončení monitorováni stiskněte *Ctrl-C*
+Pro ukončení monitorováni stiskni *Ctrl-C*
+
 
 **Použití LED pásku pro indikaci hodnot teploty a vlhkosti:**
 
-Pro indikaci nastavených hodnot je nutné opětovně zapnout LED pásek a přepnout ho do režimu “rules”:
+Pro indikaci nastavených hodnot je nutné opětovně zapnout LED pásek a přepnout ho do režimu “*rules*”:
 
 ```
     mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'
@@ -328,7 +328,7 @@ Pokud se pohybují hodnoty teploty a vlhkosti v nastavených mezích svítí LED
 *   Modrá: teplota je příliš nízká (< 22°C)
 *   Bílá: hodnoty teploty i vlhkosti v nastavených mezích
 
-Meze hodnot i vlastní funkci lze libovolně měnit úpravou tohoto příkazu:
+Meze hodnot i vlastní funkci lze libovolně měnit úpravou a zadání tohoto příkazu:
 
 ```
     mosquitto_pub -t "plugin/led-strip/rules/set" -m '[{"nodes/remote/humidity-sensor/+": {"value": "$.'"'"'relative-humidity'"'"'.[0]", "from": 60}, "color": "#00ff00"}, {"nodes/remote/humidity-sensor/+": {"va0lue": "$.'"'"'relative-humidity'"'"'.[0]", "to": 30}, "color": "#ffff00"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "from": 26}, "color": "#ff0000"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "to": 22}, "color": "#0000ff"}, {"color": "#ffffff"}]'
@@ -337,13 +337,14 @@ Meze hodnot i vlastní funkci lze libovolně měnit úpravou tohoto příkazu:
 Další pokročilé funkce budou popsány v pozdějších návodech.
 Pro přehlednější editaci vlastních pravidel je možné provést také editací konfiguračního souboru config.yaml [podrobněji níže](https://doc.bigclown.cz/smart-led-strip.html#konfigurace-vlastních-pravidel-režimu-rules).
 
+
 **Změna režimu LED pásku:**
 
-LED pásek nebo přesněji *LED-strip-plugin* může pracovat ve čtyřech základních režimech:
+LED pásek nebo přesněji "*LED-strip-plugin*" může pracovat ve čtyřech základních režimech:
 *   rules - pásek se řídí dle nastavených pravidel (indikace teploty apod.)
 *   color - režim svícení celého pásku dle nastavené barvy popř. kombinace složek RGBW
 *   compound - režim umožnuje ovládat nezávisle na sobě různé LED, rozsvítit pouze části pásku nebo každou část rozsvítit jinou barvou
-*   framebuffer  - pásek je naplněn daty ve formátu base64 (v tomto režimu nelze ovlivnit úroveň intenzity pomocí brightness)
+*   framebuffer  - pásek je naplněn daty ve formátu base64 (v tomto režimu nelze ovlivnit úroveň intenzity pomocí parametru *brightness*)
 
 Režimy lze přepínat příkazem *mode/set*:
 
@@ -354,7 +355,7 @@ Režimy lze přepínat příkazem *mode/set*:
 > **Note** Poznámka:
 Pokud se rozsvítí LED pásek pomocí příkazu plugin/led-strip/color/set, dojde automaticky také k přepnutím režimu na “color”, obdobně fungují i ostatní režimy.
 Každý režim si rovněž uchovává stav všech LED.
-Podrobněji budou funkce a příklady použití led-strip pluginu popsány později. výchozí režim a stav (předvolbu) každého režimu je možné nastavit pomocí konfiguračního souboru config.yaml popsaného v 4.22 **[doplnit odkaz].**
+Výchozí režim a stav (předvolbu) každého režimu je možné nastavit pomocí konfiguračního souboru config.yaml popsaného [zde](https://doc.bigclown.cz/smart-led-strip.html#konfigurace-vlastních-pravidel-režimu-rules).
 
 
 ## Ovládej systém komfortně s aplikací Blynk!
@@ -362,20 +363,18 @@ Podrobněji budou funkce a příklady použití led-strip pluginu popsány pozd�
 Aplikace [Blynk](http://www.blynk.cc/) je perfektní nástroj pro ovládání tvé domácí automatizace z mobilu nebo tabletu.
 Zde si ukážeme jak nastavit aplikaci Blynk pro ovládání a monitorování všech funkcí sestavy [Smart LED Strip Set](https://obchod.bigclown.cz/products/smart-led-strip-set).
 
-Předpokládá se, že již máš sestavený a oživený HW a jsi připojen přes SSH k Raspberry Pi.
-Ppokud ne, vrať se na [bod 3](https://doc.bigclown.cz/smart-led-strip.html#postup-instalace-sestavy) nebo [bod 4](https://doc.bigclown.cz/smart-led-strip.html#rychlý-test-a-oživení-pomocí-mqtt-zpráv).
-
-Pro platformu Blynk jsme připravili [*samostatný návod*](https://doc.bigclown.cz/blynk.html):
+Pro platformu Blynk jsme připravili [**samostatný návod**](https://doc.bigclown.cz/blynk.html):
 
 1.  [Můžeš si přečís, jak funguje Blynk](https://doc.bigclown.cz/blynk.html#jak-funguje-blynk)
 
 2.  [Zde zjistíš potřebné SW/HW vybavení](https://doc.bigclown.cz/blynk.html#potřebné-swhw-vybavení)
 
-3.  [Pro seznámení s Blynkem a vyrvoření rvního funkčního tlačítka pro ovládání relé postupuj dle bodů 3 až 8:](https://doc.bigclown.cz/blynk.html).
+3.  Pro seznámení s Blynkem a vyrvoření rvního funkčního tlačítka pro ovládání relé postupuj dle [bodů 3 až 8:](https://doc.bigclown.cz/blynk.html).
 
 V dalších bodech jsou popsány další Blynk widgety, které se ti mohou hodit.
 
 Pro rychlé vyzkoušení vzorových projektů si je můžeš jednoduše naklonovat dle [následujícího postupu:](https://doc.bigclown.cz/blynk.html#rychlé-naklonování-projektu)
+
 ** Pozor:**
 Ujisti se, že máš v Blynku dostatek volné energie, [viz bod 5](https://doc.bigclown.cz/blynk.html#přidávání-widgetů-v-blynku)
 
@@ -385,6 +384,8 @@ Ovládání LED pásku a intenzity, volba barvy a intenzity bílé složky, spí
 
 ![](images/smart-led-strip/blynk-project-smart-led-1.png)
 
+QR kód pro naklonování:
+
 ![](images/smart-led-strip/blynk-project-smart-led-1-QR.png)
 
 **Projekt Smart LED Strip 2: **
@@ -392,6 +393,8 @@ Ovládání LED pásku a intenzity, volba barvy a intenzity bílé složky, spí
 Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hodnot teploty a vlhkosti a zobrazení grafu historie hodnot (vyžaduje 2000 bodů energie):
 
 ![](images/smart-led-strip/blynk-project-smart-led-2.png)
+
+QR kód pro naklonování:
 
 ![](images/smart-led-strip/blynk-project-smart-led-2-QR.png)
 
@@ -404,6 +407,8 @@ Pro jejich zprovoznění je nutné upravit konfigurační soubor *etc/bigclown/p
 ![](images/smart-led-strip/blynk-project-smart-led-3-a.png)
 ![](images/smart-led-strip/blynk-project-smart-led-3-b.png)
 
+QR kód pro naklonování:
+
 ![](images/smart-led-strip/blynk-project-smart-led-3-QR.png)
 
 ### Přidání uživatelských tlačítek pro vyvolání scénických režimů
@@ -411,26 +416,25 @@ Rychlé předvolby pro RGBW LED pásek lze definovat pomocí konfiguračního so
 Nejprve se zadává požadovaný Virtual PIN (dostupné jsou 8-99) a následně příkaz color nebo compound:
 
 Jako příklad namapujeme 4 uživatelské předvolby na Virtuální PINy:
-
-V8: bílé světlo
-V9: studená bílá
-V11: polovina pásku svítí červeně, druhá modře
-V12: duha
+*   V8: bílé světlo
+*   V9: studená bílá
+*   V11: polovina pásku svítí červeně, druhá modře
+*   V12: duha
 
 Konfiguraci zapíšeme do souboru led-strip.user následovně:
 
-    ```
+```
     8 plugin/led-strip/color/set "#000000(aa)"
     9 plugin/led-strip/color/set "#000088(aa)"
     11 plugin/led-strip/compound/set [72, "#ff0000", 72, "#0000ff"]
     12 plugin/led-strip/compound/set [20, "#ff0000", 20, "#ff7f00", 20, "#ffff00", 20, "#00ff00", 20, "#0000ff", 20, "#960082", 21, "#D500ff"]
-    ```
+```
 
 Po úpravě souboru je nutné provést restart blynk pluginu (nebo restart Raspberry Pi):
 
-    ```
+```
     sudo systemctl restart bc-smart-led-strip-blynk.service
-    ```
+```
 
 Pro vyvolání předvolby v Blynku použij tlačítka nastavené na režim PUSH namapované na PINy  V8, V9, V11, V12. Předvolby jsou použity v ukázkovém projektu *Smart LED Strip 3*.
 
@@ -440,7 +444,7 @@ Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “e
 **Příklad 1: Výchozí nastavení a pravidla popsaná v bodu 3.15:**
 
 
-    ```
+```
     plugin:
         host: localhost
         port: 1883
@@ -470,11 +474,11 @@ Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “e
         -
           # Default
           color: "#eaeaea"
-    ```
+ ```
 
 **Příklad 2: Vytvoření jednoduché indikace teploty dle počtu rozsvícených LED a barvy:**
 
-    ```
+```
     plugin:
       color: '#ff0000'
       compound: [20, '#ff0000', 20, '#00ff00', 20, '#0000ff', 20, '#000000(ff)',20, '#ea0000(ff)']
@@ -501,15 +505,15 @@ Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “e
     - compound: [144, '#ff0000(66)']
       nodes/remote/thermometer/+: {from: 30.0, to: 99.0, value: '$.temperature.[0]'}
     - compound: [10, '#ff0000', 124, '#000000(ff)', 10, '#ff0000']
-    ```
+```
 
 Po přepsání konfiguračního souboru je nutné provést restart led-strip-pluginu (nebo restart Raspberry Pi):
 
-    ```
+```
     sudo systemctl restart bc-smart-led-strip-led-strip.service
-    ```
+```
 
 
 ## Závěr
-Na závěr bychom tě chtěli vyzvat k vlastním úpravám a projektům. Je pouze na tobě, zda si pásek nalepíš za TV a v Blynku si definuješ vlastní scénické převolby pro navození té správné atmosféry k filmu, nebo zda si pásek přiděláš do hliníkové lišty nad pracovní stůl. Těšíme se na tvé projekty s BigClown! Tvůj projekt se může stát inspirací pro další, můžě ho [přidat na naši dokumentaci sám](https://doc.bigclown.cz/), nebo nám ho [pošli na email](mailto:support@bigclown.com).
+Na závěr bychom tě chtěli vyzvat k vlastním úpravám a projektům. Je pouze na tobě, zda si pásek nalepíš za TV a v Blynku si definuješ vlastní scénické převolby pro navození té správné atmosféry k filmu, nebo zda si pásek přiděláš do hliníkové lišty nad pracovní stůl. Těšíme se na tvé projekty s BigClown! Tvůj projekt se může stát inspirací pro další, můžeš ho [přidat na naši dokumentaci sám](https://doc.bigclown.cz/), nebo nám ho [pošli na email](mailto:support@bigclown.com).
 Pokud něčemu neporozumíš, nebo najdeš chubu, neboj se nám napsat email nebo na do [fóra](http://forum.bigclown.com/).
