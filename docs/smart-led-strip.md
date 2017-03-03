@@ -271,7 +271,7 @@ Pokud nastavíte všechny čtyři složky (RGBW) na maximální hodnotu (ff) př
 Pro 100% výkon doporučujeme použít silnější napájecí adaptér min. 5V/5A a dále instalaci LED pásku do hliníkové lišty nebo její přilepení na kovový povrch pro lepší odvod tepla!
 
 
-**Ovládání Relé:**
+**Ovládání relé:**
 
 Zapni relé (sepne kontakty *NO* a *C*):
 
@@ -290,7 +290,7 @@ Vypni relé (sepne kontakty *NC* a *C*):
 
 
 > **Hint** První pomoc:
-Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
+Pokud jsi se úspěšně připojil k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
 
 
 **Čtení hodnot ze senzorů na Remote unit:**
@@ -367,11 +367,11 @@ Zde si ukážeme jak nastavit aplikaci Blynk pro ovládání a monitorování v�
 
 Pro platformu Blynk jsme připravili [**samostatný návod**](https://doc.bigclown.cz/blynk.html):
 
-1.  [Můžeš si přečís, jak funguje Blynk](https://doc.bigclown.cz/blynk.html#jak-funguje-blynk)
+1.  [Můžeš si přečíst, jak funguje Blynk](https://doc.bigclown.cz/blynk.html#jak-funguje-blynk)
 
 2.  [Zde zjistíš potřebné SW/HW vybavení](https://doc.bigclown.cz/blynk.html#potřebné-swhw-vybavení)
 
-3.  Pro seznámení s Blynkem a vytvoření rvního funkčního tlačítka pro ovládání relé postupuj dle [bodů 3 až 8](https://doc.bigclown.cz/blynk.html).
+3.  Pro seznámení s Blynkem a vytvoření prvního funkčního tlačítka pro ovládání relé postupuj dle [bodů 3 až 8](https://doc.bigclown.cz/blynk.html).
     V dalších bodech jsou popsány další Blynk widgety, které se ti mohou hodit.
 
 Pro rychlé vyzkoušení vzorových projektů si je můžeš jednoduše naklonovat dle [následujícího postupu:](https://doc.bigclown.cz/blynk.html#rychlé-naklonování-projektu)
@@ -519,4 +519,4 @@ Po přepsání konfiguračního souboru je nutné provést restart led-strip-plu
 
 ## Závěr
 Na závěr bychom tě chtěli vyzvat k vlastním úpravám a projektům. Je pouze na tobě, zda si pásek nalepíš za TV a v Blynku si definuješ vlastní scénické převolby pro navození té správné atmosféry k filmu, nebo zda si pásek přiděláš do hliníkové lišty nad pracovní stůl. Těšíme se na tvé projekty s BigClown! Tvůj projekt se může stát inspirací pro další, můžeš ho [přidat na naši dokumentaci sám](https://doc.bigclown.cz/), nebo nám ho [pošli na email](mailto:support@bigclown.com).
-Pokud něčemu neporozumíš, nebo najdeš chubu, neboj se nám napsat email nebo na do [fóra](http://forum.bigclown.com/).
+Pokud něčemu neporozumíš nebo najdeš chubu, neboj se nám napsat email nebo na do [fóra](http://forum.bigclown.com/).
