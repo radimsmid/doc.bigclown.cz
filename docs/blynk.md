@@ -164,7 +164,7 @@ Ve vzorovém projektu [Smart LED Strip](https://doc.bigclown.cz/smart-led-strip.
 
   ![](images/blynk/blynk-menu-setting.png)
 
-## Value Display a Labeled Value - četní hodnot
+## Value Display a Labeled Value - čtení hodnot
 
   ![](images/blynk/blynk-add-value-display-labeled-value.png)
 
