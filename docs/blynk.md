@@ -128,7 +128,7 @@ Postupu dle kroků:
 
   ![](images/blynk/blynk-project-stop-cut.png)
 
-### První pomoc
+**První pomoc:**
 Pokud se po spuštění projektu Blynk vypíše hláška “Device is offline” zkontroluj:
 * připojení k internetu svého telefonu nebo tabletu
 * připojení Raspberry Pi k internetu

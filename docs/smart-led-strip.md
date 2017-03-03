@@ -135,7 +135,7 @@ Dále budeš potřebovat:
     ![](images/smart-led-strip/turn-on-light.png)
 
 
-## Rychlý test a oživení pomocí MQTT zpráv
+## Rychlý test a oživení pomocí konzole
 
 Všechny zprávy mezi Linuxovými komponentami systému jsou vyměňovány pomocí tzv. MQTT brokeru.
 MQTT broker tvoří jádro systému domácí automatizace BigClown.
@@ -358,7 +358,7 @@ Každý režim si rovněž uchovává stav všech LED.
 Výchozí režim a stav (předvolbu) každého režimu je možné nastavit pomocí konfiguračního souboru config.yaml popsaného [zde](https://doc.bigclown.cz/smart-led-strip.html#konfigurace-vlastních-pravidel-režimu-rules).
 
 
-## Ovládej systém komfortně s aplikací Blynk!
+## Ovládej systém komfortně s aplikací Blynk
 
 Aplikace [Blynk](http://www.blynk.cc/) je perfektní nástroj pro ovládání tvé domácí automatizace z mobilu nebo tabletu.
 Zde si ukážeme jak nastavit aplikaci Blynk pro ovládání a monitorování všech funkcí sestavy [Smart LED Strip Set](https://obchod.bigclown.cz/products/smart-led-strip-set).
@@ -369,14 +369,13 @@ Pro platformu Blynk jsme připravili [**samostatný návod**](https://doc.bigclo
 
 2.  [Zde zjistíš potřebné SW/HW vybavení](https://doc.bigclown.cz/blynk.html#potřebné-swhw-vybavení)
 
-3.  Pro seznámení s Blynkem a vyrvoření rvního funkčního tlačítka pro ovládání relé postupuj dle [bodů 3 až 8:](https://doc.bigclown.cz/blynk.html).
-
-V dalších bodech jsou popsány další Blynk widgety, které se ti mohou hodit.
+3.  Pro seznámení s Blynkem a vytvoření rvního funkčního tlačítka pro ovládání relé postupuj dle [bodů 3 až 8:](https://doc.bigclown.cz/blynk.html).
+    V dalších bodech jsou popsány další Blynk widgety, které se ti mohou hodit.
 
 Pro rychlé vyzkoušení vzorových projektů si je můžeš jednoduše naklonovat dle [následujícího postupu:](https://doc.bigclown.cz/blynk.html#rychlé-naklonování-projektu)
-
 ** Pozor:**
 Ujisti se, že máš v Blynku dostatek volné energie, [viz bod 5](https://doc.bigclown.cz/blynk.html#přidávání-widgetů-v-blynku)
+
 
 **Projekt Smart LED Strip 1: **
 
@@ -388,6 +387,7 @@ QR kód pro naklonování:
 
 ![](images/smart-led-strip/blynk-project-smart-led-1-QR.png)
 
+
 **Projekt Smart LED Strip 2: **
 
 Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hodnot teploty a vlhkosti a zobrazení grafu historie hodnot (vyžaduje 2000 bodů energie):
@@ -397,6 +397,7 @@ Spínání LED pásku a relé, nastavení intenzity LED, indikace aktuální hod
 QR kód pro naklonování:
 
 ![](images/smart-led-strip/blynk-project-smart-led-2-QR.png)
+
 
 **Projekt Smart LED Strip 3: **
 
