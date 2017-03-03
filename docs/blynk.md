@@ -1,4 +1,4 @@
-# Blynk - Ovládej BigClowna z mobilu
+# Blynk - Ovládej moduly BigClown z mobilu
 
 <!-- toc -->
 

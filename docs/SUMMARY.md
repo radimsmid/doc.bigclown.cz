@@ -64,7 +64,7 @@
 
 * [Mosquitto - MQTT Broker](mosquitto.md)
 
-* [Blynk - Ovládání BigClowna z mobilu](blynk.md)
+* [Blynk - Ovládání modulů BigClown z mobilu](blynk.md)
 
 * [Node RED - Grafický programovací nástroj](node-red.md)
 
