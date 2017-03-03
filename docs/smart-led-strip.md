@@ -218,7 +218,7 @@ Doporučujeme zkusit alespoň několik prvních příkazů pro otestování fun�
     mosquitto_pub -t "plugin/led-strip/color/set" -m '"#000000(ff)"'
     ```
 
-6.  Vytvoř "studenou bílou" namícháním bílé s modorou:
+6.  Vytvoř "studenou bílou" namícháním bílé s modrou:
 
     ```
     mosquitto_pub -t "plugin/led-strip/color/set" -m '"#000099(ff)"'
