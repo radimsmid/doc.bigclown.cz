@@ -307,7 +307,7 @@ do 30 s bys měl obdržet zprávu s výpisem teploty a vlhkosti:
 Pro ukončení monitorováni stiskni *Ctrl-C*
 
 
-**Použití LED pásku pro indikaci hodnot teploty a vlhkosti:**
+###Použití LED pásku pro indikaci hodnot teploty a vlhkosti:
 
 Pro indikaci nastavených hodnot je nutné opětovně zapnout LED pásek a přepnout ho do režimu “*rules*”:
 
@@ -338,7 +338,7 @@ Další pokročilé funkce budou popsány v pozdějších návodech.
 Pro přehlednější editaci vlastních pravidel je možné provést také editací konfiguračního souboru config.yaml [podrobněji níže](https://doc.bigclown.cz/smart-led-strip.html#konfigurace-vlastních-pravidel-režimu-rules).
 
 
-**Změna režimu LED pásku:**
+###Změna režimu LED pásku:
 
 LED pásek nebo přesněji "*LED-strip-plugin*" může pracovat ve čtyřech základních režimech:
 *   rules - pásek se řídí dle nastavených pravidel (indikace teploty apod.)
@@ -442,7 +442,7 @@ Pro vyvolání předvolby v Blynku použij tlačítka nastavené na režim PUSH 
 ### Konfigurace vlastních pravidel režimu rules
 Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “etc/bigclown/plugin/led-strip.yaml”
 
-**Příklad 1: Výchozí nastavení a pravidla popsaná v bodu 3.15:**
+**Příklad 1: Výchozí nastavení a pravidla popsaná [v bodu 4.3]()**
 
 
 ```
