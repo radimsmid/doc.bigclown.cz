@@ -369,7 +369,7 @@ Pro platformu Blynk jsme připravili [**samostatný návod**](https://doc.bigclo
 
 2.  [Zde zjistíš potřebné SW/HW vybavení](https://doc.bigclown.cz/blynk.html#potřebné-swhw-vybavení)
 
-3.  Pro seznámení s Blynkem a vytvoření rvního funkčního tlačítka pro ovládání relé postupuj dle [bodů 3 až 8:](https://doc.bigclown.cz/blynk.html).
+3.  Pro seznámení s Blynkem a vytvoření rvního funkčního tlačítka pro ovládání relé postupuj dle [bodů 3 až 8](https://doc.bigclown.cz/blynk.html).
     V dalších bodech jsou popsány další Blynk widgety, které se ti mohou hodit.
 
 Pro rychlé vyzkoušení vzorových projektů si je můžeš jednoduše naklonovat dle [následujícího postupu:](https://doc.bigclown.cz/blynk.html#rychlé-naklonování-projektu)
