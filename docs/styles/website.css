@@ -45,9 +45,12 @@ section.normal h6:before {
 	content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) "." counter(h6counter) ".\0000a0\0000a0";
 }
 
-/* Horizontal menu consistency */
+/* Whole page settings */
 html,
 body {
+	font-family: "usual", sans-serif !important;
+	
+	/* Horizontal menu consistency */
 	float: left;
 	width: 100%;
 }
@@ -82,6 +85,7 @@ body {
   text-align: center;
   vertical-align: middle;
   line-height: 55px;
+  margin-top: 1px;
 }
 
 /* Horizontal menu - Inside: Desktop (1024px +) */
@@ -92,24 +96,33 @@ body {
   width: 100%;
   text-align: center;
   z-index: -1;
+  margin-left: -29.2px;
 }
 #navigation ul li {
   border-right: solid 1px #e6e6e6;
   display: inline-block;
   float: none;
-  margin-left: -4px;
+  margin-left: -4.2px;
+  margin-right: -2px;
+}
+#navigation ul li:first-child {
+  border-left: solid 1px #e6e6e6;
 }
 #navigation ul li a {
   display: block;
   height: 100%;
   overflow: hidden;
   line-height: 65px;
-  font-size: 14px;
+  font-size: 15px;
   color: #2c232c;
   text-decoration: none;
   padding: 0 30px;
   font-weight: 600;
   text-transform: uppercase;
+  
+  /* Override of GitBook style */
+  font-family: "usual", sans-serif !important;
+  letter-spacing: 0px !important;
 }
 #navigation ul li a:hover {
   color: #e6381c;
