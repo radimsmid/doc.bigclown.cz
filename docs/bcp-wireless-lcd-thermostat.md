@@ -38,11 +38,9 @@ Zároveň je možné base jednotku připojit přes USB například do Raspberry 
 ## Firmware
 
 
-Projekt nalzenete na GitHubu. Každý node má svůj vlastní repozitář.
+Projekt nalzenete na GitHubu. Každý node má svou vlastní podsložku `base` a `remote`.
 
-https://github.com/bigclownlabs/bcp-wireless-thermometer-remote
-
-https://github.com/bigclownlabs/bcp-wireless-thermometer-base
+https://github.com/bigclownlabs/bcp-wireless-lcd-thermostat
 
 
 ## Sestavení a programování modulů
