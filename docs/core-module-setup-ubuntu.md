@@ -87,3 +87,19 @@ This section will guide you through the BigClown Core Module firmware build proc
    ```
    ls -l out
    ```
+
+
+## Install Mosquitto
+
+
+Mosquitto is a MQTT broker which is the central hub of BigClown communication. Please follow [Mosquitto installation steps in this tutorial](mosquitto.md).
+
+
+## Install Gateway
+
+
+Gateway is a simple Python script which is connecting serial port and MQTT together. Clone `bc-workroom-hub` repository
+
+``https://github.com/bigclownlabs/bc-workroom-hub``
+
+And run the script `bc-workroom-gateway.py` in the gateway folder.
