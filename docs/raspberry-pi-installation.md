@@ -35,7 +35,7 @@ Budeme instalovat BigClown verzi Raspbianu - oficiální a nejpopulárnější d
 2. Stáhni si aktuální verzi BigClown Raspbian image z [tohoto linku](https://github.com/bigclownlabs/bc-raspbian/releases/download/v1.0.1/{{ raspbian_zip }}).
 
 
-### Návod pro Windows 
+### Návod pro Windows
 
 3. Rozbal si stažený image.
 
@@ -272,19 +272,19 @@ Toto je stručný výpis změn:
 
 6. Nyní si můžeš jednotlivě nainstalovat balíčky:
 
-   * Základní balíček pro Workroom projekt (hardware interface):
+   * Základní balíček pro  Smart LED Strip (Workroom) projekt (hardware interface):
 
      ```
      sudo apt-get install bc-workroom-gateway
      ```
 
-   * LED strip plugin pro Workroom projekt:
+   * LED strip plugin pro Smart LED Strip (Workroom) projekt:
 
      ```
      sudo apt-get install bc-workroom-led-strip
      ```
 
-   * Blynk plugin pro Workroom projekt:
+   * Blynk plugin pro Smart LED Strip (Workroom) projekt:
 
      ```
      sudo apt-get install bc-workroom-blynk

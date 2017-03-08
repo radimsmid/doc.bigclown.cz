@@ -108,7 +108,7 @@ Connected core module appears as a USB serial device in your computer.
 The python gateway script interconnects the core module with MQTT broker.
 This section explains how to set up these pieces.
 
-Clone bc-workroom-hub
+Clone bc-workroom-hub (Smart LED Strip Project)
 
 `git clone https://github.com/bigclownlabs/bc-workroom-hub.git`
 

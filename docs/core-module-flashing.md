@@ -153,7 +153,7 @@ TODO: Vložit obrázek.
 Firmware si můžeš naprogramovat s pomocí [BigClown API](http://sdk.bigclown.com) a zkompilovat sám.
 SDK nalezneš na našem [GitHub](https://github.com/bigclownlabs) účtu.
 
-Můžeš si stáhnout předkompilované binární soubory pro [Workroom project](workroom.md):
+Můžeš si stáhnout předkompilované binární soubory pro [ Smart LED Strip (Workroom) project](smart-led-strip.md):
 
 * [Base unit](https://drive.google.com/open?id=0B5pXL_JAACMvM284WW9sSFNCWkE)
 

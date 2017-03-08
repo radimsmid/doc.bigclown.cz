@@ -43,6 +43,8 @@ Celý koncept popisuje následující diagram:
 Všechny potřebné výrobky jsme zabalili do [cenově zvýhodněné sady](https://obchod.bigclown.cz/products/smart-led-strip-set), kterou si můžeš koupit v našem obchodě.
 Pokud již vlastníš Core modul nebo si ho koupíš samostatně, pak si ho musíš flashnout správným firmware a [to podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html).
 Firmware pro jednotky Base a Remote nalezneš [zde](https://doc.bigclown.cz/core-module-flashing.html#firmware-files).
+Pokud chceš použít vlastní Raspberry Pi s běžícím Raspianem, postupuj [návodem na instalaci BigClown balíčků na existující systém](https://doc.bigclown.cz/raspberry-pi-installation.html#instalace-bigclown-balíčků-na-existující-systém).
+Nebo si můžeš [stáhnout image](https://doc.bigclown.cz/raspberry-pi-installation.html#příprava-microsd-karty), s již předinstalovaným systémem včetně BigClown balíčků.
 
 
 Sada obsahuje:
