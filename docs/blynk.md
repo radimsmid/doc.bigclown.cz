@@ -9,7 +9,7 @@ Blynk ti umožní ovládat všechny funkce pohodlně ze smartphonu nebo tabletu 
 
 ## Jak funguje Blynk
 
-Blynk není jen mobilní aplikace, ale také IoT cloud server, který ti umožní ovládat nebo číst data ze senzorů v mobilu odkudkoliv s připojením k internetu.
+Blynk není jen mobilní aplikace, ale také IoT cloud server, který ti umožní ovládat nebo číst data ze senzorů BigClown pomocí mobilu odkudkoliv s připojením k internetu.
 Stačí se přihlásit pod svým uživatelským účtem.
 Stanice Bigclown si vyměňuje data se serverem i když není mobilní aplikace připojena.
 V aplikaci tak lze např. zobrazit historii naměřené teploty za poslední týden nebo nastavit časový spínač na stanovenou hodinu.
