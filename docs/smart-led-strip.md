@@ -42,6 +42,8 @@ Celý koncept popisuje následující diagram:
 
 Všechny potřebné výrobky jsme zabalili do [cenově zvýhodněné sady](https://obchod.bigclown.cz/products/smart-led-strip-set), kterou si můžeš koupit v našem obchodě.
 Pokud již vlastníš Core modul nebo si ho koupíš samostatně, pak si ho musíš flashnout správným firmware a [to podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html).
+Firmware pro jednotky Base a Remote nalezneš [zde](https://doc.bigclown.cz/core-module-flashing.html#firmware-files).
+
 
 Sada obsahuje:
 
