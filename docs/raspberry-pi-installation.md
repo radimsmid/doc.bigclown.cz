@@ -272,7 +272,7 @@ Toto je stručný výpis změn:
 
 6. Nyní si můžeš jednotlivě nainstalovat balíčky:
 
-   * Základní balíček pro  Smart LED Strip (Workroom) projekt (hardware interface):
+   * Základní balíček pro Smart LED Strip (Workroom) projekt (hardware interface):
 
      ```
      sudo apt-get install bc-workroom-gateway

@@ -160,7 +160,7 @@ Můžeš si stáhnout předkompilované binární soubory pro [ Smart LED Strip 
 * [Remote unit](https://drive.google.com/open?id=0B5pXL_JAACMvVkNRT2dPd1VJRlE)
 
 
-## Popis funkčnosti Remote unit pro Workroom project
+## Popis funkčnosti Remote unit pro Smart LED Strip (Workroom) project
 
 * Automatické posílání naměřené teploty a vlhkosti každých 30 sekund.
 
