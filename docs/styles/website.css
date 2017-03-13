@@ -34,21 +34,16 @@ body {
 	border-bottom: 1px solid rgba(0,0,0,.07);
 	z-index: 9;
 }
-@media only screen and (max-width: 529px) {
+@media only screen and (max-width: 600px) {
 	.book .book-header {
-		position: fixed;
 		left: 0px;
-	}
-	.book.with-summary .book-header {
-		left: 300px;
-		position: static;
-		padding-bottom: 500px;
+		position: fixed;
 	}
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
 	.book .book-header {
-		position: fixed;
 		left: 0px;
+		position: fixed;
 	}
 	.book.with-summary .book-header {
 		left: 300px;
@@ -56,8 +51,8 @@ body {
 }
 @media only screen and (min-width: 1025px) {
 	.book .book-header {
-		position: fixed;
 		left: 0px;
+		position: fixed;
 	}
 	.book.with-summary .book-header {
 		left: 300px;
@@ -155,21 +150,9 @@ body {
 		text-align: center;
 	}
 }
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
+@media only screen and (max-width: 1024px) {
 	#navigation .logo {
 		position: absolute;
-		left: 50%;
-		margin-left: -96px;
-	}
-}
-
-/* Horizontal menu - Inside: Phone */
-@media only screen and (max-width: 529px) {
-	#navigation .logo {
-		position: absolute;
-		border-right: none;
-		font-size: 20px;
-		line-height: 60px;
 		left: 50%;
 		margin-left: -96px;
 	}
