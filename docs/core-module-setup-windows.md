@@ -1,5 +1,4 @@
-# BigClown development on Windows
-
+# Core Module Development Setup - Windows Desktop
 
 {% include "./_translating.md" %}
 
