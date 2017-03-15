@@ -155,9 +155,7 @@ SDK nalezneš na našem [GitHub](https://github.com/bigclownlabs) účtu.
 
 Můžeš si stáhnout předkompilované binární soubory pro [ Smart LED Strip (Workroom) project](smart-led-strip.md):
 
-* [Base unit](https://drive.google.com/open?id=0B5pXL_JAACMvM284WW9sSFNCWkE)
-
-* [Remote unit](https://drive.google.com/open?id=0B5pXL_JAACMvVkNRT2dPd1VJRlE)
+* [Base unit a Remote unit](https://github.com/bigclownlabs/bcp-wireless-circus/releases/latest)
 
 
 ## Popis funkčnosti Remote unit pro Smart LED Strip (Workroom) project
