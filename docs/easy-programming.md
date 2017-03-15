@@ -67,19 +67,23 @@ Je dobré mít vždy vše aktuální, takže si zaktualizujeme firmware, může�
 
 * Stáhni si aktuální firmware
 
-  `wget "https://docs.google.com/uc?export=download&id=0B5pXL_JAACMvVkNRT2dPd1VJRlE" -O bc-workroom-remote.binary`
+  * přímo z repozitáře [https://github.com/bigclownlabs/bcp-wireless-circus/releases/latest](https://github.com/bigclownlabs/bcp-wireless-circus/releases/latest) jsou to soubory firmware-remote.bin a firmware-base.bin
 
-  `wget "https://docs.google.com/uc?export=download&id=0B5pXL_JAACMvM284WW9sSFNCWkE" -O bc-workroom-base.binary`
+  * nebo pomocí těchto příkazů
+
+    `wget $(wget "https://api.github.com/repos/bigclownlabs/bcp-wireless-circus/releases/latest" -q -O - | grep browser_download_url | grep base.bin | head -n 1 | cut -d '"' -f 4)`
+
+    `wget $(wget "https://api.github.com/repos/bigclownlabs/bcp-wireless-circus/releases/latest" -q -O - | grep browser_download_url | grep remote.bin | head -n 1 | cut -d '"' -f 4)`
 
 * Přečti si co je dfu mód [zde](https://doc.bigclown.cz/core-module-flashing.html#nahrávání-programu-přes-usb-dfu-bootloader)
 
 * Připoj jednotku Remote, přepni jí do dfu módu a nahraj nový firmware
 
-  `sudo dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D bc-workroom-remote.binary`
+  `sudo dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware-remote.bin`
 
 * Proveď to stejné s Base jednotkou
 
-  `sudo dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D bc-workroom-base.binary`
+  `sudo dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware-base.bin`
 
 ### Párování Base s Remote
 
