@@ -3,16 +3,16 @@
 **Zde nalezeš vysvětlení používaných BigClowních pojmů a zkratek**
 
 ### BigClown Hub (Hub)
-to do popis
+TODO popis
 
 ### BigClown Node (Nod)
-to do popis
+TODO popis
 
 ### BigClown Module (Modul)
-to do popis
+TODO popis
 
 ### BigClown Tag (Tag)
-to do popis
+TODO popis
 
 ### Gateway
 
