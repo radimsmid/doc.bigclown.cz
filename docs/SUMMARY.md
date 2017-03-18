@@ -5,6 +5,7 @@
 
 * [Koncept](concept.md)
 
+* [Rozcestník](guidepost.md)
 
 ## Core Module
 
