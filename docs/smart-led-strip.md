@@ -486,15 +486,15 @@ rules:
 **Příklad 2: Vytvoření jednoduché indikace teploty dle počtu rozsvícených LED a barvy:**
 
 ```
-    plugin:
-      color: '#ff0000'
-      compound: [20, '#ff0000', 20, '#00ff00', 20, '#0000ff', 20, '#000000(ff)',20, '#ea0000(ff)']
-      host: localhost
-      log: debug
-      mode: rules
-      port: 1883
-      state: true
-    rules:
+plugin:
+    color: '#ff0000'
+    compound: [20, '#ff0000', 20, '#00ff00', 20, '#0000ff', 20, '#000000(ff)',20, '#ea0000(ff)']
+    host: localhost
+    log: debug
+    mode: rules
+    port: 1883
+    state: true
+rules:
     - compound: [18, '#000088(99)']
       nodes/remote/thermometer/+: {from: -40.0, to: 0.0, value: '$.temperature.[0]'}
     - compound: [36, '#0000ff']
