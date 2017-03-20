@@ -281,7 +281,7 @@ Zapni relé (sepne kontakty *NO* a *C*):
 
 
 ```
-    mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
+mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
 ```
 
 
@@ -289,7 +289,7 @@ Vypni relé (sepne kontakty *NC* a *C*):
 
 
 ```
-    mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
+mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
 ```
 
 
@@ -300,14 +300,14 @@ Pokud jsi se úspěšně připojil k Raspberry Pi a LED pásek nebo relé nejde 
 **Čtení hodnot ze senzorů na Remote unit:**
 
 ```
-    mosquitto_sub -v -t "nodes/remote/#"
+mosquitto_sub -v -t "nodes/remote/#"
 ```
 
 do 30 s bys měl obdržet zprávu s výpisem teploty a vlhkosti:
 
 ```
-    nodes/remote/thermometer/i2c0-49 {"temperature": [20.31, "\u2103"]}
-    nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [40.6, "%"]}
+nodes/remote/thermometer/i2c0-49 {"temperature": [20.31, "\u2103"]}
+nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [40.6, "%"]}
 ```
 
 Pro ukončení monitorováni stiskni *Ctrl-C*
@@ -318,11 +318,11 @@ Pro ukončení monitorováni stiskni *Ctrl-C*
 Pro indikaci nastavených hodnot je nutné opětovně zapnout LED pásek a přepnout ho do režimu “*rules*”:
 
 ```
-    mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'
+mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'
 ```
 
 ```
-    mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
+mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
 ```
 
 V režimu rules je ve výchozím stavu nastavena následující logika:
@@ -337,7 +337,7 @@ Pokud se pohybují hodnoty teploty a vlhkosti v nastavených mezích svítí LED
 Meze hodnot i vlastní funkci lze libovolně měnit úpravou a zadání tohoto příkazu:
 
 ```
-    mosquitto_pub -t "plugin/led-strip/rules/set" -m '[{"nodes/remote/humidity-sensor/+": {"value": "$.'"'"'relative-humidity'"'"'.[0]", "from": 60}, "color": "#00ff00"}, {"nodes/remote/humidity-sensor/+": {"va0lue": "$.'"'"'relative-humidity'"'"'.[0]", "to": 30}, "color": "#ffff00"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "from": 26}, "color": "#ff0000"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "to": 22}, "color": "#0000ff"}, {"color": "#ffffff"}]'
+mosquitto_pub -t "plugin/led-strip/rules/set" -m '[{"nodes/remote/humidity-sensor/+": {"value": "$.'"'"'relative-humidity'"'"'.[0]", "from": 60}, "color": "#00ff00"}, {"nodes/remote/humidity-sensor/+": {"va0lue": "$.'"'"'relative-humidity'"'"'.[0]", "to": 30}, "color": "#ffff00"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "from": 26}, "color": "#ff0000"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "to": 22}, "color": "#0000ff"}, {"color": "#ffffff"}]'
 ```
 
 Další pokročilé funkce budou popsány v pozdějších návodech.
@@ -355,7 +355,7 @@ LED pásek nebo přesněji "*LED-strip-plugin*" může pracovat ve čtyřech zá
 Režimy lze přepínat příkazem *mode/set*:
 
 ```
-    mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
+mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
 ```
 
 > **Note** Poznámka:
@@ -452,35 +452,35 @@ Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “e
 
 
 ```
-    plugin:
-        host: localhost
-        port: 1883
-        log: debug
-        state: true
-        color: "#ff0000"
-        compound: [20, "#ff0000", 20, "#00ff00", 20, "#0000ff", 20, "#000000(ff)", 20, "#ea0000(ff)"]
-        mode: rules
+plugin:
+    host: localhost
+    port: 1883
+    log: debug
+    state: true
+    color: "#ff0000"
+    compound: [20, "#ff0000", 20, "#00ff00", 20, "#0000ff", 20, "#000000(ff)", 20, "#ea0000(ff)"]
+    mode: rules
 
-    rules:
-        - nodes/remote/humidity-sensor/+:
-            value: $.'relative-humidity'.[0]
-            from: 60
-          color: "#00ff00"
-        - nodes/remote/humidity-sensor/+:
-            value: $.'relative-humidity'.[0]
-            to: 30
-          color: "#ffff00"
-        - nodes/remote/thermometer/+:
-            value: $.temperature.[0]
-            from: 26
-          color: "#ff0000"
-        - nodes/remote/thermometer/+:
-            value: $.temperature.[0]
-            to: 22
-          color: "#0000ff"
-        -
-          # Default
-          color: "#eaeaea"
+rules:
+    - nodes/remote/humidity-sensor/+:
+        value: $.'relative-humidity'.[0]
+        from: 60
+      color: "#00ff00"
+    - nodes/remote/humidity-sensor/+:
+        value: $.'relative-humidity'.[0]
+        to: 30
+      color: "#ffff00"
+    - nodes/remote/thermometer/+:
+        value: $.temperature.[0]
+        from: 26
+      color: "#ff0000"
+    - nodes/remote/thermometer/+:
+        value: $.temperature.[0]
+        to: 22
+      color: "#0000ff"
+    -
+      # Default
+      color: "#eaeaea"
  ```
 
 **Příklad 2: Vytvoření jednoduché indikace teploty dle počtu rozsvícených LED a barvy:**
