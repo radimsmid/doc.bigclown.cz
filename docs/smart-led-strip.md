@@ -431,16 +431,16 @@ Jako příklad namapujeme 4 uživatelské předvolby na Virtuální PINy:
 Konfiguraci zapíšeme do souboru led-strip.user následovně:
 
 ```
-    8 plugin/led-strip/color/set "#000000(aa)"
-    9 plugin/led-strip/color/set "#000088(aa)"
-    11 plugin/led-strip/compound/set [72, "#ff0000", 72, "#0000ff"]
-    12 plugin/led-strip/compound/set [20, "#ff0000", 20, "#ff7f00", 20, "#ffff00", 20, "#00ff00", 20, "#0000ff", 20, "#960082", 21, "#D500ff"]
+8 plugin/led-strip/color/set "#000000(aa)"
+9 plugin/led-strip/color/set "#000088(aa)"
+11 plugin/led-strip/compound/set [72, "#ff0000", 72, "#0000ff"]
+12 plugin/led-strip/compound/set [20, "#ff0000", 20, "#ff7f00", 20, "#ffff00", 20, "#00ff00", 20, "#0000ff", 20, "#960082", 21, "#D500ff"]
 ```
 
 Po úpravě souboru je nutné provést restart blynk pluginu (nebo restart Raspberry Pi):
 
 ```
-    sudo systemctl restart bc-smart-led-strip-blynk.service
+sudo systemctl restart bc-smart-led-strip-blynk.service
 ```
 
 Pro vyvolání předvolby v Blynku použij tlačítka nastavené na režim PUSH namapované na PINy  V8, V9, V11, V12. Předvolby jsou použity v ukázkovém projektu *Smart LED Strip 3*.
@@ -517,7 +517,7 @@ Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “e
 Po přepsání konfiguračního souboru je nutné provést restart led-strip-pluginu (nebo restart Raspberry Pi):
 
 ```
-    sudo systemctl restart bc-smart-led-strip-led-strip.service
+sudo systemctl restart bc-workroom-led-strip.service
 ```
 
 
