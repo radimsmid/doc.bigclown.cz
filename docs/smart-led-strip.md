@@ -440,7 +440,7 @@ Konfiguraci zapíšeme do souboru led-strip.user následovně:
 Po úpravě souboru je nutné provést restart blynk pluginu (nebo restart Raspberry Pi):
 
 ```
-sudo systemctl restart bc-smart-led-strip-blynk.service
+sudo systemctl restart bc-workroom-blynk.service
 ```
 
 Pro vyvolání předvolby v Blynku použij tlačítka nastavené na režim PUSH namapované na PINy  V8, V9, V11, V12. Předvolby jsou použity v ukázkovém projektu *Smart LED Strip 3*.
