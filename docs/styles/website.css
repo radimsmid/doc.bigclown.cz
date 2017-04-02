@@ -178,12 +178,6 @@ body {
 		display: block;
 		width: 61px;
 	}
-	#navigation .showNavigation:hover ~ ul {
-		display: block;
-	}
-	#navigation .showNavigation:not(:hover) ~ ul {
-		display: none;
-	}
 }
 
 /* Logo in SVG */
