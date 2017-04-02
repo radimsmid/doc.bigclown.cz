@@ -21,7 +21,14 @@
 
 <script type="text/javascript">
 function myFunction() {
-	$('.primaryNavigation').toggle();
+	function myFunction() {
+	if ($('.primaryNavigation').css('display') == "none"){
+		$('.primaryNavigation').css("display", "block");
+	}
+	else{
+		$('.primaryNavigation').css("display", "none");
+	}
+}
 }
 </script>
 
