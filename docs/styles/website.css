@@ -107,13 +107,13 @@ body {
 	width: 100%;
 	text-align: center;
 	z-index: -1;
-	margin-left: -29.2px;
+	margin-left: -28.6px
 }
 #navigation ul li {
 	border-right: solid 1px #e6e6e6;
 	display: inline-block;
 	float: none;
-	margin-left: -4.2px;
+	margin-left: -3.7px
 }
 #navigation ul li:first-child {
 	border-left: solid 1px #e6e6e6;
