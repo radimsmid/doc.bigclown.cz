@@ -81,7 +81,6 @@ body {
 	text-align: center;
 	vertical-align: middle;
 	line-height: 55px;
-	margin-top: 1px;
 }
 #navigation .icon.icon-hamburger {
 	position: absolute;
@@ -115,7 +114,6 @@ body {
 	display: inline-block;
 	float: none;
 	margin-left: -4.2px;
-	margin-right: -2px;
 }
 #navigation ul li:first-child {
 	border-left: solid 1px #e6e6e6;
@@ -125,7 +123,7 @@ body {
 	height: 100%;
 	overflow: hidden;
 	line-height: 65px;
-	font-size: 15px;
+	font-size: 14px;
 	color: #2c232c;
 	text-decoration: none;
 	padding: 0 30px;
@@ -174,6 +172,7 @@ body {
 		margin-left: -96px;
 		font-size: 20px;
 		line-height: 60px;
+		margin-top: 1px;
 	}
 	#navigation .showNavigation {
 		display: block;
