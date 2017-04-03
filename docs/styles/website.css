@@ -87,7 +87,6 @@ body {
     font-size: 22px;
     line-height: 60px;
     padding: 0 21%;
-	padding-top: 2px;
 }
 #navigation .showNavigation {
 	height: 65px;
@@ -172,7 +171,6 @@ body {
 		margin-left: -96px;
 		font-size: 20px;
 		line-height: 60px;
-		margin-top: 1px;
 	}
 	#navigation .showNavigation {
 		display: block;
