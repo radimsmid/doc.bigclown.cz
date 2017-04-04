@@ -63,7 +63,7 @@ Přečti si co je dfu mód [zde](https://doc.bigclown.cz/core-module-flashing.ht
 * Nainstaluj si nástroj pro aktualizaci
 
   ```
-  sudo apt install dfu-util
+  sudo apt install dfu-util wget
   ```
 
 * Stáhni si aktuální firmware přímo z repozitáře [https://github.com/bigclownlabs/bcp-climate-station/releases/latest]([https://github.com/bigclownlabs/bcp-climate-station/releases/latest])
@@ -127,32 +127,63 @@ sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 ```
 
-### Instalace BigClown komponent existující systém
+### Gateway mezi USB a MQTT brokerem
 
-V případě že používáš raspbian od BigClown tento bod přeskoč.
+* Pokud používáš Raspberry od nás nebo sis nahrál náž [bc-raspbian](https://github.com/bigclownlabs/bc-raspbian/releases/latest) použi tyto příkazy:
 
-Co který řádek provádí je popsáno [zde](https://doc.bigclown.cz/raspberry-pi-installation.html#instalace-bigclown-balíčků-na-existující-systém)
+  ```
+  sudo systemctl disable bc-workroom-gateway.service
+  sudo systemctl stop bc-workroom-gateway.service
+  ```
 
+* Pokud máš svůj Raspbian, je nutné si přidat náš repozitář, co který řádek provádí je popsáno [zde](https://doc.bigclown.cz/raspberry-pi-installation.html#instalace-bigclown-balíčků-na-existující-systém):
+
+  ```
+  sudo apt install wget
+  sudo sh -c 'echo "deb https://repo.bigclown.com/debian jessie main" >/etc/apt/sources.list.d/bigclown.list'
+  wget https://repo.bigclown.com/debian/pubkey.gpg -O - | sudo apt-key add -
+  sudo apt update && sudo apt upgrade -y
+  sudo apt install mosquitto bc-common python3-docopt python3-paho-mqtt python3-serial
+  ```
+
+Společné
 ```
-sudo apt install wget
-sudo sh -c 'echo "deb https://repo.bigclown.com/debian jessie main" >/etc/apt/sources.list.d/bigclown.list'
-wget https://repo.bigclown.com/debian/pubkey.gpg -O - | sudo apt-key add -
-sudo apt update && sudo apt upgrade -y
-sudo apt install bc-workroom-gateway
 sudo apt install mosquitto-clients
+TODO wget
+sudo mv bc-gateway.py /usr/bin/bc-gateway
+sudo chmod +x /usr/bin/bc-gateway
+TODO wget
+sudo mv bc-gateway.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl enable bc-gateway.service
+sudo systemctl start bc-gateway.service
 ```
 
-#### Další závislosti
+Test funkčnosti
 
-```
-sudo apt install python3-pip
-sudo pip3 install influxdb
-```
+* Zapneme LED na core
+  ```
+  mosquitto_pub -t 'node/climate-station/led/-/state/set' -m true
+  ```
 
-### Konfigurace
+* Vypneme  LED na core
+  ```
+  mosquitto_pub -t 'node/climate-station/led/-/state/set' -m false
+  ```
 
+* Zapneme relátko
+  ```
+  mosquitto_pub -t 'node/climate-station/relay/-/state/set' -m true
+  ```
+  > **Hint** První pomoc:
+  Pokud relé neseplo zkontroluj zda jsi připojili 5V DC adaptér do Power Modulu
 
-#### Vytvoreni databaze node v InfluxDB
+* Vypneme  relátko
+  ```
+  mosquitto_pub -t 'node/climate-station/relay/-/state/set' -m false
+  ```
+
+### Vytvoreni databaze node v InfluxDB
 ```
 curl "http://localhost:8086/query?q=CREATE+DATABASE+%22node%22&db=_internal"
 ```
@@ -161,13 +192,16 @@ kontrola zda došlo k vytvoření
 curl "http://localhost:8086/query?q=SHOW+DATABASES&db=_internal"
 ```
 
-#### Spuštění služby která bude překopírovavat data z mqtt do InfluxDB
+### Spuštění služby která bude překopírovavat data z mqtt do InfluxDB
 
 ```
-curl "https://raw.githubusercontent.com/bigclownlabs/bcp-weather-station/master/mqtt_to_influxdb.py" > mqtt_to_influxdb
+sudo apt install python3-pip
+sudo pip3 install influxdb
+
+wget "https://raw.githubusercontent.com/bigclownlabs/bcp-weather-station/master/mqtt_to_influxdb.py" -O mqtt_to_influxdb
 sudo mv mqtt_to_influxdb /usr/bin/mqtt_to_influxdb
 sudo chmod +x /usr/bin/mqtt_to_influxdb
-curl "https://raw.githubusercontent.com/bigclownlabs/bcp-weather-station/master/mqtt_to_influxdb.service" > mqtt_to_influxdb.service
+wget "https://raw.githubusercontent.com/bigclownlabs/bcp-weather-station/master/mqtt_to_influxdb.service" -O mqtt_to_influxdb.service
 sudo mv mqtt_to_influxdb.service /etc/systemd/system
 
 sudo systemctl daemon-reload
@@ -178,10 +212,7 @@ sudo systemctl start mqtt_to_influxdb.service
 #### Nastavení Grafany
 
 Pripoj se na grafanu http://ip-raspberry:3000
-Login admin a heslo admin
-
-
-
+Login `admin` a heslo `admin`
 
 ##### Vytvoření datasource
 
