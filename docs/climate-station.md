@@ -149,10 +149,10 @@ sudo systemctl start grafana-server
 Společné
 ```
 sudo apt install mosquitto-clients
-TODO wget
-sudo mv bc-gateway.py /usr/bin/bc-gateway
+wget "https://raw.githubusercontent.com/bigclownlabs/bch-gateway/master/bc-gateway.py" -O bc-gateway
+sudo mv bc-gateway /usr/bin/bc-gateway
 sudo chmod +x /usr/bin/bc-gateway
-TODO wget
+wget "https://raw.githubusercontent.com/bigclownlabs/bch-gateway/master/bc-gateway.service" -O "bc-gateway.service"
 sudo mv bc-gateway.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl enable bc-gateway.service
@@ -182,14 +182,18 @@ Test funkčnosti
   ```
   mosquitto_pub -t 'node/climate-station/relay/-/state/set' -m false
   ```
+* Zobrazíme si všechny zprávy na mqtt (ukončíte ctrl+c)
+  ```
+  mosquitto_sub -v -t '#'
+  ```
 
 ### Vytvoreni databaze node v InfluxDB
 ```
-curl "http://localhost:8086/query?q=CREATE+DATABASE+%22node%22&db=_internal"
+curl -s "http://localhost:8086/query?q=CREATE+DATABASE+%22node%22&db=_internal"
 ```
 kontrola zda došlo k vytvoření
 ```
-curl "http://localhost:8086/query?q=SHOW+DATABASES&db=_internal"
+curl -s "http://localhost:8086/query?q=SHOW+DATABASES&db=_internal" | grep \"node\"
 ```
 
 ### Spuštění služby která bude překopírovavat data z mqtt do InfluxDB
@@ -198,10 +202,10 @@ curl "http://localhost:8086/query?q=SHOW+DATABASES&db=_internal"
 sudo apt install python3-pip
 sudo pip3 install influxdb
 
-wget "https://raw.githubusercontent.com/bigclownlabs/bcp-weather-station/master/mqtt_to_influxdb.py" -O mqtt_to_influxdb
+wget "https://raw.githubusercontent.com/bigclownlabs/bcp-climate-station/master/hub/mqtt_to_influxdb.py" -O mqtt_to_influxdb
 sudo mv mqtt_to_influxdb /usr/bin/mqtt_to_influxdb
 sudo chmod +x /usr/bin/mqtt_to_influxdb
-wget "https://raw.githubusercontent.com/bigclownlabs/bcp-weather-station/master/mqtt_to_influxdb.service" -O mqtt_to_influxdb.service
+wget "https://raw.githubusercontent.com/bigclownlabs/bcp-climate-station/master/hub/mqtt_to_influxdb.service" -O mqtt_to_influxdb.service
 sudo mv mqtt_to_influxdb.service /etc/systemd/system
 
 sudo systemctl daemon-reload
@@ -211,9 +215,27 @@ sudo systemctl start mqtt_to_influxdb.service
 
 #### Nastavení Grafany
 
-Pripoj se na grafanu http://ip-raspberry:3000
-Login `admin` a heslo `admin`
+* Pripoj se na grafanu [http://ip-raspberry:3000](http://ip-raspberry:3000)  User `admin` a Password `admin`
 
-##### Vytvoření datasource
+* Vytvoření datasource
 
-##### Import dashboardu
+  * Klikneme na `Add data source` a vyplníme následující hodnoty:
+    * Name: node
+    * Type: InfluxDB
+    * Url: http://localhost:8086
+    * Database: node
+
+  * Klikneme na `Add`, Grafana se pokusí připojit na InfluxDB úspěch oznámé takovouto hláškou `Data source is working`
+
+* Import dashboardu
+
+  * V levo nahoře klikneme na ikonku Grafany, vybereme `Dashboard` a `Import`
+
+  * Stáhněte si do počítače soubor s dashboardem [https://raw.githubusercontent.com/bigclownlabs/bcp-climate-station/master/hub/grafana-climate-station.json](https://raw.githubusercontent.com/bigclownlabs/bcp-climate-station/master/hub/grafana-climate-station.json)
+
+  * Vypereme možnost `Upload .json File` a vybereme stažený json file, teď už jen vybereme `node` ze seznamu dostupných datasource, to je ten který jsme si předchvílí vytvořily.
+
+  * A klikneme na `Import`
+
+  * Nyní by jste měli vidět naměřené hodnoty.
+
