@@ -179,7 +179,7 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
 4.  Než se pustíš do testování a následujících kroků je nutné aktualizovat SW balíčky v Raspberry Pi (aktualizuje BigClown komponenty):
 
     ```
-    sudo apt-get update && sudo apt-get upgrade
+    sudo apt update && sudo apt upgrade
     ```
 
 ### Otestování funkcí a hrátky s MQTT

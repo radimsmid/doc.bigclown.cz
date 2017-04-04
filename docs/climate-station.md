@@ -91,7 +91,7 @@ a pro nahrání použi tento příkaz
 sudo apt install apt-transport-https
 curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 echo "deb https://repos.influxdata.com/debian jessie stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-sudo apt-get update && sudo apt-get install influxdb
+sudo apt update && sudo apt install influxdb
 sudo systemctl daemon-reload
 sudo systemctl enable influxdb
 sudo systemctl start influxdb
@@ -115,10 +115,10 @@ sudo apt install adduser libfontconfig -y
 * x86-64
 
     ````
-	sudo apt-get install -y apt-transport-https
+	sudo apt install -y apt-transport-https
 	curl -sL https://packagecloud.io/gpg.key | sudo apt-key add -
 	echo "deb https://packagecloud.io/grafana/stable/debian/ jessie main" | sudo tee /etc/apt/sources.list.d/grafana.list
-	sudo apt-get update && sudo apt-get install grafana
+	sudo apt update && sudo apt install grafana
     ````
 
 ```
@@ -127,4 +127,62 @@ sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 ```
 
+### Instalace BigClown komponent existující systém
 
+V případě že používáš raspbian od BigClown tento bod přeskoč.
+
+Co který řádek provádí je popsáno [zde](https://doc.bigclown.cz/raspberry-pi-installation.html#instalace-bigclown-balíčků-na-existující-systém)
+
+```
+sudo apt install wget
+sudo sh -c 'echo "deb https://repo.bigclown.com/debian jessie main" >/etc/apt/sources.list.d/bigclown.list'
+wget https://repo.bigclown.com/debian/pubkey.gpg -O - | sudo apt-key add -
+sudo apt update && sudo apt upgrade -y
+sudo apt install bc-workroom-gateway
+sudo apt install mosquitto-clients
+```
+
+#### Další závislosti
+
+```
+sudo apt install python3-pip
+sudo pip3 install influxdb
+```
+
+### Konfigurace
+
+
+#### Vytvoreni databaze node v InfluxDB
+```
+curl "http://localhost:8086/query?q=CREATE+DATABASE+%22node%22&db=_internal"
+```
+kontrola zda došlo k vytvoření
+```
+curl "http://localhost:8086/query?q=SHOW+DATABASES&db=_internal"
+```
+
+#### Spuštění služby která bude překopírovavat data z mqtt do InfluxDB
+
+```
+curl "https://raw.githubusercontent.com/bigclownlabs/bcp-weather-station/master/mqtt_to_influxdb.py" > mqtt_to_influxdb
+sudo mv mqtt_to_influxdb /usr/bin/mqtt_to_influxdb
+sudo chmod +x /usr/bin/mqtt_to_influxdb
+curl "https://raw.githubusercontent.com/bigclownlabs/bcp-weather-station/master/mqtt_to_influxdb.service" > mqtt_to_influxdb.service
+sudo mv mqtt_to_influxdb.service /etc/systemd/system
+
+sudo systemctl daemon-reload
+sudo systemctl enable mqtt_to_influxdb.service
+sudo systemctl start mqtt_to_influxdb.service
+```
+
+#### Nastavení Grafany
+
+Pripoj se na grafanu http://ip-raspberry:3000
+Login admin a heslo admin
+
+
+
+
+##### Vytvoření datasource
+
+##### Import dashboardu

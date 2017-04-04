@@ -203,7 +203,7 @@ Z bezpečnostních důvodů a pro zajištění stability je důležité mít sys
 Pro update systému použij tento příkaz:
 
 ```
-sudo apt-get update && sudo apt-get upgrade
+sudo apt update && sudo apt upgrade
 ```
 
 
@@ -249,7 +249,7 @@ Toto je stručný výpis změn:
 2. Nainstaluj závislosti:
 
    ```
-   sudo apt-get install apt-transport-https wget
+   sudo apt install apt-transport-https wget
    ```
 
 3. Přidej BigClown APT repositáře do seznamu zdrojů:
@@ -267,7 +267,7 @@ Toto je stručný výpis změn:
 5. Proveď update tvé instalace:
 
    ```
-   sudo apt-get update && sudo apt-get upgrade
+   sudo apt update && sudo apt upgrade
    ```
 
 6. Nyní si můžeš jednotlivě nainstalovat balíčky:
@@ -275,17 +275,17 @@ Toto je stručný výpis změn:
    * Základní balíček pro Smart LED Strip (Workroom) projekt (hardware interface):
 
      ```
-     sudo apt-get install bc-workroom-gateway
+     sudo apt install bc-workroom-gateway
      ```
 
    * LED strip plugin pro Smart LED Strip (Workroom) projekt:
 
      ```
-     sudo apt-get install bc-workroom-led-strip
+     sudo apt install bc-workroom-led-strip
      ```
 
    * Blynk plugin pro Smart LED Strip (Workroom) projekt:
 
      ```
-     sudo apt-get install bc-workroom-blynk
+     sudo apt install bc-workroom-blynk
      ```

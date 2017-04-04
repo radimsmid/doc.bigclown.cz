@@ -33,13 +33,13 @@ BigClown používá open-source brokera [Mosquitto](https://mosquitto.org).
 Pro Ubuntu/Debian/Raspbian si nainstaluješ Mosquitto server tímto příkazem:
 
 ```
-sudo apt-get install mosquitto
+sudo apt install mosquitto
 ```
 
 Také si můžeš nainstalovat `mosquitto-clients` balíček, pokud budeš chtít pracovat se zprávami v terminálu:
 
 ```
-sudo apt-get install mosquitto-clients
+sudo apt install mosquitto-clients
 ```
 
 

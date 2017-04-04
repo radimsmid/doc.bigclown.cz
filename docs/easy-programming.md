@@ -34,7 +34,7 @@ Můžeš použít předpřipravené BigClown Raspberry Pi, nebo použij své, po
 
 Mělo by ti stačit ho aktualizovat a nainstalovat Node-RED těmito příkazy:
 
-  `sudo apt-get update && sudo apt-get upgrade`
+  `sudo apt update && sudo apt upgrade`
   `sudo npm install -g node-red`
 
 #### Vlastní Raspberry Pi
@@ -47,10 +47,10 @@ Mělo by ti stačit ho aktualizovat a nainstalovat Node-RED těmito příkazy:
   `sudo apt install -y nodejs`
 
 * Nainstaluj si Node-RED `sudo npm install -g node-red`
-* Nainstaluj si MQTT broker `sudo apt-get install mosquitto mosquitto-clients`
+* Nainstaluj si MQTT broker `sudo apt install mosquitto mosquitto-clients`
 * Nainstaluj si gateway sloužící pro komunikaci mezi MQTT a jednotkou
 
-  `sudo apt-get install bc-workroom-gateway`
+  `sudo apt install bc-workroom-gateway`
 
 Připoj se na Raspberry Pi.
 
@@ -63,7 +63,7 @@ Je dobré mít vždy vše aktuální, takže si zaktualizujeme firmware, může�
 
 * Nainstaluj si nástroj pro aktualizaci
 
-  `sudo apt-get install dfu-util`
+  `sudo apt install dfu-util`
 
 * Stáhni si aktuální firmware
 

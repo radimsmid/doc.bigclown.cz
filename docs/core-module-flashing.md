@@ -119,7 +119,7 @@ Pokud budeš používat náš instalační balíček s Visual Studio Code, pak s
 
 3. Nainstaluj `dfu-util` balíček příkazem:
 
-   `sudo apt-get install dfu-util`
+   `sudo apt install dfu-util`
 
 * **Ujisti se, že Core Module je v DFU módu** viz. předchozí kapitola.
 
