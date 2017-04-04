@@ -56,32 +56,16 @@ sudo apt update && sudo apt upgrade -y
 
 ### Firmware
 
-Je dobré mít vždy vše aktuální, takže si zaktualizujeme firmware, můžeš k tomu použít vlastní počítač pak postupuj dle návodu [zde](https://doc.bigclown.cz/core-module-flashing.html), nebo k tomu využít Raspberry jako já.
+Je dobré mít vždy vše aktuální, takže si zaktualizujeme firmware:
 
-Přečti si co je dfu mód [zde](https://doc.bigclown.cz/core-module-flashing.html#nahrávání-programu-přes-usb-dfu-bootloader)
+* Přečti si co je dfu mód [zde](https://doc.bigclown.cz/core-module-flashing.html#nahrávání-programu-přes-usb-dfu-bootloader)
 
-* Nainstaluj si nástroj pro aktualizaci
+* můžeš k tomu použít vlastní počítač pak postupuj dle návodu [zde](https://doc.bigclown.cz/core-module-flashing.html) firmware najdeš zde [https://github.com/bigclownlabs/bcp-climate-station/releases/latest](https://github.com/bigclownlabs/bcp-climate-station/releases/latest), půlmetrový pásek má 72 diod tedy stáhni firmware-72pixel.bin
 
+* nebo k tomu využít Raspberry jako já, stáhni si poslední verzi firmware-72pixel.bin a nahraj ji do core pomocí těchto příkazů
   ```
   sudo apt install dfu-util wget
-  ```
-
-* Stáhni si aktuální firmware přímo z repozitáře [https://github.com/bigclownlabs/bcp-climate-station/releases/latest]([https://github.com/bigclownlabs/bcp-climate-station/releases/latest])
-půlmetrový pásek má 72 diod tedy stáhni firmware-72pixel.bin, nebo použi tento příkaz
-  ```
   wget $(wget "https://api.github.com/repos/bigclownlabs/bcp-climate-station/releases/latest" -q -O - | grep browser_download_url | grep firmware-72pixel.bin | head -n 1 | cut -d '"' -f 4)
-  ```
-
-* Nebo si jej zkompiluj
-  ```
-  git clone --recursive https://github.com/bigclownlabs/bcp-climate-station.git
-  cd bcp-climate-station
-  make release PIXEL_COUNT=72
-  make dfu
-  ```
-
-a pro nahrání použi tento příkaz
-  ```
   sudo dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware-72pixel.bin
   ```
 
