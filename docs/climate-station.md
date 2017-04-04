@@ -35,7 +35,7 @@ Dále budeš potřebovat:
 3. Do volných 5pinových zásuvek Power Module zasuň Barometer a Humidity Tagy
 4. Do pravé dolní pozice Core Module zasuň Lux Meter Tag
 5. K Power Module připoj LED teploměr
-6. K Power module připoj napájení z adaptéru
+6. K Power Module připoj napájení z adaptéru
 
 
 ## Postup instalace a napojení aplikace Grafana
@@ -74,7 +74,7 @@ sudo systemctl start influxdb
 ```
 
 Pokud chceš administrovat influx přes http tak v /etc/influxdb/influxdb.conf
-odkomentujte a upravte enabled = true a bind-address = ":8083"
+odkomentuj a uprav enabled = true a bind-address = ":8083"
 
 #### Grafana
 
@@ -122,7 +122,7 @@ sudo systemctl start grafana-server
   sudo apt install mosquitto bc-common python3-docopt python3-paho-mqtt python3-serial
   ```
 
-Společné
+Společné pro oba dva případy:
 ```
 sudo apt install mosquitto-clients
 wget "https://raw.githubusercontent.com/bigclownlabs/bch-gateway/master/bc-gateway.py" -O bc-gateway
@@ -158,7 +158,7 @@ Test funkčnosti
   ```
   mosquitto_pub -t 'node/climate-station/relay/-/state/set' -m false
   ```
-* Zobrazíme si všechny zprávy na mqtt (ukončíte ctrl+c)
+* Zobrazíme si všechny zprávy na mqtt (ukončíš ctrl+c)
   ```
   mosquitto_sub -v -t '#'
   ```
@@ -189,9 +189,9 @@ sudo systemctl enable mqtt_to_influxdb.service
 sudo systemctl start mqtt_to_influxdb.service
 ```
 
-#### Nastavení Grafany
+### Nastavení Grafany
 
-* Pripoj se na grafanu [http://ip-raspberry:3000](http://ip-raspberry:3000)  User `admin` a Password `admin`
+* Připoj se na Grafanu [http://ip-raspberry:3000](http://ip-raspberry:3000)  User `admin` a Password `admin`
 
 * Vytvoření datasource
 
