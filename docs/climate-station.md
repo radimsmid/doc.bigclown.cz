@@ -1,4 +1,4 @@
-# Projekt "Klimastanice s LEDkoměrem a dashboardem"
+# Projekt "Klimastanice s LED teploměrem a dashboardem"
 
 <!-- toc -->
 
@@ -16,12 +16,8 @@ Základem projektu je jednotka skládající se z:
 * 1x Humidity Tag
 * 1x Barometer Tag
 * 1x Lux Meter Tag
-* 1x LED pásek
+* 1x LED teploměru
 
-Pro postavení originálního LEDkoměru budeš potřebovat:
-
-* Al lištu
-* Samolepku se stupnicí
 
 Dále budeš potřebovat:
 
@@ -31,20 +27,16 @@ Dále budeš potřebovat:
 * LAN router/switch s jedním volným portem
 * Připojení k internetu
 
+
 ## Postup sestavení jednotky
 
 1. Na Base Module zasuň Power Module
 2. Na Power Module zasuň Core Module
 3. Do volných 5pinových zásuvek Power Module zasuň Barometer a Humidity Tagy
 4. Do pravé dolní pozice Core Module zasuň Lux Meter Tag
-5. K Power Module připoj LED pásek
+5. K Power Module připoj LED teploměr
 6. K Power module připoj napájení z adaptéru
 
-## Postup vytvoření LEDkoměru
-
-1. Zakup si [Al lištu] (http://.....)
-2. Nainstaluj LED pásek do lišty
-3. Nalep a ořízni stupnici
 
 ## Postup instalace a napojení aplikace Grafana
 
@@ -62,7 +54,7 @@ Je dobré mít vždy vše aktuální, takže si zaktualizujeme firmware:
 
 * můžeš k tomu použít vlastní počítač pak postupuj dle návodu [zde](https://doc.bigclown.cz/core-module-flashing.html) firmware najdeš zde [https://github.com/bigclownlabs/bcp-climate-station/releases/latest](https://github.com/bigclownlabs/bcp-climate-station/releases/latest), půlmetrový pásek má 72 diod tedy stáhni firmware-72pixel.bin
 
-* nebo k tomu využít Raspberry jako já, stáhni si poslední verzi firmware-72pixel.bin a nahraj ji do core pomocí těchto příkazů
+* nebo k tomu můžeš využít Raspberry jako já, stáhni si poslední verzi firmware-72pixel.bin a nahraj ji do Core Module pomocí těchto příkazů
   ```
   sudo apt install dfu-util wget
   wget $(wget "https://api.github.com/repos/bigclownlabs/bcp-climate-station/releases/latest" -q -O - | grep browser_download_url | grep firmware-72pixel.bin | head -n 1 | cut -d '"' -f 4)
@@ -81,8 +73,8 @@ sudo systemctl enable influxdb
 sudo systemctl start influxdb
 ```
 
-Pokud chcete administrovat influx přes http tak v /etc/influxdb/influxdb.conf
-odkomentujdete a upravte enabled = true a bind-address = ":8083"
+Pokud chceš administrovat influx přes http tak v /etc/influxdb/influxdb.conf
+odkomentujte a upravte enabled = true a bind-address = ":8083"
 
 #### Grafana
 
@@ -113,7 +105,7 @@ sudo systemctl start grafana-server
 
 ### Gateway mezi USB a MQTT brokerem
 
-* Pokud používáš Raspberry od nás nebo sis nahrál náž [bc-raspbian](https://github.com/bigclownlabs/bc-raspbian/releases/latest) použi tyto příkazy:
+* Pokud používáš Raspberry od nás nebo sis nahrál náš [bc-raspbian](https://github.com/bigclownlabs/bc-raspbian/releases/latest) použij tyto příkazy:
 
   ```
   sudo systemctl disable bc-workroom-gateway.service
@@ -160,7 +152,7 @@ Test funkčnosti
   mosquitto_pub -t 'node/climate-station/relay/-/state/set' -m true
   ```
   > **Hint** První pomoc:
-  Pokud relé neseplo zkontroluj zda jsi připojili 5V DC adaptér do Power Modulu
+  Pokud relé neseplo, tak zkontroluj zda jsi připojil 5V DC adaptér do Power Modulu
 
 * Vypneme  relátko
   ```
@@ -171,7 +163,7 @@ Test funkčnosti
   mosquitto_sub -v -t '#'
   ```
 
-### Vytvoreni databaze node v InfluxDB
+### Vytvoření databáze node v InfluxDB
 ```
 curl -s "http://localhost:8086/query?q=CREATE+DATABASE+%22node%22&db=_internal"
 ```
@@ -180,7 +172,7 @@ kontrola zda došlo k vytvoření
 curl -s "http://localhost:8086/query?q=SHOW+DATABASES&db=_internal" | grep \"node\"
 ```
 
-### Spuštění služby která bude překopírovavat data z mqtt do InfluxDB
+### Spuštění služby která bude překopírovávat data z MQTT do InfluxDB
 
 ```
 sudo apt install python3-pip
@@ -209,17 +201,17 @@ sudo systemctl start mqtt_to_influxdb.service
     * Url: http://localhost:8086
     * Database: node
 
-  * Klikneme na `Add`, Grafana se pokusí připojit na InfluxDB úspěch oznámé takovouto hláškou `Data source is working`
+  * Klikneme na `Add`, Grafana se pokusí připojit na InfluxDB - úspěch oznámí takovouto hláškou `Data source is working`
 
 * Import dashboardu
 
-  * V levo nahoře klikneme na ikonku Grafany, vybereme `Dashboard` a `Import`
+  * Vlevo nahoře klikneme na ikonku Grafany, vybereme `Dashboard` a `Import`
 
   * Stáhněte si do počítače soubor s dashboardem [https://raw.githubusercontent.com/bigclownlabs/bcp-climate-station/master/hub/grafana-climate-station.json](https://raw.githubusercontent.com/bigclownlabs/bcp-climate-station/master/hub/grafana-climate-station.json)
 
-  * Vypereme možnost `Upload .json File` a vybereme stažený json file, teď už jen vybereme `node` ze seznamu dostupných datasource, to je ten který jsme si předchvílí vytvořily.
+  * Vybereme možnost `Upload .json File` a vybereme stažený json file, teď už jen zvolíme `node` ze seznamu dostupných datasource, to je ten, který jsme si před chvílí vytvořili.
 
   * A klikneme na `Import`
 
-  * Nyní by jste měli vidět naměřené hodnoty.
+  * Nyní bys měl vidět naměřené hodnoty.
 
