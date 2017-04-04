@@ -59,6 +59,8 @@
 
 * [Bezdrátový LCD termostat](bcp-wireless-lcd-thermostat.md)
 
+* [Klimastanice s LED teploměrem](climate-station.md)
+
 ## Návody
 
 
