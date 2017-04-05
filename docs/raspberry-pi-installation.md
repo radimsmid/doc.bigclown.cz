@@ -32,7 +32,7 @@ Budeme instalovat BigClown verzi Raspbianu - oficiální a nejpopulárnější d
 
 1. Vlož MicroSD kartu do MicroSD čtečky karet.
 
-2. Stáhni si aktuální verzi BigClown Raspbian image z [tohoto linku](https://github.com/bigclownlabs/bc-raspbian/releases/download/v1.0.1/{{ raspbian_zip }}).
+2. Stáhni si aktuální verzi BigClown Raspbian image z https://github.com/bigclownlabs/bc-raspbian/releases.
 
 
 ### Návod pro Windows
