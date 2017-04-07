@@ -4,60 +4,60 @@
 
 ## Instalace
 
-Návod je pro os Debian a Raspbian Jessie a Ubuntu Xenial
+Návod je pro distribuci Debian a Raspbian Jessie a Ubuntu Xenial.
 
 Testováno na:
 
 * Raspbian Jessie na Raspberry Pi 3
-* Ubuntu Xenial jako lxc kontejner na Turris Omnia
+* Ubuntu Xenial jako LXC kontejner na Turris Omnia
 
 ### InfluxDB
 
-* Install dependencies
+* Nainstaluj závislosti:
   ```
   sudo apt install apt-transport-https curl -y
   ```
 
-* Přidání klíče repozitáře
+* Přidání klíče repozitáře:
   ```
   curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
   ```
 
-* Přidání repozitáře
+* Přidání repozitáře:
 
-  * Debian (Raspbian) Jessie
+  * Pro Debian (Raspbian) Jessie:
     ```
     echo "deb https://repos.influxdata.com/debian jessie stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
     ```
-  * Ubuntu Xenial
+  * Pro Ubuntu Xenial:
     ```
     echo "deb https://repos.influxdata.com/ubuntu/ xenial stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
     ```
 
-* Aktualizace a instalace
+* Proveď aktualizaci repozitářů a nainstaluj balíček:
   ```
   sudo apt update && sudo apt install influxdb
   ```
 
-* Zpustíme
+* Spustíme:
   ```
   sudo systemctl start influxdb
   ```
 
-  > **Poznámka:** Pokud chceš administrovat influx přes http tak v `/etc/influxdb/influxdb.conf` odkomentuj a uprav `enabled = true` a `bind-address = ":8083"`
+  > **Poznámka:** Pokud chceš administrovat InfluxDB přes http tak v `/etc/influxdb/influxdb.conf` odkomentuj a uprav `enabled = true` a `bind-address = ":8083"`.
 
 ### Grafana
 
-* Install dependencies
+* Nainstaluj závislosti:
   ```
   sudo apt install adduser libfontconfig -y
   ```
 
-* Vyber si podle architektury
+* Vyber si podle architektury:
 
   * Raspberry Pi a Omnia lxc
 
-    * Stažení deb balíčku (ten ošklivý příkaz si najde poslední relase) nebo si jej stáhněte ručně z [https://github.com/fg2it/grafana-on-raspberry/releases/latest](https://github.com/fg2it/grafana-on-raspberry/releases/latest)
+    * Stažení deb balíčku (ten ošklivý příkaz si najde poslední release) nebo si jej stáhněte ručně z: [https://github.com/fg2it/grafana-on-raspberry/releases/latest](https://github.com/fg2it/grafana-on-raspberry/releases/latest)
     ```
     wget $(wget "https://api.github.com/repos/fg2it/grafana-on-raspberry/releases/latest" -q -O - | grep browser_download_url | grep armhf.deb | head -n 1 | cut -d '"' -f 4) -O grafana.deb
     ```
@@ -68,37 +68,37 @@ Testováno na:
     ```
 
   * x86-64
-    * Přidání klíče repozitáře
+    * Přidání klíče repozitáře:
       ```
       curl -sL https://packagecloud.io/gpg.key | sudo apt-key add -
       ```
-    * Přidání repozitáře
+    * Přidání repozitáře:
       ```
       echo "deb https://packagecloud.io/grafana/stable/debian/ jessie main" | sudo tee /etc/apt/sources.list.d/grafana.list
       ```
-    * Aktualizace a instalace
+    * Proveď aktualizaci repozitářů a nainstaluj balíček:
       ```
       sudo apt update && sudo apt install grafana -y
       ```
 
-* Reload systemd:
+* Znovu načti konfiguraci systemd:
   ```
   sudo systemctl daemon-reload
   ```
 
-* Zapnuti spuštění grafany po bootu
+* Povol spuštění Grafana po bootu:
   ```
   sudo systemctl enable grafana-server
   ```
 
-* Zpustíme
+* Spustíme Grafana server:
   ```
   sudo systemctl start grafana-server
   ```
 
 ### MQTT brouker
 
-Existuje jich víc, my používáme Mosquitto
+Existuje jich víc - my používáme Mosquitto:
 
 ```
 sudo apt install mosquitto mosquitto-clients -y
@@ -106,24 +106,24 @@ sudo apt install mosquitto mosquitto-clients -y
 
 ### Gateway mezi USB serial a MQTT brokerem
 
-* Install dependencies
+* Nainstaluj závislosti:
   ```
   sudo apt install python3 python3-pip python3-docopt python3-serial
   sudo -H pip3 install paho-mqtt
   ```
-  > **Help:** Pokud pip3 skončí chybou `locale.Error: unsupported locale setting` spust `sudo sh -c "echo LC_ALL=C >> /etc/default/locale"` a opakuj příkaz s pip3
+  > **Poznámka:** Pokud pip3 skončí chybou `locale.Error: unsupported locale setting`, spusť `sudo sh -c "echo LC_ALL=C >> /etc/default/locale"` a opakuj příkaz s pip3.
 
-* Stažení Gateway z Githubu
+* Stažení Gateway z Githubu:
   ```
   sudo wget "https://raw.githubusercontent.com/bigclownlabs/bch-gateway/master/bc-gateway.py" -O /usr/bin/bc-gateway
   ```
 
-* Povolíme zpouštění
+* Povolíme spuštění:
   ```
   sudo chmod +x /usr/bin/bc-gateway
   ```
 
-* Nakonfigurujem službu pro systemd
+* Nakonfigurujeme službu pro systemd:
   ```
   sudo sh -c 'echo "[Unit]
   Description=BigClown gateway between USB and MQTT broker
@@ -137,67 +137,67 @@ sudo apt install mosquitto mosquitto-clients -y
   " > /etc/systemd/system/bc-gateway.service'
   ```
 
-* Reload systemd:
+* Znovu načti konfiguraci systemd:
   ```
   sudo systemctl daemon-reload
   ```
 
-* Zapnuti spuštění grafany po bootu
+* Zapnuti spuštění Grafana po bootu:
   ```
   sudo systemctl enable bc-gateway.service
   ```
 
-* Zpustíme
-  ```
+* Spustíme Grafana server:
+  ```
   sudo systemctl start bc-gateway.service
   ```
 
 ### Gateway mezi MQTT a InfluxDB
 
-* Vytvoření databáze jménem `node` v InfluxDB
+* Vytvoření databáze jménem `node` v InfluxDB:
   ```
   curl --data "q=CREATE+DATABASE+%22node%22&db=_internal" http://localhost:8086/query
   ```
 
-* Install dependencies
+* Nainstaluj závislosti:
   ```
   sudo -H pip3 install influxdb
   ```
 
-* Stažení Gateway z Githubu
+* Stažení Gateway z GitHubu:
   ```
   sudo wget "https://raw.githubusercontent.com/bigclownlabs/bcp-climate-station/master/hub/mqtt_to_influxdb.py" -O /usr/bin/mqtt_to_influxdb
   ```
 
-* Stažení a úprava konfiguračního souboru pro systemd
+* Stažení a úprava konfiguračního souboru pro systemd:
   ```
   sudo sh -c "curl -sL https://raw.githubusercontent.com/bigclownlabs/bcp-climate-station/master/hub/mqtt_to_influxdb.service | sed -e 's/User=bigclown/User=root/' > /etc/systemd/system/mqtt_to_influxdb.service"
   ```
-* Povolíme zpouštění
+* Povolíme spuštění:
   ```
   sudo chmod +x /usr/bin/mqtt_to_influxdb
   ```
 
-* Reload systemd:
+* Znovu načti konfiguraci systemd:
   ```
   sudo systemctl daemon-reload
   ```
 
-* Zapnuti spuštění grafany po bootu
+* Zapnuti spuštění Grafana po bootu:
   ```
   sudo systemctl enable mqtt_to_influxdb.service
   ```
 
-* Zpustíme
+* Spustíme Grafana server:
   ```
   sudo systemctl start mqtt_to_influxdb.service
   ```
 
-### Nastavení Grafany
+### Nastavení Grafana
 
-* Připoj se na Grafanu [http://<ip>:3000](http://<ip>:3000)  User `admin` a Password `admin`
+* Připoj se na Grafana [http://<ip>:3000](http://<ip>:3000)  Uživatel `admin` a heslo `admin`
 
-* Vytvoření datasource
+* Vytvoření datasource:
 
   * Klikneme na `Add data source` a vyplníme následující hodnoty:
     * Name: node
@@ -205,17 +205,17 @@ sudo apt install mosquitto mosquitto-clients -y
     * Url: http://localhost:8086
     * Database: node
 
-  * Klikneme na `Add`, Grafana se pokusí připojit na InfluxDB - úspěch oznámí takovouto hláškou `Data source is working`
+  * Klikneme na `Add`, Grafana se pokusí připojit na InfluxDB - úspěch oznámí takovouto hláškou `Data source is working`.
 
-* Import dashboardu
+* Import dashboardu:
 
-  * Vlevo nahoře klikneme na ikonku Grafany, vybereme `Dashboard` a `Import`
+  * Vlevo nahoře klikneme na ikonku Grafany, vybereme `Dashboard` a `Import`.
 
-  * Stáhněte si do počítače soubor s dashboardem
+  * Stáhněte si do počítače soubor s dashboardem.
 
-  * Vybereme možnost `Upload .json File` a vybereme stažený json file, teď už jen zvolíme `node` ze seznamu dostupných datasource, to je ten, který jsme si před chvílí vytvořili.
+  * Vybereme možnost `Upload .json File` a vybereme stažený JSON file, teď už jen zvolíme `node` ze seznamu dostupných datasource - to je ten, který jsme si před chvílí vytvořili.
 
-  * A klikneme na `Import`
+  * A klikneme na `Import`.
 
   * Nyní bys měl vidět naměřené hodnoty.
 
