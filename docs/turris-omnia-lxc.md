@@ -2,33 +2,33 @@
 
 <!-- toc -->
 
-## Vytvoření kontejnéru přes ssh
+## Vytvoření kontejneru přes SSH
 
-* Připoj se na ssh routru
+* Připoj se na SSH routru:
 
-* Doinstaluj si ovladač pro USB serial
+* Doinstaluj si ovladač pro USB serial:
   ```
   opkg update && opkg install kmod-usb-acm
   ```
 
-* Tímto příkazem zahájíš vytváření kontejnéru s názvem test
+* Tímto příkazem zahájíš vytváření kontejneru s názvem _test_:
   ```
   lxc-create -t download -n test
   ```
 
-* Pro Ubuntu Xenial postupně vypň
+* Pro Ubuntu Xenial postupně vypň:
   ```
   Distribution: Ubuntu
   Release: Xenial
   Architecture: armv7l
   ```
 
-* Zda byl opravdu vytvořen se můžeš přesvědčit takto
+* Zda byl opravdu vytvořen se můžeš přesvědčit takto:
   ```
   lxc-ls
   ```
 
-* Tímto příkazem vložíš do konfigurace kontejnetu test mount na `/dev/ttyACM0` pod kterým se hlásí náše USB
+* Tímto příkazem vložíš do konfigurace kontejneru _test_ mount na `/dev/ttyACM0`, pod kterým se hlásí naše USB:
   ```
   echo -e "
   lxc.autodev = 1
@@ -39,58 +39,58 @@
   lxc.mount.entry = /dev/ttyACM0 dev/ttyACM0 none  bind,create=file 0 0" >> /srv/lxc/test/config
   ```
 
-* Nastartuj kontejnér
+* Nastartuj kontejner:
   ```
   lxc-start --name test
   ```
 
-* Seznam puštěných kontejnérů
+* Seznam spuštěných kontejnerů:
   ```
   lxc-ls --active
   ```
 
-* Informace o kontejnéru včetně IP adresy
+* Informace o kontejneru včetně IP adresy:
   ```
   lxc-info --name test
   ```
 
-* Připoj se na kontejnér
+* Připoj se na kontejner:
   ```
   lxc-attach --name test
   ```
 
-## Konfigurace kontejnéru
+## Konfigurace kontejneru
 
-* Oprava locale
+* Oprava locales:
   ```
   sudo sh -c "echo LC_ALL=C >> /etc/default/locale"
   ```
 
-* Mít aktuální systém je blaho tak šup
+* Mít aktuální systém je blaho, tak šup šup:
   ```
   apt update && apt upgrade -y
   ```
 
-### Instalace ssh serveru
+### Instalace SSH serveru
 
-* Lézt na ssh přes root není moc cool, tedy vytvoř si nového uživatele
+* Lézt na SSH přes root není moc cool, tedy vytvoř si nového uživatele:
   ```
   adduser karel
   ```
 
-* Přidej se do zkupiny sudo
+* Přidej se do skupiny _sudo_:
   ```
   usermod -aG sudo karel
   ```
 
-* Nainstaluj ssh server
+* Nainstaluj SSH server:
   ```
   apt install openssh-server
   ```
 
-* Nyní by ses měl moct připojit přes ssh
+* Nyní by ses měl být schopen připojit přes SSH:
 
-* Odpojíš se pomocí
+* Odpojíš se pomocí:
   ```
   exit
   ```
