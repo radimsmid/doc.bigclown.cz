@@ -73,3 +73,5 @@
 * [Node RED - Grafický programovací nástroj](node-red.md)
 
 * [IFTTT - Služba propojení tvých oblíbených služeb](ifttt.md)
+
+* [Turris Omnia LXC](turris-omnia-lxc.md)
