@@ -4,7 +4,7 @@
 
 ## Vytvoření kontejneru přes SSH
 
-* Připoj se na SSH routru:
+* Připoj se na SSH routeru:
 
 * Doinstaluj si ovladač pro USB serial:
   ```
