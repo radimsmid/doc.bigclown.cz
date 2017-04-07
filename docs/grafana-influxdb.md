@@ -211,7 +211,7 @@ sudo apt install mosquitto mosquitto-clients -y
 
   * Vlevo nahoře klikneme na ikonku Grafany, vybereme `Dashboard` a `Import`.
 
-  * Stáhněte si do počítače soubor s dashboardem.
+  * Stáhněte si do počítače soubor s dashboardem. [files/grafana-dashboard-wireles-set.json](files/grafana-dashboard-wireles-set.json)
 
   * Vybereme možnost `Upload .json File` a vybereme stažený JSON file, teď už jen zvolíme `node` ze seznamu dostupných datasource - to je ten, který jsme si před chvílí vytvořili.
 
