@@ -61,6 +61,11 @@
 
 ## Konfigurace kontejnéru
 
+* Oprava locale
+  ```
+  sudo sh -c "echo LC_ALL=C >> /etc/default/locale"
+  ```
+
 * Mít aktuální systém je blaho tak šup
   ```
   apt update && apt upgrade -y
