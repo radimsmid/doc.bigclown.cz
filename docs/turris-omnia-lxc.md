@@ -28,7 +28,7 @@
   lxc-ls
   ```
 
-* Tímto příkazem vložíš do konfigurace kontejneru _test_ mount na `/dev/ttyACM0`, pod kterým se hlásí naše USB:
+* Tímto příkazem vložíš do konfigurace kontejneru jménem _test_ mount point na `/dev/ttyACM0`, pod kterým se hlásí naše USB:
   ```
   echo -e "
   lxc.autodev = 1
@@ -53,6 +53,17 @@
   ```
   lxc-info --name test
   ```
+
+* Pokud chceš aby kontejner startoval i po restartu routru:
+  ```
+  echo -e "
+  config container
+      option name test
+      option timeout 30
+  " >>  /etc/config/lxc-auto
+  ```
+
+  echo -e "\nconfig container\n\toption name test\n\toption timeout 30\n" >>  /etc/config/lxc-auto
 
 * Připoj se na kontejner:
   ```
