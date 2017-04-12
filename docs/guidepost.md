@@ -57,7 +57,7 @@ BigClown ekosystém si rozšíříš tak, jak chceš ty sám.
         <td colspan="3" bgcolor="#F4CCCC">
             <a href="https://doc.bigclown.cz/core-module.html">Začínáme s Core Module</a><br />
             <a href="https://obchod.bigclown.cz/products/core-module">Koupit Core Module</a><br />
-            <a href="https://github.com/bigclownlabs/bcp-wireless-circus">Standadrní firmware</a><br />
+            <a href="https://github.com/bigclownlabs/bcp-wireless-circus">Standardní firmware</a><br />
             <a href="https://doc.bigclown.cz/core-module-setup.html">Vývojářské nástroje</a><br />
             <a href="https://doc.bigclown.cz/core-module-sdk.html">Popis vývojového SDK</a><br />
             <a href="https://doc.bigclown.cz/core-module-flashing.html">USB nahrávání firmware</a><br />

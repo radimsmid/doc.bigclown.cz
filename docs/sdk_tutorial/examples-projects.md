@@ -1,6 +1,6 @@
 # Ukázky, projekty a SDK
 
-Zde je seznam míst, kde najdeš funkce a zdrojové kódy na kterých můžeš stavět své projekty. dokumentace máme hodně a ne vše je na jednom místě.
+Zde je seznam míst, kde najdeš funkce a zdrojové kódy na kterých můžeš stavět své projekty. Dokumentace máme hodně a ne vše je na jednom místě.
 
 <!-- toc -->
 
