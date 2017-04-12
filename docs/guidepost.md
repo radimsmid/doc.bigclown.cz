@@ -55,7 +55,7 @@ BigClown ekosystém si rozšíříš tak, jak chceš ty sám.
 
     <tr style="font-size:100%">
         <td colspan="3" bgcolor="#F4CCCC">
-            [Začínáme s Core Module](core-module.md)<br />
+            <a href="https://doc.bigclown.cz/core-module.html">Začínáme s Core Module</a><br />
             <a href="https://obchod.bigclown.cz/products/core-module">Koupit Core Module</a><br />
             <a href="https://github.com/bigclownlabs/bcp-wireless-circus">Standardní firmware</a><br />
             <a href="https://doc.bigclown.cz/core-module-setup.html">Vývojářské nástroje</a><br />
