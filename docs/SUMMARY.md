@@ -1,11 +1,11 @@
 # Summary
 
+* [Rozcestník](guidepost.md)
 
 * [Úvod](README.md)
 
 * [Koncept](concept.md)
 
-* [Rozcestník](guidepost.md)
 
 ## Core Module
 
@@ -53,6 +53,7 @@
 
 ## Vzorové projekty
 
+
 * [Smart LED Strip](smart-led-strip.md)
 
 * [Jednoduché programování domácí automatizace](easy-programming.md)
@@ -62,6 +63,7 @@
 * [Bezdrátový LCD termostat](bcp-wireless-lcd-thermostat.md)
 
 * [Klimastanice s LED teploměrem](climate-station.md)
+
 
 ## Návody
 
