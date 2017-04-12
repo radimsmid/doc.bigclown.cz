@@ -2,7 +2,7 @@
 
 * [Rozcestník](guidepost.md)
 
-* [Úvod](README.md)
+<!--* [Úvod](README.md)-->
 
 * [Koncept](concept.md)
 
