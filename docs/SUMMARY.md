@@ -28,6 +28,8 @@
 
 * [Píšeme firmware](sdk_tutorial/index.md)
 
+  * [Ukázky, projekty a SDK](sdk_tutorial/examples-projects.md)
+
   * [Úvod a rozblikání LED](sdk_tutorial/uvod-a-led.md)
 
   * [Tlačítko a instance](sdk_tutorial/tlacitko-a-instance.md)

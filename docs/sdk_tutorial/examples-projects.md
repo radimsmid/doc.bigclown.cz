@@ -20,4 +20,4 @@ Veškeré repozitáře začínající na **bcp** jsou **BigClown Projects**. Jed
 
 ## Ukázky na fóru
 
-Na [BigClown fóru](http://forum.bigclown.com) můžeš také naléz cenné rady a ukázky. Například [USB CDC komunikaci](http://forum.bigclown.com/t/bigclown-core-module-hello-world-app-lets-try-to-find-the-shortest-yet-still-understandable/61)
+Na [BigClown fóru](http://forum.bigclown.com) můžeš také nalézt cenné rady a ukázky. Například [USB CDC komunikaci](http://forum.bigclown.com/t/bigclown-core-module-hello-world-app-lets-try-to-find-the-shortest-yet-still-understandable/61)
