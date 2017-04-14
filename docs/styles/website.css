@@ -248,3 +248,18 @@ section.normal h6:before {
 	counter-increment: h6counter;
 	content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) "." counter(h6counter) ".\0000a0\0000a0";
 }
+
+/* Left menu new style */
+
+.book-summary ul.summary li a, .book-summary ul.summary li span {
+    padding: 4px 15px 4px 30px !important;
+}
+
+.book-summary ul.summary li.header {
+    color: inherit !important;
+    font-weight: bold;
+}
+
+.book-summary ul.summary li b {
+    display: none !important;
+}
