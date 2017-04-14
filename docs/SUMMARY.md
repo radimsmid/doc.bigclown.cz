@@ -14,15 +14,15 @@
 
 * [Hardware](core-module-hardware.md)
 
-* [Popis SDK knihovny (API)](core-module-sdk.md)
+* [Popis SDK knihovny](core-module-sdk.md)
 
 * [Vývojové prostředí](core-module-setup.md)
 
-  * [macOS Desktop](core-module-setup-macos.md)
+  * [macOS](core-module-setup-macos.md)
 
-  * [Ubuntu Desktop](core-module-setup-ubuntu.md)
+  * [Ubuntu](core-module-setup-ubuntu.md)
 
-  * [Windows Desktop](core-module-setup-windows.md)
+  * [Windows](core-module-setup-windows.md)
 
 * [Nahrání firmware](core-module-flashing.md)
 
