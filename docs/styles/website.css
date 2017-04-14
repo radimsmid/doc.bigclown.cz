@@ -263,3 +263,8 @@ section.normal h6:before {
 .book-summary ul.summary li b {
     display: none !important;
 }
+
+/* Override default 1.7× line height */
+.markdown-section {
+    line-height: 1.35 !important;
+}
