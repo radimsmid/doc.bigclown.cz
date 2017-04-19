@@ -20,7 +20,7 @@ Dále budeš potřebovat:
 * PC nebo notebook s Windows, MacOS nebo Linux
 * Napájecí adaptér
 * Tlačítka
-* Několik metrů vodičů (ideálně dvou-žilové zvonkové kabely)
+* Několik metrů dvou-žilového vodiče
 
 
 ## Jak na to
@@ -55,7 +55,7 @@ Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad 
 ### Instalace
  1. Zvol místo pro přichycení sestavy a připrav si dostatečně dlouhé kabely pro připojení tlačítek a LED pásku.
 
- 2. Zapoj tlačítka do Senzor module (tlačítko A na dvě levé svorky, tlačítko B na dvě pravé svorky).
+ 2. Zapoj tlačítka do Senzor Module do 4 pinové svorkovnice (tlačítko A na pozice 1 a 2, tlačítko B na pozice 3 a 4).
 
  ![](images/ping-pong/node-buttons.jpg)
 
@@ -70,7 +70,7 @@ Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad 
 
 ## Volitelná Rozšíření
 
-Na volný GPIO port Core Module (doplnit příklad) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlašítek. Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se lze připojit např k Philips HUE a měnit barvu svícení podle současného stavu počítadla nebo zaznamenávat a zobrazovat score ve vlastní aplikaci nebo databázi.
+Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlašítek. Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se lze připojit např k Philips HUE a měnit barvu svícení podle současného stavu počítadla nebo zaznamenávat a zobrazovat score ve vlastní aplikaci nebo databázi.
 
 ## Firmware
 
@@ -157,9 +157,9 @@ void piezo()
     for (i = 0; i < 100; i++)
     {
         for (j = 0; j < 400; j++);
-        bc_gpio_set_output(BC_GPIO_P5, true);
+        bc_gpio_set_output(BC_GPIO_P8, true);
         for (j = 0; j < 400; j++);
-        bc_gpio_set_output(BC_GPIO_P5, false);
+        bc_gpio_set_output(BC_GPIO_P8, false);
     }
 }
 ```
