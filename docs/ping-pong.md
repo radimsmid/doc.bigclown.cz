@@ -2,7 +2,7 @@
 
 ## O čem projekt je a co ti přinese
 
- Velmi jednoduchý projekt, který velice originálně řeší problémy s počítáním bodů při hraní stopního tenisu. V podstatě se jedná o počítadlo na body, které se inkrementuje pokaždé, když jeden, nebo druhý hráč získá bod a po dosažení 21 bodů oznámí vítěze. Výsledkem je unikátní pingpongový stůl, který vždy dokáže minimálně rozproudit konverzaci návštěvníků v našich kancelářích, protože je jediný svého druhu… zatím.
+ Velmi jednoduchý projekt, který velice originálně řeší problémy s počítáním bodů při hraní stolního tenisu. V podstatě se jedná o počítadlo na body, které se inkrementuje pokaždé, když jeden, nebo druhý hráč získá bod a po dosažení 21 bodů oznámí vítěze. Výsledkem je unikátní pingpongový stůl, který vždy dokáže minimálně rozproudit konverzaci návštěvníků v našich kancelářích, protože je jediný svého druhu… zatím.
 
  ![](images/ping-pong/table-1.jpg)
 
@@ -86,7 +86,7 @@ Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akust
 
 ### Konfigurace pravidel hry
 
-Pomocí konfgurace lze zvolit např barvu hráče a intenzitu podsvětlění nebo maximální score. Proz měnu score se zadej maximální počet viditelných bodů (tzn pro hru do 21 nastav 20, 21. výtězný bod je indikován pohyblivým LED efektem v barvě hráče.
+Úpravou konfigurace lze zvolit např. barvu hráče a intenzitu podsvětlění nebo maximální score. Pro změnu score zadej maximální počet viditelných bodů (tzn pro hru do 21 nastav 20, 21. vítězný bod je indikován pohyblivým LED efektem v barvě hráče.
 ```
 
 ```
@@ -131,7 +131,7 @@ void application_init(void)
 
 ### Příprava costume bufferu pro LED pásek
 
-Šířka běžného ping-pongového stolu je 150 cm a je tedy potřeba si připravit speciální buffer pro delší LED pásek s větším počtem LED. Při hustotě 144 LED / m vychází počet LED na 204.
+Šířka běžného ping-pongového stolu je cca 150 cm a je tedy potřeba si připravit speciální buffer pro delší LED pásek s větším počtem LED. V našem příppadě vyšel počet počet LED na 204.
 
 ```
 static uint32_t _dma_buffer_rgb_204[LED_COUNT * sizeof(uint32_t) * 2];
