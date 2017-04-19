@@ -20,10 +20,8 @@ Dále budeš potřebovat:
 * PC nebo notebook s Windows, MacOS nebo Linux
 * Napájecí adaptér
 * Tlačítka
-* Pár metrů vodičů (ideálně dvou-žilové zvonkové kabely)
-* Kousek cuprextitu
-* Svorkovnice
-* plechy pro ukotvení
+* Několik metrů vodičů (ideálně dvou-žilové zvonkové kabely)
+
 
 ## Jak na to
 
@@ -31,28 +29,28 @@ Dále budeš potřebovat:
 
 Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad počítal s tím, že se tam bude pásek instalovat, jelikož byl celý zákrok neinvazivní, ale výsledek je i přesto velice robustní. Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu.
 
- 1. Zápustný ALU profil se seřízne přesně na šířku stolu.
+ 1. Seřízni zápustný ALU profil přesně na šířku ping-pongového stolu.
 
  ![](images/ping-pong/table-al-tube.jpg)
 
- 2. Vyvrtají se do něj dvě díry, pro šroub se zápustnou hlavou, na stranách a jedna uprostřed, tak aby bylo možné na spodní stranu stolu přiložit plechy pro ukotvení. Jejich přesná velikost není nijak kritická. Je možné hned připevnit i rychloupínací držáky.
+ 2. Do profilu vyvrtej na krajích dva otvory pro šroub se zápustnou hlavou, tak aby bylo možné na spodní stranu stolu přiložit plechy pro ukotvení. Jejich přesná velikost není nijak kritická. Po upnutí plechu pomocí rychloupínacího držáku na síťku se obě hrací plochy stolu pevně spojí.
 
  ![](images/ping-pong/table-bottom.jpg)
 
- 3. Nakonec se, pomocí tafixu, připevní tlačítka s kabelem dostatečné délky po stranách.
+ 3. Nakonec se po stranách připevní tlačítka s kabelem dostatečné délky.
 
  ![](images/ping-pong/table-button.jpg)
 
 ### Složení stavebnice
- 1. Sestavení Node z modulů BigClown“
+ 1. Sestav Node z modulů BigClown.
 
  ![](images/ping-pong/node-2.jpg)
 
-2. <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_1.bin"> Stáhnout firmware
-</a> viz. dole
+2. <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_1.bin"> Sáhni si zkompilovaný firmware
+</a> k projektu (viz dole).
 
-3. <a href="https://doc.bigclown.cz/core-module-flashing.html"> Flashnutí Core Module pomocí dfu
-</a> a sestavení.
+3. <a href="https://doc.bigclown.cz/core-module-flashing.html"> Flashni Core Module pomocí micro USB kabelu a dfu
+</a> [podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html)
 
 ### Instalace
  1. Zvol místo pro přichycení sestavy a připrav si dostatečně dlouhé kabely pro připojení tlačítek a LED pásku.
@@ -89,7 +87,7 @@ Na volný GPIO port Core Module (doplnit příklad) lze připojit piezo měnič 
 
 ### Konfigurace pravidel hry
 
-Pomocí konfgurace lze zvolit např barvu hráče a intenzitu podsvětlění nebo maximální score. Proz měnu score se zadává maximální počet viditelných bodů (tzn pro hru do 21 nastav 20, 21. výtězný bod je indikován pohyblivým LED efektem v barvě hráče.
+Pomocí konfgurace lze zvolit např barvu hráče a intenzitu podsvětlění nebo maximální score. Proz měnu score se zadej maximální počet viditelných bodů (tzn pro hru do 21 nastav 20, 21. výtězný bod je indikován pohyblivým LED efektem v barvě hráče.
 ```
 
 ```
@@ -134,7 +132,7 @@ void application_init(void)
 
 ### Příprava costume bufferu pro LED pásek
 
-Jelikož se v minimálním množství ping-pongových stolů bude jednat o pásek standartní délky (144 diod) je potřeba si připravit speciální buffer pro LED pásek. V mém případě to byl pásek RGBW, délky 204 diod.
+Šířka běžného ping-pongového stolu je 150 cm a je tedy potřeba si připravit speciální buffer pro delší LED pásek s větším počtem LED. Při hustotě 144 LED / m vychází počet LED na 204.
 
 ```
 static uint32_t _dma_buffer_rgb_204[LED_COUNT * sizeof(uint32_t) * 2];
