@@ -35,11 +35,11 @@ Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad 
 
  2. Do profilu vyvrtej na krajích dva otvory pro šroub se zápustnou hlavou, tak aby bylo možné na spodní stranu stolu přiložit plechy pro ukotvení. Jejich přesná velikost není nijak kritická. Po upnutí plechu pomocí rychloupínacího držáku na síťku se obě hrací plochy stolu pevně spojí.
 
- ![](images/ping-pong/table-bottom.jpg)
+ ![](images/ping-pong/table-button.jpg)
 
  3. Nakonec se po stranách připevní tlačítka s kabelem dostatečné délky.
 
- ![](images/ping-pong/table-button.jpg)
+ ![](images/ping-pong/table-bottom.jpg)
 
 ### Složení stavebnice
  1. Sestav Node z modulů BigClown.
