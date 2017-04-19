@@ -49,7 +49,7 @@ Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad 
 2. <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_1.bin"> Sáhni si zkompilovaný firmware
 </a> k projektu (podrobněji viz dole).
 
-3. <a href="https://doc.bigclown.cz/core-module-flashing.html"> Flashni Core Module </a> pomocí micro USB kabelu a dfu [podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html)
+3. <a href="https://doc.bigclown.cz/core-module-flashing.html"> Flashni Core Module </a> pomocí micro USB kabelu a dfu [podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html).
 
 ### Instalace
  1. Zvol místo pro přichycení sestavy a připrav si dostatečně dlouhé kabely pro připojení tlačítek a LED pásku.
@@ -62,7 +62,7 @@ Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad 
 
  ![](images/ping-pong/node-led-strip.jpg)
 
- 4. Zapoj 5V napájecí adaptér do Power Module
+ 4. Zapoj 5V napájecí adaptér do Power Module.
 
  ![](images/ping-pong/table-node.jpg)
 
