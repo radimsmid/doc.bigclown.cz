@@ -19,11 +19,6 @@ Dále budeš potřebovat:
 * PC nebo notebook s Windows, MacOS nebo Linux
 * Napájecí adaptér
 * Tlačítka
-* Pár metrů vodičů (ideálně dvou-žilové zvonkové kabely)
-* Kousek cuprextitu
-* Svorkovnice
-* 2x 14ti-pinovou lištu
-* plechy pro ukotvení
 * Několik metrů dvou-žilového vodiče
 
 ## Jak na to
@@ -87,7 +82,6 @@ Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akust
  * <a href="https://github.com/bigclownlabs/bcp-ping-pong-table"> ping-pong projekt repozitář
 </a>
 
-
 ### Konfigurace pravidel hry
 
 Úpravou konfigurace lze zvolit např. barvu hráče a intenzitu podsvětlění nebo maximální score. Pro změnu score zadej maximální počet viditelných bodů (tzn pro hru do 21 nastav 20, 21. vítězný bod je indikován pohyblivým LED efektem v barvě hráče.
@@ -96,6 +90,7 @@ Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akust
 #define BLUE_BUTTON_GPIO BC_GPIO_P5
 #define PIEZO_GPIO BC_GPIO_P6 // Not used now
 #define MAX 20
+
 ```
 
 ### Inicializace
@@ -121,6 +116,7 @@ void application_init(void)
 
     // Initialize reset red button
     bc_button_init(&button_reset_red, RED_BUTTON_GPIO, BC_GPIO_PULL_UP, true);
+
     bc_button_set_event_handler(&button_reset_red, button_reset_event_handler, NULL);
     bc_button_set_hold_time(&button_reset_red, 4000);
 
