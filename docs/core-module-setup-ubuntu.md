@@ -1,89 +1,9 @@
 # Core Module Development Setup - Ubuntu Desktop
 
 
-<!-- toc -->
+{% include "./_translating.md" %}
 
 
-## Requirements
+ [Anglický originál](https://doc.bigclown.com/core-module-setup-ubuntu.html)
 
-
-* Clean install of 32-bit or 64-bit Ubuntu 16.04 LTS.
-
-
-## Install Toolchain
-
-
-This section will guide you through GCC ARM Embedded toolchain installation on your Ubuntu desktop.
-
-
-1. Open Terminal and add PPA repository:
-
-   ```
-   sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa
-   ```
-
-   > **Note** This PPA enables seamless installation of [GNU ARM Embedded Toolchain](https://launchpad.net/gcc-arm-embedded).
-
-2. Update the package lists:
-
-   ```
-   sudo apt-get update
-   ```
-
-3. Download and install ARM GCC compiler package:
-
-   ```
-   sudo apt-get install gcc-arm-embedded
-   ```
-
-4. Verify that the ARM GCC compiler has installed correctly:
-
-   ```
-   arm-none-eabi-gcc --version
-   ```
-
-   You should get this output in Terminal:
-
-   ```
-   arm-none-eabi-gcc (GNU Tools for ARM Embedded Processors) 6.2.1 20161205 (release) [ARM/embedded-6-branch revision 243739]
-   Copyright (C) 2016 Free Software Foundation, Inc.
-   This is free software; see the source for copying conditions.  There is NO
-   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-   ```
-
-
-## Build Firmware
-
-
-This section will guide you through the BigClown Core Module firmware build process.
-
-
-1. Get necessary packages (`git` + `make`):
-
-   ```
-   sudo apt-get install git build-essential
-   ```
-
-2. Clone BigClown Core Module top-level repository:
-
-   ```
-   git clone https://github.com/bigclownlabs/bc-core-module.git
-   ```
-
-3. Switch to the cloned repository:
-
-   ```
-   cd bc-core-module
-   ```
-
-4. Start the build process:
-
-   ```
-   make
-   ```
-
-5. Check if the file `firmware.elf` has been created:
-
-   ```
-   ls -l out
-   ```
+ [Česky s Google Translate](https://translate.google.com/translate?hl=cs&sl=en&tl=cs&u=https%3A%2F%2Fdoc.bigclown.com%2Fcore-module-setup-ubuntu.html)

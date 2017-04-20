@@ -119,7 +119,7 @@ Pokud budeš používat náš instalační balíček s Visual Studio Code, pak s
 
 3. Nainstaluj `dfu-util` balíček příkazem:
 
-   `sudo apt-get install dfu-util`
+   `sudo apt install dfu-util`
 
 * **Ujisti se, že Core Module je v DFU módu** viz. předchozí kapitola.
 
@@ -153,14 +153,12 @@ TODO: Vložit obrázek.
 Firmware si můžeš naprogramovat s pomocí [BigClown API](http://sdk.bigclown.com) a zkompilovat sám.
 SDK nalezneš na našem [GitHub](https://github.com/bigclownlabs) účtu.
 
-Můžeš si stáhnout předkompilované binární soubory pro [Workroom project](workroom.md):
+Můžeš si stáhnout předkompilované binární soubory pro [ Smart LED Strip (Workroom) project](smart-led-strip.md):
 
-* [Base unit](https://drive.google.com/open?id=0B5pXL_JAACMvM284WW9sSFNCWkE)
-
-* [Remote unit](https://drive.google.com/open?id=0B5pXL_JAACMvVkNRT2dPd1VJRlE)
+* [Base unit a Remote unit](https://github.com/bigclownlabs/bcp-wireless-circus/releases/latest)
 
 
-## Popis funkčnosti Remote unit pro Workroom project
+## Popis funkčnosti Remote unit pro Smart LED Strip (Workroom) project
 
 * Automatické posílání naměřené teploty a vlhkosti každých 30 sekund.
 

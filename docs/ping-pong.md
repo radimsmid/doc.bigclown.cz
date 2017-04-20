@@ -2,10 +2,9 @@
 
 ## O čem projekt je a co ti přinese
 
- Velmi jednoduchý projekt, který velice originálně řeší problémy s počítáním bodů při hraní stopního tenisu. V podstatě se jedná o počítadlo na body, které se inkrementuje pokaždé, když jeden, nebo druhý hráč získá bod a po dosažení 21 bodů oznámí vítěze. Výsledkem je unikátní pingpongový stůl, který vždy dokáže minimálně rozproudit konverzaci návštěvníků v našich kancelářích, protože je jediný svého druhu… zatím.
+ Velmi jednoduchý projekt, který velice originálně řeší problémy s počítáním bodů při hraní stolního tenisu. V podstatě se jedná o počítadlo na body, které se inkrementuje pokaždé, když jeden, nebo druhý hráč získá bod a po dosažení 21 bodů oznámí vítěze. Výsledkem je unikátní pingpongový stůl, který vždy dokáže minimálně rozproudit konverzaci návštěvníků v našich kancelářích, protože je jediný svého druhu… zatím.
 
- ![](images/ping-pong/P2230729.jpg)
-
+ ![](images/ping-pong/table-1.jpg)
 
 ## Co všechno k projektu potřebuješ
 
@@ -13,6 +12,7 @@
 * 1x Core Module
 * 1x Power Module
 * 1x Base Module
+* 1x Sensor Module
 
 Dále budeš potřebovat:
 
@@ -24,6 +24,7 @@ Dále budeš potřebovat:
 * Svorkovnice
 * 2x 14ti-pinovou lištu
 * plechy pro ukotvení
+* Několik metrů dvou-žilového vodiče
 
 ## Jak na to
 
@@ -31,44 +32,47 @@ Dále budeš potřebovat:
 
 Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad počítal s tím, že se tam bude pásek instalovat, jelikož byl celý zákrok neinvazivní, ale výsledek je i přesto velice robustní. Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu.
 
- 1. Zápustný ALU profil se seřízne přesně na šířku stolu.
+ 1. Seřízni zápustný ALU profil přesně na šířku ping-pongového stolu.
 
- ![](images/ping-pong/20170223_154347-min.jpg)
+ ![](images/ping-pong/table-al-tube.jpg)
 
- 2. Vyvrtají se do něj dvě díry, pro šroub se zápustnou hlavou, na stranách a jedna uprostřed, tak aby bylo možné na spodní stranu stolu přiložit plechy pro ukotvení. Jejich přesná velikost není nijak kritická. Je možné hned připevnit i rychloupínací držáky.
+ 2. Do profilu vyvrtej na krajích dva otvory pro šroub se zápustnou hlavou, tak aby bylo možné na spodní stranu stolu přiložit plechy pro ukotvení. Jejich přesná velikost není nijak kritická. Po upnutí plechu pomocí rychloupínacího držáku na síťku se obě hrací plochy stolu pevně spojí.
 
- ![](images/ping-pong/P2230616-min.jpg)
+ ![](images/ping-pong/table-button.jpg)
 
- 3. Nakonec se, pomocí tafixu, připevní tlačítka s kabelem dostatečné délky po stranách.
+ 3. Nakonec se po stranách připevní tlačítka s kabelem dostatečné délky.
 
- ![](images/ping-pong/20170224_114035-min.jpg)
+ ![](images/ping-pong/table-bottom.jpg)
 
 ### Složení stavebnice
- 1. Zbastlení „svorkovnicového modulu“
+ 1. Sestav Node z modulů BigClown.
 
- ![](images/ping-pong/P2230620_2-min.jpg)
+ ![](images/ping-pong/node-2.jpg)
 
+2. <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_1.bin"> Sáhni si zkompilovaný firmware
+</a> k projektu (podrobněji viz dole).
 
- ![](images/ping-pong/P2230622_2-min.jpg)
-
-2. <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_1.bin"> Stáhnout firmware
-</a> viz. dole
-
-3. <a href="https://doc.bigclown.cz/core-module-flashing.html"> Flashnutí Core Modulu pomocí dfu
-</a> a sestavení.
-
- ![](images/ping-pong/P2230624-min.jpg)
+3. <a href="https://doc.bigclown.cz/core-module-flashing.html"> Flashni Core Module </a> pomocí micro USB kabelu a dfu [podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html).
 
 ### Instalace
- 1. Sestavu přitafixuj ze spodní strany stolu, tak aby jsi k němu dosáhl vodiči od tlačítek a na kabel k LED pásku.
+ 1. Zvol místo pro přichycení sestavy a připrav si dostatečně dlouhé kabely pro připojení tlačítek a LED pásku.
 
- 2. Zapoj zvonková tlačítka a kabel k LED pásku.
+ 2. Zapoj tlačítka do Senzor Module do 4 pinové svorkovnice (tlačítko A na pozice 1 a 2, tlačítko B na pozice 3 a 4).
 
- ![](images/ping-pong/P2230626-min.jpg)
+ ![](images/ping-pong/node-buttons.jpg)
 
-## Rozšíření
+ 3. Zapoj LED pásek do Power Module.
 
-Další integrace jsou alternativou, díky  Raspberry PI s odpovídajícím programem v pythonu, se lze poměrně lehce připojit k internetu (např. se připojit k HUE a měnit barvu svícení podle současného stavu počítadla).
+ ![](images/ping-pong/node-led-strip.jpg)
+
+ 4. Zapoj 5V napájecí adaptér do Power Module.
+
+ ![](images/ping-pong/table-node.jpg)
+
+
+## Volitelná Rozšíření
+
+Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlašítek. Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se lze připojit např k Philips HUE a měnit barvu svícení podle současného stavu počítadla nebo zaznamenávat a zobrazovat score ve vlastní aplikaci nebo databázi.
 
 ## Firmware
 
@@ -83,47 +87,65 @@ Další integrace jsou alternativou, díky  Raspberry PI s odpovídajícím prog
  * <a href="https://github.com/bigclownlabs/bcp-ping-pong-table"> ping-pong projekt repozitář
 </a>
 
+
+### Konfigurace pravidel hry
+
+Úpravou konfigurace lze zvolit např. barvu hráče a intenzitu podsvětlění nebo maximální score. Pro změnu score zadej maximální počet viditelných bodů (tzn pro hru do 21 nastav 20, 21. vítězný bod je indikován pohyblivým LED efektem v barvě hráče.
+```
+#define RED_BUTTON_GPIO BC_GPIO_P4
+#define BLUE_BUTTON_GPIO BC_GPIO_P5
+#define PIEZO_GPIO BC_GPIO_P6 // Not used now
+#define MAX 20
+```
+
 ### Inicializace
 
-Jak se vidět v následující ukázce inicializace se, díky přístupu, kterému by se dalo říkat event-callback, vejde na pár řádků a přesto je velice transparentní.
+Jak je vidět v následující ukázce, inicializace se díky přístupu, kterému by se dalo říkat event-callback, vejde na pár řádků a přesto je velice transparentní.
 
 ```
 void application_init(void)
 {
+    // Initialize (just to be sure)
+    bc_tca9534a_t expander;
+    bc_tca9534a_init(&expander, BC_I2C_I2C0, 0x3e);
+    bc_tca9534a_set_port_direction(&expander, 0);
+    bc_tca9534a_write_port(&expander, 0x60);
+
     // Initialize power module with led strip
     bc_module_power_init();
     bc_led_strip_init(&led_strip, bc_module_power_get_led_strip_driver(), &_led_strip_buffer_rgbw_204);
 
     // Initialize red button
-    bc_button_init(&button_red, BC_GPIO_P3, BC_GPIO_PULL_DOWN, false);
+    bc_button_init(&button_red, RED_BUTTON_GPIO, BC_GPIO_PULL_UP, true);
     bc_button_set_event_handler(&button_red, button_score_event_handler, NULL);
 
     // Initialize reset red button
-    bc_button_init(&button_reset_red, BC_GPIO_P3, BC_GPIO_PULL_DOWN, false);
+    bc_button_init(&button_reset_red, RED_BUTTON_GPIO, BC_GPIO_PULL_UP, true);
     bc_button_set_event_handler(&button_reset_red, button_reset_event_handler, NULL);
     bc_button_set_hold_time(&button_reset_red, 4000);
 
     // Initialize blue button
-    bc_button_init(&button_blue, BC_GPIO_P2, BC_GPIO_PULL_DOWN, false);
+    bc_button_init(&button_blue, BLUE_BUTTON_GPIO, BC_GPIO_PULL_UP, true);
     bc_button_set_event_handler(&button_blue, button_score_event_handler, NULL);
 
     // Initialize reset blue button
-    bc_button_init(&button_reset_blue, BC_GPIO_P2, BC_GPIO_PULL_DOWN, false);
+    bc_button_init(&button_reset_blue, BLUE_BUTTON_GPIO, BC_GPIO_PULL_UP, true);
     bc_button_set_event_handler(&button_reset_blue, button_reset_event_handler, NULL);
     bc_button_set_hold_time(&button_reset_blue, 4000);
 
     // Initialize piezo gpio pin
-    bc_gpio_init(BC_GPIO_P5);
-    bc_gpio_set_mode(BC_GPIO_P5, BC_GPIO_MODE_OUTPUT);
+    bc_gpio_init(PIEZO_GPIO);
+    bc_gpio_set_mode(PIEZO_GPIO, BC_GPIO_MODE_OUTPUT);
 
     reset_task_id = bc_scheduler_register(reset_game, NULL, BC_TICK_INFINITY);
+
     reset_game();
 }
 ```
 
 ### Příprava costume bufferu pro LED pásek
 
-Jelikož se v minimálním množství ping-pongových stolů bude jednat o pásek standartní délky (144 diod) je potřeba si připravit speciální buffer pro LED pásek. V mém případě to byl pásek RGBW, délky 204 diod.
+Šířka běžného ping-pongového stolu je cca 150 cm a je tedy potřeba si připravit speciální buffer pro delší LED pásek s větším počtem LED. V našem příppadě vyšel počet počet LED na 204.
 
 ```
 static uint32_t _dma_buffer_rgb_204[LED_COUNT * sizeof(uint32_t) * 2];
@@ -148,9 +170,9 @@ void piezo()
     for (i = 0; i < 100; i++)
     {
         for (j = 0; j < 400; j++);
-        bc_gpio_set_output(BC_GPIO_P5, true);
+        bc_gpio_set_output(PIEZO_GPIO, true);
         for (j = 0; j < 400; j++);
-        bc_gpio_set_output(BC_GPIO_P5, false);
+        bc_gpio_set_output(PIEZO_GPIO, false);
     }
 }
 ```

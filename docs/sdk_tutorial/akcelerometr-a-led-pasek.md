@@ -62,59 +62,74 @@ My použijeme pouze osu X a rozsah mezi +1g a -1g přepočteme na pozici na LED 
 Podmínkou `if(position >= 0 && position < 144)` si musíme ohlídat rozsahy, protože akcelerometr může vracet i hodnoty větší jak 1 g pokud s ním pohybujeme.
 
 ```C
-	#include <application.h>
-    #include <bcl.h>
+#include <application.h>
+#include <bcl.h>
 
-    bc_led_strip_t led_strip;
-    // Instance akcelerometru
-    bc_lis2dh12_t lis2dh12;
+// Počet pixelů
+#define MAX_PIXELS 144
 
-    // Callback funkce pro zpracování naměřených dat z akcelerometru
-    void lis2dh12_event_handler(bc_lis2dh12_t *self, bc_lis2dh12_event_t event, void *event_param)
-    {
-        (void) event_param;
+// Vytvoření interního DMA bufferu
+static uint32_t _dma_buffer[MAX_PIXELS * 4 * 2];
 
-        if (event == BC_LIS2DH12_EVENT_UPDATE)
-        {
-            // Struktura pro naplnění naměřenými hodnotami
-            bc_lis2dh12_result_g_t result;
+// Struktura nastavující počet pixelů a interní buffer
+static bc_led_strip_buffer_t led_strip_buffer =
+{
+    .type = BC_LED_STRIP_TYPE_RGBW,
+    .count = MAX_PIXELS,
+    .buffer = _dma_buffer
+};
 
-            // Načti naměřené hodnoty do struktury result
-            if (bc_lis2dh12_get_result_g(self, &result))
-            {
-                uint32_t i;
-                // Vymaž led pásek
-                for( i = 0; i < 144; i++)
-                {
-                    bc_led_strip_set_pixel_rgbw(&led_strip, i, 0 ,0 ,0, 0);
-                }
+// Instance LED pásku
+static bc_led_strip_t led_strip;
 
-                // Přepočti osu X akcelerometru na pozici  pixelu na LED pásku
-                int32_t position = (result.x_axis * 72) + 72;
+// Instance akcelerometru
+bc_lis2dh12_t lis2dh12;
 
-                if(position >= 0 && position < 144)
-                {
-                    // Nastav bílou barvu na jeden pixel
-                    bc_led_strip_set_pixel_rgbw(&led_strip, position, 0, 0, 0, 100);
-                }
+// Callback funkce pro zpracování naměřených dat z akcelerometru
+void lis2dh12_event_handler(bc_lis2dh12_t *self, bc_lis2dh12_event_t event, void *event_param)
+{
+   (void) event_param;
 
-                // Překresli LED pásek
-                bc_led_strip_write(&led_strip);
-            }
-        }
-    }
+   if (event == BC_LIS2DH12_EVENT_UPDATE)
+   {
+       // Struktura pro naplnění naměřenými hodnotami
+       bc_lis2dh12_result_g_t result;
+
+       // Načti naměřené hodnoty do struktury result
+       if (bc_lis2dh12_get_result_g(self, &result))
+       {
+           uint32_t i;
+           // Vymaž led pásek
+           for( i = 0; i < 144; i++)
+           {
+               bc_led_strip_set_pixel_rgbw(&led_strip, i, 0 ,0 ,0, 0);
+           }
+
+           // Přepočti osu X akcelerometru na pozici  pixelu na LED pásku
+           int32_t position = (result.x_axis * 72) + 72;
+
+           if(position >= 0 && position < 144)
+           {
+               // Nastav bílou barvu na jeden pixel
+               bc_led_strip_set_pixel_rgbw(&led_strip, position, 0, 0, 0, 100);
+           }
+
+           // Překresli LED pásek
+           bc_led_strip_write(&led_strip);
+       }
+   }
+}
 
 
-	void application_init(void)
-	{
-        bc_led_strip_init(&led_strip, bc_module_power_get_led_strip_driver(), &bc_module_power_led_strip_buffer_rgbw_144);
+void application_init(void)
+{
+   bc_led_strip_init(&led_strip, bc_module_power_get_led_strip_driver(), &led_strip_buffer);
 
-        // Inicializace akcelerometru s nastavením sběrnice I2C0 a adresy 0x19
-        bc_lis2dh12_init(&lis2dh12, BC_I2C_I2C0, 0x19);
-        // Vzorkuj data každých 20ms
-        bc_lis2dh12_set_update_interval(&lis2dh12, 20);
-        // Registruj funkci
-        bc_lis2dh12_set_event_handler(&lis2dh12, lis2dh12_event_handler, NULL);
-	}
-
+   // Inicializace akcelerometru s nastavením sběrnice I2C0 a adresy 0x19
+   bc_lis2dh12_init(&lis2dh12, BC_I2C_I2C0, 0x19);
+   // Vzorkuj data každých 20ms
+   bc_lis2dh12_set_update_interval(&lis2dh12, 20);
+   // Registruj funkci
+   bc_lis2dh12_set_event_handler(&lis2dh12, lis2dh12_event_handler, NULL);
+}
 ```

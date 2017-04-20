@@ -1,31 +1,29 @@
-# Core Module Development Setup
+# Core Module vývojové nástroje
 
 
-In general firmware development has the following phases:
+Vývoj firmare probíhá v následujících krocích:
+
+1. **Instalace toolchainu**
+
+2. **Vývoj**
+
+   * **Programování** (psaní zdrojového kódu)
+
+   * **Kompilování** (kompilace zdrojového kódu)
+
+   * **Nahrávání firmware** (nahrávání zkompilovaného kódu)
+
+   * **Ladění** (krokování programu, breakpointy, sledování proměnných atd.)
+
+2. **Testování**
+
+2. **Nasazení**
 
 
-1. **Toolchain Installation**
-
-2. **Development**
-
-   * **Coding** (writing of the source code)
-
-   * **Building** (compilation of the source code)
-
-   * **Programming** (downloading compiled image to the target)
-
-   * **Debugging** (stepping through the program, breakpoints, watching data, etc.)
-
-2. **Testing**
-
-2. **Deployment**
+## Instalace toolchainu
 
 
-## Toolchain Installation
-
-
-Click on one of the supported host operating system platforms for detailed information about the toolchain setup:
-
+Na odkazech níže je popis zprovoznění toolchainu na jednotlivých platformách.
 
 * [**Ubuntu** Desktop](core-module-setup-ubuntu.md)
 

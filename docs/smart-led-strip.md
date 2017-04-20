@@ -9,9 +9,9 @@ Jde o jednoduchý projekt, jehož cílem je ukázat snadnost budování domácí
 Výsledkem projektu je "chytrý" LED pásek umístěný na viditelném místě v obývacím pokoji, který si můžeš vzdáleně ovládat z telefonu nebo tabletu.
 
 
-LED pásek je složený ze 144 adresovatených RGBW čipů, a díky výkonu 15W jej lze použít i pro komfortní osvětlení.
+LED pásek je složený ze 144 adresovatených RGBW čipů a díky výkonu 15W jej lze použít i pro komfortní osvětlení.
 Ve výchozím nastavením je pomocí pásku indikováno překročení nastavených limitů teploty a vlhkosti změnou barvy.
-V návodu si ukážeme, jak lze limity změnit nebo nastavit vlastní pravidla a idikovat teplotu dle počtu rozsvícených LED.
+V návodu si ukážeme, jak lze limity změnit nebo nastavit vlastní pravidla a indikovat teplotu dle počtu rozsvícených LED.
 Sestava dále umožňuje dálkově spínat externí spotřebič pomocí relé.
 Ovládání a čtení hodnot si ukážeme pomocí MQTT příkazů, ale hlavně pomocí  mobilní aplikace Blynk.
 
@@ -41,7 +41,11 @@ Celý koncept popisuje následující diagram:
 ## Co všechno k projektu potřebuješ
 
 Všechny potřebné výrobky jsme zabalili do [cenově zvýhodněné sady](https://obchod.bigclown.cz/products/smart-led-strip-set), kterou si můžeš koupit v našem obchodě.
-Pokud již vlastníš Core modul nebo si ho koupíš samostatně, pak si je musíš flashnout správným firmware, a [to podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html).
+Pokud již vlastníš Core modul nebo si ho koupíš samostatně, pak si ho musíš flashnout správným firmware a [to podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html).
+Aktuální firmware pro jednotky Base a Remote [nalezneš zde](https://github.com/bigclownlabs/bcp-wireless-circus/releases/latest).
+Pokud chceš použít vlastní Raspberry Pi s běžícím Raspianem, postupuj [návodem na instalaci BigClown balíčků na existující systém](https://doc.bigclown.cz/raspberry-pi-installation.html#instalace-bigclown-balíčků-na-existující-systém).
+Nebo si můžeš [stáhnout image](https://doc.bigclown.cz/raspberry-pi-installation.html#příprava-microsd-karty), s již předinstalovaným systémem včetně BigClown balíčků.
+
 
 Sada obsahuje:
 
@@ -122,7 +126,7 @@ Dále budeš potřebovat:
 
     Zmáčkni a drž tlačítko BOOT na Core modulu Remote jednotky, dokud nedojde k 2s rozsvícení a zhasnutí LED, čímž bylo indikováno odeslání párovacího signálu.
     BOOT tlačítko na Core modulu je označeno písmenem "B".
-    Nyní došlo k odeslání párovacího signálu a LED na Base jednotce by měla přestat blikat.
+    Nyní došlo k odeslání párovacího signálu a LED na Base jednotce přestane blikat.
 
     ![](images/smart-led-strip/pairing-remote.png)
 
@@ -137,7 +141,7 @@ Dále budeš potřebovat:
 
 ## Rychlý test a oživení pomocí konzole
 
-Všechny zprávy mezi Linuxovými komponentami systému jsou vyměňovány pomocí tzv. MQTT brokeru.
+Všechny zprávy mezi linuxovými komponentami systému jsou vyměňovány pomocí tzv. MQTT brokeru.
 MQTT broker tvoří jádro systému domácí automatizace BigClown.
 Více podrobností o technologii MQTT nalezneš zde:
 
@@ -163,8 +167,8 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
 
    **V Linuxu a MacOS:**
 
-   Použij Terminál a příkaz *ssh pi@192.168.0.120* (IP adresu uprav na tvé Raspberry Pi).
-   Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “*yes*”a pokračuj.
+   Použij Terminál a příkaz "*ssh pi@192.168.0.120*" (IP adresu uprav na tvé Raspberry Pi).
+   Při prvním připojení k Raspberry Pi tě systém vyzve k potvrzení autorizačního klíče, zadejte “*yes*” a pokračuj.
 
 3. Pokud se připojení zdařilo, systém tě vyzve k zadání hesla.
    Výchozí heslo je "raspberry".
@@ -175,7 +179,7 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
 4.  Než se pustíš do testování a následujících kroků je nutné aktualizovat SW balíčky v Raspberry Pi (aktualizuje BigClown komponenty):
 
     ```
-    sudo apt-get update && sudo apt-get upgrade
+    sudo apt update && sudo apt upgrade
     ```
 
 ### Otestování funkcí a hrátky s MQTT
@@ -198,7 +202,7 @@ Doporučujeme zkusit alespoň několik prvních příkazů pro otestování fun�
     mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
     ```
 
-3.  Zvol nižší intenzitu světla, na 30% (platný rozsah 0 až 100%):
+3.  Zvol nižší intenzitu světla na 30% (platný rozsah 0 až 100%):
 
     ```
     mosquitto_pub -t "plugin/led-strip/brightness/set" -m 30
@@ -218,7 +222,7 @@ Doporučujeme zkusit alespoň několik prvních příkazů pro otestování fun�
     mosquitto_pub -t "plugin/led-strip/color/set" -m '"#000000(ff)"'
     ```
 
-6.  Vytvoř "studenou bílou" namícháním bílé s modorou:
+6.  Vytvoř "studenou bílou" namícháním bílé s modrou:
 
     ```
     mosquitto_pub -t "plugin/led-strip/color/set" -m '"#000099(ff)"'
@@ -252,16 +256,18 @@ Doporučujeme zkusit alespoň několik prvních příkazů pro otestování fun�
 Hodnoty barev se zadávají v hex formátu v rozsahu “00” až “ff”.
 Bílá složka je při zadávání nepovinná a zadává se v závorkách za RGB složky.
 Je možné míchat všechny barevné komponenty (RGB) včetně bílé složky (W).
-Pokud je hodnota bílé složky nulová, hodnotu v závorce lze vynechat.
+Pokud je hodnota bílé složky nulová, lze hodnotu v závorce vynechat.
 Např. pro rozsvícení pouze červené barvy lze použít:
 
-    ```
-    mosquitto_pub -t "plugin/led-strip/color/set" -m '"#ff0000(00)"'
-    ```
+```
+mosquitto_pub -t "plugin/led-strip/color/set" -m '"#ff0000(00)"'
+```
+
 nebo jednodušeji:
-    ```
-    mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
-    ```   
+
+```
+mosquitto_pub -t "plugin/led-strip/color/set" -m \"#ff0000\"
+```
 
 > **Warning** Varování:
 Při nastavení maximální svítivosti (brightness = 100 %) nedoporučujeme rozsvěcet na plný výkon více než dvě barevné složky (nebo bílou složku + barvu).
@@ -269,13 +275,13 @@ Pokud nastavíte všechny čtyři složky (RGBW) na maximální hodnotu (ff) př
 Pro 100% výkon doporučujeme použít silnější napájecí adaptér min. 5V/5A a dále instalaci LED pásku do hliníkové lišty nebo její přilepení na kovový povrch pro lepší odvod tepla!
 
 
-**Ovládání Relé:**
+**Ovládání relé:**
 
 Zapni relé (sepne kontakty *NO* a *C*):
 
 
 ```
-    mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
+mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
 ```
 
 
@@ -283,25 +289,25 @@ Vypni relé (sepne kontakty *NC* a *C*):
 
 
 ```
-    mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
+mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
 ```
 
 
 > **Hint** První pomoc:
-Pokud jsi se úspěšně připojili k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
+Pokud jsi se úspěšně připojil k Raspberry Pi a LED pásek nebo relé nejde zapnout, zkontroluj, zda jsi připojili 5V DC adaptér do Power Modulu na Base jednotce (rozsvícený pásek je indikován také červenou LED na Core Modulu stanice Base).
 
 
 **Čtení hodnot ze senzorů na Remote unit:**
- 
+
 ```
-    mosquitto_sub -v -t "nodes/remote/#"
+mosquitto_sub -v -t "nodes/remote/#"
 ```
 
 do 30 s bys měl obdržet zprávu s výpisem teploty a vlhkosti:
 
 ```
-    nodes/remote/thermometer/i2c0-49 {"temperature": [20.31, "\u2103"]}
-    nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [40.6, "%"]}
+nodes/remote/thermometer/i2c0-49 {"temperature": [20.31, "\u2103"]}
+nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [40.6, "%"]}
 ```
 
 Pro ukončení monitorováni stiskni *Ctrl-C*
@@ -312,11 +318,11 @@ Pro ukončení monitorováni stiskni *Ctrl-C*
 Pro indikaci nastavených hodnot je nutné opětovně zapnout LED pásek a přepnout ho do režimu “*rules*”:
 
 ```
-    mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'
+mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'
 ```
 
 ```
-    mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
+mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
 ```
 
 V režimu rules je ve výchozím stavu nastavena následující logika:
@@ -331,7 +337,7 @@ Pokud se pohybují hodnoty teploty a vlhkosti v nastavených mezích svítí LED
 Meze hodnot i vlastní funkci lze libovolně měnit úpravou a zadání tohoto příkazu:
 
 ```
-    mosquitto_pub -t "plugin/led-strip/rules/set" -m '[{"nodes/remote/humidity-sensor/+": {"value": "$.'"'"'relative-humidity'"'"'.[0]", "from": 60}, "color": "#00ff00"}, {"nodes/remote/humidity-sensor/+": {"va0lue": "$.'"'"'relative-humidity'"'"'.[0]", "to": 30}, "color": "#ffff00"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "from": 26}, "color": "#ff0000"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "to": 22}, "color": "#0000ff"}, {"color": "#ffffff"}]'
+mosquitto_pub -t "plugin/led-strip/rules/set" -m '[{"nodes/remote/humidity-sensor/+": {"value": "$.'"'"'relative-humidity'"'"'.[0]", "from": 60}, "color": "#00ff00"}, {"nodes/remote/humidity-sensor/+": {"va0lue": "$.'"'"'relative-humidity'"'"'.[0]", "to": 30}, "color": "#ffff00"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "from": 26}, "color": "#ff0000"}, {"nodes/remote/thermometer/+": {"value": "$.temperature.[0]", "to": 22}, "color": "#0000ff"}, {"color": "#ffffff"}]'
 ```
 
 Další pokročilé funkce budou popsány v pozdějších návodech.
@@ -349,7 +355,7 @@ LED pásek nebo přesněji "*LED-strip-plugin*" může pracovat ve čtyřech zá
 Režimy lze přepínat příkazem *mode/set*:
 
 ```
-    mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
+mosquitto_pub -t "plugin/led-strip/mode/set" -m \"rules\"
 ```
 
 > **Note** Poznámka:
@@ -365,11 +371,11 @@ Zde si ukážeme jak nastavit aplikaci Blynk pro ovládání a monitorování v�
 
 Pro platformu Blynk jsme připravili [**samostatný návod**](https://doc.bigclown.cz/blynk.html):
 
-1.  [Můžeš si přečís, jak funguje Blynk](https://doc.bigclown.cz/blynk.html#jak-funguje-blynk)
+1.  [Můžeš si přečíst, jak funguje Blynk](https://doc.bigclown.cz/blynk.html#jak-funguje-blynk)
 
 2.  [Zde zjistíš potřebné SW/HW vybavení](https://doc.bigclown.cz/blynk.html#potřebné-swhw-vybavení)
 
-3.  Pro seznámení s Blynkem a vytvoření rvního funkčního tlačítka pro ovládání relé postupuj dle [bodů 3 až 8](https://doc.bigclown.cz/blynk.html).
+3.  Pro seznámení s Blynkem a vytvoření prvního funkčního tlačítka pro ovládání relé postupuj dle [bodů 3 až 8](https://doc.bigclown.cz/blynk.html).
     V dalších bodech jsou popsány další Blynk widgety, které se ti mohou hodit.
 
 Pro rychlé vyzkoušení vzorových projektů si je můžeš jednoduše naklonovat dle [následujícího postupu:](https://doc.bigclown.cz/blynk.html#rychlé-naklonování-projektu)
@@ -425,16 +431,16 @@ Jako příklad namapujeme 4 uživatelské předvolby na Virtuální PINy:
 Konfiguraci zapíšeme do souboru led-strip.user následovně:
 
 ```
-    8 plugin/led-strip/color/set "#000000(aa)"
-    9 plugin/led-strip/color/set "#000088(aa)"
-    11 plugin/led-strip/compound/set [72, "#ff0000", 72, "#0000ff"]
-    12 plugin/led-strip/compound/set [20, "#ff0000", 20, "#ff7f00", 20, "#ffff00", 20, "#00ff00", 20, "#0000ff", 20, "#960082", 21, "#D500ff"]
+8 plugin/led-strip/color/set "#000000(aa)"
+9 plugin/led-strip/color/set "#000088(aa)"
+11 plugin/led-strip/compound/set [72, "#ff0000", 72, "#0000ff"]
+12 plugin/led-strip/compound/set [20, "#ff0000", 20, "#ff7f00", 20, "#ffff00", 20, "#00ff00", 20, "#0000ff", 20, "#960082", 21, "#D500ff"]
 ```
 
 Po úpravě souboru je nutné provést restart blynk pluginu (nebo restart Raspberry Pi):
 
 ```
-    sudo systemctl restart bc-smart-led-strip-blynk.service
+sudo systemctl restart bc-workroom-blynk.service
 ```
 
 Pro vyvolání předvolby v Blynku použij tlačítka nastavené na režim PUSH namapované na PINy  V8, V9, V11, V12. Předvolby jsou použity v ukázkovém projektu *Smart LED Strip 3*.
@@ -446,49 +452,49 @@ Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “e
 
 
 ```
-    plugin:
-        host: localhost
-        port: 1883
-        log: debug
-        state: true
-        color: "#ff0000"
-        compound: [20, "#ff0000", 20, "#00ff00", 20, "#0000ff", 20, "#000000(ff)", 20, "#ea0000(ff)"]
-        mode: rules
+plugin:
+    host: localhost
+    port: 1883
+    log: debug
+    state: true
+    color: "#ff0000"
+    compound: [20, "#ff0000", 20, "#00ff00", 20, "#0000ff", 20, "#000000(ff)", 20, "#ea0000(ff)"]
+    mode: rules
 
-    rules:
-        - nodes/remote/humidity-sensor/+:
-            value: $.'relative-humidity'.[0]
-            from: 60
-          color: "#00ff00"
-        - nodes/remote/humidity-sensor/+:
-            value: $.'relative-humidity'.[0]
-            to: 30
-          color: "#ffff00"
-        - nodes/remote/thermometer/+:
-            value: $.temperature.[0]
-            from: 26
-          color: "#ff0000"
-        - nodes/remote/thermometer/+:
-            value: $.temperature.[0]
-            to: 22
-          color: "#0000ff"
-        -
-          # Default
-          color: "#eaeaea"
+rules:
+    - nodes/remote/humidity-sensor/+:
+        value: $.'relative-humidity'.[0]
+        from: 60
+      color: "#00ff00"
+    - nodes/remote/humidity-sensor/+:
+        value: $.'relative-humidity'.[0]
+        to: 30
+      color: "#ffff00"
+    - nodes/remote/thermometer/+:
+        value: $.temperature.[0]
+        from: 26
+      color: "#ff0000"
+    - nodes/remote/thermometer/+:
+        value: $.temperature.[0]
+        to: 22
+      color: "#0000ff"
+    -
+      # Default
+      color: "#eaeaea"
  ```
 
 **Příklad 2: Vytvoření jednoduché indikace teploty dle počtu rozsvícených LED a barvy:**
 
 ```
-    plugin:
-      color: '#ff0000'
-      compound: [20, '#ff0000', 20, '#00ff00', 20, '#0000ff', 20, '#000000(ff)',20, '#ea0000(ff)']
-      host: localhost
-      log: debug
-      mode: rules
-      port: 1883
-      state: true
-    rules:
+plugin:
+    color: '#ff0000'
+    compound: [20, '#ff0000', 20, '#00ff00', 20, '#0000ff', 20, '#000000(ff)',20, '#ea0000(ff)']
+    host: localhost
+    log: debug
+    mode: rules
+    port: 1883
+    state: true
+rules:
     - compound: [18, '#000088(99)']
       nodes/remote/thermometer/+: {from: -40.0, to: 0.0, value: '$.temperature.[0]'}
     - compound: [36, '#0000ff']
@@ -511,10 +517,10 @@ Pro konfiguraci výchozích režimů a vlastních pravidel slouží soubor: “e
 Po přepsání konfiguračního souboru je nutné provést restart led-strip-pluginu (nebo restart Raspberry Pi):
 
 ```
-    sudo systemctl restart bc-smart-led-strip-led-strip.service
+sudo systemctl restart bc-workroom-led-strip.service
 ```
 
 
 ## Závěr
 Na závěr bychom tě chtěli vyzvat k vlastním úpravám a projektům. Je pouze na tobě, zda si pásek nalepíš za TV a v Blynku si definuješ vlastní scénické převolby pro navození té správné atmosféry k filmu, nebo zda si pásek přiděláš do hliníkové lišty nad pracovní stůl. Těšíme se na tvé projekty s BigClown! Tvůj projekt se může stát inspirací pro další, můžeš ho [přidat na naši dokumentaci sám](https://doc.bigclown.cz/), nebo nám ho [pošli na email](mailto:support@bigclown.com).
-Pokud něčemu neporozumíš, nebo najdeš chubu, neboj se nám napsat email nebo na do [fóra](http://forum.bigclown.com/).
+Pokud něčemu neporozumíš nebo najdeš chubu, neboj se nám napsat email nebo na do [fóra](http://forum.bigclown.com/).
