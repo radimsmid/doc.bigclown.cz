@@ -56,24 +56,24 @@ BigClown ekosystém si rozšíříš tak, jak chceš ty sám.
     <tr style="font-size:100%">
         <td colspan="3" bgcolor="#F4CCCC">
             <a href="https://doc.bigclown.cz/core-module.html" onclick="location.href=this.href; return false">Začínáme s Core Module.</a><br />
-            <a href="https://obchod.bigclown.cz/products/core-module" target="_self">Koupit Core Module</a><br />
+            <a href="https://obchod.bigclown.cz/products/core-module">Koupit Core Module</a><br />
             <a href="https://github.com/bigclownlabs/bcp-wireless-circus">Standardní firmware</a><br />
-            <a href="https://doc.bigclown.cz/core-module-setup.html">Vývojářské nástroje</a><br />
-            <a href="https://doc.bigclown.cz/core-module-sdk.html">Popis vývojového SDK</a><br />
-            <a href="https://doc.bigclown.cz/core-module-flashing.html">USB nahrávání firmware</a><br />
+            <a href="https://doc.bigclown.cz/core-module-setup.html" onclick="location.href=this.href; return false">Vývojářské nástroje</a><br />
+            <a href="https://doc.bigclown.cz/core-module-sdk.html" onclick="location.href=this.href; return false">Popis vývojového SDK</a><br />
+            <a href="https://doc.bigclown.cz/core-module-flashing.html" onclick="location.href=this.href; return false">USB nahrávání firmware</a><br />
         </td>
 
         <td colspan="2" bgcolor="#D9EAD3">
-            <a href="https://doc.bigclown.cz/raspberry-pi-installation.html">Instalace balíčků</a><br />
+            <a href="https://doc.bigclown.cz/raspberry-pi-installation.html" onclick="location.href=this.href; return false">Instalace balíčků</a><br />
             <a href="https://obchod.bigclown.cz/products/raspberry-pi-3-set">Koupit Raspberry Pi3 </a><br />
             USB Python Gateway<br />
-            <a href="https://doc.bigclown.cz/mosquitto.html">Mosquitto MQTT broker</a><br />
-            <a href="https://doc.bigclown.cz/node-red.html">Node-RED tutoriál</a><br />
+            <a href="https://doc.bigclown.cz/mosquitto.html" onclick="location.href=this.href; return false">Mosquitto MQTT broker</a><br />
+            <a href="https://doc.bigclown.cz/node-red.html" onclick="location.href=this.href; return false">Node-RED tutoriál</a><br />
             Pluginy (Blynk, LED)<br />
         </td>
 
         <td bgcolor="#C9DAF8" colspan="2">
-            <a href="https://doc.bigclown.cz/blynk.html">
+            <a href="https://doc.bigclown.cz/blynk.html" onclick="location.href=this.href; return false">
                 <img src="images/guidepost/blynk.png" style="height:2em" />
                 Blynk tutoriál
             </a><br />
