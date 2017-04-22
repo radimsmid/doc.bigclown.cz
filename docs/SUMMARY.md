@@ -2,7 +2,7 @@
 
 
 * [Rozcestník](README.md)
-* [Úvod](indtroduction.md)
+* [Úvod](introduction.md)
 * [Koncept](concept.md)
 
 
