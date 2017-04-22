@@ -2,7 +2,9 @@
 
 
 * [Rozcestník](README.md)
+
 * [Úvod](introduction.md)
+
 * [Koncept](concept.md)
 
 
@@ -13,7 +15,7 @@
 
 * [Hardware](core-module-hardware.md)
 
-* [Popis SDK knihovny](core-module-sdk.md)
+* [SDK, ukázky, projekty](core-module-sdk.md)
 
 * [Vývojové prostředí](core-module-setup.md)
 
@@ -27,25 +29,11 @@
 
 * [Píšeme firmware](sdk_tutorial/index.md)
 
-  * [Ukázky, projekty a SDK](sdk_tutorial/examples-projects.md)
-
   * [Úvod a rozblikání LED](sdk_tutorial/uvod-a-led.md)
 
   * [Tlačítko a instance](sdk_tutorial/tlacitko-a-instance.md)
 
   * [Digitální LED pásek](sdk_tutorial/akcelerometr-a-led-pasek.md)
-
-
-## Hardware
-
-
-* [Konektory & Signály](headers.md)
-
-
-## Reference
-
-
-* [Core Module SDK](http://sdk.bigclown.com)
 
 * [I²C Adresní prostor](i2c-space.md)
 
