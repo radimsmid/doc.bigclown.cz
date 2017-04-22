@@ -1,7 +1,7 @@
 # Summary
 
 
-* [Rozcestník](guidepost.md)
+* [Rozcestník](README.md)
 * [Úvod](indtroduction.md)
 * [Koncept](concept.md)
 
