@@ -51,6 +51,8 @@
 
 * [Klimastanice s LED teploměrem](climate-station.md)
 
+* [Počítadlo skóre](ping-pong.md)
+
 
 ## Návody
 
