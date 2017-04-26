@@ -129,10 +129,10 @@ sudo systemctl start grafana-server
 Společné pro oba dva případy:
 ```
 sudo apt install mosquitto-clients
-wget "https://raw.githubusercontent.com/bigclownlabs/bch-gateway/master/bc-gateway.py" -O bc-gateway
+wget "https://raw.githubusercontent.com/bigclownlabs/bch-gateway/master/gateway/bc-gateway.py" -O bc-gateway
 sudo mv bc-gateway /usr/bin/bc-gateway
 sudo chmod +x /usr/bin/bc-gateway
-wget "https://raw.githubusercontent.com/bigclownlabs/bch-gateway/master/bc-gateway.service" -O "bc-gateway.service"
+wget "https://raw.githubusercontent.com/bigclownlabs/bch-gateway/master/gateway/bc-gateway.service" -O "bc-gateway.service"
 sudo mv bc-gateway.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl enable bc-gateway.service
