@@ -289,3 +289,28 @@ Toto je stručný výpis změn:
      ```
      sudo apt install bc-workroom-blynk
      ```
+
+## Připojení Raspberry Pi 3 na WiFi
+
+S verzí Raspberry Pi 3 přibyla možnost připojení k WiFi síti.
+
+Pro editaci nastavení připojení k WiFi síti použij příkaz:
+
+```
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```
+
+Do tohoto souboru ulož následující strukturu:
+
+```
+network={
+    ssid="jméno_WiFi_sítě"
+    psk="heslo_pro_WiFi"
+}
+```
+
+Po uložení (Ctrl+X), potvrzení (y) a Enter se obsah uloží a restartuj Raspberry Pi:
+
+```
+sudo reboot
+```
