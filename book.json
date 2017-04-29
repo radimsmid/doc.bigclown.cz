@@ -10,7 +10,7 @@
       "showLevel": true
     },
     "edit-link": {
-      "base": "https://github.com/bigclownlabs/doc.bigclown.com/edit/master/docs",
+      "base": "https://github.com/bigclownlabs/doc.bigclown.cz/edit/master/docs",
       "label": ""
     },
     "anchorjs": {
@@ -19,7 +19,7 @@
       "visible": "always"
     },
     "github": {
-      "url": "https://github.com/bigclownlabs/doc.bigclown.com"
+      "url": "https://github.com/bigclownlabs/doc.bigclown.cz"
     },
     "gtm": {
       "token": "GTM-N2WMQSW"
