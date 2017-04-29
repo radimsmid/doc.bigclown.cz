@@ -106,7 +106,7 @@ Budeme instalovat BigClown verzi Raspbianu - oficiální a nejpopulárnější d
    unzip {{ raspbian_zip }}
    ```
 
-5. Vlož MicroSD kartu do svéhu Macu a najdi identifikátor disku (bude to /dev/diskX):
+5. Vlož MicroSD kartu do svéhu PC a najdi identifikátor disku (bude to /dev/diskX):
 
    ```
    lsblk
