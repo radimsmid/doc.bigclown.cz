@@ -73,7 +73,7 @@ Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu
 
 ## Volitelná Rozšíření
 
-Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlačítek.
+Na volný GPIO port Core Module (např. P6) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlačítek.
 Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se lze připojit např. k Philips HUE a měnit barvu svícení podle současného stavu počítadla nebo zaznamenávat a zobrazovat skóre ve vlastní aplikaci nebo databázi.
 
 ## Firmware
@@ -108,26 +108,26 @@ void application_init(void)
     bc_led_strip_init(&led_strip, bc_module_power_get_led_strip_driver(), &_led_strip_buffer_rgbw_204);
 
     // Initialize red button
-    bc_button_init(&button_red, BC_GPIO_P3, BC_GPIO_PULL_DOWN, false);
+    bc_button_init(&button_red, BC_GPIO_P4, BC_GPIO_PULL_DOWN, false);
     bc_button_set_event_handler(&button_red, button_score_event_handler, NULL);
 
     // Initialize reset red button
-    bc_button_init(&button_reset_red, BC_GPIO_P3, BC_GPIO_PULL_DOWN, false);
+    bc_button_init(&button_reset_red, BC_GPIO_P4, BC_GPIO_PULL_DOWN, false);
     bc_button_set_event_handler(&button_reset_red, button_reset_event_handler, NULL);
     bc_button_set_hold_time(&button_reset_red, 4000);
 
     // Initialize blue button
-    bc_button_init(&button_blue, BC_GPIO_P2, BC_GPIO_PULL_DOWN, false);
+    bc_button_init(&button_blue, BC_GPIO_P5, BC_GPIO_PULL_DOWN, false);
     bc_button_set_event_handler(&button_blue, button_score_event_handler, NULL);
 
     // Initialize reset blue button
-    bc_button_init(&button_reset_blue, BC_GPIO_P2, BC_GPIO_PULL_DOWN, false);
+    bc_button_init(&button_reset_blue, BC_GPIO_P5, BC_GPIO_PULL_DOWN, false);
     bc_button_set_event_handler(&button_reset_blue, button_reset_event_handler, NULL);
     bc_button_set_hold_time(&button_reset_blue, 4000);
 
     // Initialize piezo gpio pin
-    bc_gpio_init(BC_GPIO_P5);
-    bc_gpio_set_mode(BC_GPIO_P5, BC_GPIO_MODE_OUTPUT);
+    bc_gpio_init(BC_GPIO_P6);
+    bc_gpio_set_mode(BC_GPIO_P6, BC_GPIO_MODE_OUTPUT);
 
     reset_task_id = bc_scheduler_register(reset_game, NULL, BC_TICK_INFINITY);
     reset_game();
@@ -161,9 +161,9 @@ void piezo()
     for (i = 0; i < 100; i++)
     {
         for (j = 0; j < 400; j++);
-        bc_gpio_set_output(BC_GPIO_P8, true);
+        bc_gpio_set_output(BC_GPIO_P6, true);
         for (j = 0; j < 400; j++);
-        bc_gpio_set_output(BC_GPIO_P8, false);
+        bc_gpio_set_output(BC_GPIO_P6, false);
     }
 }
 ```
