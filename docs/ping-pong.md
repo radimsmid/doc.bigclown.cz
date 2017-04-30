@@ -50,7 +50,7 @@ Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu
 
  ![](images/ping-pong/node-2.jpg)
 
-2. <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_1.bin"> Sáhni si zkompilovaný firmware
+2. <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_1.bin"> Stáhni si zkompilovaný firmware
 </a> k projektu (podrobněji viz dole).
 
 3. <a href="https://doc.bigclown.cz/core-module-flashing.html"> Flashni Core Module </a> pomocí micro USB kabelu a dfu [podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html).
@@ -73,8 +73,8 @@ Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu
 
 ## Volitelná Rozšíření
 
-Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlašítek.
-Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se lze připojit např k Philips HUE a měnit barvu svícení podle současného stavu počítadla nebo zaznamenávat a zobrazovat score ve vlastní aplikaci nebo databázi.
+Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlačítek.
+Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se lze připojit např. k Philips HUE a měnit barvu svícení podle současného stavu počítadla nebo zaznamenávat a zobrazovat skóre ve vlastní aplikaci nebo databázi.
 
 ## Firmware
 
@@ -91,7 +91,7 @@ Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se l
 
 ### Konfigurace pravidel hry
 
-Úpravou konfigurace lze zvolit např. barvu hráče a intenzitu podsvětlění nebo maximální score. Pro změnu score zadej maximální počet viditelných bodů (tzn pro hru do 21 nastav 20, 21. vítězný bod je indikován pohyblivým LED efektem v barvě hráče.
+Úpravou konfigurace lze zvolit např. barvu hráče a intenzitu podsvětlení nebo maximální skóre. Pro změnu skóre zadej maximální počet viditelných bodů (tzn. pro hru do 21 nastav 20, 21. vítězný bod je indikován pohyblivým LED efektem v barvě hráče).
 ```
 
 ```
@@ -134,9 +134,9 @@ void application_init(void)
 }
 ```
 
-### Příprava costume bufferu pro LED pásek
+### Příprava vlastního bufferu pro LED pásek
 
-Šířka běžného ping-pongového stolu je cca 150 cm a je tedy potřeba si připravit speciální buffer pro delší LED pásek s větším počtem LED. V našem příppadě vyšel počet počet LED na 204.
+Šířka běžného ping-pongového stolu je cca 150 cm a je tedy potřeba si připravit speciální buffer pro delší LED pásek s větším počtem LED. V našem případě vyšel počet počet LED na 204.
 
 ```
 static uint32_t _dma_buffer_rgb_204[LED_COUNT * sizeof(uint32_t) * 2];
