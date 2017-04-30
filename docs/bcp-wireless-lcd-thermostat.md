@@ -13,7 +13,7 @@ V pravidelných intervalech měří teplotu a zobrazuje ji na svém displeji.
 Na displeji lze taky nastavit enkodérem požadovanou teplotu.
 Naměřená a nastavená teplota se bezdrátově posílá na base module každé 3 vteřiny.
 
-Na base jednotce je power module s výkonovým relé, které sepne v případě, že je potřeba zapnout vytápění.
+Na base jednotce je Power Module s výkonovým relé, které sepne v případě, že je potřeba zapnout vytápění.
 
 Zároveň je možné base jednotku připojit přes USB například do Raspberry Pi nebo jiného počítače a veškeré veličiny sledovat i na dálku.
 
@@ -38,7 +38,7 @@ Zároveň je možné base jednotku připojit přes USB například do Raspberry 
 ## Firmware
 
 
-Projekt nalzenete na GitHubu. Každý node má svou vlastní podsložku `base` a `remote`.
+Projekt naleznete na GitHubu. Každý node má svou vlastní podsložku `base` a `remote`.
 
 https://github.com/bigclownlabs/bcp-wireless-lcd-thermostat
 
@@ -65,7 +65,7 @@ https://github.com/bigclownlabs/bcp-wireless-lcd-thermostat
 
 Nyní vyzkoušejte funkci termostatu.
 Enkodérem nastavte požadovanou teplotu na vyšší, než je aktuálně naměřená.
-Na Base Module spne relé a vedle něj se rozsvítí zelená signalizační LED.
+Na Base Module sepne relé a vedle něj se rozsvítí zelená signalizační LED.
 
 Poté nastavte enkodérem nižší teplotu, než je naměřená. Za pár vteřin signalizační LED na Base Module zhasne a relé vypne.
 

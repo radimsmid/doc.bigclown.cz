@@ -9,8 +9,7 @@ Smysluplné prožití života by podle nás mělo být cílem každého rozumné
 No a my se snažíme pomáhat dosáhnout tohoto cíle všem těm, kteří nechtějí trávit svůj volný čas sledováním nekonečných seriálů nebo nadáváním na politiky.
 **Soustředíme se na ty z vás, kteří si chtějí hrát s elektronikou, programovat a učit se nové technologie.**
 A aby ti to dávalo nějaký smysl a zároveň tě to bavilo, tak výsledkem naší spolupráce bude tvá originální a funkční domácí automatizace.
-A kdo z ostatních to má? :- 
-)
+A kdo z ostatních to má? :-)
 
 ## Naše výjimečnost
 
@@ -20,7 +19,7 @@ My jsme se soustředili hlavně na vývoj a výrobu, ale tady je náš mix vlast
 1. **Jsme open-source**, protože chceš do svého systému vidět a mít volnost ho propojit s čímkoliv co si umaneš
 2. **Děláme spolehlivou elektroniku** s 10letou zárukou, protože se nechceš trápit nekvalitou
 3. **Na bezpečnost a spotřebu jsme mysleli už při návrhu**, protože nechceš aby ti soused reguloval topení a nechceš měnit baterky každý týden
-4. K sestavení naší elektroniky **nepotřebuješ pájku**, protože svůj čas chceš věnovat vymýšlením originálních funkcí 
+4. K sestavení naší elektroniky **nepotřebuješ pájku**, protože svůj čas chceš věnovat vymýšlením originálních funkcí
 5. **Ukazujeme inspirativní projekty**, protože není nic lepšího, než když vylepšíš projekt někoho jiného
 6. **Jsme BigClown**, protože kdyby někdo měl těch 5 výše uvedených vlastností, tak nás alespoň odliší tento název :-)
 
@@ -44,7 +43,7 @@ My jsme chtěli něco víc kompaktního, něco, co má na sobě ARM procesor, r�
 #### Osazení Core modulu
 
 **Core Module je špičkově vybaven a je schopen zvládnout téměř všechny potřeby kladené na domácí automatizaci.**
-Je osazen výkonným ARM mikrokontrolérem Cortex M0+, rádiovým čipem SIPIRIT 1 komunikujícícm v pásmu 868 MHz, najdeš na něm také teplotní senzor, akcelerometr, kryptočip, USBčko, standardní debuggovací konektor, LEDku a tlačítko.
+Je osazen výkonným ARM mikrokontrolérem Cortex M0+, rádiovým čipem SIPIRIT 1 komunikujícím v pásmu 868 MHz, najdeš na něm také teplotní senzor, akcelerometr, kryptočip, USBčko, standardní debuggovací konektor, LEDku a tlačítko.
 Prostě obrázek mluví za vše... ;-)
 
 ![](images/core-module/core-module.png)
@@ -55,7 +54,7 @@ Tím jak jsme kolem Core Module stavěli další hardwarové prvky, tak nám byl
 Protože trendem poslední doby je dělat event-driven single-threaded aplikace (viz Node.js), tak jsme se tímto nechali inspirovat a základní myšlenku jsme přenesli do embedded API pro náš Core Module, které je v "C".
 **Věříme tomu, že právě čisté "C" je efektivní prostředí pro spolehlivé bateriové aplikace.**
 
-### Jednotky 
+### Jednotky
 
 Jednotkou se u nás rozumí sestava modulů, která komunikuje do systému.
 Například si můžete poskládat jednotku s funkcí meteostanice, pohybového detektoru, relé, displeje apod.
@@ -137,7 +136,7 @@ A komunikujeme v pásmu 868 MHz, což ti zajistí pokrytí standardního domu s 
 
 ### Komunikace do světa a zpět
 
-No a jak dostaneš informace z tvé automatizace do světa a jak ji můžeš vzdáleně ovládat? 
+No a jak dostaneš informace z tvé automatizace do světa a jak ji můžeš vzdáleně ovládat?
 Tady musíme zdůraznit, že náš systém domácí automatizace nemusí být vůbec spojen s okolním světem a může fungovat nezávisle na internetu.
 Ale možností propojení BigClowna s okolním světem je několik a vždy máš nad systémem absolutní kontrolu.
 

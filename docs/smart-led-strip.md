@@ -9,7 +9,7 @@ Jde o jednoduchý projekt, jehož cílem je ukázat snadnost budování domácí
 Výsledkem projektu je "chytrý" LED pásek umístěný na viditelném místě v obývacím pokoji, který si můžeš vzdáleně ovládat z telefonu nebo tabletu.
 
 
-LED pásek je složený ze 144 adresovatených RGBW čipů a díky výkonu 15W jej lze použít i pro komfortní osvětlení.
+LED pásek je složený ze 144 adresovatelných RGBW čipů a díky výkonu 15W jej lze použít i pro komfortní osvětlení.
 Ve výchozím nastavením je pomocí pásku indikováno překročení nastavených limitů teploty a vlhkosti změnou barvy.
 V návodu si ukážeme, jak lze limity změnit nebo nastavit vlastní pravidla a indikovat teplotu dle počtu rozsvícených LED.
 Sestava dále umožňuje dálkově spínat externí spotřebič pomocí relé.
@@ -153,7 +153,7 @@ Více podrobností o technologii MQTT nalezneš zde:
 
 Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspberry Pi pomocí protokolu SSH:
 
-1. Zjisti IP adresu svého Raspberry Pi (prozkoumej menu routeru nebo použi program typu [Advanced IP scanner (Windows)](http://www.advanced-ip-scanner.com/) nebo [IP Scaner (Mac)](https://itunes.apple.com/us/app/ip-scanner/id404167149?mt=12).
+1. Zjisti IP adresu svého Raspberry Pi (prozkoumej menu routeru nebo použij program typu [Advanced IP scanner (Windows)](http://www.advanced-ip-scanner.com/) nebo [IP Scaner (Mac)](https://itunes.apple.com/us/app/ip-scanner/id404167149?mt=12).
 
 2. Připoj se k Raspberry Pi pomocí protokolu SSH (port 22):
 
@@ -185,7 +185,7 @@ Pro ověření funkce systému a komunikaci s MQTT brokerem se připoj k Raspber
 ### Otestování funkcí a hrátky s MQTT
 Zde si popíšeme, jak rychle otestovat hlavní funkce systému pomocí příkazů MQTT, podrobněji budou všechny funkce popsány později v dalších návodech.
 Pokud si chceš rovnou rozjet ovládání pomocí mobilní aplikace Blynk podívej se [sem](https://doc.bigclown.cz/smart-led-strip.html#ovládej-systém-komfortně-s-aplikací-blynk).
-Doporučujeme zkusit alespoň několik prvních příkazů pro otestování funčnosti.
+Doporučujeme zkusit alespoň několik prvních příkazů pro otestování funkčnosti.
 
 
 **Ovládání LED pásku:**
@@ -349,7 +349,7 @@ Pro přehlednější editaci vlastních pravidel je možné provést také edita
 LED pásek nebo přesněji "*LED-strip-plugin*" může pracovat ve čtyřech základních režimech:
 *   rules - pásek se řídí dle nastavených pravidel (indikace teploty apod.)
 *   color - režim svícení celého pásku dle nastavené barvy popř. kombinace složek RGBW
-*   compound - režim umožnuje ovládat nezávisle na sobě různé LED, rozsvítit pouze části pásku nebo každou část rozsvítit jinou barvou
+*   compound - režim umožňuje ovládat nezávisle na sobě různé LED, rozsvítit pouze části pásku nebo každou část rozsvítit jinou barvou
 *   framebuffer  - pásek je naplněn daty ve formátu base64 (v tomto režimu nelze ovlivnit úroveň intenzity pomocí parametru *brightness*)
 
 Režimy lze přepínat příkazem *mode/set*:
@@ -522,5 +522,5 @@ sudo systemctl restart bc-workroom-led-strip.service
 
 
 ## Závěr
-Na závěr bychom tě chtěli vyzvat k vlastním úpravám a projektům. Je pouze na tobě, zda si pásek nalepíš za TV a v Blynku si definuješ vlastní scénické převolby pro navození té správné atmosféry k filmu, nebo zda si pásek přiděláš do hliníkové lišty nad pracovní stůl. Těšíme se na tvé projekty s BigClown! Tvůj projekt se může stát inspirací pro další, můžeš ho [přidat na naši dokumentaci sám](https://doc.bigclown.cz/), nebo nám ho [pošli na email](mailto:support@bigclown.com).
-Pokud něčemu neporozumíš nebo najdeš chubu, neboj se nám napsat email nebo na do [fóra](http://forum.bigclown.com/).
+Na závěr bychom tě chtěli vyzvat k vlastním úpravám a projektům. Je pouze na tobě, zda si pásek nalepíš za TV a v Blynku si definuješ vlastní scénické předvolby pro navození té správné atmosféry k filmu, nebo zda si pásek přiděláš do hliníkové lišty nad pracovní stůl. Těšíme se na tvé projekty s BigClown! Tvůj projekt se může stát inspirací pro další, můžeš ho [přidat na naši dokumentaci sám](https://doc.bigclown.cz/), nebo nám ho [pošli na email](mailto:support@bigclown.com).
+Pokud něčemu neporozumíš nebo najdeš chybu, neboj se nám napsat email nebo příspěvek do [fóra](http://forum.bigclown.com/).

@@ -22,7 +22,7 @@ Na BigClown headeru jsou dva signály pro napájení komponent:
 
 Ten modul, který je schopen do systému dodávat energii, nazýváme "energizer".
 Energii dodává buď prostřednictvím externího zdroje (např. adaptér nebo USB), nebo prostřednictvím baterií.
-V každém případě energize obsahuje obvod pro inteligentní řízení napájení.
+V každém případě energizer obsahuje obvod pro inteligentní řízení napájení.
 
 
 Pro funkci takového obvodu jsou na BigClown headeru k dispozici další dva signály:

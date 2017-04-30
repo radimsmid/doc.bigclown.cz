@@ -14,7 +14,7 @@ Stačí se přihlásit pod svým uživatelským účtem.
 Stanice Bigclown si vyměňuje data se serverem i když není mobilní aplikace připojena.
 V aplikaci tak lze např. zobrazit historii naměřené teploty za poslední týden nebo nastavit časový spínač na stanovenou hodinu.
 Blynk nabízí i "off-line" možnost nainstalovat si server lokálně, ale sami jsme byli překvapení, jak rychlá je odezva při sepnutí relé i při připojení přes vzdálený server.
-Zpoždění je při bežném internetovém připojení takřka nepostřehnutelné!
+Zpoždění je při běžném internetovém připojení takřka nepostřehnutelné!
 Více o Blynku lze nalézt v [oficiální dokumentaci](http://docs.blynk.cc/).
 
    ![](images/blynk/blynk-architecture-1.png)

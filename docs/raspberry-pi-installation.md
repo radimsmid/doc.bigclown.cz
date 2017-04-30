@@ -62,7 +62,7 @@ Budeme instalovat BigClown verzi Raspbianu - oficiální a nejpopulárnější d
    unzip {{ raspbian_zip }}
    ```
 
-5. Vlož MicroSD kartu do svéhu Macu a najdi identifikátor disku (může to být /dev/diskX):
+5. Vlož MicroSD kartu do svého Macu a najdi identifikátor disku (může to být /dev/diskX):
 
    ```
    diskutil list
@@ -106,7 +106,7 @@ Budeme instalovat BigClown verzi Raspbianu - oficiální a nejpopulárnější d
    unzip {{ raspbian_zip }}
    ```
 
-5. Vlož MicroSD kartu do svéhu PC a najdi identifikátor disku (bude to /dev/diskX):
+5. Vlož MicroSD kartu do svého PC a najdi identifikátor disku (bude to /dev/diskX):
 
    ```
    lsblk
@@ -172,12 +172,12 @@ Můžeš se k němu připojit dvěmi způsoby:
 
 ### Postup pro macOS a Linux
 
-1. Otevři si Terminal and připoj se k Raspberry Pi:
+1. Otevři si Terminal a připoj se k Raspberry Pi:
 
    1. Použij IP adresu:
 
       ```
-      ssh pi@(IP address of Raspberry Pi)
+      ssh pi@(IP adresa Raspberry Pi)
       ```
 
    2. nebo použij zeroconf název:
@@ -242,7 +242,7 @@ Toto je stručný výpis změn:
 
 ## Instalace BigClown balíčků na existující systém
 
-> **Important** Tento postuj použij pouze pokud máš vlastní Raspberry Pi a na něm běžící Raspbian distribuci a pokud jsi vynechal všechny předcházející kroky.
+> **Important** Tento postup použij pouze pokud máš vlastní Raspberry Pi a na něm běžící Raspbian distribuci a pokud jsi vynechal všechny předcházející kroky.
 
 1. Připoj se k SSH terminálu.
 

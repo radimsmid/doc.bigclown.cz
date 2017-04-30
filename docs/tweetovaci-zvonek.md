@@ -12,7 +12,6 @@ Core Module bude připojen USB kabelem na Raspberry Pi, nebo k jakémukoliv jin�
 Můžete monitorovat vaše návštěvy a zjisti, jestli jste někoho nezmeškali!
 
 
-We will use Node-RED to react on MQTT message, then we send the tweet.
 Využijeme grafického rozhraní Node-Red pro nastavení pravidla, kdy MQTT zpráva po stisku tlačítka pošle tweet.
 [Zde je ukázková výsledná tweetovací stránka](https://twitter.com/bcDoorbell)
 
@@ -51,7 +50,7 @@ void application_init(void)
     // Inicializuj USB
     usb_talk_init();
 
-    // Inciializuj tlačítko a nastav callback funkci
+    // Inicializuj tlačítko a nastav callback funkci
     bc_button_init(&button, BC_GPIO_BUTTON, BC_GPIO_PULL_DOWN, false);
     bc_button_set_event_handler(&button, button_event_handler);
 
@@ -88,7 +87,7 @@ Ukázku zkompiluj zadáním příkazu `make` do konzole.
 Poté nahraj zkompilovaný binární kód přes J-link Ozone debugger zadáním `make ozone` nebo nahrej binární soubor přes [interní USB DFU bootloader](core-module-flashing.md).
 
 Po nahrání můžeš vyzkoušet funkčnost MQTT zpráv přes Mosquitto.
-V následujcíí ukázce nahraď `xxx` za svouji IP adresu MQTT brokeru - Raspberry pi.
+V následující ukázce nahraď `xxx` za svoji IP adresu MQTT brokeru - Raspberry pi.
 
 Pokud voláš Mosquitto příkazy rovnou z počítače, kde ti běží broker, můžeš vynechat parametr `-h`.
 
@@ -106,7 +105,7 @@ Pokud stiskneš tlačítko na Core Module, v konzoli uvidíš příchozí zpráv
 
 Pro zprovoznění Raspberry Pi [postupuj podle připraveného instalačního návodu](raspberry-pi-installation.md).
 Připoj se na konzoli Raspberry Pi přímo, nebo přes SSH.
-Na Raspberry Pi musí být nainstalované balíčky od Bigclown - buď jsi použil předinstalovaný image, nebo musíš [balíčky doinstalovat](raspberry-pi-installation.md#instalace-bigclown-balíčků-na-existující-systém).
+Na Raspberry Pi musí být nainstalované balíčky od BigClown - buď jsi použil předinstalovaný image, nebo musíš [balíčky doinstalovat](raspberry-pi-installation.md#instalace-bigclown-balíčků-na-existující-systém).
 
 Pak ještě budeme potřebovat Node-RED, abychom propojili tlačítko Core Module s Twitterem. [Instalace Node-RED na Raspberry Pi](node-red.md)
 
@@ -158,7 +157,7 @@ Tento blok změní MQTT zprávu na řetězec, kterou pak lze poslat na Twitter.
 ### Twitter out blok
 
 
-Zde nastav své přihlášení do twitter účtu.
+Zde nastav své přihlášení do Twitter účtu.
 
 
 ## Testování

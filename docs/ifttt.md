@@ -40,7 +40,7 @@ A právě službu **Maker** jsme použili pro integraci s naším systémem.
 ## Jak přes službu Maker pošleš data do IFTTT?
 
 
-Při založení účtu u služby **Maker** sse vygeneruje unikátní klíč který ti umožní komunikovat s IFTTT, tento klíč najdeš u nastavení služby Maker.
+Při založení účtu u služby **Maker** se vygeneruje unikátní klíč který ti umožní komunikovat s IFTTT, tento klíč najdeš u nastavení služby Maker.
 
 Pro nastavení služby Maker postupuj podle tohoto návodu:
 

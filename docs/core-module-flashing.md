@@ -164,7 +164,7 @@ Můžeš si stáhnout předkompilované binární soubory pro [ Smart LED Strip 
 
 * Odeslání zprávy při stisku tlačítka.
 
-* Odeslání zprávy při změně logické hodnoty na pinu P8. Pin má nastaven pull-up, takže reauge pokud jej propojíš se zemi (GND)
+* Odeslání zprávy při změně logické hodnoty na pinu P8. Pin má nastaven pull-up, takže reaguje pokud jej propojíš se zemi (GND)
 
 
 # Nastavení vývojového prostředí

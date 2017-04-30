@@ -9,7 +9,7 @@ Pokud budeš používat tagy a moduly, tak ty mají v SDK své vlastní piny a n
 
 ![](images/core-module/core-module.png)
 
-Piny ožnačené jako **Px** jsou zapojeny pouze k mikrokontroléru.
+Piny označené jako **Px** jsou zapojeny pouze k mikrokontroléru.
 Nejsou připojené k žádným jiným obvodům na Core Module a jsou tedy k dispozici pro tvoji aplikaci.
 
 
@@ -59,10 +59,10 @@ V našem systému klademe důraz na hardwarovou modularitu a znovupoužitelnost.
 Proto jsme zvolili pro systém propojování našich komponent dobře známý a hojně používaný standard konektorů s 2.54 mm (0.1 palce) roztečí.
 
 
-Náš systém konektorů pak sestává ze dvou typů komponent - **pinů** and **dutinek**.
+Náš systém konektorů pak sestává ze dvou typů komponent - **pinů** a **dutinek**.
 
 
-A abychom zajistili kompatabilitu mezi různými hardwarovými komponenty, tak jsme přišli se dvěma našimi standardy - elektromechanickými formáty - **Module** a **Tag**.
+A abychom zajistili kompatibilitu mezi různými hardwarovými komponenty, tak jsme přišli se dvěma našimi standardy - elektromechanickými formáty - **Module** a **Tag**.
 
 
 ## Formát Module
@@ -74,7 +74,7 @@ Formát **Module** je definován:
 * Mezerami a signály mezi dvěmi řadami 14pinových konektorů
 * Čtyřmi montážními otvory a jejich průměrem
 * Pozicí zaslepené dutinky a vynechaného pinu na konektorech bránící opačnému spojení modulů
-* Pozicí dutinek na horní čáasti modulů
+* Pozicí dutinek na horní části modulů
 * Pozicí pinů na spodní části modulů
 * Doporučenou výškou DPS 55 mm
 * Doporučenou tloušťkou DPS 1.5 mm
@@ -179,7 +179,7 @@ Formát **Tag** je definován:
 ### Signály Tagu
 
 
-Následující tabulka definuje signály přiřazené na konketoru Tagu:
+Následující tabulka definuje signály přiřazené na konektoru Tagu:
 
 
 |     | Signal | Popis                |
