@@ -16,7 +16,7 @@ Nejsou připojené k žádným jiným obvodům na Core Module a jsou tedy k disp
 ## Mapování GPIO pinů
 
 
-V následující tabulce je popis pinů a periferií mikrokontroléru  [STM32L083CZ](http://www.st.com/en/microcontrollers/stm32l083cz.html):
+V následující tabulce je popis pinů a periferií mikrokontroléru [STM32L083CZ](http://www.st.com/en/microcontrollers/stm32l083cz.html):
 
 
 | Pin | Signál     | MCU Pin      | Toleruje 5 V |
