@@ -7,6 +7,8 @@
 
 * [Koncept](concept.md)
 
+* [Řízení napájení](power-management.md)
+
 
 ## Core Module
 
