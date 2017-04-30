@@ -93,7 +93,7 @@ Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se l
 
 Úpravou konfigurace lze zvolit např. barvu hráče a intenzitu podsvětlení nebo maximální skóre. Pro změnu skóre zadej maximální počet viditelných bodů (tzn. pro hru do 21 nastav 20, 21. vítězný bod je indikován pohyblivým LED efektem v barvě hráče).
 ```
-
+TODO
 ```
 
 ### Inicializace
