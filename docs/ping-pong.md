@@ -30,7 +30,7 @@ Dále budeš potřebovat:
 
 ### Příprava stolu :
 
-Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad počítal s tím, že se tam bude pásek instalovat, jelikož byl celý zákrok neinvazivní, ale výsledek je i přesto velice robustní. 
+Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad počítal s tím, že se tam bude pásek instalovat, jelikož byl celý zákrok neinvazivní, ale výsledek je i přesto velice robustní.
 Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu.
 
  1. Seřízni zápustný ALU profil přesně na šířku ping-pongového stolu.
@@ -73,7 +73,7 @@ Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu
 
 ## Volitelná Rozšíření
 
-Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlašítek. 
+Na volný GPIO port Core Module (např P8) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlašítek.
 Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se lze připojit např k Philips HUE a měnit barvu svícení podle současného stavu počítadla nebo zaznamenávat a zobrazovat score ve vlastní aplikaci nebo databázi.
 
 ## Firmware
