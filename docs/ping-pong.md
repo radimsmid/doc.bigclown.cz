@@ -6,24 +6,28 @@ Velmi jednoduchý projekt, který velice originálně řeší problémy s počí
 V podstatě se jedná o počítadlo na body, které se inkrementuje pokaždé, když jeden, nebo druhý hráč získá bod a po dosažení 21 bodů oznámí vítěze.
 Výsledkem je unikátní ping-pongový stůl, který vždy dokáže minimálně rozproudit konverzaci návštěvníků v našich kancelářích, protože je jediný svého druhu.
 Zatím...
+Pro lepší představu se podívej na [video k projektu](https://youtu.be/otJfNo_x1-Q).
 
  ![](images/ping-pong/table-1.jpg)
 
 
 ## Co všechno k projektu potřebuješ
 
-* 1x LED pásek
+* 1x Adresovatelný LED pásek 1,5 m
 * 1x Core Module
-* 1x Power Module
-* 1x Base Module
-* 1x Sensor Module
+* 1x Power Module - pro napájení sestavy a zapojení LED pásku
+* 1x Base Module - pro snadnou montáž
+* 1x Sensor Module - pro snadné připojení tlačítek
+* 1x Napájecí adaptér 5V / 3A
+
+Pro projekt jsme připravili [cenově zvýhodněnou sadu](https://obchod.bigclown.cz/products/score-keeper-set).
 
 Dále budeš potřebovat:
 
 * PC nebo notebook s Windows, MacOS nebo Linux
-* Napájecí adaptér
-* Tlačítka
+* Tlačítka dle vlastní preference
 * Několik metrů dvou-žilového vodiče
+* Zápustný hliníkový profil pro LED pásek s matným difuzorem ([lze koupit např. zde](https://www.ledline.cz/profily-pro-led-pasky/alu-profil-zapustny-174-x-8mm/alu-profil-zapustny-174x8-delka-2m-krytka-mat.html))
 
 
 ## Jak na to
@@ -50,10 +54,10 @@ Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu
 
  ![](images/ping-pong/node-2.jpg)
 
-2. <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_1.bin"> Stáhni si zkompilovaný firmware
-</a> k projektu (podrobněji viz dole).
+2. Stáhni si [zkompilovaný firmware](https://github.com/bigclownlabs/bcp-ping-pong-table/releases/latest)
+ nebo zdrojové kódy k projektu. GitHub repozitář k projektu nalezneš [zde](https://github.com/bigclownlabs/bcp-ping-pong-table).
 
-3. <a href="https://doc.bigclown.cz/core-module-flashing.html"> Flashni Core Module </a> pomocí micro USB kabelu a dfu [podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html).
+3. Flashni Core Module pomocí micro USB kabelu a dfu [podle tohoto návodu](https://doc.bigclown.cz/core-module-flashing.html#nahrávání-programu-přes-usb-dfu-bootloader).
 
 ### Instalace
  1. Zvol místo pro přichycení sestavy a připrav si dostatečně dlouhé kabely pro připojení tlačítek a LED pásku.
@@ -71,30 +75,47 @@ Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu
  ![](images/ping-pong/table-node.jpg)
 
 
-## Volitelná Rozšíření
+## Volitelná Rozšíření a popis FW
 
-Na volný GPIO port Core Module (např. P6) lze připojit piezo měnič pro akustickou zpětnou vazbu po stisku tlačítek.
-Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, se lze připojit např. k Philips HUE a měnit barvu svícení podle současného stavu počítadla nebo zaznamenávat a zobrazovat skóre ve vlastní aplikaci nebo databázi.
+### Akustická odezva na stisk tlačítek
+Na GPIO port P6 Core Module můžeš připojit piezo měnič (druhý vývod zapoj na GND) pro akustickou odezvu po stisku tlačítek. Piezo doporučujeme připojit pokud použiješ tlačítka s málo zřetelným stiskem (bez cvaknutí).
 
-## Firmware
 
-### Binary
- * <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_0.bin"> download ping-pong v0.0 binary
-</a>
+### Konfigurace a nastavení pravidel hry
+Úpravou konfigurace lze zvolit např. barvu hráče a intenzitu podsvětlení.
 
- * <a href="https://github.com/bigclownlabs/doc.bigclown.cz/raw/ping-pong/docs/images/ping-pong/ppv0_1.bin"> download ping-pong v0.1 binary
-</a>
-
-### Projekt
- * <a href="https://github.com/bigclownlabs/bcp-ping-pong-table"> ping-pong projekt repozitář
-</a>
-
-### Konfigurace pravidel hry
-
-Úpravou konfigurace lze zvolit např. barvu hráče a intenzitu podsvětlení nebo maximální skóre. Pro změnu skóre zadej maximální počet viditelných bodů (tzn. pro hru do 21 nastav 20, 21. vítězný bod je indikován pohyblivým LED efektem v barvě hráče).
 ```
-TODO
+#define BRIGHTNESS_RED 40
+#define BRIGHTNESS_BLUE 40
+#define BRIGHTNESS_WHITE_GAP 40
 ```
+
+
+Pro změnu maximálního skóre zadej počet viditelných bodů (tzn. pro hru do 21 nastav 20, 21. vítězný bod je indikován pohyblivým LED efektem v barvě hráče).
+Délka jednotlivých dílků se nastaví automaticky dle zadaného počtu LED celého pásku.
+
+```
+#define NUMBER_OF_ROUNDS 20
+
+#define LED_COUNT 204
+#define LED_COUNT_PER_POINT ((float)((LED_COUNT - 1.f) / NUMBER_OF_ROUNDS))
+```
+
+
+GOIO porty jsou nastaveny na použití Sensor Modulu (*BC_GPIO_P4* a *BC_GPIO_P5*), piezo na *BC_GPIO_P6*
+
+```
+#define RED_BUTTON_GPIO BC_GPIO_P4
+#define BLUE_BUTTON_GPIO BC_GPIO_P5
+#define PIEZO_GPIO BC_GPIO_P6
+```
+
+
+Dále můžeš jednoduše měnit délku tónu při stisku tlačítka a
+```
+#define PIEZO_BEEP_TIME 300
+```
+
 
 ### Inicializace
 
@@ -151,7 +172,7 @@ const bc_led_strip_buffer_t _led_strip_buffer_rgbw_204 =
 
 ### Obsluha piezo reproduktoru
 
-Snad jediná věc, kterou bylo potřeba samostatně implementovat.
+Snad jediná funkce, kterou nenalezneš v BigClown SDK a bylo ji potřeba samostatně implementovat.
 
 ```
 void piezo()
@@ -167,3 +188,6 @@ void piezo()
     }
 }
 ```
+
+### Další integrace
+Připojením sestavy k Raspberry PI s odpovídajícím programem v pythonu, zobrazovat skóre ve vlastní aplikaci nebo výsledky zaznamenávat v databázi. Přes Raspberry PI se lze připojit také např. k Philips HUE a měnit barvu svícení podle současného stavu počítadla, vše je pouze na tvé fantazii.
