@@ -55,6 +55,8 @@
 
 * [Počítadlo skóre](ping-pong.md)
 
+* [Parkovací senzor](car-proximity-sensor.md)
+
 
 ## Návody
 
