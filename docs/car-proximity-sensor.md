@@ -8,18 +8,18 @@ Například to můžeš použít  jako jednoduchého pomocníka při parkování
 Už nikdy tvoje manželka nebo přítelkyně nemusí narazit do stěny. :-)
 
 
-## Funčknost
+## Funkčnost
 
 ![Diagram](images/car-proximity-sensor/diagram.png)
 
 Jako senzor pohybu je použit ultrazvukový senzor HC-SR04P, ktery je schopný pracovat na 3,3V logice (některé senzory to nepodporují a musíš to zjistit z dokumentace), což je pro nás ideální.
-Z něho jdou data do Core Modulu, kde proběhne vyhodnocení a graficky promítne vzdálenost do LED pásku.
+Z něho jdou data do Core Modulu, kde proběhne vyhodnocení a graficky promítne vzdálenost auta od senzoru do LED pásku.
 
 
 ## Princip funkce ultrazvukového senzoru
 
 Krátké ultrazvukové pulzy jsou generovány na základě nepřímého piezo-elektrického jevu piezo-elektrickým krystalem.
-Ultrazvokový senzor vyvolává vysokofrekvenční zvukové vlny (nad 20 kHz) a zachytává echo.
+Ultrazvukový senzor vyvolává vysokofrekvenční zvukové vlny (nad 20 kHz) a zachytává echo.
 
 Výhodou ultrazvukových senzorů je jednoduché nastavení, minimální údržba a velmi široké použití.
 Jsou velmi spolehlivé i ve znečištěném prostředí.
