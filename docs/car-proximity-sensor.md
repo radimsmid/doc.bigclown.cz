@@ -12,7 +12,7 @@ Už nikdy tvoje manželka nebo přítelkyně nemusí narazit do stěny. :-)
 
 ![Diagram](images/car-proximity-sensor/diagram.png)
 
-Jako senzor pohybu je použit ultrazvukový senzor HC-SR04P, ktery je schopný pracovat na 3,3V logice (některé senzory to nepodporují a musíš to zjistit z dokumentace), což je pro nás ideální.
+Jako senzor pohybu je použit ultrazvukový senzor HC-SR04P, který je schopný pracovat na 3,3V logice (některé senzory to nepodporují a musíš to zjistit z dokumentace), což je pro nás ideální.
 Z něho jdou data do Core Modulu, kde proběhne vyhodnocení a graficky promítne vzdálenost auta od senzoru do LED pásku.
 
 
@@ -54,15 +54,15 @@ Jsou velmi spolehlivé i ve znečištěném prostředí.
     ![](images/car-proximity-sensor/5-Base-Power-Core.png)
 
 4. Propoj senzor s Core Modulem:
-    - *Napájení* zapoj na **PIN 16**
-    - *Zem* zapoj na **PIN 15**
+    - *Napájení* zapoj na **PIN 16 (VDD)**
+    - *Zem* zapoj na **PIN 15 (GND)**
     - *Trigger* zapoj na **PIN 10 (P9)**
     - *Echo* zapoj na **PIN 9 (P8)**
 
     ![Pinout](images/car-proximity-sensor/6-Base-Power-Core-Ultrasonic.png)
 
 5. Zapoj LED pásek do Power Modulu
-6. Nahraj firmware
+6. Zkompiluj a nahraj firmware ([GitHub repozitář k projektu](https://github.com/bigclownlabs/bcp-car-proximity-sensor))
 7. Přilep si pásek do garáže
 8. Dej Power Module do zásuvky
 9. Raduj se, jelikož tvé auto už vždy zaparkuješ v dostatečné vzdálenosti :-)
