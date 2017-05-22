@@ -32,7 +32,7 @@ Dále budeš potřebovat:
 
 ## Jak na to
 
-### Příprava stolu :
+### Příprava stolu:
 
 Mechanika celého problému by se dala shrnout asi tak, že výrobce stolu snad počítal s tím, že se tam bude pásek instalovat, jelikož byl celý zákrok neinvazivní, ale výsledek je i přesto velice robustní.
 Zápustný hliníkový profil perfektně zapadne do mezery mezi polovinami stolu.
