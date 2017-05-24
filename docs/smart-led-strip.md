@@ -409,7 +409,7 @@ QR kód pro naklonování:
 
 Všechny funkce i grafy v jednom projektu (vyžaduje 5000 bodů energie).
 V projektu jsou použita také uživatelská tlačítka pro vyvolání rychlých předvoleb.
-Pro jejich zprovoznění je nutné upravit konfigurační soubor *etc/bigclown/plugin/led-strip.user* **dle bodu 21.**
+Pro jejich zprovoznění je nutné upravit konfigurační soubor *etc/bigclown/plugin/led-strip.user* [dle bodu 5.1](https://doc.bigclown.cz/smart-led-strip.html#přidání-uživatelských-tlačítek-pro-vyvolání-scénických-režimů)
 
 ![](images/smart-led-strip/blynk-project-smart-led-3-a.png)
 ![](images/smart-led-strip/blynk-project-smart-led-3-b.png)
