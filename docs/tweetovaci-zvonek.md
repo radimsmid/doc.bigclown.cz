@@ -178,3 +178,32 @@ V případě, že něco nefunguje, použij `Debug` blok a zapoj jej někde do ř
 Poté udělej znova `Deploy` a ujisti se, že `Debug` blok má vpravo zakliknutou zelenou barvu a je aktivní. Poté v pravém panelu přepni na `Debug` záložku a uvidíš ladící zprávy.
 
 ![Debugging](images/doorbell/debug.png)
+
+## Konfigurace pro Windows
+
+### Propojení Core Module a gateway
+
+Po zkompilování a nahrání kódu do Core Module (viz. bod 3. Core Module) si stáhni a nainstaluj [Python 3](https://www.python.org/downloads/), který je potřebný ke spuštění gateway.
+Také si stáhni [GitHub repozitář pro gateway](https://github.com/bigclownlabs/bch-gateway).
+Otevři si příkazový řádek (příkaz `cmd`). Poté změň aktuální adresář (s pomocí `cd`) do složky se souborem `bc-gateway.py`, který se nachází v `bch-gateway-master/gateway`. 
+Nainstaluj pomocí zadání příkazu do `cmd` 
+`pip3 install docopt`
+Instalace pomocí textového souboru `requirements.txt`
+`pip3 install -r requirements.txt`
+Zadej příkaz pro zjištění USB portu (např.`COM3`), kterým je připojen Core Module k počítači.
+`python bc-gateway.py --list`
+Virtuální propojení USB portu (`COM3`) s gateway.
+`python bc-gateway.py -d COM3 -D`
+Pokud stiskneš tlačítko `B` na Core Module, v konzoli uvidíš příchozí zprávy:
+`DEBUG: b'["push-button/-", {"event-count": 0}]\n'`
+
+### Propojení Mosquitto a gateway
+
+Otevři si příkazový řádek (příkaz `cmd`). Poté změň aktuální adresář (s pomocí `cd`) do složky se souborem `mosquitto_sub.exe`, který se nachází v `C:\Program Files (x86)\mosquitto`.
+Otevři soubor `mosquitto_sub.exe` pomocí příkazového řádku příkazem:
+`mosquitto_sub.exe -t "node/push-button/-" -v`
+Následně se zobrazí po stisnutí tlačíta `B` na Core module: 
+`node/push-button/- {"event-count": 0}` 
+
+
+
