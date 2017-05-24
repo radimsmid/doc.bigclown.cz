@@ -56,9 +56,9 @@ Následující kapitoly níže popisují postup nahrávání firmware na různý
 
 Pokud budeš používat náš instalační balíček s Visual Studio Code, pak stačí nainstalovat ovladač přes Zadig. Program dfu-utils není třeba stahovat.
 
-1. Otevři příkazovou řádku (příkaz `cmd`).
+1. Otevři příkazový řádek (příkaz `cmd`).
 
-* Změn aktuální adresář (s pomocí `cd`) do složky se souborem `firmware.bin`.
+* Změň aktuální adresář (s pomocí `cd`) do složky se souborem `firmware.bin`.
 
 * Stáhni a spusť [Zadig 2.2](http://zadig.akeo.ie/downloads/zadig_2.2.exe).
 
@@ -68,7 +68,7 @@ Pokud budeš používat náš instalační balíček s Visual Studio Code, pak s
 
    * Vyber "WinUSB" Ovladač k instalaci.
 
-   * Klikni na tlačítko "Reinstall Driver".
+   * Klikni na tlačítko "Reinstall Driver". Při první instalace "Replace Driver".
     Tímto jsme nainstalovali správný ovladač pro následující program dfu-util.
 
 * Stáhni [dfu-util-0.9-win64.zip](http://dfu-util.sourceforge.net/releases/dfu-util-0.9-win64.zip).
