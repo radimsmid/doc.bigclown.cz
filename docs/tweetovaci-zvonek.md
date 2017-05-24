@@ -36,7 +36,6 @@ Více na [GPIO SDK stránce](http://sdk.bigclown.com/group__bc__gpio.html).
 ```c
 #include <application.h>
 
-void button_event_handler(bc_button_t *self, bc_button_event_t event);
 
 // Instance LED
 bc_led_t led;
@@ -52,7 +51,7 @@ void application_init(void)
 
     // Inicializuj tlačítko a nastav callback funkci
     bc_button_init(&button, BC_GPIO_BUTTON, BC_GPIO_PULL_DOWN, false);
-    bc_button_set_event_handler(&button, button_event_handler);
+    bc_button_set_event_handler(&button, button_event_handler, NULL);
 
     // Inicializuj LED a nastav blikání
     bc_led_init(&led, BC_GPIO_LED, false, false);
@@ -60,7 +59,7 @@ void application_init(void)
 }
 
 // Callback funkce volaná při události tlačítka
-void button_event_handler(bc_button_t *self, bc_button_event_t event)
+void button_event_handler(bc_button_t *self, bc_button_event_t event, void *event_param)
 {
     // Skryj varování kompilátoru o nepoužité proměnné
     (void) self;
