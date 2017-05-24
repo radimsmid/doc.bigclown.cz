@@ -123,7 +123,7 @@ Pokud budeš používat náš instalační balíček s Visual Studio Code, pak s
 
 * **Ujisti se, že Core Module je v DFU módu** viz. předchozí kapitola.
 
-5. Nahrej program do Core Module příkazem:
+5. Nahraj program do Core Module příkazem:
 
    `dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware.bin`
 
