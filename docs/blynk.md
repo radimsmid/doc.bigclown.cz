@@ -97,7 +97,7 @@ Např. v projektu Smart LED strip jsou Virtuální Piny přiřazeny následovně
 ## Spárování Blynk projektu s BigClownem
 
 Pro jednoznačnou identifikaci Blynk projektu slouží autorizační token.
-Token si vygeneruj v Blynku a zadej pomocí ssh v Raspberry Pi, kde běží BigClown Hub.
+Token si vygeneruj v Blynku a zadej pomocí SSH v Raspberry Pi, kde běží BigClown Hub.
 Postupu dle kroků:
 
 1. Vstup do nastavení projektu:
