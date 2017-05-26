@@ -79,7 +79,7 @@ Pokud budeš používat náš instalační balíček s Visual Studio Code, pak s
 
 * Nahraj firmware do Core Module zadáním příkazu:
 
-    dfu-util-static -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware.bin
+    `dfu-util-static -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware.bin`
 
 . Po úspěšném nahrání se Core Module automaticky spustí náš program (příkaz `:leave`)
 
