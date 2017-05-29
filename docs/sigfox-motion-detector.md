@@ -2,16 +2,13 @@
 
 ![Obrázek BigClown Sigfox Detektor Pohybu - krabička](images//sigfox-motion-detector/06-sigfox-motion-detector-mbm-core-sf-pir-encl-3.png)
 
-![Obrázek BigClown Sigfox Detektor Pohybu - rozložené moduly](images//sigfox-motion-detector/sigfox-motion-detector-set.png)
+
 
 
 ## Úvod
 
 
 ### K čemu projekt slouží
-
-
-**TODO Obrázek sestavy**
 
 
 Tento projekt popisuje jednoduchý detektor pohybu osob připojený do sítě Sigfox.
@@ -24,6 +21,8 @@ Informace o detekci pohybu se přenáší rádiově přímo do sítě Sigfox.
 V internetové službě [MySigfox](https://www.mysigfox.cz) je nastavená webhook URL adresa aplikace [BigClown Motion](https://motion.bigclown.cz), která umožňuje jednoduché propojení na službu Twilio.
 Služba Twilio umožňuje odeslat SMS zprávu s libovolným textem na zadané telefonní číslo.
 
+
+![Obrázek BigClown Sigfox Detektor Pohybu - rozložené moduly](images//sigfox-motion-detector/sigfox-motion-detector-set.png)
 
 ### Příklady použití
 
