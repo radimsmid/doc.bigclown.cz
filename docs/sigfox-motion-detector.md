@@ -22,8 +22,6 @@ V internetové službě [MySigfox](https://www.mysigfox.cz) je nastavená webhoo
 Služba Twilio umožňuje odeslat SMS zprávu s libovolným textem na zadané telefonní číslo.
 
 
-![Obrázek BigClown Sigfox Detektor Pohybu - rozložené moduly](images//sigfox-motion-detector/sigfox-motion-detector-set.png)
-
 ### Příklady použití
 
 
@@ -66,6 +64,8 @@ Díky narrow-band technologii a nízké modulační rychlosti je možné zprávy
 
 _Sigfox Module musí být včetně [předplacené konektivity na 3 roky](https://obchod.bigclown.cz/products/sigfox-module-predplatne-na-3-roky)._
 
+
+![Obrázek BigClown Sigfox Detektor Pohybu - rozložené moduly](images//sigfox-motion-detector/sigfox-motion-detector-set.png)
 
 #### Internetové účty
 
