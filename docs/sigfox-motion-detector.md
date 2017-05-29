@@ -1,7 +1,8 @@
 # Sigfox Detektor Pohybu
 
+![Obrázek BigClown Sigfox Detektor Pohybu - krabička](images//sigfox-motion-detector/06-sigfox-motion-detector-mbm-core-sf-pir-encl-3.png)
 
-**TODO Obrázek sestavy (rozložená + složená)**
+![Obrázek BigClown Sigfox Detektor Pohybu - rozložené moduly](images//sigfox-motion-detector/sigfox-motion-detector-set.png)
 
 
 ## Úvod
@@ -88,23 +89,23 @@ _Sigfox Module musí být včetně [předplacené konektivity na 3 roky](https:/
 
 2. Začněte s Mini Battery Module.
 
-   **TODO Obrázek**
+   ![Obrázek Mini Battery Module](images//sigfox-motion-detector/01-sigfox-motion-detector-mbm.png)
 
-3. Připojte Sigfox Module.
+3. Připojte Core Module.
 
-   **TODO Obrázek**
+   ![Obrázek Mini Battery Module a Core Module](images//sigfox-motion-detector/02-sigfox-motion-detector-mbm-core.png)
 
-4. Připojte Core Module.
+4. Připojte Sigfox Module.
 
-   **TODO Obrázek**
+   ![Obrázek Mini Battery Module, Core Module, Sigfox Module](images//sigfox-motion-detector/03-sigfox-motion-detector-mbm-core-sf.png)
 
 5. Připojte PIR Module.
 
-   **TODO Obrázek**
+   ![Obrázek Mini Battery Module, Core Module, Sigfox Module, PIR Module](images//sigfox-motion-detector/04-sigfox-motion-detector-mbm-core-sf-pir.png)
 
 6. Připojte USB kabel do Core Module.
 
-   **TODO Obrázek**
+   ![Obrázek Sigfox Detektor Pohybu - zapojení USB](images//sigfox-motion-detector/05-sigfox-motion-detector-mbm-core-sf-pir-usb.png)
 
 7. Nahrajte firmware do Core Module.
 
@@ -118,7 +119,7 @@ _Sigfox Module musí být včetně [předplacené konektivity na 3 roky](https:/
 
 8. Vložte alkalické baterie do Mini Battery Module.
 
-   **TODO Obrázek**
+   ![Obrázek Sigfox Detektor Pohybu - vložení baterií](images//sigfox-motion-detector/05-sigfox-motion-detector-mbm-core-sf-pir-bat.png)
 
 9. Zkontrolujte, že se LED na Core Module na 30 sekund rozsvítí.
 
