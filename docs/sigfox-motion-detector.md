@@ -14,7 +14,7 @@
 
 
 Tento projekt popisuje jednoduchý detektor pohybu osob připojený do sítě Sigfox.
-Detekce osob je založená na principu pasivního snímání tepla z pohybujího se objektu.
+Detekce osob je založená na principu pasivního snímání tepla z pohybujícího se objektu.
 K tomu se používá tzv. PIR snímač (zkratka Passive InfraRed).
 Výhoda tohoto detektoru spočívá v tom, že je napájený ze dvou alkalických baterií typu AAA (tzv. "mikrotužky").
 Detektor nepotřebuje v místě instalace žádný přijímač.
@@ -64,29 +64,29 @@ Díky narrow-band technologii a nízké modulační rychlosti je možné zprávy
 
 * 1x BigClown [Mini Battery Module](https://obchod.bigclown.cz/products/mini-battery-module)
 
-_Sigfox Module musí být včetně [předplatné konektivity na 3 roky](https://obchod.bigclown.cz/products/sigfox-module-predplatne-na-3-roky)._
+_Sigfox Module musí být včetně [předplacené konektivity na 3 roky](https://obchod.bigclown.cz/products/sigfox-module-predplatne-na-3-roky)._
 
 
 #### Internetové účty
 
 
-* [Twilio](https://www.twilio.com) - Služba pro SMS služba
+* [Twilio](https://www.twilio.com) - Služba pro posílání SMS
 
 
 #### Ostatní
 
 
 * PC nebo laptop s operačním systémem Windows, macOS nebo Linux
-* MicroUSB kabel pro připojení PC nebo laptop s Core Module
+* MicroUSB kabel pro připojení PC nebo laptopu ke Core Module
 * Internetovou konektivitu
 
 
 ## Sestavení detektoru
 
 
-1. Našroubujte na Sigfox Module do SMA konektoru anténu.
+1. Našroubujte anténu do SMA konektoru na Sigfox Module.
 
-2. Začnětě s Mini Battery Module.
+2. Začněte s Mini Battery Module.
 
    **TODO Obrázek**
 
@@ -144,7 +144,7 @@ Každých 24 hodin se odvysílá stav baterie.
 Tato zpráva zároveň indikuje funkční spojení v případě, že se nevyskytuje aktivace PIR čidla pohybu.
 
 
-## Zprovozenění služby
+## Zprovoznění služby
 
 
 Podle těchto kroků zprovozníte odesílání SMS pro pohybový detektor:
@@ -194,7 +194,7 @@ Podle těchto kroků zprovozníte odesílání SMS pro pohybový detektor:
    * **ID zařízení** - unikátní číslo Sigfox Module vytištěné přímo na modulu (obvykle 6místné)
    * **Token** - 10ti místný token který jste obdrželi se zakoupeným Sigfox Module do služby MySigfox
    * **E-mail** - váš e-mail (pro využití v případě nutnosti kontaktu provozovatele služby s vámi)
-   * **Webhook URL** - Vyplňte adresu `https://motion.bigclown.com/update`
+   * **Webhook URL** - vyplňte adresu `https://motion.bigclown.com/update`
 
    ![Obrázek služby MySigfox](images/sigfox-motion-detector/service-mysigfox.png)
 
