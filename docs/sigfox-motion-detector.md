@@ -32,7 +32,7 @@ Služba Twilio umožňuje odeslat SMS zprávu s libovolným textem na zadané te
 * Domácí automatizace (spuštění akce na průchod chodbou, apod.)
 
 
-**TODO Obrázek čočky**
+![Obrázek detekce PIR](images/sigfox-motion-detector/fresnel-lens.jpg)
 
 
 ### Co je to Sigfox
@@ -182,7 +182,7 @@ Podle těchto kroků zprovozníte odesílání SMS pro pohybový detektor:
    _Používejte pouze mezinárodní formát telefonního čísla bez mezer.
    Příklad: +447481342988_
 
-   ![Obrázek aplikace BigClown Motion](images/sigfox-motion-detector/application-motion.png)
+   ![Obrázek aplikace BigClown Motion](images/sigfox-motion-detector/application-bigclown-motion.png)
 
 
 3. Nastavte službu MySigfox
@@ -204,4 +204,8 @@ Podle těchto kroků zprovozníte odesílání SMS pro pohybový detektor:
 
 
 Tento projekt názorně demonstruje snadné použití BigClown prvků k sestavení bezdrátového PIR detektoru pohybu komunikující prostřednictvím sítě SigFox.
+
+Po následování výše uvedeného postupu byste měli dostávat na nastavené telefonní číslo SMS zprávy o pohybu před detektorem pohybu.
+Nezapomeňte, že minimální perioda mezi zprávami je 15 minut.
+
 Dále jsme si ukázali integraci služby [Twilio](https://www.twilio.com) s aplikací [BigClown Motion](https://motion.bigclown.cz) a službou [MySigfox](https://www.mysigfox.cz).
