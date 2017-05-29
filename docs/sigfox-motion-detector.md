@@ -184,7 +184,6 @@ Podle těchto kroků zprovozníte odesílání SMS pro pohybový detektor:
 
    ![Obrázek aplikace BigClown Motion](images/sigfox-motion-detector/application-bigclown-motion.png)
 
-
 3. Nastavte službu MySigfox
 
    Služba MySigfox propojuje Sigfox backend s uživatelem definovanou webovou službou prostřednictvím požadavku HTTP POST - tzv. webhooku.
