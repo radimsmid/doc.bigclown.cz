@@ -18,8 +18,9 @@ Detekce osob je založená na principu pasivního snímání tepla z pohybujího
 K tomu se používá tzv. PIR snímač (zkratka Passive InfraRed).
 Výhoda tohoto detektoru spočívá v tom, že je napájený ze dvou alkalických baterií typu AAA (tzv. "mikrotužky").
 Detektor nepotřebuje v místě instalace žádný přijímač.
+
 Informace o detekci pohybu se přenáší rádiově přímo do sítě Sigfox.
-V internetové službě [MySigfox](https://www.mysigfox.cz/) je nastavená webhook URL adresa aplikace [BigClown Motion](https://motion.bigclown.cz/), která umožňuje jednoduché propojení na službu Twilio.
+V internetové službě [MySigfox](https://www.mysigfox.cz) je nastavená webhook URL adresa aplikace [BigClown Motion](https://motion.bigclown.cz), která umožňuje jednoduché propojení na službu Twilio.
 Služba Twilio umožňuje odeslat SMS zprávu s libovolným textem na zadané telefonní číslo.
 
 
@@ -40,9 +41,12 @@ Služba Twilio umožňuje odeslat SMS zprávu s libovolným textem na zadané te
 Sigfox je mezinárodní bezdrátová síť pracující v pásmu 868 MHz (EU), případně 915 MHz (USA).
 Hlavní předností této sítě je velmi nízká spotřeba při vysílání ve srovnání s technologií jako je GSM/3G/LTE.
 S tím souvisí možnost provozu zařízení z alkalických baterií po dobu i několika let.
+
 Na druhou stranu je tato technologie vhodná pouze pro krátké zprávy (max. 12 bytů) s omezením vysílání ze zařízení na maximálně 140 zpráv za posledních 24 hodin.
+
 Tato technologie je tedy vhodná např. pro monitoring kvality ovzduší, upozornění na vzniklou událost (pohyb, prasklé potrubí, stisk tlačítka), odečet spotřeby energií, apod.
 Není vhodná tam, kde je potřeba často vysílat aktualizovaný stav nebo posílat větší objemy dat.
+
 Díky narrow-band technologii a nízké modulační rychlosti je možné zprávy mezi zařízením a základnovou stanicí Sigfox přenášet i na vzdálenost přes 100 km.
 
 
@@ -106,11 +110,11 @@ _Sigfox Module musí být včetně [předplatné konektivity na 3 roky](https://
 
    Stáhněte si [zkompilovaný firmware](https://github.com/bigclownlabs/bcp-sigfox-motion-detector/releases/latest) pro tento projekt (soubor `firmware.bin`).
 
-   V dokumentaci najdete podrobný návod pro nahrání firmware do Core Module.
+   V dokumentaci najdete podrobný návod pro [nahrání firmware do Core Module](core-module-flashing.md).
 
    Zdrojové kódy firmware obsahuje GitHub repozitář [bcp-sigfox-motion-detector](https://github.com/bigclownlabs/bcp-sigfox-motion-detector).
 
-   Více se o firmware a principech dozvíte v dokumentaci v sekci Firmware SDK tutoriál.
+   Více se o firmware a jeho principech dozvíte v dokumentaci v sekci [Firmware SDK tutoriál](core-module-sdk.md).
 
 8. Vložte alkalické baterie do Mini Battery Module.
 
@@ -158,8 +162,9 @@ Podle těchto kroků zprovozníte odesílání SMS pro pohybový detektor:
      * **Twilio Token** - autentizační token
      * **Twilio Phone Number** - telefonní číslo ze kterého je možné odesílat SMS
 
-   **TODO Obrázek**
+   ![Obrázek služby Twilio - účet](images/sigfox-motion-detector/twilio-account.png)
 
+   ![Obrázek služby Twilio - čísla](images/sigfox-motion-detector/twilio-numbers.png)
 
 2. Aktivujte aplikaci BigClown Motion
 
@@ -177,7 +182,7 @@ Podle těchto kroků zprovozníte odesílání SMS pro pohybový detektor:
    _Používejte pouze mezinárodní formát telefonního čísla bez mezer.
    Příklad: +447481342988_
 
-   **TODO Obrázek**
+   ![Obrázek aplikace BigClown Motion](images/sigfox-motion-detector/application-motion.png)
 
 
 3. Nastavte službu MySigfox
@@ -192,12 +197,11 @@ Podle těchto kroků zprovozníte odesílání SMS pro pohybový detektor:
    * **E-mail** - váš e-mail (pro využití v případě nutnosti kontaktu provozovatele služby s vámi)
    * **Webhook URL** - Vyplňte adresu `https://motion.bigclown.com/update`
 
-
-**TODO Obrázek**
+   ![Obrázek služby MySigfox](images/sigfox-motion-detector/service-mysigfox.png)
 
 
 ## Závěr
 
 
 Tento projekt názorně demonstruje snadné použití BigClown prvků k sestavení bezdrátového PIR detektoru pohybu komunikující prostřednictvím sítě SigFox.
-Dále jsme si ukázali integraci služby [Twilio](https://www.twilio.com) s aplikací [BigClown Motion](https://motion.bigclown.cz) a [MySigfox](https://www.mysigfox.cz).
+Dále jsme si ukázali integraci služby [Twilio](https://www.twilio.com) s aplikací [BigClown Motion](https://motion.bigclown.cz) a službou [MySigfox](https://www.mysigfox.cz).
