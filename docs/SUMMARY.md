@@ -42,6 +42,7 @@
 
 ## Vzorové projekty
 
+* [Sigfox Detektor Pohybu](sigfox-motion-detector.md)
 
 * [Smart LED Strip](smart-led-strip.md)
 
