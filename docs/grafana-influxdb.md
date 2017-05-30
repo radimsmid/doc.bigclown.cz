@@ -118,7 +118,7 @@ sudo apt install mosquitto mosquitto-clients -y
 
 * Přidání repozitáře:
   ```
-  echo "deb https://repo.bigclown.com/debian jessie main" | sudo tee /etc/apt/sources.list.d/influxdb.list
+  echo "deb https://repo.bigclown.com/debian jessie main" | sudo tee /etc/apt/sources.list.d/bigclown.list
   ```
 
 * Proveď aktualizaci repozitářů a nainstaluj balíček:
