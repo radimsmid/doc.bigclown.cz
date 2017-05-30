@@ -70,4 +70,6 @@
 
 * [Node RED - Grafický programovací nástroj](node-red.md)
 
+* [Grafana + InfluxDB](grafana-influxdb.md)
+
 * [IFTTT - Služba propojení tvých oblíbených služeb](ifttt.md)
